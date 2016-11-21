@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="chat">
+	<typeAlias alias="chatBean" 
+			   type="com.spring.sample.web.chat.bean.ChatBean"/>
+	
+	<resultMap class="chatBean" id="chatBeans">
+		<result property="chatNo" column="CHATNO"/>
+		<result property="nick" column="NICK"/>
+		<result property="contents" column="CONTENTS"/>
+		<result property="writeDate" column="WRITEDATE"/>
+	</resultMap>
+	
+	<insert id="insertChat" parameterClass="chatBean">
+		INSERT INTO CHAT(CHATNO, NICK, CONTENTS)
+		VALUES(CHAT_SEQ.NEXTVAL, #nick#, #contents#)
+	</insert>
+	
+	<select id="getMaxNo" resultClass="Integer">
+		SELECT NVL(MAX(CHATNO), 0) AS MAXNO
+		FROM CHAT
+	</select>
+	
+	<select id="getChatList" parameterClass="Integer" resultMap="chatBeans">
+		SELECT CHATNO, NICK, CONTENTS, WRITEDATE
+		FROM CHAT
+		WHERE CHATNO > #lastChatNo#
+		ORDER BY CHATNO ASC
+	</select>
+</sqlMap>
