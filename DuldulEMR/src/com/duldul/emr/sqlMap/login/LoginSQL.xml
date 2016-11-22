@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="login">
+	<typeAlias alias="loginBean" 
+			   type="com.duldul.emr.web.login.bean.LoginBean" />
+	<select id="getUserInfo" 
+			parameterClass="loginBean" 
+			resultClass="loginBean">
+		SELECT USER_NO AS userNo, 
+			   USER_ID AS userId, 
+			   USER_NM AS userNm, 
+			   USER_PW AS userPw
+		FROM USER_INFO
+		WHERE USER_ID = #userId#
+		AND USER_PW = #userPw#
+	</select>
+</sqlMap>

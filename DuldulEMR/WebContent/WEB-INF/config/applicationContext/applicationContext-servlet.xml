@@ -26,7 +26,7 @@
 	<!-- Enables the All request Urls 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<beans:bean class="com.spring.sample.인터셉터" />
+			<beans:bean class="com.duldul.emr.인터셉터" />
 		</mvc:interceptor>	
 	</mvc:interceptors>
 	 -->
@@ -41,12 +41,12 @@
 
 	<context:annotation-config />
 
-	<context:component-scan base-package="com.spring.sample" />
+	<context:component-scan base-package="com.duldul.emr" />
 	
 	<!-- json Resolver -->
-	<beans:bean id="jsonViewResolver" class="com.spring.sample.util.JsonViewResolver">
+	<beans:bean id="jsonViewResolver" class="com.duldul.emr.util.JsonViewResolver">
 		<beans:property name="jsonView">
-			<beans:bean class="com.spring.sample.util.JsonView"></beans:bean>
+			<beans:bean class="com.duldul.emr.util.JsonView"></beans:bean>
 		</beans:property>
 		<beans:property name="jsonPrefix" value="json_"></beans:property>
 	</beans:bean>
@@ -57,7 +57,7 @@
 			<beans:props>
 				<beans:prop key="java.lang.Exception">/exception/EXCEPTION_INFO</beans:prop>
 				<beans:prop 
-					key="com.spring.sample.exception.UserNotFoundException">
+					key="com.duldul.emr.exception.UserNotFoundException">
 					/exception/USER_NOT_FOUND_EXCEPTION
 				</beans:prop>
 			</beans:props>
@@ -89,7 +89,7 @@
 
 	<dwr:controller id="dwrController" debug="true" />
 
-	<dwr:annotation-scan base-package="com.spring.sample.*"
+	<dwr:annotation-scan base-package="com.duldul.emr.*"
 		scanDataTransferObject="true" scanRemoteProxy="true" />
 	
 	<!-- Daily Batch -->
@@ -101,6 +101,6 @@
     </task:scheduled-tasks> -->
  	
     <!-- job bean -->
-    <!-- <beans:bean id="BatchController" class="com.spring.sample.batch.controller.BatchController" /> -->
+    <!-- <beans:bean id="BatchController" class="com.duldul.emr.batch.controller.BatchController" /> -->
     
 </beans:beans>

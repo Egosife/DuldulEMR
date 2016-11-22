@@ -8,11 +8,11 @@
 	<settings useStatementNamespaces="true" enhancementEnabled="true"
 		maxTransactions="5" maxRequests="32" maxSessions="10" />
 	<!-- Login쿼리 -->
-	<sqlMap resource="/com/spring/sample/sqlMap/login/LoginSQL.xml" />
+	<sqlMap resource="/com/duldul/emr/sqlMap/login/LoginSQL.xml" />
 	<!-- Chat쿼리 -->
-	<sqlMap resource="/com/spring/sample/sqlMap/chat/ChatSQL.xml" />
+	<sqlMap resource="/com/duldul/emr/sqlMap/chat/ChatSQL.xml" />
 	<!-- AjaxBoard쿼리 -->
-	<sqlMap resource="/com/spring/sample/sqlMap/ajaxBoard/AjaxBoardSQL.xml" />
+	<sqlMap resource="/com/duldul/emr/sqlMap/ajaxBoard/AjaxBoardSQL.xml" />
 	
 </sqlMapConfig>
  

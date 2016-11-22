@@ -1,0 +1,139 @@
+@CHARSET "UTF-8";
+/*
+ * 161122 이동건 - 기본 레이아웃 디자인 제작
+ */
+body {
+	margin: 0px;
+	font-size: 0pt;
+}
+
+div {
+	padding: 1px;
+	margin: 1px;
+	vertical-align: top;
+	overflow: hidden;
+}
+
+.main_layout_LDG {
+	width: 100%;
+	min-width: 1600px;
+	height: 1000px;
+	background-color: black;
+}
+
+.main_topbar_LDG {
+	width: calc(100% - 4px);
+	height: calc(5% - 4px);
+	background-color: yellow;
+}
+.main_topbar_title_LDG {
+	width: calc(50% - 4px);
+	height: calc(100% - 4px);
+	font-size: 15pt;
+	text-align: left;
+	font-weight:bold;
+	background-color: red;
+	display: inline-block;
+}
+.main_topbar_account_LDG {
+	width: calc(50% - 4px);
+	height: calc(100% - 4px);
+	font-size: 15pt;
+	text-align: right;
+	font-weight:bold;
+	background-color: gray;
+	display: inline-block;
+}
+	.main_topbar_account_opt {
+		width: 44px;
+		height: calc(100% - 4px);
+		display: inline-block;
+		cursor: pointer;
+		background-color: black;
+	}
+	.main_topbar_account_logout {
+		width: 88px;
+		height: calc(100% - 4px);
+		display: inline-block;
+		font-size: 12pt;
+		text-align: center;
+		font-weight:bold;
+		cursor: pointer;
+		background-color: red;
+	}
+
+.main_midbar_LDG {
+	width: calc(100% - 4px);
+	height: calc(5% - 4px);
+	background-color: yellow;
+}
+.main_midbar_time_LDG {
+	width: calc(10% - 4px);
+	height: calc(100% - 4px);
+	font-size: 11pt;
+	font-weight:bold;
+	text-align: center;
+	background-color: red;
+	display: inline-block;
+}
+.main_midbar_tabs_LDG {
+	width: calc(90% - 4px);
+	height: calc(100% - 4px);
+	background-color: gray;
+	display: inline-block;
+}
+
+.main_content_LDG {
+	width: calc(100% - 4px);
+	height: calc(90% - 4px);
+	background-color: orange;
+}
+.main_content_menu_LDG {
+	width: calc(10% - 4px);
+	height: calc(100% - 4px);
+	display: inline-block;
+	font-size: 15pt;
+	text-align: center;
+	font-weight:bold;
+	background-color: blue;
+}
+.main_content_page_LDG {
+	width: calc(90% - 4px);
+	height: calc(100% - 4px);
+	display: inline-block;
+	background-color: aqua;
+}
+
+.main_menu_btn {
+	width: calc(100% - 4px);
+	height: calc(10% - 4px);
+	margin: 0 auto;
+	margin-top: 1%;
+	font-size: 15pt;
+	text-align: center;
+	font-weight:bold;
+	cursor: pointer;
+	background-color: red;
+}
+
+.menu_btnlist {
+	width: calc(100% - 4px);
+	margin: 0 auto;
+	font-size: 15pt;
+	text-align: center;
+	font-weight:bold;
+	cursor: pointer;
+ 	display: none;
+	background-color: green;
+}
+.btnlist_btns {
+	width: calc(100% - 4px);
+	height: calc(5% - 4px);
+	margin: 0 auto;
+	margin-bottom: 1%;
+	font-size: 15pt;
+	text-align: center;
+	font-weight:bold;
+	cursor: pointer;
+	background-color: yellow;
+}
