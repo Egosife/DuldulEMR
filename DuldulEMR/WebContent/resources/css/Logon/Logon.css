@@ -41,6 +41,7 @@ div{
 	width: 15%;
 	height: 63px;
 	background-color: lime;
+	cursor: pointer;
 }
 /* 레이아웃 중단 - 체크박스 */
 .check{
