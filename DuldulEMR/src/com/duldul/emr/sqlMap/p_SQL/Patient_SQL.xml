@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd"> <!-- 주소가 없으면 자동완성 기능이 안된다 -->
+<!-- xml은 민감하기 때문에 오타가 났을경우 돌아가지 않는다 -->
+<sqlMap namespace="Patient_Data">
+
+</sqlMap>
