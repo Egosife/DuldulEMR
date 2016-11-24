@@ -42,10 +42,12 @@ public class LogonController {
 															   ModelAndView modelAndView) throws Throwable{
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String,Object>();
-		
+		System.out.println("이것이 받은것이다ㅏㅏㅏㅏ");
+		System.out.println(params);
 		//회원정보 받아옴
 		HashMap<String, String> acc = iLogonService.getAcc(params);
-		
+		System.out.println(acc);
+		System.out.println("으아아아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
 		//회원정보가 들어왔다면
 		if(acc != null && !acc.isEmpty()){
 			session.setAttribute("sHospital_Code", acc.get("HOSPITAL_CODE"));

@@ -7,7 +7,7 @@
 			parameterClass="java.util.HashMap"
 			resultClass="java.util.HashMap">
 		SELECT HOSPITAL_CODE, EMP_NUM, PW, EMP_NAME
-		FROM Emp
+		FROM EMP
 		WHERE HOSPITAL_CODE  = #hos_Code#
 		AND EMP_NUM = #emp_id#
 		AND PW = #passwd#		

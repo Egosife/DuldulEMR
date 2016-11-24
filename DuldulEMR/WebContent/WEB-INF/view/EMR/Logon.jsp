@@ -57,9 +57,9 @@ $(document).ready(function(){
 		<div class="login"> <!-- 레이아웃 중단 - 가운데 정렬 -->
 			<div class="text"> <!-- 레이아웃 중단 - 텍스트 -->
 				<form action="#" id="loginForm" method="post">
-					<input type="text" id="hos_Code" placeholder="병원 코드 입력"/><br/>
-					<input type="text" id="emp_id" placeholder="아이디 입력"/><br/>
-					<input type="password" id="passwd" placeholder="비밀번호 입력"/>
+					<input type="text" id="hos_Code" name="hos_Code" placeholder="병원 코드 입력"/><br/>
+					<input type="text" id="emp_id" name="emp_id" placeholder="아이디 입력"/><br/>
+					<input type="password" id="passwd" name="passwd" placeholder="비밀번호 입력"/>
 				</form>
 			</div>
 			<div class="btn" id="loginbtn">로그인</div> <!-- 레이아웃 중단 - 로그인 버튼 -->
