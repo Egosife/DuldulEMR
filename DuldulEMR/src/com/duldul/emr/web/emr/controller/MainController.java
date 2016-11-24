@@ -1,6 +1,7 @@
 package com.duldul.emr.web.emr.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +13,30 @@ public class MainController {
 	//메인화면 연결 start
 	@RequestMapping(value="/emrmain")
 	public ModelAndView emrmain(HttpServletRequest request,
+			HttpSession session,
 			ModelAndView modelAndView) {
-		
-		modelAndView.setViewName("EMR/main");
+
+		if(session.getAttribute("sEmp_Num") != null){
+			modelAndView.setViewName("EMR/main");
+		}else{
+			modelAndView.setViewName("redirect:Logon");
+		}
 		
 		return modelAndView;
 	}
 	//메인화면 연결 end
+	
+	//메인화면 로그아웃 버튼
+	@RequestMapping(value="/Logoff")
+	public ModelAndView testLogout(HttpServletRequest request,
+								   HttpSession session,
+								   ModelAndView modelAndView){
+		session.invalidate();
+		
+		modelAndView.setViewName("redirect:Logon");
+		
+		return modelAndView;
+	}
 	
 	//윤희상  사내게시판 연결 start
 	@RequestMapping(value="/bbs")

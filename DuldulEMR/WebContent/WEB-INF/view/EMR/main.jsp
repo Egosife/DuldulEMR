@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/main/main.css" /> <!-- 레이아웃 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
 <script type="text/javascript" src="resources/script/main/main.js"></script>
+
 <title>DuldulEMR</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
 		<div class="main_topbar_account">
 			테스트계정1 (9999990000)
 			<div class="main_topbar_account_opt"></div>
-			<div class="main_topbar_account_logout">LOGOUT</div>
+			<div class="main_topbar_account_logout" id="logout">LOGOUT</div>
 		</div>
 	</div>
 <!-- 시간과 탭영역 -->
