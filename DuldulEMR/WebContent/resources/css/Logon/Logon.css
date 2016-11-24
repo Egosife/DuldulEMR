@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+/* 김남기 = 로그인 페이지 - 기본 레이아웃 */
+div{
+	vertical-align: top;
+}
+/* 메인 레이아웃 */
+.main{
+	width: 100%;
+	height: 850px;
+	background-color: aqua;
+}
+/* 레이아웃 상단  */
+.logo{
+	width: 100%;
+	height: 40%;
+	background-color: blue;
+}
+/* 레이아웃 중단 */
+.middle{
+	width: 100%;
+	height: 20%;
+	text-align: center;
+	background-color: fuchsia;
+}
+/* 레이아웃 중단 - 가운데 정렬 */
+.login{
+	display: inline-block;
+	width: 40%;
+	height: 100%;
+	background-color: orange;
+}
+/* 레이아웃 중단 - 텍스트 */
+.text{
+	display: inline-block;
+	height: 63px;
+	background-color: gray;
+}
+/* 레이아웃 중단 - 로그인 버튼 */
+.btn{
+	display: inline-block;
+	width: 15%;
+	height: 63px;
+	background-color: lime;
+}
+/* 레이아웃 중단 - 체크박스 */
+.check{
+	display: block;
+	width: 100%;
+}
+/* 레이아웃 하단 */
+.bottom{
+	width: 100%;
+	height: 40%;
+	text-align: center;
+	background-color: green;
+}
+/* 레이아웃 하단 - 가운데 정렬 */
+.guide{
+	display: inline-block;
+	width: 40%;
+	height: 100%;
+	background-color: teal;
+}
