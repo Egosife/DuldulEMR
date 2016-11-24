@@ -1,0 +1,152 @@
+@CHARSET "UTF-8";
+/* 2016-11-23 이관우 개발 
+	환자등록 페이지(기본 레이아웃 디자인 제작) */
+	
+ body { /* 기본셋팅 */
+	margin: 0px;
+	font-size: 0pt;
+ }
+ 
+ div {
+	vertical-align: top;
+ }
+ 
+ .Sign_main { /* 메인화면 사이즈 */
+ 	display: inline-block;
+ 	width: 100%;
+	height: 974px;
+	background-color: #EAEAEA;
+ }
+ 
+ .Sign_top { /* 환자등록 상단 */
+ 	width: 100%;
+ 	height: 5%;
+ 	font-size: 25pt;
+ 	background-color: #D5D5D5;
+ }
+ 
+ .Sign_middle { /* 환자등록 중간 바탕*/
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 90%;
+ 	background-color: #AAAAAA;
+ }
+ 
+ .Sign_mitop { /* 환자등록 중간 바탕 - 반으로 쪼갬(위)*/
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 50%;
+ 	background-color: #EAEAEA;
+ }
+ 
+ .Sign_mileft { /* 환자등록 중간 바탕 - 반으로 쪼갬(왼) */
+ 	display: inline-block;
+ 	width: 40%;
+ 	height: 100%;
+ 	float: left;
+ 	background-color: #8C8C8C;
+ }
+ 
+ .Sign_leftTop { /* 이미지 자리 */
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 90%;
+ 	background-color: #KKKKKK;
+ }
+ 
+ .Sign_img { /* 이미지 */
+ 	width: 380px;
+ 	height: 380px;
+ 	margin: auto;
+ 	background-color: #353535;
+ }
+ 
+ .Sign_leftbottom { /* 이미지 등록 버튼 */
+ 	width: 100%;
+ 	height: 10%;
+ 	text-align: center;
+ 	background-color: #747474;
+ }
+ 
+ .Sign_miright { /* 환자등록 중간 바탕 - 반으로 쪼갬(오른) */
+ 	display: inline-block;
+ 	width: 60%;
+ 	height: 100%;
+ 	float: right;
+ 	background-color: #4C4C4C;
+ }
+ 
+ .Sign_mitop2 { /* 환자등록 중간 바탕 - 또 쪼갬(위) */
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 50%;
+ 	background-color: #747474;
+ }
+ 
+ .Sign_miban { /* 왼쪽 정보입력 칸 */
+ 	width: 50%;
+ 	height: 100%;
+ 	float: left;
+ 	font-size: 10pt;
+ 	background-color: #555555;
+ }
+ 
+ .Sign_miban2 { /* 오른쪽 정보입력 칸 */
+ 	width: 50%;
+ 	height: 100%;
+ 	float: right;
+ 	font-size: 10pt;
+ 	background-color: #4C4C4C;
+ }
+ 
+ .Sign_mibottom2 { /* 아래 정보입력 칸 */
+ 	width: 100%;
+ 	height: 50%;
+ 	font-size: 10pt;
+ 	background-color: #D5D5D5;
+ }
+ 
+ .Sign_mibottom { /* 환자등록 중간 바탕 - 반으로 쪼갬(아래)*/
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 50%;
+ 	background-color: #KKKKKK;
+ }
+ 
+ .Sign_botTop { /* 추가정보입력 */
+ 	width: 100%;
+ 	height: 10%;
+ 	font-size: 25pt;
+ 	text-align: center;
+ 	background-color: #4C4C4C;
+ }
+ 
+ .Sign_botbottom { /* 추가정보입력 (아래) */
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 90%;
+ 	background-color: #D5D5D5;
+ }
+ 
+ .Sign_banleft { /* 추가정보입력 (왼) */
+ 	width: 50%;
+ 	height: 100%;
+ 	float: left;
+ 	font-size: 10pt;
+ 	background-color: #747474;
+ }
+ 
+ .Sign_banright { /* 추가정보입력 (오른) */
+ 	width: 50%;
+ 	height: 100%;
+ 	float: right;
+ 	font-size: 10pt;
+ 	background-color: #353535;
+ }
+  
+ .Sign_bottom { /* 환자등록 하단 */
+ 	width: 100%;
+ 	height: 5%;
+ 	text-align: right;
+ 	background-color: #4C4C4C;
+ }

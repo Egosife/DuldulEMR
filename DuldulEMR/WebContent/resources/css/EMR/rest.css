@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+
+ .wrap{
+	 width:100%;
+	 height:900px; 
+	 background-color: #4444CC;
+	 }
+/* 기본정보 라는 글자가 적혀있는 부분 */
+.header{
+		width:900px; 
+		height:80px;
+		margin-left:50px; 
+		margin-bottom:10px;
+		background-color: #FFFFCC;
+		}
+		
+/* 휴진 신청하는 사람의 기본정보 화면 부분 */
+.content{
+		width:900px; 
+		height:100px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #ffffff;
+		}
+/* 휴진 신청 이라는 글자가 적혀있는 부분  */
+.rest_header{
+		width:900px; 
+		height:80px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #00FFFF;
+		}
+/* 휴진 날짜 신청하는 날짜 선택 */
+.rest_page{
+		width:900px; 
+		height:80px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFFF00;
+	 	
+		}
+/* 휴진 신청 이유 적는 부분 */
+.rest_reason{
+		width:900px; 
+		height:360px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFFF00;
+	 	
+		}
+/* 등록하는 버튼 부분 */
+.button{
+		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFCCFF;
+		}
+/* 휴진 신청하는 사람의 기본정보 화면 테이블 크기 조절 */
+table{
+   width: 80%;
+   text-align: center;
+   margin: 0 auto;
+}
+

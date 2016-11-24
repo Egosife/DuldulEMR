@@ -1,0 +1,74 @@
+@CHARSET "UTF-8";
+
+ .wrap{
+	 width:100%;
+	 height:900px; 
+	 background-color: #4444CC;
+	 }
+/* 상세보기 라는 글자가 적혀있는 부분 */
+.header{
+		width:900px; 
+		height:80px;
+		margin-left:50px; 
+		margin-bottom:10px;
+		background-color: #FFFFCC;
+		}
+		
+/* 작성자 구역 */
+.writter{
+		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFFFFF;
+		}
+/* 등록일  */
+.date{
+		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #00FFFF;
+		}
+/* 제목 */
+.title{
+		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFFF00;
+	 	
+		}
+/* 내용 */
+.content{
+		width:900px; 
+		height:460px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFCCFF;
+		}
+/* 첨부파일 */	
+.file{
+		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFCCFF;
+		}
+/* 수정,삭제,목록 있는 버튼 */
+.button{
+ 		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFCCFF;
+ 		}
+ 		/* 제목 텍스트박스 길게만드려고 */
+#TitleText{
+		width:800px;
+			}
+			/* 첨부파일 텍스트박스 길게만드려고 */
+#FileText{
+		width:800px;
+			}
+ 
