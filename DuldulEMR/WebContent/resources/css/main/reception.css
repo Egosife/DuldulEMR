@@ -1,0 +1,189 @@
+@CHARSET "UTF-8";
+/*
+*	161123 이동건 - reception.jsp css파일 생성
+*/
+body {
+	font-size: 0pt;
+	margin: 0px;
+}
+
+table {
+	width: 100%;
+}
+
+div {
+	vertical-align: top;
+	overflow: hidden;
+}
+
+tr {
+	cursor: pointer;
+}
+
+.rep_main {
+	width: 100%;
+	height: 800px; /* 작업용으로 임의값 지정됨, 완성시 100%로 수정 */
+}
+
+.rep_petient {
+	width: 100%;
+	height: 30%;
+}
+.rep_petititle {
+	width: 50%;
+	height: 10%;
+	background-color: silver;
+	font-size: 14pt;
+	font-weight: bold;
+	display: inline-block;
+}
+.rep_petiopt {
+	width: calc(50% - 20px);
+	height: 10%;
+	background-color: silver;
+	font-size: 10pt;
+	display: inline-block;
+	text-align: right;
+	padding-right: 20px; 
+}
+.rep_petitable {
+	width: 100%;
+	height: 80%;
+	font-size: 10pt;
+}
+.rep_petipage {
+	width: 100%;
+	height: 10%;
+	font-size: 14pt;
+	text-align: center;
+}
+
+.rep_info {
+	width: 100%;
+	height: calc(70% - 5px);
+	margin-top: 5px;
+}
+
+.rep_title {
+	width: 100%;
+	height: 5%;
+	background-color: silver;
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+.reception {
+	width: 100%;
+	height: 90%;
+}
+
+.rep_petiinfo {
+	width: 100%;
+	height: 30%;
+	background-color: silver;
+}
+
+.rep_petititleblock {
+	width: 100%;
+	height: 20%;
+	font-size: 14pt;
+	font-weight: bold;
+}
+.rep_peticontentblock {
+	width: 50%;
+	height: 85%;
+	display: inline-block;
+	font-size: 10pt;
+}
+.rep_petiinfo_def {
+	width: 60%;
+	height: 100%;
+	display: inline-block;
+}
+
+.rep_petiinfo_more {
+	width: 40%;
+	height: 100%;
+	display: inline-block;
+}
+
+.rep_repdata{
+	width: 100%;
+	height: calc(60% - 5px);
+	margin-top: 5px
+}
+
+.rep_sort {
+	width: calc(20% - 30px);
+	height: calc(100% - 30px);
+	background-color: silver;
+	display: inline-block;
+	font-size: 10pt;
+	text-align: center;
+	margin: 10px;
+	padding: 5px;
+}
+
+.rep_date {
+	width: calc(25% - 30px);
+	height: calc(100% - 30px);
+	background-color: silver;
+	display: inline-block;
+	font-size: 10pt;
+	text-align: center;
+	margin: 10px;
+	padding: 5px;
+}
+
+.rep_repinfo{
+	width: calc(20% - 30px);
+	height: calc(100% - 30px);
+	background-color: silver;
+	display: inline-block;
+	font-size: 10pt;
+	text-align: center;
+	margin: 10px;
+	padding: 5px;
+}
+
+.rep_more{
+	width: calc(20% - 30px);
+	height: calc(100% - 30px);
+	background-color: silver;
+	display: inline-block;
+	text-align: center;
+	margin: 10px;
+	padding: 5px;
+}
+
+.rep_block {
+	width: 5%;
+	height: 100%;
+	background-color: silver;
+	display: inline-block;
+}
+
+.rep_boxtitle {
+	width: 100%;
+	height: 10%;
+	font-size: 14pt;
+}
+.rep_boxcontent {
+	width: 100%;
+	height: calc(80% - 10px);
+	font-size: 10pt;
+	margin-top: 10px
+}
+.rep_boxbtn {
+	width: 100%;
+	height: 10%;
+	font-size: 14pt;
+	text-align: right;
+}
+
+.rep_buttons{
+	width: 100%;
+	height: calc(10% - 5px);
+	text-align: right;
+	margin-top: 5px;
+}

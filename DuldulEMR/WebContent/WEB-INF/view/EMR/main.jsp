@@ -7,34 +7,49 @@
 <link rel="stylesheet" type="text/css" href="resources/css/main/main.css" /> <!-- 레이아웃 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
 <script type="text/javascript" src="resources/script/main/main.js"></script>
-
 <title>DuldulEMR</title>
 </head>
 <body>
-<div class='main_layout_LDG'>
+<div class='main_layout'>
 <!-- 계정정보 영역 -->
-	<div class="main_topbar_LDG">
-		<div class="main_topbar_title_LDG">
+	<div class="main_topbar">
+		<div class="main_topbar_title">
 			테스트병원1 (999999)
 		</div>
-		<div class="main_topbar_account_LDG">
+		<div class="main_topbar_account">
 			테스트계정1 (9999990000)
 			<div class="main_topbar_account_opt"></div>
 			<div class="main_topbar_account_logout">LOGOUT</div>
 		</div>
 	</div>
 <!-- 시간과 탭영역 -->
-	<div class="main_midbar_LDG">
-		<div class="main_midbar_time_LDG">
-			2016년 11월 22일 화요일<br/>
-			00 : 00
+	<div class="main_midbar">
+		<div class="main_midbar_time">
+			2016년 11월 22일<br/>
+			 화요일 00 : 00
 		</div>
-		<div class="main_midbar_tabs_LDG">
+		<div class="main_midbar_tabs">
+			<div class="main_tab">
+				<div class="tab_layout">
+					<div class="main_tab_close"></div>
+				</div>
+				<div class="tab_layout">
+					<div class="tab_text">탭1</div>
+				</div>
+			</div>
+			<div class="main_tab">
+				<div class="tab_layout">
+					<div class="main_tab_close"></div>
+				</div>
+				<div class="tab_layout">
+					<div class="tab_text">탭2</div>
+				</div>
+			</div>
 		</div>
 	</div>
 <!-- 메뉴와 컨텐츠 영역 -->
-	<div class="main_content_LDG">
-		<div class="main_content_menu_LDG">
+	<div class="main_content">
+		<div class="main_content_menu">
 			작업 선택
 			<div class="main_menu_btn" id="menu0_btn">게 시 판</div>
 				<div class="menu_btnlist" id="menu0">
@@ -63,7 +78,7 @@
 					<div class="btnlist_btns" id="menu4_1">환자의무기록</div>
 				</div>
 		</div>
-		<div class="main_content_page_LDG">
+		<div class="main_content_page">
 		</div>
 	</div>
 </div>

@@ -14,7 +14,7 @@ public class MainController {
 	public ModelAndView emrmain(HttpServletRequest request,
 			ModelAndView modelAndView) {
 		
-		modelAndView.setViewName("emr/main");
+		modelAndView.setViewName("EMR/main");
 		
 		return modelAndView;
 	}

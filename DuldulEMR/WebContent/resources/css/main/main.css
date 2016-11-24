@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 /*
  * 161122 이동건 - 기본 레이아웃 디자인 제작
+ * 161123 이동건 - 탭 레이아웃 4개 추가
  */
 body {
 	margin: 0px;
@@ -8,132 +9,157 @@ body {
 }
 
 div {
-	padding: 1px;
-	margin: 1px;
 	vertical-align: top;
 	overflow: hidden;
 }
 
-.main_layout_LDG {
+.main_layout {
 	width: 100%;
 	min-width: 1600px;
 	height: 1000px;
-	background-color: black;
 }
 
-.main_topbar_LDG {
-	width: calc(100% - 4px);
-	height: calc(5% - 4px);
-	background-color: yellow;
+.main_topbar {
+	width: 100%;
+	height: 5%;
+	background-color: silver;
 }
-.main_topbar_title_LDG {
-	width: calc(50% - 4px);
-	height: calc(100% - 4px);
+.main_topbar_title {
+	width: calc(50% - 20px);
+	height: calc(100% - 10px);
 	font-size: 15pt;
 	text-align: left;
 	font-weight:bold;
-	background-color: red;
+	padding: 10px 0px 0px;
 	display: inline-block;
+	margin-left: 20px; 
 }
-.main_topbar_account_LDG {
-	width: calc(50% - 4px);
-	height: calc(100% - 4px);
+.main_topbar_account {
+	width: 50%;
+	height: calc(100% - 10px);
 	font-size: 15pt;
 	text-align: right;
 	font-weight:bold;
-	background-color: gray;
+	padding: 10px 0px 0px;
 	display: inline-block;
 }
 	.main_topbar_account_opt {
 		width: 44px;
-		height: calc(100% - 4px);
+		height: calc(100% - 10px);
 		display: inline-block;
 		cursor: pointer;
-		background-color: black;
+		background-color: gray;
 	}
 	.main_topbar_account_logout {
 		width: 88px;
-		height: calc(100% - 4px);
+		height: calc(100% - 10px);
 		display: inline-block;
 		font-size: 12pt;
 		text-align: center;
 		font-weight:bold;
 		cursor: pointer;
-		background-color: red;
+		background-color: gray;
+		margin-right: 20px;
 	}
 
-.main_midbar_LDG {
-	width: calc(100% - 4px);
-	height: calc(5% - 4px);
-	background-color: yellow;
+.main_midbar {
+	width: 100%;
+	height: 5%;
+	margin-top: 5px;
 }
-.main_midbar_time_LDG {
-	width: calc(10% - 4px);
-	height: calc(100% - 4px);
-	font-size: 11pt;
+.main_midbar_time {
+	width: 10%;
+	height: 100%;
+	font-size: 12pt;
 	font-weight:bold;
 	text-align: center;
-	background-color: red;
+	background-color: silver;
 	display: inline-block;
 }
-.main_midbar_tabs_LDG {
-	width: calc(90% - 4px);
-	height: calc(100% - 4px);
-	background-color: gray;
+.main_midbar_tabs {
+	width: calc(90% - 5px);
+	height: 100%;
+	background-color: silver;
 	display: inline-block;
+	margin-left: 5px;
 }
 
-.main_content_LDG {
-	width: calc(100% - 4px);
-	height: calc(90% - 4px);
-	background-color: orange;
+.main_content {
+	width: 100%;
+	height: 90%;
+	margin-top: 5px;
 }
-.main_content_menu_LDG {
-	width: calc(10% - 4px);
-	height: calc(100% - 4px);
+.main_content_menu {
+	width: 10%;
+	height: 100%;
 	display: inline-block;
 	font-size: 15pt;
 	text-align: center;
 	font-weight:bold;
-	background-color: blue;
+	background-color: silver;
 }
-.main_content_page_LDG {
-	width: calc(90% - 4px);
-	height: calc(100% - 4px);
+.main_content_page {
+	width: calc(90% - 5px);
+	height: 100%;
 	display: inline-block;
-	background-color: aqua;
+	background-color: silver;
+	margin-left: 5px;
 }
 
 .main_menu_btn {
-	width: calc(100% - 4px);
-	height: calc(10% - 4px);
+	width: 100%;
 	margin: 0 auto;
 	margin-top: 1%;
 	font-size: 15pt;
 	text-align: center;
 	font-weight:bold;
 	cursor: pointer;
-	background-color: red;
+	background-color: gray;
 }
 
 .menu_btnlist {
-	width: calc(100% - 4px);
+	width: 100%;
 	margin: 0 auto;
 	font-size: 15pt;
 	text-align: center;
 	font-weight:bold;
 	cursor: pointer;
  	display: none;
-	background-color: green;
 }
 .btnlist_btns {
-	width: calc(100% - 4px);
-	height: calc(5% - 4px);
+	width: 100%;
+	height: 5%;
 	margin: 0 auto;
-	margin-bottom: 1%;
+	margin-bottom: 4px;
 	font-size: 15pt;
 	text-align: center;
 	font-weight:bold;
 	cursor: pointer;
-	background-color: yellow;
+	background-color: white;
+}
+
+.main_tab {
+	width: calc(8% - 3px);
+	height: calc(100% - 6px);
+	background-color: white;
+	border-radius: 6px;
+	margin: 3px 0;
+	margin-left: 3px;
+	display: inline-block;
+}
+.tab_rayout{
+	width: 100%;
+	height: 50%;
+}
+.tab_text {
+	font-size: 10pt;
+}
+
+.main_tab_close{
+	width: 15px;
+	height: 15px;
+	background-color: black;
+	cursor: pointer;
+	float: right;
+	border-radius: 1000px;
 }
