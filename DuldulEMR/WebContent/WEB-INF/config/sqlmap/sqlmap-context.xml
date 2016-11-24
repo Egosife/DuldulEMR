@@ -13,6 +13,8 @@
 	<sqlMap resource="/com/duldul/emr/sqlMap/chat/ChatSQL.xml" />
 	<!-- AjaxBoard쿼리 -->
 	<sqlMap resource="/com/duldul/emr/sqlMap/ajaxBoard/AjaxBoardSQL.xml" />
+	<!-- AjaxBoard쿼리 -->
+	<sqlMap resource="/com/duldul/emr/sqlMap/emr/EmrSQL.xml" />
 	
 </sqlMapConfig>
  

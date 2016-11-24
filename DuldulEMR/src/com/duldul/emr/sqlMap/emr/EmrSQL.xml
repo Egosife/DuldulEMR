@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="emr">
+	<select id="getAcc"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT HOSPITAL_CODE, EMP_NUM, PW, EMP_NAME
+		FROM EMP
+		WHERE HOSPITAL_CODE  = #hos_Code#
+		AND EMP_NUM = #emp_id#
+		AND PW = #passwd#		
+	</select>
+</sqlMap>

@@ -1,0 +1,81 @@
+@CHARSET "UTF-8";
+/* 2016-11-22 이관우 개발
+		   23 .top_btn 삭제 
+	환자 정보 조회 페이지(기본 레이아웃 디자인 제작) */
+ 
+ body { /* 기본셋팅 */
+	margin: 0px;
+	font-size: 0pt;
+ }
+ 
+ div {
+	vertical-align: top;
+ }
+ 
+ .Patient_main { /* 메인화면 사이즈 */
+ 	display: inline-block;
+ 	width: 100%;
+	height: 974px;
+	background-color: #EAEAEA;
+ }
+ 
+ .top { /* 메인 탑 */
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 75%;
+ 	background-color: #5D5D5D;
+ }
+ 
+ .top_name { /* 메인 탑 이름 - 환자 조회 */
+ 	width: 100%;
+ 	height: 10%;
+ 	font-size: 40pt;
+ 	background-color: #FFB2D9;
+ }
+ 
+ .top_table { /* 메인 탑 - 환자 표 */
+ 	width: 100%;
+ 	height: 80%;
+ 	font-size: 20pt;
+ 	background-color: #B2EBF4;
+ }
+ table{ /* 환자조회 표 사이즈 */
+ 	width: 95%;	
+ }
+ 
+ .top_bar { /* 메인 탑 - 환자 등록 바 */
+ 	width: 100%;
+ 	height: 10%;
+ 	text-align: right;
+ 	background-color: #BCE55C;
+ }
+ 
+ /* .top_btn { 메인 탑 - 환자 등록 버튼
+ 	width: 10%;
+ 	height: 100%;
+ 	font-size: 30pt;
+ 	border-radius: 15px;
+ 	float: right;
+ 	text-align: center;
+ 	background-color: #FFB2D9;
+ } */
+ 
+ .bottom { /* 메인 바텀 */
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 25%;
+ 	background-color: #FFFFFF;
+ }
+ 
+ .bottom_list { /* 메인 바텀 - 리스트 버튼 */
+ 	width: 100%;
+ 	height: 50%;
+  	background-color: #747474;	
+ }
+ 
+ .bottom_search { /* 메인 바텀 */
+ 	width: 100%;
+ 	height: 50%;
+ 	text-align: center;
+ 	background-color: #B7F0B1;
+ }
