@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,12 +16,12 @@
 <!-- 계정정보 영역 -->
 	<div class="main_topbar">
 		<div class="main_topbar_title">
-			테스트병원1 (999999)
+			${sHospital_Name} (${sHospital_Code})
 		</div>
 		<div class="main_topbar_account">
-			테스트계정1 (9999990000)
+			${sEmp_Name} (${sEmp_Num})
 			<div class="main_topbar_account_opt"></div>
-			<div class="main_topbar_account_logout" id="logout">LOGOUT</div>
+			<div class="main_topbar_account_logout" id="logoff">LOGOUT</div>
 		</div>
 	</div>
 <!-- 시간과 탭영역 -->

@@ -13,7 +13,7 @@ $(document).ready(function(){
 	})//main_menu_btn click end
 		
 	//logout
-	$("#logout").on("click",function(){
+	$("#logoff").on("click",function(){
 		alert("정상적으로 로그아웃 하셨습니다.");
 		location.href = "Logoff";
 	});//logoutBtn end
