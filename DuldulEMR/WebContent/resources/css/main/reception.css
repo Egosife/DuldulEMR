@@ -22,7 +22,7 @@ tr {
 
 .rep_main {
 	width: 100%;
-	height: 800px; /* 작업용으로 임의값 지정됨, 완성시 100%로 수정 */
+	height: 900px;
 }
 
 .rep_petient {

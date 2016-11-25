@@ -1,5 +1,6 @@
 /**
  * 161122 이동건 - 메뉴 버튼 작동
+ * 161125 이동건 - 시간관련 함수 추가
  */
 
 $(document).ready(function(){
@@ -21,7 +22,37 @@ $(document).ready(function(){
 		location.href = "Logoff";
 	});//logoutBtn end
 	
+	//페이지 띄어주기
+	$("body").on("click",".btnlist_btns",function(){
+		//console.log(this);
+		//console.log($(this).attr('value'));
+		add_tab(this); //탭에 선택된 오브젝트 값 전송
+		var val = $(this).attr('value').split("*");
+		$("#main_content_page").load(val[0]);
+	});
+	
+	//탭 닫기
+	//제작중...
+	
 })//ready end
+
+//탭 추가
+function add_tab(obj){
+	//console.log(obj);
+	var val = $(obj).attr('value').split("*");
+	
+	var html="";
+	html += "<div class='main_tab'>";
+		html += "<div class='tab_layout'>";
+			html += "<div class='main_tab_close'></div>";
+		html += "</div>";
+		html += "<div class='tab_layout'>";
+			html += "<div class='tab_text'>"+val[1]+"</div>";
+		html += "</div>";
+	html += "</div>";
+	$("#tab_bar").append(html);
+}
+
 
 //현재 시간
 function NowTime(){

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- 161122 이동건 - 페이지 제작 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,57 +28,40 @@
 <!-- 시간과 탭영역 -->
 	<div class="main_midbar">
 		<div class="main_midbar_time" id="nowtime"></div>
-		<div class="main_midbar_tabs">
-			<div class="main_tab">
-				<div class="tab_layout">
-					<div class="main_tab_close"></div>
-				</div>
-				<div class="tab_layout">
-					<div class="tab_text">탭1</div>
-				</div>
-			</div>
-			<div class="main_tab">
-				<div class="tab_layout">
-					<div class="main_tab_close"></div>
-				</div>
-				<div class="tab_layout">
-					<div class="tab_text">탭2</div>
-				</div>
-			</div>
-		</div>
+		<div class="main_midbar_tabs" id="tab_bar"></div>
 	</div>
 <!-- 메뉴와 컨텐츠 영역 -->
 	<div class="main_content">
-		<div class="main_content_menu">
+		<div class="main_content_menu" id="main_content_menu">
 			작업 선택
 			<div class="main_menu_btn" id="menu0_btn">게 시 판</div>
 				<div class="menu_btnlist" id="menu0">
-					<div class="btnlist_btns" id="menu0_0">공지사항</div>
-					<div class="btnlist_btns" id="menu0_1">사내게시판</div>
-					<div class="btnlist_btns" id="menu0_2">통합게시판</div>
+					<div class="btnlist_btns" id="menu_0_0" name="menu_btn" value="notice*공지사항">공지사항</div>
+					<div class="btnlist_btns" id="menu_0_1" name="menu_btn" value="bbs*사내게시판">사내게시판</div>
+					<div class="btnlist_btns" id="menu_0_2" name="menu_btn" value="none*통합게시판">통합게시판</div>
 				</div>
 			<div class="main_menu_btn" id="menu1_btn">정 보 조 회</div>
 				<div class="menu_btnlist" id="menu1">
-					<div class="btnlist_btns" id="menu1_0">환자조회</div>
-					<div class="btnlist_btns" id="menu1_1">직원조회</div>
+					<div class="btnlist_btns" id="menu_1_0" name="menu_btn" value="Patient_page*환자조회">환자조회</div>
+					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" value="none*직원조회">직원조회</div>
 				</div>
 			<div class="main_menu_btn" id="menu2_btn">일 정 관 리</div>
 				<div class="menu_btnlist" id="menu2">
-					<div class="btnlist_btns" id="menu2_0">환자일정</div>
-					<div class="btnlist_btns" id="menu2_1">휴진현황</div>
+					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" value="none*환자일정">환자일정</div>
+					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" value="rest*휴진현황">휴진현황</div>
 				</div>
 			<div class="main_menu_btn" id="menu3_btn">업 무 메 뉴</div>
 				<div class="menu_btnlist" id="menu3">
-					<div class="btnlist_btns" id="menu3_0">진료실시입력</div>
-					<div class="btnlist_btns" id="menu3_1">환자접수</div>
+					<div class="btnlist_btns" id="menu_3_0" name="menu_btn" value="treatment*진료실시입력">진료실시입력</div>
+					<div class="btnlist_btns" id="menu_3_1" name="menu_btn" value="reception*환자접수">환자접수</div>
 				</div>
 			<div class="main_menu_btn" id="menu4_btn">의 무 기 록</div>
 				<div class="menu_btnlist" id="menu4">
-					<div class="btnlist_btns" id="menu4_0">업무일지</div>
-					<div class="btnlist_btns" id="menu4_1">환자의무기록</div>
+					<div class="btnlist_btns" id="menu_4_0" name="menu_btn" value="Daily*업무일지">업무일지</div>
+					<div class="btnlist_btns" id="menu_4_1" name="menu_btn" value="none*환자의무기록">환자의무기록</div>
 				</div>
 		</div>
-		<div class="main_content_page">
+		<div class="main_content_page" id="main_content_page">
 		</div>
 	</div>
 </div>
