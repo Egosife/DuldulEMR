@@ -18,13 +18,14 @@
 	width: 80%;
 	height: 20%;
 	margin: 0 auto;
-	font-size: 15pt;
+	font-size: 14pt;
 	background-color: yellow;
 }
 /* 테이블 셋팅 */
 table{
 	width: 80%;
 	text-align: center;
+	font-size: 10pt;
 	margin: 0 auto;
 }
 /* 레이아웃 중단 */
@@ -38,7 +39,7 @@ table{
 	width: 80%;
 	height: 7%;
 	margin: 0 auto;
-	font-size: 15pt;
+	font-size: 14pt;
 	background-color: yellow;
 }
 /* 레이아웃 하단 */
@@ -60,6 +61,7 @@ table{
 	width: 5%;
 	height: 30%;
 	text-align: center;
+	font-size: 10pt;
 	background-color: lime;
 }
 /* 레이아웃 하단 - 하단 */
@@ -74,5 +76,6 @@ table{
 	height: 30%;
 	text-align: center;
 	margin: 0 auto;
+	font-size: 10pt;
 	background-color: olive;
 }
