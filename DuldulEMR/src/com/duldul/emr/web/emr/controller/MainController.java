@@ -32,10 +32,20 @@ public class MainController {
 		}else{
 			modelAndView.setViewName("redirect:Logon");
 		}
-		
 		return modelAndView;
 	}
 	//메인화면 연결 end
+
+	//빈화면 연결 start
+	@RequestMapping(value="/clear")
+	public ModelAndView clear(HttpServletRequest request,
+			ModelAndView modelAndView) {
+		
+			modelAndView.setViewName("EMR/clear");
+			
+		return modelAndView;
+	}
+	//빈화면 연결 end
 	
 	//메인화면 로그아웃 버튼
 	@RequestMapping(value="/Logoff")

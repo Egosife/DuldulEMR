@@ -362,7 +362,7 @@
 					</div>
 					<div class="rep_boxcontent">
 						<hr>
-						<TEXTAREA name=etcdata cols=25 rows=13 disabled="disabled"></TEXTAREA>
+						<TEXTAREA name=etcdata cols=25 rows=13 style="height: 100%; width: 90%;" disabled="disabled"></TEXTAREA>
 					</div>
 					<div class="rep_boxbtn"></div>
 				</div>

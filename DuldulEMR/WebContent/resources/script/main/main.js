@@ -32,25 +32,34 @@ $(document).ready(function(){
 	});
 	
 	//탭 닫기
-	//제작중...
+	$("body").on("click",".main_tab_close",function(){
+		console.log($(this).attr('value'));
+		$("#tab_"+$(this).attr('value')).remove();
+		$("#main_content_page").load("clear");
+	})
 	
 })//ready end
+
 
 //탭 추가
 function add_tab(obj){
 	//console.log(obj);
 	var val = $(obj).attr('value').split("*");
+	var id = $(obj).attr('id').split("_");
+	var tab_id = "tab_"+id[1]+"_"+id[2];
+	var tab_close = id[1]+"_"+id[2];
 	
 	var html="";
-	html += "<div class='main_tab'>";
+	html += "<div class='main_tab' id='" +tab_id+ "'>";
 		html += "<div class='tab_layout'>";
-			html += "<div class='main_tab_close'></div>";
+			html += "<div class='main_tab_close' value='"+tab_close+"'></div>";
 		html += "</div>";
 		html += "<div class='tab_layout'>";
 			html += "<div class='tab_text'>"+val[1]+"</div>";
 		html += "</div>";
 	html += "</div>";
 	$("#tab_bar").append(html);
+	html = "";
 }
 
 

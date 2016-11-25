@@ -54,7 +54,6 @@ public class LogonController {
 			session.setAttribute("sHospital_Code", acc.get("HOSPITAL_CODE"));
 			session.setAttribute("sHospital_Name", acc.get("HOSPITAL_NAME"));
 			session.setAttribute("sEmp_Num", acc.get("EMP_NUM"));
-			session.setAttribute("sPw", acc.get("PW"));
 			session.setAttribute("sEmp_Name", acc.get("EMP_NAME"));
 			session.setAttribute("sLv_Code", acc.get("LV_CODE"));
 			//세션에 데이터를 집어넣음.
