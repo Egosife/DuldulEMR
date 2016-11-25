@@ -17,7 +17,7 @@ $(document).ready(function(){
 	//logout
 	$("#logoff").on("click",function(){
 		alert("정상적으로 로그아웃 하셨습니다.");
-		clearInterval(time_interval);//시간 인터발 종료
+		clearInterval(interval_time);//시간 인터발 종료
 		location.href = "Logoff";
 	});//logoutBtn end
 	
