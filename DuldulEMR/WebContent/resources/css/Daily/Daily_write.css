@@ -1,0 +1,111 @@
+@CHARSET "UTF-8";
+/* 16.11.25 일일 업무 일지 글쓰기, 김남기 */
+/* Daily_write.jsp */
+/* 메인 레이아웃 */
+.main{
+	width: 100%;
+	height: 900px;
+	background-color: black;
+}
+/* 레이아웃 상단 */
+.top{
+	width: 100%;
+	height: 15%;
+	background-color: orange;
+}
+/* 레이아웃 상단 - 업무 일지 */
+.daily{
+	width: 80%;
+	height: 20%;
+	font-size: 15pt;
+	margin: 0 auto;
+	background-color: yellow;
+}
+/* 레이아웃 상단 - 업무 날짜 */
+.calender{
+	display: inline-block;
+	width: 15%;
+	height: 27%;
+	font-size: 15pt;
+	text-align: center;
+	background-color: blue;
+}
+/* 레이아웃 상단 - 날짜 선택 */
+.cal_btn{
+	display: inline-block;
+	width: 70%;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 72px;
+	background-color: lime;
+}
+/* 레이아웃 상단 - 날짜 선택 텍스트 */
+#cal_text{
+	width: 50%;
+	height: 30px;
+}
+/* 레이아웃 중단 */
+.middle{
+	width: 100%;
+	height: 60%;
+	background-color: aqua;
+}
+/* 레이아웃 중단 - 업무 내용 */
+.mid_work{
+	display: inline-block;
+	width: 15%;
+	height: 10%;
+	text-align: center;
+	font-size: 15pt;
+	background-color: blue;
+}
+/* 레이아웃 중단 - 내용 입력 */
+.mid_text{
+	display: inline-block;
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	background-color: orange;
+}
+/* 레이아웃 중단 - 내용 입력 텍스트 */
+#text_size{
+	width: 100%;
+	height: 99%;   
+	text-align: center;
+}
+/* 레이아웃 하단 */
+.bottom{
+	width: 100%;
+	height: 25%;
+	background-color: red;
+}
+/* 레이아웃 하단 - 상단 */
+.bottom_top{
+	width: 100%;
+	height: 50%;
+	margin: 0 auto;
+	background-color: gray;
+}
+/* 레이아웃 하단 - 글쓰기 버튼 */
+.btn{
+	display: inline-block;
+	width: 5%;
+	height: 30%;
+	margin-left: 95%;
+	text-align: center;
+	background-color: lime;
+}
+/* 레이아웃 하단 - 하단 */
+.bottom_bt{
+	width: 100%;
+	height: 50%;
+	background-color: aqua;
+}
+/* 레이아웃 하단 - 페이징 */
+.paging{
+	width: 20%;
+	height: 25%;
+	text-align: center;
+	margin: 0 auto;
+	background-color: olive;
+}

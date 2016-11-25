@@ -8,6 +8,7 @@
 <title>일일 업무 일지</title>
 </head>
 <body>
+<!-- 16.11.25 일일 업무 일지 조회, 김남기 -->
 <div class="main"> <!-- 메인 레이아웃 -->
 	<div class="top"> <!-- 레이아웃 상단 -->
 		<div class="b_information"><b>기본 정보</b></div> <!-- 레이아웃 - 기본 정보 -->
