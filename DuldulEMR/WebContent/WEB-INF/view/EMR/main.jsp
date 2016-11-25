@@ -26,10 +26,7 @@
 	</div>
 <!-- 시간과 탭영역 -->
 	<div class="main_midbar">
-		<div class="main_midbar_time">
-			2016년 11월 22일<br/>
-			 화요일 00 : 00
-		</div>
+		<div class="main_midbar_time" id="nowtime"></div>
 		<div class="main_midbar_tabs">
 			<div class="main_tab">
 				<div class="tab_layout">

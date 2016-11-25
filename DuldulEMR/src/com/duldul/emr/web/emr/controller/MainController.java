@@ -1,10 +1,21 @@
 package com.duldul.emr.web.emr.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -36,7 +47,13 @@ public class MainController {
 		modelAndView.setViewName("redirect:Logon");
 		
 		return modelAndView;
-	}
+	}//메인화면 로그아웃 버튼 end
+	
+	
+	
+	
+	
+	
 	
 	//윤희상  사내게시판 연결 start
 	@RequestMapping(value="/bbs")
