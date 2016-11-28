@@ -23,9 +23,23 @@ public class Patient_Controller {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/details")
+	@RequestMapping(value = "/Details")
 	public ModelAndView EMR_details(HttpServletRequest request, ModelAndView modelAndView) {
 		modelAndView.setViewName("EMR/Patient_details");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/Emp_page")
+	public ModelAndView EMR_Emp(HttpServletRequest request, ModelAndView modelAndView) {
+		modelAndView.setViewName("EMR/Emp_page");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/set")
+	public ModelAndView EMR_set(HttpServletRequest request, ModelAndView modelAndView) {
+		modelAndView.setViewName("EMR/Patient_set");
 		
 		return modelAndView;
 	}

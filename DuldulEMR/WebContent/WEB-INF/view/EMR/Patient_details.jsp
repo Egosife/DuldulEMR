@@ -20,16 +20,107 @@
 	<input type="hidden" name="Text_NO" value="${param.Text_NO}" />
 </form>
 <div class='Det_main'>
-	<div class='Det_name'>환자 상세조회</div>
+	<div class='Det_name'>
+		<div class='D_name'>환자 상세조회</div>
+	</div>
 	<div class='Det_top'>
 		<div class='Det_top_t'>
 			<div class='Det_top_l'>
 				<div class='Det_top_img'></div>
 			</div>
 			<div class='Det_top_r'>
-				<div class='Det_left'></div>
-				<div class='Det_center'></div>
-				<div class='Det_right'></div>
+				<div class='Det_left'>
+					<table>
+						<tr>
+							<td>
+								환자번호
+							</td>
+							<td>
+								<input class="textbox_d" type="text" id="">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								이름
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								성별
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								주소
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class='Det_center'>
+					<table>
+						<tr>
+							<td>
+								연락처1
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								연락처2
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								혈액형
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class='Det_right'>
+									<table>
+						<tr>
+							<td>
+								몸무게
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								신장
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								장애여부
+							</td>
+							<td>
+								<input class="textbox_d" type="text">
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 		<div class='Det_top_b'>
@@ -37,7 +128,9 @@
 		</div>
 	</div>
 	<div class='Det_middle'>
-		<div class='Det_mid_name'>진단기록</div>
+		<div class='Det_mid_name'>
+			<div class='D_name1'>진단기록</div>
+		</div>
 		<div class='Det_mid_bot'>
 			<table border="1" align="center">
 				<thead>
@@ -55,7 +148,9 @@
 		</div>
 	</div>
 	<div class='Det_bottom'>
-		<div class='Det_bot_name'>처방기록</div>
+		<div class='Det_bot_name'>
+			<div class='D_name2'>처방기록</div>
+		</div>
 		<div class='Det_bot_bot'>
 			<table border="1" align="center">
 				<thead>

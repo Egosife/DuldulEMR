@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>환자조회 페이지</title>
+<title>환자조회</title>
 <link rel="stylesheet" type="text/css" href="resources/css/EMR_css/Patient.css" /> <!-- 레이아웃 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript">
@@ -102,16 +102,18 @@ function patient_list() {
 			<input type="hidden" name="Pat_page" value="1">
 		</c:when>
 		<c:otherwise>
-			<input type="hidden" name="Pat_page" value="${param.page}" />
+			<input type="hidden" name="Pat_page" value="${param.Pat_page}" />
 		</c:otherwise>
 	</c:choose>
 	<input type="hidden" name="Pat_page" value="1" />
-	<input type="hidden" name="search_Text" value="${param.search_Text}" />
+	<input type="hidden" name="search_Text1" value="${param.search_Text1}" />
 	<input type="hidden" name="text_t" />
 </form>
 <div class='Patient_main'>
 	<div class='top'>
-		<div class='top_name'>환자조회</div>
+		<div class='top_name'>
+			<div class='p_name'>환자조회</div>
+		</div>
 		<div class='top_table'>
 			<table border="1" align="center">
 				<thead>
@@ -135,7 +137,9 @@ function patient_list() {
 		</div>
 	</div>
 	<div class='bottom'>
-		<div class='bottom_list'></div>
+		<div class='bottom_list'>
+			<hr>
+		</div>
 		<div class='bottom_search'>
 			<select id="select_box">
 				<option>성명</option>

@@ -1,8 +1,7 @@
 @CHARSET "UTF-8";
-/* 2016-11-22 이관우 개발
-		   23 .top_btn 삭제 
-	환자 정보조회 페이지(기본 레이아웃 디자인 제작) */
- 
+/* 2016-11-25 이관우 개발
+	환자 일정조회 페이지(기본 레이아웃 디자인 제작) */
+	
  body { /* 기본셋팅 */
 	margin: 0px;
 	font-size: 0pt;
@@ -12,61 +11,66 @@
 	vertical-align: top;
  }
  
- .Patient_main { /* 메인화면 사이즈 */
+ .Set_main { /* 메인화면 사이즈 */
  	display: inline-block;
  	width: 100%;
 	height: 900px;
 	background-color: #EAEAEA;
  }
  
- .top { /* 메인 탑 */
+ .Set_top { /* 메인 탑 */
  	display: inline-block;
  	width: 100%;
  	height: 75%;
  	background-color: #5D5D5D;
  }
  
- .top_name { /* 메인 탑 이름 - 환자조회 */
+ .Set_top_Select { /* 메인 탑 select box */
  	width: 100%;
  	height: 10%;
  	font-size: 40pt;
+ 	text-align: center;
  	background-color: #F6F6F6;
  }
  
- .p_name { /* 환자조회 간격 */
- 	margin-left: 45px;
+ #Tselect_box1, #Tselect_box2, #Tselect_box3, #check { /* 구분, 진료과, 주치의, 조회 */
+ 	display: inline-block;
+ 	width: 170px;
+ 	height: 56px;
+ 	font-size: 20pt;
+ 	vertical-align: top;
+ 	margin-top: 10px;
  }
  
- .top_table { /* 메인 탑 - 환자 표 */
+ #calendar { /* 일시 */
+ 	display: inline-block;
+ 	width: 150px;
+ 	height: 50px;
+ 	font-size: 20pt;
+ 	vertical-align: top;
+ 	margin-top: 10px;
+ }
+ 
+ .Set_top_table { /* 메인 탑 - 환자일정 표 */
  	width: 100%;
  	height: 80%;
  	font-size: 20pt;
  	background-color: #DDDDDD;
  }
  
- table{ /* 환자조회 표 사이즈 */
+ table{ /* 환자일정 표 사이즈 */
  	width: 95%;
  	background-color: #FFFFFF;
  }
  
- .top_bar { /* 메인 탑 - 환자등록 바 */
+ .Set_top_bar { /* 메인 탑 - 환자 등록 바 */
  	width: 100%;
  	height: 10%;
  	text-align: right;
  	background-color: #FFFFFF;
  }
  
- #Pat_Btn { /* 환자등록 */
- 	display: inline-block;
-    width: 120px;
- 	height: 56px;
- 	font-size: 20pt;
- 	vertical-align: top;
- 	margin-top: 5.5px;
- 	margin-right: 10px;
- }
- 
- /* .top_btn { 메인 탑 - 환자등록 버튼 지움
+ /* .top_btn { 메인 탑 - 환자 등록 버튼
  	width: 10%;
  	height: 100%;
  	font-size: 30pt;
@@ -76,27 +80,27 @@
  	background-color: #FFB2D9;
  } */
  
- .bottom { /* 메인 바텀 */
+ .Set_bottom { /* 메인 바텀 */
  	display: inline-block;
  	width: 100%;
  	height: 25%;
- 	background-color: #ABABAB;
+ 	background-color: #FFFFFF;
  }
  
- .bottom_list { /* 메인 바텀 - 리스트 버튼 */
+ .Set_bottom_list { /* 메인 바텀 - 리스트 버튼 */
  	width: 100%;
  	height: 50%;
-  	background-color: #FFFFFF;	
+  	background-color: #KKKKKK;
  }
  
- .bottom_search { /* 메인 바텀 검색버튼 */
+ .Set_bottom_search { /* 메인 바텀 */
  	width: 100%;
  	height: 50%;
  	text-align: center;
  	background-color: #DDDDDD;
  }
  
-  #select_box { /* 셀렉트 박스  */
+  #Sselect_box { /* 셀렉트 박스  */
   	display: inline-block;
   	width: 160px;
  	height: 56px;
@@ -104,14 +108,14 @@
  	vertical-align: top;
   }
  
-  #search_Text1 { /* 텍스트 박스 */
+  #Ssearch_Text1 { /* 텍스트 박스 */
   	display: inline-block;
   	width: 700px;
   	height: 50px;
   	font-size: 20pt;
   }
   
-  #search_Btn { /* 검색 */
+  #Ssearch_Btn { /* 검색 */
   	display: inline-block;
     width: 100px;
  	height: 56px;
@@ -119,6 +123,6 @@
  	vertical-align: top;
   }
   
-  #select_box, #search_Text1, #search_Btn { /* 셀렉트 박스, 텍스트 박스, 검색 */
+  #Sselect_box, #Ssearch_Text1, #Ssearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색 */
   	margin-top: 30px;
   }

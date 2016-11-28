@@ -7,14 +7,27 @@
 	font-size: 0pt;
  }
  
+ table {
+	width: 90%;
+	height: 100%;
+	margin: 0 auto;
+}
+ 
  div {
 	vertical-align: top;
+	overflow: hidden;
+ }
+ 
+ .textbox_s {
+ 	width: 100%;
+ 	height: 100%;
+ 	font-size: 20pt;
  }
  
  .Sign_main { /* 메인화면 사이즈 */
  	display: inline-block;
  	width: 100%;
-	height: 974px;
+	height: 900px;
 	background-color: #EAEAEA;
  }
  
@@ -23,6 +36,10 @@
  	height: 5%;
  	font-size: 25pt;
  	background-color: #D5D5D5;
+ }
+ 
+ .S_name { /* 환자등록 간격 */
+ 	margin-left: 20px;
  }
  
  .Sign_middle { /* 환자등록 중간 바탕*/
@@ -55,9 +72,10 @@
  }
  
  .Sign_img { /* 이미지 */
- 	width: 380px;
- 	height: 380px;
- 	margin: auto;
+ 	width: 350px;
+ 	height: 350px;
+ 	margin: 0 auto;
+ 	margin-top: 7.5px;
  	background-color: #353535;
  }
  
@@ -65,7 +83,16 @@
  	width: 100%;
  	height: 10%;
  	text-align: center;
- 	background-color: #747474;
+ 	background-color: #FFFFFF;
+ }
+ 
+ #img_Btn { /* 이미지 등록 버튼 간격 */
+ 	display: inline-block;
+ 	width: 100px;
+ 	height: 30px;
+ 	font-size: 11pt;
+ 	vertical-align: top;
+ 	margin-top: 7px;
  }
  
  .Sign_miright { /* 환자등록 중간 바탕 - 반으로 쪼갬(오른) */
@@ -87,38 +114,42 @@
  	width: 50%;
  	height: 100%;
  	float: left;
- 	font-size: 10pt;
- 	background-color: #555555;
- }
+ 	font-size: 20pt;
+ 	background-color: #747474;
+ } 
  
  .Sign_miban2 { /* 오른쪽 정보입력 칸 */
  	width: 50%;
  	height: 100%;
  	float: right;
- 	font-size: 10pt;
- 	background-color: #4C4C4C;
+ 	font-size: 20pt;
+ 	vertical-align: top;
+ 	background-color: #F6F6F6;
  }
  
  .Sign_mibottom2 { /* 아래 정보입력 칸 */
  	width: 100%;
  	height: 50%;
- 	font-size: 10pt;
- 	background-color: #D5D5D5;
- }
+ 	font-size: 20pt;
+ 	background-color: #FFFFFF;
+ } 
  
  .Sign_mibottom { /* 환자등록 중간 바탕 - 반으로 쪼갬(아래)*/
  	display: inline-block;
  	width: 100%;
  	height: 50%;
- 	background-color: #KKKKKK;
+ 	background-color: #ABABAB;
  }
  
  .Sign_botTop { /* 추가정보입력 */
  	width: 100%;
  	height: 10%;
- 	font-size: 25pt;
  	text-align: center;
- 	background-color: #4C4C4C;
+ 	background-color: #FFFFFF;
+ }
+ 
+ .name_S {
+ 	font-size: 25pt;
  }
  
  .Sign_botbottom { /* 추가정보입력 (아래) */
@@ -132,21 +163,41 @@
  	width: 50%;
  	height: 100%;
  	float: left;
- 	font-size: 10pt;
- 	background-color: #747474;
+ 	font-size: 20pt;
+ 	background-color: #FFFFFF;
  }
  
  .Sign_banright { /* 추가정보입력 (오른) */
  	width: 50%;
  	height: 100%;
  	float: right;
- 	font-size: 10pt;
- 	background-color: #353535;
+ 	font-size: 20pt;
+ 	background-color: #FFFFFF;
  }
-  
+
  .Sign_bottom { /* 환자등록 하단 */
  	width: 100%;
  	height: 5%;
  	text-align: right;
- 	background-color: #4C4C4C;
+ 	background-color: #FFFFFF;
+ }
+ 
+ #sign_Btn { /* 등록버튼 */
+ 	display: inline-block;
+ 	width: 50px;
+ 	height: 30px;
+ 	font-size: 10pt;
+ 	vertical-align: top;
+ 	margin-top : 8px;
+ 	margin-right: 20px;
+ }
+ 
+ #bback_Btn { /* 이전버튼 */
+ 	display: inline-block;
+ 	width: 50px;
+ 	height: 30px;
+ 	font-size: 10pt;
+ 	vertical-align: top;
+ 	margin-top: 8px;
+ 	margin-right: 20px;
  }
