@@ -1,11 +1,13 @@
 /**
  * 161122 이동건 - 메뉴 버튼 작동
  * 161125 이동건 - 시간관련 함수 추가
+ * 161128 이동건 - 탭 기능 구현
  */
 
 $(document).ready(function(){
 	NowTime();//시간 인터발 시작
 	
+	//메뉴 보이기, 숨기기
 	$("body").on("click",".main_menu_btn",function(){
 		var idarr = this.id.split('_');
 		if($("#"+idarr[0]).css('display') == 'none'){
@@ -26,40 +28,65 @@ $(document).ready(function(){
 	$("body").on("click",".btnlist_btns",function(){
 		//console.log(this);
 		//console.log($(this).attr('value'));
-		add_tab(this); //탭에 선택된 오브젝트 값 전송
 		var val = $(this).attr('value').split("*");
-		$("#main_content_page").load(val[0]);
+		
+		//생성된 탭이 없을 경우 생성해준다.
+		var activated_check = $("#tab_"+val[0]).length;
+		if(activated_check <= 0){
+			Add_Tab(this); //탭에 선택된 오브젝트 값 전송
+		}
+			
 	});
+	
+	//탭 내용 보기
+	$("body").on("click",".tab_layout",function(){
+		View_Tab_Content($(this).attr('value'));
+	})//탭 내용 보기 end
 	
 	//탭 닫기
 	$("body").on("click",".main_tab_close",function(){
-		console.log($(this).attr('value'));
+
+		$("#content_"+$(this).attr('value')).remove();
 		$("#tab_"+$(this).attr('value')).remove();
-		$("#main_content_page").load("clear");
-	})
+		var id = $("#main_content_page").children('div:first').attr("value");
+		View_Tab_Content(id);
+	})//탭 닫기 end
 	
 })//ready end
 
 
 //탭 추가
-function add_tab(obj){
+function Add_Tab(obj){
 	//console.log(obj);
 	var val = $(obj).attr('value').split("*");
-	var id = $(obj).attr('id').split("_");
-	var tab_id = "tab_"+id[1]+"_"+id[2];
-	var tab_close = id[1]+"_"+id[2];
+	var tab_id = "tab_"+val[0];
+	var tab_close = "tab-close_"+val[0];
 	
 	var html="";
-	html += "<div class='main_tab' id='" +tab_id+ "'>";
-		html += "<div class='tab_layout'>";
-			html += "<div class='main_tab_close' value='"+tab_close+"'></div>";
+	html += "<div class='main_tab' id='" +tab_id+ "' value='"+val[0]+"'>";
+		html += "<div class='tab_layout' value='"+val[0]+"'>";
+			html += "<div class='tab_text' value='"+val[0]+"'>"+val[1]+"</div>";
 		html += "</div>";
-		html += "<div class='tab_layout'>";
-			html += "<div class='tab_text'>"+val[1]+"</div>";
-		html += "</div>";
+		html += "<div class='main_tab_close' id='"+tab_close+"' value='"+val[0]+"'></div>";
 	html += "</div>";
 	$("#tab_bar").append(html);
+	
 	html = "";
+	html += "<div class='pages' id='content_"+val[0]+"' value='"+val[0]+"'></div>"
+	$("#main_content_page").append(html);
+	html = "";
+	
+	$("#content_"+val[0]).load(val[0]);
+	
+	View_Tab_Content(val[0]);
+}
+
+//선택된 탭만 보이게 하기
+function View_Tab_Content(id){
+	$(".pages").css('display','none');
+	$(".main_tab_close").css('display','none');
+	$("#content_"+id).css('display','block');
+	$("#tab-close_"+id).css('display','block');
 }
 
 

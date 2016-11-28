@@ -43,11 +43,11 @@
 			<div class="main_menu_btn" id="menu1_btn">정 보 조 회</div>
 				<div class="menu_btnlist" id="menu1">
 					<div class="btnlist_btns" id="menu_1_0" name="menu_btn" value="Patient_page*환자조회">환자조회</div>
-					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" value="none*직원조회">직원조회</div>
+					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" value="Emp_page*직원조회">직원조회</div>
 				</div>
 			<div class="main_menu_btn" id="menu2_btn">일 정 관 리</div>
 				<div class="menu_btnlist" id="menu2">
-					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" value="none*환자일정">환자일정</div>
+					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" value="set*환자일정">환자일정</div>
 					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" value="rest*휴진현황">휴진현황</div>
 				</div>
 			<div class="main_menu_btn" id="menu3_btn">업 무 메 뉴</div>

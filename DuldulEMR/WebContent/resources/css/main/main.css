@@ -148,9 +148,11 @@ div {
 	display: inline-block;
 	cursor: pointer;
 }
-.tab_rayout{
-	width: 100%;
-	height: 50%;
+.tab_layout{
+	width: calc(100% - 15px);
+	height: calc(100% - 12px);
+	display: inline-block;
+	padding-top: 12px;
 }
 .tab_text {
 	font-size: 12pt;
@@ -161,8 +163,13 @@ div {
 .main_tab_close{
 	width: 15px;
 	height: 15px;
-	background-color: black;
+	background-color: red;
 	cursor: pointer;
 	float: right;
 	border-radius: 1000px;
+}
+
+.pages{
+	height: 100%;
+	width: 100%;
 }
