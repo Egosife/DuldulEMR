@@ -1,5 +1,5 @@
 package com.duldul.emr.web.emr.controller;
-
+// 20161122 - 이동건 제작
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;

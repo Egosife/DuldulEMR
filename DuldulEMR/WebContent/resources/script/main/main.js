@@ -19,9 +19,9 @@ $(document).ready(function(){
 		
 	//logout
 	$("#logoff").on("click",function(){
-		alert("정상적으로 로그아웃 하셨습니다.");
 		clearInterval(interval_time);//시간 인터발 종료
 		location.href = "Logoff";
+		alert("정상적으로 로그아웃 하셨습니다.");
 	});//logoutBtn end
 	
 	//페이지 띄어주기
@@ -34,6 +34,8 @@ $(document).ready(function(){
 		var activated_check = $("#tab_"+val[0]).length;
 		if(activated_check <= 0){
 			Add_Tab(this); //탭에 선택된 오브젝트 값 전송
+		}else{
+			View_Tab_Content(val[0]);
 		}
 			
 	});

@@ -63,6 +63,23 @@ public class LogonController {
 			modelMap.put("res", "fail");
 		}
 		
+		//병원 코드 저장 체크 확인
+		if(!params.get("re_hos").isEmpty()){
+			modelMap.put("hos_code", params.get("hos_Code"));
+			modelMap.put("re_hos_chk",true);
+		}else{
+			modelMap.put("hos_code", "none");
+			modelMap.put("re_hos_chk",false);
+		}
+		//아이디 코드 저장 체크 확인
+		if(!params.get("re_id").isEmpty()){
+			modelMap.put("id_code", params.get("emp_id"));
+			modelMap.put("re_id_chk",true);
+		}else{
+			modelMap.put("id_code", "none");
+			modelMap.put("re_id_chk",false);
+		}
+		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
 		
