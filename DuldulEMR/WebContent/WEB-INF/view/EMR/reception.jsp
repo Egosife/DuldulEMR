@@ -9,6 +9,10 @@
 
 <script type="text/javascript">
 
+$(document).ready(function(){
+	
+})//ready end
+
 </script>
 
 <title>reception</title>

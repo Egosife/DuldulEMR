@@ -173,8 +173,8 @@ function Add_Tab(obj){
 function View_Tab_Content(id){
 	$(".pages").css('display','none');
 	$(".main_tab_close").css('display','none');
-	$("#content_"+id).show('fast');
-	$("#tab-close_"+id).show(500);
+	$("#content_"+id).fadeIn('fast');
+	$("#tab-close_"+id).fadeIn('slow');
 }
 
 
