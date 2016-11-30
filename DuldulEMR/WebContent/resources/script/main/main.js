@@ -54,6 +54,11 @@ $(document).ready(function(){
 		$("#content_"+$(this).attr('value')).remove();
 		$("#tab_"+$(this).attr('value')).remove();
 		var id = $("#main_content_page").children('div:first').attr("value");
+		var val = $("#tab_bar").children('div:first').attr("value");
+		if(val != null){
+			bbs_type_val(val);
+		}
+		
 		View_Tab_Content(id);
 	})//탭 닫기 end
 	
@@ -81,6 +86,30 @@ function bbs_type(obj){
 		}
 	}
 }
+
+//게시판 타입 기억2
+function bbs_type_val(val){
+	var id = val.split("_");
+	
+	if(id[1] == 0){
+		//console.log(id);
+		switch (id[2]) {
+		case "0":
+			bbstype_setsession(id[2]);
+			//console.log("공지이 클릭되다!");
+			break;
+		case "1":
+			bbstype_setsession(id[2]);
+			//console.log("사내이 클릭되다!");
+			break;
+		case "2":
+			bbstype_setsession(id[2]);
+			//console.log("통합이 클릭되다!");
+			break;
+		}
+	}
+}
+
 //게시판 타입 세션에 기록
 function bbstype_setsession(num){
 	//console.log(num+"이 들어왔다");
@@ -104,11 +133,12 @@ function Add_Tab(obj){
 	var val = $(obj).attr('value').split("*");
 	var id = $(obj).attr('id').split("_");
 	var tab_id = "tab_"+val[0];
-	var tab_type = "tabM_"+id[1]+"_"+id[2]
+	var tab_type = "tabM_"+id[1]+"_"+id[2];
+	var tab_value = "tabV_"+id[1]+"_"+id[2];
 	var tab_close = "tab-close_"+val[0];
 	
 	var html="";
-	html += "<div class='main_tab' id='" +tab_id+ "' value='"+val[0]+"'>";
+	html += "<div class='main_tab' id='" +tab_id+"' value='"+tab_value+"'>";
 		html += "<div class='tab_layout' id='"+tab_type+"' value='"+val[0]+"'>";
 			html += "<div class='tab_text' value='"+val[0]+"'>"+val[1]+"</div>";
 		html += "</div>";
