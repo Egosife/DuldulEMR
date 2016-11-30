@@ -53,7 +53,6 @@ function logon(){
 		}
 	
 		var params = $("#loginForm").serialize();
-		
 		$.ajax({
 			type : "post",
 			url : "LoginCheckAjax",
