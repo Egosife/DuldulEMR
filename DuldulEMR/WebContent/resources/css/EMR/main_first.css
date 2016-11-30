@@ -1,0 +1,130 @@
+@CHARSET "UTF-8";
+
+.wrap{
+	 width:100%;
+	 height:900px; 
+	 background-color: #CC44CC;
+	 }
+/* 초기화면에서 공지사항 글자가 적혀있는 부분 */
+.header{
+		width:900px; 
+		height:50px;
+		margin-left:50px; 
+		margin-bottom:10px;
+		background-color: #FFFFCC;
+		font-size: 14pt;
+		}
+/* 초기화면에서 더보기 글자가 적혀있는 부분 */
+.more{
+		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #00FFFF;
+	 	text-align:right;
+	 	font-size: 12pt;
+		}		
+/* 초기화면에서 공지사항 게시판 내용이 보여지는 화면 */
+.content{
+		width:900px; 
+		height:100px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FF0000;
+	 	font-size: 12pt;
+		}
+
+/* 페이지 넘기는 부분의 구역 */
+.page_num{
+		width:900px; 
+		height:40px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFFF00;
+	 	text-align: center;
+	 	font-size: 12pt;
+		}
+
+/* 나의 신청현황 및 기록 이라는 글자가 적혀있는 부분 */
+.header_1{
+		width:900px; 
+		height:50px;
+		margin-left:50px; 
+		margin-bottom:10px;
+		background-color: #FFbbCC;
+		font-size: 14px;
+		}
+		
+/* 공지사항 게시판 내용이 보여지는 화면 */
+.content_1{
+		width:900px; 
+		height:100px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #bbaaFF;
+	 	font-size: 12px;
+		}
+/* 페이지 넘기는 부분의 구역 */
+.page_num_1{
+		width:900px; 
+		height:40px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #bbFF00;
+	 	text-align: center;
+	 		font-size: 12px;
+		}
+
+.more_1{
+	width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #ffccFF;
+	 	text-align:right;
+	 	font-size: 12pt;
+		}
+.header_2{
+		width:900px; 
+		height:50px;
+		margin-left:50px; 
+		margin-bottom:10px;
+		background-color: #FFbbCC;
+		font-size: 14px;
+		}
+/* 공지사항 게시판 내용이 보여지는 화면 */
+.content_2{
+		width:900px; 
+		height:200px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #0000FF;
+	 	font-size: 12px;
+	 	display: block;
+		}
+.mini_content_1{
+		display: inline-block;
+		width:40%; 
+		height:180px;
+		margin-left:480px; 
+		margin-bottom:10px;
+	 	background-color: #000000;
+	 	font-size: 12px;
+	 	
+		}
+.mini_content_2{
+		display: inline-block;
+		width:40%; 
+		height:180px;
+		margin-left:20px;
+		
+	 	background-color: #ffffff;
+	 	font-size: 12px;
+	 
+		}
+
+table{
+   width: 80%;
+   text-align: center;
+   margin: 0 auto;
+}

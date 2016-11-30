@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bbs">
+	<select id="getBbs" 
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT A.TEST_NO , A.TEST_CON
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY TEST_NO DESC) AS RNUM, TEST_NO, TEST_CON 	
+			  FROM TEST
+		WHERE 1 = 1
+		<isNotEmpty property="searchText">
+			AND TEST_CON LIKE '%' || #searchText# || '%'
+		</isNotEmpty>
+		) A
+		WHERE A.RNUM BETWEEN #start# AND #end#
+	</select>
+	
+	
+		<select id="getBbsCount" 
+			parameterClass= "java.util.HashMap"
+			resultClass = "Integer">
+		SELECT COUNT(*) AS CNT
+		FROM TEST
+		WHERE 1 = 1 
+		<isNotEmpty property="searchText">
+			AND TEST_CON LIKE '%' || #searchText# || '%'
+		</isNotEmpty>
+	</select>
+	
+	<select id="getBbsCon" 
+			parameterClass="java.util.HashMap" 
+			resultClass="java.util.HashMap">
+		SELECT TEST_NO,TEST_CON, TEST_FILE, 
+		SUBSTR(TEST_FILE,INSTR(TEST_FILE,'.',-1)+1) AS FILE_EXT
+		FROM TEST
+		WHERE TEST_NO = #testNo#	
+	</select>
+</sqlMap>

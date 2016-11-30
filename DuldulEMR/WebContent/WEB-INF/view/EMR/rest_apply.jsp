@@ -6,43 +6,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"  href="resources/css/EMR/notice.css" />
-
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
+<link rel="stylesheet" type="text/css"  href="resources/css/EMR/rest_apply.css" />
+ 
+ <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript">
 
-$(document).ready(function(){
+/*  */$(document).ready(function(){
 	refreshList();
 	$("#searchBtn").on("click",function(){
+	
 		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
 		refreshList();
 	});
 	
-	
+	//1107
 	$("#insertBtn").on("click", function(){
-		$("#actionForm").attr("action","bbs_write");
+		$("#actionForm").attr("action","test7");
 		$("#actionForm").submit();		
 	});
-
+	//
+	
+	
 	$("#page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
 		refreshList();
 	});
 	
 	$("#tb").on("click","tr",function(){
-		$("input[name='POST_NUM']").val($(this).attr("name"));
-		$("#actionForm").attr("action","bbs_detail");
+		$("input[name='testNo']").val($(this).attr("name"));
+		$("#actionForm").attr("action","test5");
 		$("#actionForm").submit();
 		
 	});
-});
+
+	
 
 
-
+//1101
 function refreshList(){
-	var params = $("#actionForm").serialize();
+	var params = $("#actionForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
 		
 		$.ajax({
 			type : "post",
@@ -53,16 +60,12 @@ function refreshList(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].POST_NUM + "'>";
-					html += "<td>" + result.list[i].POST_NUM + "</td>";
-					html += "<td>" + result.list[i].TITLE + "</td>";
-					html += "<td>" + result.list[i].WRITER + "</td>";
-					html += "<td>" + result.list[i].REPORTING + "</td>";
-					html += "<td>" + result.list[i].VIEWS + "</td>";
+					html += "<tr name='" + result.list[i].TEST_NO + "'>";
+					html += "<td>" + result.list[i].TEST_NO + "</td>";
+					html += "<td>" + result.list[i].TEST_CON + "</td>";
 					html += "</tr>";
 				}
 				$("#tb").html(html);
-				
 				//페이지 그리는 단계
 				
 				html = "";
@@ -97,9 +100,38 @@ function refreshList(){
 	            alert("error!!");
 	         }
 	      });
-	   
+		
+			   
 	}
 </script> 
+
+<script>
+$(document).ready(function(){
+	$.datepicker.setDefaults({
+		monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		showMonthAfterYear:true,
+		showOn: 'button',
+		closeText: '닫기',
+		buttonImage: 'resources/images/calender.png',
+		buttonImageOnly: true,
+		dateFormat: 'yy/mm/dd'    
+	}); 
+	
+	$("#datepicker1").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+		}
+	});
+	$("#datepicker2").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+		}
+	});
+};
+</script>
 </head>
 <body>
 <form action="#" method="post" id="actionForm">
@@ -112,22 +144,22 @@ function refreshList(){
 		</c:otherwise>
 	</c:choose>
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
-	<input type="hidden" name="POST_NUM"/>
+	<input type="hidden" name="testNo"/>
 </form>
+
 <div class="wrap">
    <div class="header">
-   		<b>공지사항</b>
+   		<b>나의 신청현황 및 기록</b>
    </div>
 
    <div class="content">
-		<table border="1" align="center">
+		<table border="1" >
 	<thead>
 		<tr>
-	        <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
+	        <th>휴진 신청일</th>
+            <th>휴진 기간</th>
+            <th>신청 사유</th>
+            <th>승인여부</th>
 		</tr>
 	</thead>
 	<tbody id="tb">
@@ -136,21 +168,59 @@ function refreshList(){
 </table>
 	</div>
 
-   <div class="writter">
-   		<input type="button" value="글 쓰기" class="insert_Btn" id="insertBtn" />
-   </div>
+  
    <div class="page_num" id="page_num"></div>
-  <div class="search">
+    <div class="writter" >
+   		<input type="button" value="신청" class="new_Btn" id="newBtn" />
+   		<input type="button" value="삭제" class="delete_Btn" id="deleteBtn" />
+   </div>
+   
+     <div class="header_1">
+   		<b>휴진현황</b>
+   </div>
+   <div class="select">
    	<center>
-   		   <select name="keyField">
-                <option value="0"> ----선택----</option>
-                <option value="title_content">제목+내용</option>
-                <option value="title">제목</option>
+   		일시 <input type="text" id="datepicker1">
+   		     진료과 <select name="keyField">
+   		     	<option value="0"> 전체</option>
+                <option value="title_content">과1</option>
+                <option value="title">과2</option>
+                <option value="title">과3</option>
+                <option value="title">과4</option>
+                <option value="title">과5</option>
+                <option value="title">과6</option>
             </select>
-   		<input type="text" id="searchText" value="${param.searchText}"/>
-		<input type="button" value="검색" id="searchBtn"/>
+           
+            직책 <select name="keyField">
+   		     	<option value="0"> 전체</option>
+                <option value="title_content">의사</option>
+                <option value="title">간호사</option>
+            </select>
 	</center>
-</div>
+   </div>
+
+   <div class="content_1">
+		<table border="1" >
+	<thead>
+		<tr>
+	        <th>직원 번호</th>
+            <th>성명</th>
+            <th>직책</th>
+            <th>진료과</th>
+            <th>휴진 날짜</th>
+            <th>휴진 사유</th>
+		</tr>
+	</thead>
+	<tbody id="tb">
+		
+	</tbody>
+</table>
+	</div>
+
+  
+   <div class="page_num_1" id="page_num_1"></div>
+
+	
  
 </div>
 

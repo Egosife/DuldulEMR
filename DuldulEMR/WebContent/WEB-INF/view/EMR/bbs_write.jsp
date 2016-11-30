@@ -9,7 +9,13 @@
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs_write.css" />
  <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+<script type="text/javascript">
+$("#saveBtn").on("click", function(){
+	$("#actionForm").attr("action","notice");
+	$("#actionForm").submit();		
+});
 
+</script>
 </head>
 <body>
 

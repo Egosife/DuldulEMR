@@ -123,7 +123,7 @@ function refreshList(){
 
 <div class="wrap">
    <div class="header">
-   		<h1>사내게시판</h1>
+   		<b>사내게시판</b>
    </div>
 
    <div class="content">

@@ -72,6 +72,8 @@ public class MainController {
 		HashMap<String, String> type = params;
 		session.setAttribute("sBbs_Type", type.get("type"));
 		
+		System.out.println("여기다!!!!!!!!!!!!!!!!!===>>"+type.get("type"));
+		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
 		

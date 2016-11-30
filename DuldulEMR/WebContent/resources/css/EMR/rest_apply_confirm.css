@@ -4,7 +4,7 @@
 	 height:900px; 
 	 background-color: #4444CC;
 	 }
-/* 공지사항이라는 글자가 적혀있는 부분 */
+/* 휴진 신청 */
 .header{
 		width:900px; 
 		height:80px;
@@ -14,17 +14,17 @@
 		font-size: 14pt;
 		}
 		
-/* 공지사항 게시판 내용이 보여지는 화면 */
-.content{
+/* 작성자 구역 */
+.writter{
 		width:900px; 
-		height:500px;
+		height:30px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FFFFFF;
 	 	font-size: 12pt;
 		}
-/* 글 쓰기 버튼이 위치하는 구간 */
-.writter{
+/* 시작일  */
+.date{
 		width:900px; 
 		height:30px;
 		margin-left:50px; 
@@ -32,27 +32,30 @@
 	 	background-color: #00FFFF;
 	 	font-size: 12pt;
 		}
-/* 페이지 넘기는 부분의 구역 */
-.page_num{
+
+/* 제목 */
+.title{
 		width:900px; 
-		height:40px;
+		height:30px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FFFF00;
-	 	text-align: center;
 	 	font-size: 12pt;
+	 	
 		}
-/* 검색하는 구역 */
-.search{
+/* 내용 */
+.content{
 		width:900px; 
-		height:50px;
+		height:460px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FFCCFF;
-	 	font-size: 12pt;
 		}
-/* 글쓰기 버튼 위치를 오른쪽 방향으로(상대위치변경) */
-.insert_Btn{
-	position: relative;
-	left : 800px;
-}
+/* 수정,삭제,목록 있는 버튼 */
+.button{
+ 		width:900px; 
+		height:30px;
+		margin-left:50px; 
+		margin-bottom:10px;
+	 	background-color: #FFCCFF;
+ 		}
