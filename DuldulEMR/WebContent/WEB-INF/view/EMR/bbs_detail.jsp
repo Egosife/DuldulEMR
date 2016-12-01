@@ -9,36 +9,76 @@
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs_detail.css" />
  <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+<script type="text/javascript">
 
+
+//목록 버튼 클릭했을시
+$(document).ready(function(){
+		$("#listBtn").on("click", function(){
+			
+			$("#actionForm").attr("action","notice");
+			$("#actionForm").submit();			
+		});
+		
+		$("#changeBtn").on("click", function(){
+			$("#actionForm").attr("action","test10");
+			$("#actionForm").submit();			
+		});
+		
+		$("#deleteBtn").on("click", function(){
+			if(confirm("지울꺼니?")){
+				var params = $("#actionForm").serialize();
+				$.ajax({
+					type : "post",
+					url : "deleteTest",
+					dataType : "json",
+					data : params,
+					success : function(result){
+						if(result.res > 0){
+							location.href = "notice";	
+						}else{
+							alert("삭제가 안된다능.")
+						}
+			         },
+			         error : function(result) {
+			          	alert("error!");
+			         }
+				});
+			
+			}
+			
+		});
+	});
+</script>
 </head>
 <body>
+<form action="#" id="actionForm"  method="post">
 
-
-<!-- 다시 만들어야하는  -->
+</form>
 
 
 <div class="wrap">
    <div class="header">
-   		<h1>상세보기</h1>
+   		<b>상세보기</b>
    </div>
 
    <div class="writter">
-		작성자  <input type="text" id="WritterText" readonly/>  
-	</div>
+		작성자  <input type="text" id="WritterText" readonly value="${con.WRITER}"  />  
+	</div>	
 
    <div class="date">
-   	등록일 <input type="text" id="DateText" readonly/>  
+   	등록일 <input type="text" id="DateText" readonly value="${con.REPORTING}"/>  
    </div>
    <div class="title" >
-   		제목 <input type="text" id="TitleText" /> 
+   		제목 <input type="text" id="TitleText" readonly value="${con.TITLE}"/> 
    </div>
    
    <div class="content">
-   <textarea rows="30" cols="125" name="contents"></textarea>
+   <textarea id="textarea_test" rows="30" cols="125" name="contents" readonly > ${con.CONTENT}</textarea>
 	</div>
 	
 	  <div class="title" >
-   		첨부파일 <input type="text" id="FileText"/> 
+   		첨부파일 <input type="text" id="FileText"readonly value="${con.FILE_NAME}"/> 
    	</div>
    	
    	<div class="button" style="text-align:right">

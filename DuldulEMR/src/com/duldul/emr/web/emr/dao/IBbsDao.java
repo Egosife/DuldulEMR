@@ -9,6 +9,9 @@ public interface IBbsDao {
 
 	int getBbsCount(HashMap<String, String> params)throws Throwable;
 
+	HashMap<String, String> getBbsCon(HashMap<String, String> params)throws Throwable;
+
+	String insertTest(HashMap<String, String> params) throws Throwable;
 	
 
 

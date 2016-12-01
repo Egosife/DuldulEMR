@@ -103,6 +103,7 @@ function refreshList(){
 </head>
 <body>
 <form action="#" method="post" id="actionForm">
+<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
 			<input type="hidden" name="page" value="1"/>
@@ -143,8 +144,6 @@ function refreshList(){
   <div class="search">
    	<center>
    		   <select name="keyField">
-                <option value="0"> ----선택----</option>
-                <option value="title_content">제목+내용</option>
                 <option value="title">제목</option>
             </select>
    		<input type="text" id="searchText" value="${param.searchText}"/>

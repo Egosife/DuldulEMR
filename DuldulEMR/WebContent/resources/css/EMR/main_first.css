@@ -27,7 +27,7 @@
 /* 초기화면에서 공지사항 게시판 내용이 보여지는 화면 */
 .content{
 		width:900px; 
-		height:100px;
+		height:150px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FF0000;
@@ -58,7 +58,7 @@
 /* 공지사항 게시판 내용이 보여지는 화면 */
 .content_1{
 		width:900px; 
-		height:100px;
+		height:150px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #bbaaFF;
