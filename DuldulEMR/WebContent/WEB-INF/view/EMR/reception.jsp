@@ -6,11 +6,88 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/main/reception.css" /> <!-- 레이아웃 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
-
+<link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
+<!-- Popup CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
+<script type="text/javascript" src="resources/script/common/popup.js"></script>
+		
 <script type="text/javascript">
 
 $(document).ready(function(){
+	$("body").on("click","[name='pati-selectBtn']",function(){
+		console.log($(this).attr("id"));
+	})
 	
+	$("body").on("click","#pop_serachBtn",function(){
+		var params = $("#pop_action").serialize();
+		$.ajax({
+			type : "post",
+			url : "treat_patientserach",
+			dataType : "json",
+			data : params,
+			success : function(result){
+				var html = "";
+				for(var i = 0 ; i < result.serach.length ; i++){
+					html += "<tr>";
+					html += "<td>" + result.serach[i].NO + "</td>";
+					html += "<td>" + result.serach[i].PATIENT_NUM + "</td>";
+					html += "<td>" + result.serach[i].PATIENT_NAME + "</td>";
+					html += "<td>" + result.serach[i].PHONE1 + "</td>";
+					html += "<td>" + result.serach[i].PHONE2 + "</td>";
+					html += "<td>" + result.serach[i].ADDRESS + "</td>";
+					html += "<td>" + result.serach[i].BLOOD + "</td>";
+					html += "<td><input type='button' id='btn_"+result.serach[i].PATIENT_NUM+"' name='pati-selectBtn' value='선택'></td>";
+					html += "</tr>";
+				}
+				$("#tb").html(html);
+				$("#serachresult").html(result.serach.length+" 건이 검색되었습니다.")
+			},
+			error : function(result){
+				alert("ERROR - Patient_Search");
+			}
+		})// ajax end
+	})//pop_serachBtn end
+	
+	//팝업 페이지 출력
+	$("#serach_btn").on("click", function(){
+		var html = "";
+		
+		html+= "<div class='pop_div_main'>";
+		
+			html+= "<div class='pop_div_top'>";
+				html+= "<form action='#' id='pop_action' method='post'>";
+					html+="<table><tr>";
+						html+= "<td><input type='text' name='pop_serachText' style='width: 100%; height: 100%;'></td>";
+						html+= "<td><input type='button' id='pop_serachBtn' value='검색'><td>";
+						html+= "<td id='serachresult'>0 건이 검색되었습니다.</td>";
+					html+="</tr></table>";
+				html+= "</form>";
+			html+="<hr></div>";
+			
+			html+="<div class='pop_div_bot'>";
+					html+= "<table border='1' align='center' width='100%' >";
+						html+= "<thead>";
+							html+= "<tr>";
+								html+= "<th>번호</th>";
+								html+= "<th>환자 번호</th>";
+								html+= "<th>성명</th>";
+								html+= "<th>연락처1</th>";
+								html+= "<th>연락처2</th>";
+								html+= "<th>주소</th>";
+								html+= "<th>혈액형</th>";
+								html+= "<th>선택</th>";
+							html+= "</tr>";
+						html+= "</thead>";
+						html+= "<tbody id='tb'></tbody>";
+					html+= "</table>";
+			html+="</div>";
+			
+		html+= "</div>";
+		
+		makePopup("환자 검색", html);
+		
+		html="";
+	});
 })//ready end
 
 </script>
@@ -52,7 +129,7 @@ $(document).ready(function(){
 				<div class="rep_petiinfo_def">
 					<div class="rep_petititleblock">
 						환자 정보
-						<input type="button" value="검색">
+						<input type="button" id="serach_btn" value="검색">
 					</div>
 					<div class="rep_peticontentblock">
 						<hr>
@@ -62,7 +139,7 @@ $(document).ready(function(){
 									환자 번호
 								</td>
 								<td>
-									<input type="text" disabled="disabled">
+									<input type="text" disabled="disabled" >
 								</td>
 							</tr>
 							<tr>
@@ -229,7 +306,7 @@ $(document).ready(function(){
 
 					</div>
 					<div class="rep_boxbtn">
-						<input type="button" value="선택완료">
+						<input type="button" value="선택완료" disabled="disabled">
 					</div>
 				</div>
 				<div class="rep_block"></div>
@@ -246,8 +323,8 @@ $(document).ready(function(){
 						<input type="text" disabled="disabled">
 					</div>
 					<div class="rep_boxbtn">
-						<input type="button" value="금일">
-						<input type="button" value="선택완료">
+						<input type="button" value="금일" disabled="disabled">
+						<input type="button" value="선택완료" disabled="disabled">
 					</div>
 				</div>
 				<div class="rep_block"></div>
@@ -282,7 +359,7 @@ $(document).ready(function(){
 						<br/>
 					</div>
 					<div class="rep_boxbtn">
-						<input type="button" value="선택완료">
+						<input type="button" value="선택완료" disabled="disabled">
 					</div>
 				</div>
 				<div class="rep_block"></div>
@@ -300,7 +377,7 @@ $(document).ready(function(){
 			<div class="rep_buttons">
 				<hr>
 				<input type="button" value="다시쓰기">
-				<input type="button" value="완료">
+				<input type="button" value="완료" disabled="disabled">
 			</div>
 		</div>
 	</div>

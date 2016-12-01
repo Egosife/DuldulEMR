@@ -187,3 +187,18 @@ tr {
 	text-align: right;
 	margin-top: 5px;
 }
+
+.pop_div_main{
+	width: 100%;
+	height: 100%;
+}
+.pop_div_top{
+	width: 100%;
+	height: 15%;
+	text-align: left;
+}
+.pop_div_bot{
+	width: 100%;
+	height: 85%;
+	overflow: auto;
+}

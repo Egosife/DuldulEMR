@@ -8,7 +8,7 @@ function makePopup(title, contents) {
 	html += "	<div class=\"popup_contents\">                                    ";
 	html += "		<div class=\"popup_text\">" + contents + "</div>              ";
 	html += "		<div class=\"popup_btn\">                                     ";
-	html += "			<input type=\"button\" class=\"btn_ok\" value=\"확인\"/>   ";
+	html += "			<input type=\"button\" class=\"btn_ok\" value=\"닫기\"/>   ";
 	html += "		</div>                                                        ";
 	html += "	</div>                                                            ";
 	html += "</div>                                                               ";
