@@ -9,5 +9,10 @@ public interface IBbsService {
 
 	public int getBbsCount(HashMap<String, String> params) throws Throwable;
 
+	public HashMap<String, String> getBbsCon(HashMap<String, String> params) throws Throwable;
+
+	public String insertTest(HashMap<String, String> params)throws Throwable;
+
+
 	
 }

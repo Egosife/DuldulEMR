@@ -33,17 +33,29 @@ public class BbsController {
 		
 		//글 상세보기 페이지 연결
 		@RequestMapping(value="/bbs_detail")
-		public ModelAndView bbs_detail(HttpServletRequest request, ModelAndView modelAndView)throws Throwable {
-			
+		
+		public ModelAndView bbs_detail(HttpServletRequest request,
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+
+			HashMap<String, String> con = iBbsService.getBbsCon(params);
+			//con은 컨텐츠의 약자
+			System.out.println("asdsadsadadsadadsadsad===> "+con);
+			modelAndView.addObject("con",con);
 			modelAndView.setViewName("EMR/bbs_detail");
 			
-			return modelAndView;
+			return modelAndView;//컨트롤러의 가장 기본적인 형태
 		} //글 상세보기 페이지 연결 끝
+		
+	/*	
+		}*/
+		
 		
 		//사내게시판 페이지 연결
 		@RequestMapping(value="/bbs")
 		public ModelAndView bbs(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
-			
+			//사내게시판 1번이니깐 1번으로 보이게
+			modelAndView.addObject("gbn", 1);
 			modelAndView.setViewName("EMR/bbs");
 			
 			return modelAndView;
@@ -71,7 +83,8 @@ public class BbsController {
 		//공지사항 페이지 연결
 		@RequestMapping(value="/notice")
 		public ModelAndView notice(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
-			
+			//공지사항 0번이니깐 0번으로 보이게
+			modelAndView.addObject("gbn", 0);
 			modelAndView.setViewName("EMR/notice");
 			
 			return modelAndView;
@@ -130,6 +143,27 @@ public class BbsController {
 			
 			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 					responseHeaders,HttpStatus.CREATED);
+	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		@RequestMapping(value="/insertTest")
+		public @ResponseBody ResponseEntity<String> insertTest(
+				HttpServletRequest request, 
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			String res = iBbsService.insertTest(params);
+			
+			modelMap.put("res", res);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+					responseHeaders,HttpStatus.CREATED);
+			
 	}
 	
 }

@@ -26,6 +26,18 @@ public class BbsService implements IBbsService{
 		return iBbsDao.getBbsCount(params);
 	}
 
+	@Override
+	public HashMap<String, String> getBbsCon(HashMap<String, String> params) throws Throwable {
+		
+		return iBbsDao.getBbsCon(params);
+	}
+
+	@Override
+	public String insertTest(HashMap<String, String> params) throws Throwable {
+		
+		return  iBbsDao.insertTest(params);
+	}
+
 
 
 	

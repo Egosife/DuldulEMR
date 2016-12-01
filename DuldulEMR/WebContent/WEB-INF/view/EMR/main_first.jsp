@@ -12,41 +12,38 @@
  <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	refreshList();
 	$("#searchBtn").on("click",function(){
-	
 		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
 		refreshList();
 	});
 	
-	//1107
+	
 	$("#insertBtn").on("click", function(){
-		$("#actionForm").attr("action","test7");
+		$("#actionForm").attr("action","bbs_write");
 		$("#actionForm").submit();		
 	});
-	//
-	
-	
+
 	$("#page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
 		refreshList();
 	});
 	
 	$("#tb").on("click","tr",function(){
-		$("input[name='testNo']").val($(this).attr("name"));
-		$("#actionForm").attr("action","test5");
+		$("input[name='POST_NUM']").val($(this).attr("name"));
+		$("#actionForm").attr("action","bbs_detail");
 		$("#actionForm").submit();
 		
 	});
 });
 
 
-//1101
 function refreshList(){
-	var params = $("#actionForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
+	var params = $("#actionForm").serialize();
 		
 		$.ajax({
 			type : "post",
@@ -57,12 +54,16 @@ function refreshList(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].TEST_NO + "'>";
-					html += "<td>" + result.list[i].TEST_NO + "</td>";
-					html += "<td>" + result.list[i].TEST_CON + "</td>";
+					html += "<tr name='" + result.list[i].POST_NUM + "'>";
+					html += "<td>" + result.list[i].POST_NUM + "</td>";
+					html += "<td>" + result.list[i].TITLE + "</td>";
+					html += "<td>" + result.list[i].WRITER + "</td>";
+					html += "<td>" + result.list[i].REPORTING + "</td>";
+					html += "<td>" + result.list[i].VIEWS + "</td>";
 					html += "</tr>";
 				}
 				$("#tb").html(html);
+				
 				//페이지 그리는 단계
 				
 				html = "";
@@ -97,8 +98,7 @@ function refreshList(){
 	            alert("error!!");
 	         }
 	      });
-		
-			   
+	   
 	}
 </script> 
 </head>
@@ -127,10 +127,11 @@ function refreshList(){
 		<table border="1" >
 	<thead>
 		<tr>
-	        <th>휴진 신청일</th>
-            <th>휴진 기간</th>
-            <th>신청 사유</th>
-            <th>승인여부</th>
+	       <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
 		</tr>
 	</thead>
 	<tbody id="tb">
@@ -154,12 +155,11 @@ function refreshList(){
 		<table border="1" >
 	<thead>
 		<tr>
-	        <th>직원 번호</th>
-            <th>성명</th>
-            <th>직책</th>
-            <th>진료과</th>
-            <th>휴진 날짜</th>
-            <th>휴진 사유</th>
+	       <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
 		</tr>
 	</thead>
 	<tbody id="tb">
