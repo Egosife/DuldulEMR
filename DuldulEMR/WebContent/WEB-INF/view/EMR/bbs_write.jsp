@@ -71,6 +71,10 @@ function removePre(data){ //데이터가 들어옴
 <form action="#" id="actionForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
+	
+	<input type="hidden" name="Hospital_code" value="${sHospital_Code}"/>
+	<input type="hidden" name="sEmp_Num" value="${sEmp_Num}"/>
+	<input type="hidden" name="sEmp_Name" value="${sEmp_Name}"/>
 </form>
 
 
@@ -82,17 +86,17 @@ function removePre(data){ //데이터가 들어옴
    </div>
 
    <div class="content">
-		제목 <input type="text" id="TitleText" /> 
+		제목 <input type="text" id="TitleText" name="postTitle" /> 
 	</div>
 
    <div class="writter">
    <form action="fileUploadAjax" id="insertForm" method="post" enctype="multipart/form-data"> 
-   	파일첨부<input type="file" value="불러오기" id="insertBtn"/>
+   	파일첨부<input type="file" name="postFile" value="불러오기" id="insertBtn"/>
    	</form>
    </div>
    <div class="page_num" >
    		
-   		<textarea rows="30" cols="125" name="contents"></textarea>
+   		<textarea rows="30" cols="125" name="postCon"></textarea>
    		
    </div>
    <div class="search">
