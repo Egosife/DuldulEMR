@@ -6,9 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-    <!-- CSS 영역 -->
-<link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs.css" />
- <!-- CSS 영역 -->
+<link rel="stylesheet" type="text/css"  href="resources/css/EMR/main_first.css" />
+ 
  
  <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
@@ -41,7 +40,6 @@ $(document).ready(function(){
 		
 	});
 });
-
 
 
 function refreshList(){
@@ -106,7 +104,6 @@ function refreshList(){
 </head>
 <body>
 <form action="#" method="post" id="actionForm">
-<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
 			<input type="hidden" name="page" value="1"/>
@@ -116,18 +113,21 @@ function refreshList(){
 		</c:otherwise>
 	</c:choose>
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
-	<input type="hidden" name="POST_NUM"/>
+	<input type="hidden" name="testNo"/>
 </form>
+
 <div class="wrap">
    <div class="header">
-   		<b>사내게시판</b>
+   		<b>공지사항</b>
    </div>
-
+    <div class="more" >
+   		<p><a href="http://localhost:8080/SampleSpring/aaa" target="_blank" > 더보기</a></p>
+   </div>
    <div class="content">
-		<table border="1" align="center">
+		<table border="1" >
 	<thead>
 		<tr>
-	        <th>번호</th>
+	       <th>번호</th>
             <th>제목</th>
             <th>작성자</th>
             <th>작성일</th>
@@ -140,20 +140,52 @@ function refreshList(){
 </table>
 	</div>
 
-   <div class="writter">
-   		<input type="button" value="글 쓰기" class="insert_Btn" id="insertBtn" />
-   </div>
+  
    <div class="page_num" id="page_num"></div>
-  <div class="search">
-   	<center>
-   		   <select name="keyField">
-                <option value="title">제목</option>
-            </select>
-   		<input type="text" id="searchText" value="${param.searchText}"/>
-		<input type="button" value="검색" id="searchBtn"/>
-	</center>
-</div>
- 
+
+   
+     <div class="header_1">
+   		<b>사내게시판</b>
+   </div>
+   <div class="more_1">
+   	   		<p><a href="http://localhost:8080/SampleSpring/" target="_blank" > 더보기</a></p>
+   </div>
+
+   <div class="content_1">
+		<table border="1" >
+	<thead>
+		<tr>
+	       <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+		</tr>
+	</thead>
+	<tbody id="tb">
+		
+	</tbody>
+</table>
+	</div>
+
+  
+   <div class="page_num_1" id="page_num_1"></div>
+
+	  <div class="header_2">
+   		<b>휴진현황</b>
+   </div>
+   <div class="content_2">
+   		<div class="mini_content_1" style="float:left" >
+   		
+   		</div>
+   		
+   		<div class="mini_content_2" style="float:left" >
+
+   		
+   		</div>
+   		
+   </div>
+
 </div>
 
 </body>

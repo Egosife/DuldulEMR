@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 /* 2016-11-25 이관우 개발
+		   28  최종 수정
 	환자 일정조회 페이지(기본 레이아웃 디자인 제작) */
 	
  body { /* 기본셋팅 */
@@ -7,7 +8,7 @@
 	font-size: 0pt;
  }
  
- div {
+ div { /* div셋팅 */
 	vertical-align: top;
  }
  
@@ -93,7 +94,7 @@
   	background-color: #KKKKKK;
  }
  
- .Set_bottom_search { /* 메인 바텀 */
+ .Set_bottom_search { /* 메인 바텀  - 검색*/
  	width: 100%;
  	height: 50%;
  	text-align: center;
@@ -123,6 +124,6 @@
  	vertical-align: top;
   }
   
-  #Sselect_box, #Ssearch_Text1, #Ssearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색 */
+  #Sselect_box, #Ssearch_Text1, #Ssearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색버튼 간격 */
   	margin-top: 30px;
   }

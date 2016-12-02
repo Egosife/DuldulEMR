@@ -12,10 +12,11 @@ public class PagingService implements IPagingService{
 	 */
 	//테이블 시작row
 	@Override
-	public int getStartCount(int page) {
+	public int getStartCount(int page) { //수정
 		int startCount = 0;
-		int viewCount = CommonProperties.VIEWCOUNT;
-		startCount = (page - 1) * viewCount + 1;
+		
+		startCount = page * CommonProperties.VIEWCOUNT - CommonProperties.VIEWCOUNT + 1;
+		
 		return startCount;
 	}
 	
@@ -23,7 +24,9 @@ public class PagingService implements IPagingService{
 	@Override
 	public int getEndCount(int page) {
 		int endCount = 0;
+		
 		endCount = page * CommonProperties.VIEWCOUNT;
+		
 		return endCount;
 	}
 	
@@ -47,11 +50,12 @@ public class PagingService implements IPagingService{
 	
 	//현재페이지 기준 시작페이지
 	@Override
-	public int getStartPcount(int page) {
+	public int getStartPcount(int page) { //수정
 		int startPcount = 0;
 		
 		if(page % CommonProperties.PAGECOUNT == 0 ) {
-			startPcount = page - CommonProperties.PAGECOUNT + 1;
+			startPcount = ((page - 1) / CommonProperties.PAGECOUNT)
+					* CommonProperties.PAGECOUNT + 1; //보여줄 페이지
 		} else {
 			startPcount = ((page / CommonProperties.PAGECOUNT) * CommonProperties.PAGECOUNT) + 1;
 		}
@@ -61,15 +65,12 @@ public class PagingService implements IPagingService{
 	
 	//현재페이지 기준 종료페이지
 	@Override
-	public int getEndPcount(int page, int maxCount) {
+	public int getEndPcount(int page, int maxCount) { //수정
 		int endPcount = 0;
 		int maxPcount = getMaxPcount(maxCount);
 		
-		if(page % CommonProperties.PAGECOUNT == 0 ) {
-			endPcount = page;
-		} else {
-			endPcount = ((page / CommonProperties.PAGECOUNT) * CommonProperties.PAGECOUNT) + CommonProperties.PAGECOUNT;
-		}
+		endPcount = ((page - 1) / CommonProperties.PAGECOUNT)
+				* CommonProperties.PAGECOUNT + CommonProperties.PAGECOUNT;
 		
 		if(endPcount >= maxPcount){
 			endPcount = maxPcount;

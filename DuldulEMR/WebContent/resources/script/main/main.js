@@ -10,10 +10,12 @@ $(document).ready(function(){
 	//메뉴 보이기, 숨기기
 	$("body").on("click",".main_menu_btn",function(){
 		var idarr = this.id.split('_');
+
 		if($("#"+idarr[0]).css('display') == 'none'){
-			$("#"+idarr[0]).css('display','block');
+			$(".menu_btnlist").hide("fast");
+			$("#"+idarr[0]).show("fast");
 		}else{
-			$("#"+idarr[0]).css('display','none');
+			$(".menu_btnlist").hide("fast");
 		}
 	})//main_menu_btn click end
 		
@@ -33,30 +35,38 @@ $(document).ready(function(){
 		//생성된 탭이 없을 경우 생성해준다.
 		var activated_check = $("#tab_"+val[0]).length;
 		if(activated_check <= 0){
-			bbs_type(this);
+			Bbs_Type(this);
 			Add_Tab(this); //탭에 선택된 오브젝트 값 전송
 		}else{
-			bbs_type(this);
+			Bbs_Type(this);
+			if($("#tab-close_"+val[0]).css('display') == 'none'){
 			View_Tab_Content(val[0]);
+			}
 		}
 			
 	});
 	
 	//탭 내용 보기
 	$("body").on("click",".tab_layout",function(){
-		bbs_type(this);
-		View_Tab_Content($(this).attr('value'));
+		Bbs_Type(this);
+		if($("#tab-close_"+$(this).attr('value')).css('display') == 'none'){
+			View_Tab_Content($(this).attr('value'));
+		}
 	})//탭 내용 보기 end
 	
 	//탭 닫기
 	$("body").on("click",".main_tab_close",function(){
+		var tab_id = "tab_"+$(this).attr('value');
 
+		$("#"+tab_id).hide('fast',function(){
+			$("#"+tab_id).remove();
+		});
 		$("#content_"+$(this).attr('value')).remove();
-		$("#tab_"+$(this).attr('value')).remove();
+		
 		var id = $("#main_content_page").children('div:first').attr("value");
 		var val = $("#tab_bar").children('div:first').attr("value");
 		if(val != null){
-			bbs_type_val(val);
+			Bbs_Type_Val(val);
 		}
 		
 		View_Tab_Content(id);
@@ -65,22 +75,22 @@ $(document).ready(function(){
 })//ready end
 
 //게시판 타입 기억
-function bbs_type(obj){
+function Bbs_Type(obj){
 	var id = $(obj).attr('id').split("_");
 	
 	if(id[1] == 0){
 		//console.log(id);
 		switch (id[2]) {
 		case "0":
-			bbstype_setsession(id[2]);
+			Bbstype_Setsession(id[2]);
 			//console.log("공지이 클릭되다!");
 			break;
 		case "1":
-			bbstype_setsession(id[2]);
+			Bbstype_Setsession(id[2]);
 			//console.log("사내이 클릭되다!");
 			break;
 		case "2":
-			bbstype_setsession(id[2]);
+			Bbstype_Setsession(id[2]);
 			//console.log("통합이 클릭되다!");
 			break;
 		}
@@ -88,22 +98,22 @@ function bbs_type(obj){
 }
 
 //게시판 타입 기억2
-function bbs_type_val(val){
+function Bbs_Type_Val(val){
 	var id = val.split("_");
 	
 	if(id[1] == 0){
 		//console.log(id);
 		switch (id[2]) {
 		case "0":
-			bbstype_setsession(id[2]);
+			Bbstype_Setsession(id[2]);
 			//console.log("공지이 클릭되다!");
 			break;
 		case "1":
-			bbstype_setsession(id[2]);
+			Bbstype_Setsession(id[2]);
 			//console.log("사내이 클릭되다!");
 			break;
 		case "2":
-			bbstype_setsession(id[2]);
+			Bbstype_Setsession(id[2]);
 			//console.log("통합이 클릭되다!");
 			break;
 		}
@@ -111,7 +121,7 @@ function bbs_type_val(val){
 }
 
 //게시판 타입 세션에 기록
-function bbstype_setsession(num){
+function Bbstype_Setsession(num){
 	//console.log(num+"이 들어왔다");
 	var params = "type="+num
 	$.ajax({
@@ -151,6 +161,9 @@ function Add_Tab(obj){
 	$("#main_content_page").append(html);
 	html = "";
 	
+	$("#"+tab_id).css('display','none');
+	$("#"+tab_id).show("fast");
+	
 	$("#content_"+val[0]).load(val[0]);
 	
 	View_Tab_Content(val[0]);
@@ -160,8 +173,8 @@ function Add_Tab(obj){
 function View_Tab_Content(id){
 	$(".pages").css('display','none');
 	$(".main_tab_close").css('display','none');
-	$("#content_"+id).css('display','block');
-	$("#tab-close_"+id).css('display','block');
+	$("#content_"+id).fadeIn('fast');
+	$("#tab-close_"+id).fadeIn('slow');
 }
 
 

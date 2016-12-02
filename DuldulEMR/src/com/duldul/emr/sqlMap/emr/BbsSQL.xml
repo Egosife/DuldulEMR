@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bbs">
+	<select id="getBbs" 
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+	SELECT POST_NUM,TITLE,WRITER,REPORTING,VIEWS
+	FROM ((SELECT ROW_NUMBER() OVER(ORDER BY POST_NUM DESC)AS RNUM,POST_NUM,TITLE,WRITER,TO_CHAR(REPORTING, 'YYYY-MM-DD') AS REPORTING,VIEWS
+      FROM POST
+      WHERE 1=1 AND SEG_CODE = #gbn#
+    <isNotEmpty property="searchText">
+			AND TITLE LIKE '%' || #searchText# || '%'
+	</isNotEmpty>
+    	)A)
+      	WHERE A.RNUM BETWEEN #start# AND #end#
+	</select>
+	<!-- 검색 및 글번호 순서대로 나오는 -->
+	
+		<select id="getBbsCount" 
+			parameterClass= "java.util.HashMap"
+			resultClass = "Integer">
+		SELECT COUNT(*) AS CNT
+		FROM POST
+		WHERE 1 = 1 AND SEG_CODE = #gbn#
+		<isNotEmpty property="searchText">
+			AND TITLE LIKE '%' || #searchText# || '%'
+		</isNotEmpty>
+	</select>
+	
+	<select id="getBbsCon" 
+			parameterClass="java.util.HashMap" 
+			resultClass="java.util.HashMap">
+		    SELECT P.SERIAL_NUM, P.TITLE, F.FILE_NAME,P.WRITER, P.REPORTING,P.CONTENT
+    		FROM POST P LEFT OUTER JOIN FILEUPLOAD F
+                             ON P.SERIAL_NUM = F.SERIAL_NUM
+    		WHERE P.SERIAL_NUM = #POST_NUM#	
+	</select>
+	
+	<insert id="insertTest"
+			parameterClass="java.util.HashMap">
+		INSERT INTO POST(TITLE,CONTENT,WRITER)
+		VALUES(POST_SEQ.NEXTVAL, #textCon#, #textFile#)
+	</insert>
+	
+</sqlMap>

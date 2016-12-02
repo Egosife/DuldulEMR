@@ -5,33 +5,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/rest.css" />
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
  <!-- script 영역 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script>
-$(function() {
-$( "#datepicker1" ).datepicker({
-dateFormat: 'yy-mm-dd'
-});
-});
-$(function() {
-	$( "#datepicker2" ).datepicker({
-	dateFormat: 'yy-mm-dd'
+$(document).ready(function(){
+	$.datepicker.setDefaults({
+		monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		showMonthAfterYear:true,
+		showOn: 'button',
+		closeText: '닫기',
+		buttonImage: 'resources/images/calender.png',
+		buttonImageOnly: true,
+		dateFormat: 'yy/mm/dd'    
+	}); 
+	
+	$("#datepicker1").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+		}
 	});
+	$("#datepicker2").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+		}
 	});
+});
 </script>
 
 </head>
 <body>
 <div class="wrap">
    <div class="header">
-   		<h1>기본정보</h1>
+   		<b>기본정보</b>
    </div>
 
    <div class="content">
@@ -49,7 +64,7 @@ $(function() {
 	</div>
 
    <div class="rest_header">
-   		<h1>휴진신청</h1>
+   		<b>휴진신청</b>
    </div>
    <div class="rest_page" >
    		<p>시작 <input type="text" id="datepicker1"></p> 

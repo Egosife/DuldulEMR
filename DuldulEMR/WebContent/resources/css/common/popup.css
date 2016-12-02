@@ -14,13 +14,13 @@ body {
 
 .popup_div {
 	display: inline-block;
-	width: 300px;
-	height: 250px;
+	width: 1000px;
+	height: 600px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-top: -125px;
-	margin-left: -150px;
+	margin-top: -300px;
+	margin-left: -500px;
 	background-color: #FFFFFF;
 	border: 2px solid #992299;
 	z-index: 1000;
@@ -28,7 +28,7 @@ body {
 
 .popup_title {
 	line-height:40px;
-	height: 40px;
+	height: 12%;
 	background-color: #992299;
 }
 
@@ -36,21 +36,24 @@ body {
 	padding-left: 5px;
 	color: #FFFFFF;
 	vertical-align: middle;
+	font-size: 15pt;
 	font-weight: bold;
 }
 
 .popup_contents {
-	height: 206px;
+	height: 88%;
 }
 .popup_text {
-	height: 156px;
+	height: 85%;
 	text-align: center;
 	white-space: pre-line;
 	overflow-y: auto;
+	font-size: 10pt;
 	padding: 5px;
 }
 .popup_btn {
-	height: 30px;
+	height: calc(15% - 20px);
+	padding-top: 20px;
 	text-align: center;
 }
 

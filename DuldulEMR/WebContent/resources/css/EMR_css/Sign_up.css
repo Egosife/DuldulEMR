@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 /* 2016-11-23 이관우 개발 
+		   28  최종 수정
 	환자등록 페이지(기본 레이아웃 디자인 제작) */
 	
  body { /* 기본셋팅 */
@@ -7,18 +8,18 @@
 	font-size: 0pt;
  }
  
- table {
+ table { /* 테이블 */
 	width: 90%;
 	height: 100%;
 	margin: 0 auto;
 }
  
- div {
+ div { /* div셋팅 */
 	vertical-align: top;
 	overflow: hidden;
  }
  
- .textbox_s {
+ .textbox_s { /* 텍스트 박스 - s */
  	width: 100%;
  	height: 100%;
  	font-size: 20pt;
@@ -148,7 +149,7 @@
  	background-color: #FFFFFF;
  }
  
- .name_S {
+ .name_S { /* 추가정보입력 글자크기 */
  	font-size: 25pt;
  }
  

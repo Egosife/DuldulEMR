@@ -7,46 +7,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/notice.css" />
- 
- 
- <!-- script 영역 -->
+
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	refreshList();
 	$("#searchBtn").on("click",function(){
-	
 		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
 		refreshList();
 	});
 	
-	//1107
+	
 	$("#insertBtn").on("click", function(){
-		$("#actionForm").attr("action","test7");
+		$("#actionForm").attr("action","bbs_write");
 		$("#actionForm").submit();		
 	});
-	//
-	
-	
+
 	$("#page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
 		refreshList();
 	});
 	
 	$("#tb").on("click","tr",function(){
-		$("input[name='testNo']").val($(this).attr("name"));
-		$("#actionForm").attr("action","test5");
+		$("input[name='POST_NUM']").val($(this).attr("name"));
+		$("#actionForm").attr("action","bbs_detail");
 		$("#actionForm").submit();
 		
 	});
 });
 
 
-//1101
+
 function refreshList(){
-	var params = $("#actionForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
+	var params = $("#actionForm").serialize();
 		
 		$.ajax({
 			type : "post",
@@ -57,12 +53,16 @@ function refreshList(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].TEST_NO + "'>";
-					html += "<td>" + result.list[i].TEST_NO + "</td>";
-					html += "<td>" + result.list[i].TEST_CON + "</td>";
+					html += "<tr name='" + result.list[i].POST_NUM + "'>";
+					html += "<td>" + result.list[i].POST_NUM + "</td>";
+					html += "<td>" + result.list[i].TITLE + "</td>";
+					html += "<td>" + result.list[i].WRITER + "</td>";
+					html += "<td>" + result.list[i].REPORTING + "</td>";
+					html += "<td>" + result.list[i].VIEWS + "</td>";
 					html += "</tr>";
 				}
 				$("#tb").html(html);
+				
 				//페이지 그리는 단계
 				
 				html = "";
@@ -103,6 +103,7 @@ function refreshList(){
 </head>
 <body>
 <form action="#" method="post" id="actionForm">
+<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
 			<input type="hidden" name="page" value="1"/>
@@ -112,11 +113,11 @@ function refreshList(){
 		</c:otherwise>
 	</c:choose>
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
-	<input type="hidden" name="testNo"/>
+	<input type="hidden" name="POST_NUM"/>
 </form>
 <div class="wrap">
    <div class="header">
-   		<h1>공지사항</h1>
+   		<b>공지사항</b>
    </div>
 
    <div class="content">
@@ -140,18 +141,15 @@ function refreshList(){
    		<input type="button" value="글 쓰기" class="insert_Btn" id="insertBtn" />
    </div>
    <div class="page_num" id="page_num"></div>
-   <div class="search">
+  <div class="search">
    	<center>
    		   <select name="keyField">
-                <option value="0"> ----선택----</option>
-                <option value="title_content">제목+내용</option>
                 <option value="title">제목</option>
-        
             </select>
    		<input type="text" id="searchText" value="${param.searchText}"/>
 		<input type="button" value="검색" id="searchBtn"/>
 	</center>
-	</div>
+</div>
  
 </div>
 
