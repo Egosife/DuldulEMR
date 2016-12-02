@@ -32,7 +32,6 @@ $(document).ready(function(){
 	
 	$("#pagingP").on("click", "span", function(){ //환자표에서 환자를 눌렀을시
 		$("input[name='Pat_page']").val($(this).attr("name"));
-		console.log($(this).attr("name"));
 		
 		patient_list();
 	});
@@ -44,7 +43,9 @@ $(document).ready(function(){
 	});
 	
 	$("#Patlist_Btn").on("click", function(){ //목록보기
-		$("#act").submit();
+		$("input[name='search_Text1']").val("");
+		$("input[name='Pat_page']").val("1");
+		patient_list();
 	});
 });
 
