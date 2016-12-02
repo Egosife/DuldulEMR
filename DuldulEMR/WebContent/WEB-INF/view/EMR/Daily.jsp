@@ -33,7 +33,9 @@
 	</div><hr>
 	<div class="bottom"> <!-- 레이아웃 하단 -->
 		<div class="bottom_top"> <!-- 레이아웃 하단 - 상단 -->
-			<div class="btn">글쓰기</div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
+			<div class="btn">
+				<input type="button" value="글쓰기" id="btn_btn"> <!-- 레이아웃 하단 - 글쓰기 버튼 크기  -->
+			</div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
 		</div>
 		<div class="bottom_bt"> <!-- 레이아웃 하단 - 하단 -->
 			<div class="paging">이전 1 2 3 4 5 다음</div> <!-- 레이아웃 하단 - 페이징 -->

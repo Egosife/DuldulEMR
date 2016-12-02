@@ -21,6 +21,6 @@
 	<sqlMap resource="/com/duldul/emr/sqlMap/emr/BbsSQL.xml" />
 	<!-- Patient_SQL 이관우 -->
 	<sqlMap resource="/com/duldul/emr/sqlMap/p_SQL/Patient_SQL.xml" />
-	
+
 </sqlMapConfig>
  

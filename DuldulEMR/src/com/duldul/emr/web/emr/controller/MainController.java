@@ -59,57 +59,26 @@ public class MainController {
 		return modelAndView;
 	}//메인화면 로그아웃 버튼 end
 	
-	
-	
-	
-	
-	
-	
-	//윤희상  사내게시판 연결 start
-	@RequestMapping(value="/bbs")
-	public ModelAndView bbs1122(HttpServletRequest request,
-			ModelAndView modelAndView) {
+	//게시판 타입 확인
+	@RequestMapping(value="/BbsCheckAjax")
+	public @ResponseBody ResponseEntity<String> BbsCheckAjax(HttpServletRequest request,
+			   @RequestParam HashMap<String, String> params,
+			HttpSession session,
+			ModelAndView modelAndView) throws Throwable{
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
 		
+		HashMap<String, String> type = params;
+		session.setAttribute("sBbs_Type", type.get("type"));
 		
-		modelAndView.setViewName("EMR/bbs");
+		System.out.println("여기다!!!!!!!!!!!!!!!!!===>>"+type.get("type"));
 		
-		return modelAndView;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
 	}
-	//윤희상  사내게시판 연결 end
 	
-	//윤희상  공지사항 연결 start
-		@RequestMapping(value="/notice")
-		public ModelAndView notice(HttpServletRequest request,
-				ModelAndView modelAndView) {
-			
-			
-			modelAndView.setViewName("EMR/notice");
-			
-			return modelAndView;
-		}
-		//윤희상  공지사항 연결 end
-		
-		//윤희상  공지사항 연결 start
-		@RequestMapping(value="/bbs_write")
-		public ModelAndView bbs_write(HttpServletRequest request,
-				ModelAndView modelAndView) {
-			
-			
-			modelAndView.setViewName("EMR/bbs_write");
-			
-			return modelAndView;
-		}
-		//윤희상  공지사항 연결 end
-		
-		//윤희상 휴진신청 연결 start
-				@RequestMapping(value="/rest")
-				public ModelAndView rest(HttpServletRequest request,
-						ModelAndView modelAndView) {
-					
-					
-					modelAndView.setViewName("EMR/rest");
-					
-					return modelAndView;
-				}
-				//윤희상 휴진신청 연결 end
 }

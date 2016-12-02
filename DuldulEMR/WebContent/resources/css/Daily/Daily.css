@@ -5,13 +5,13 @@
 .main{
 	width: 100%;
 	height: 900px;
-	background-color: aqua;
+	background-color: white;
 }
 /* 레이아웃 상단 */
 .top{
 	width: 100%;
 	height: 20%;
-	background-color: orange;
+	background-color: #F6F6F6;
 }
 /* 레이아웃 상단 - 기본 정보 */
 .b_information{
@@ -19,7 +19,7 @@
 	height: 20%;
 	margin: 0 auto;
 	font-size: 14pt;
-	background-color: yellow;
+	background-color: #DDDDDD;
 }
 /* 테이블 셋팅 */
 table{
@@ -27,12 +27,13 @@ table{
 	text-align: center;
 	font-size: 10pt;
 	margin: 0 auto;
+	background-color: white;
 }
 /* 레이아웃 중단 */
 .middle{
 	width: 100%;
 	height: 60%;
-	background-color: lime;
+	background-color: #F6F6F6;
 }
 /* 레이아웃 중단 - 업무 일지 */
 .report{
@@ -40,35 +41,40 @@ table{
 	height: 7%;
 	margin: 0 auto;
 	font-size: 14pt;
-	background-color: yellow;
+	background-color: #DDDDDD;
 }
 /* 레이아웃 하단 */
 .bottom{
 	width: 100%;
 	height: 20%;
 	text-align: right;
-	background-color: silver;
 }
 /* 레이아웃 하단 - 상단 */
 .bottom_top{
 	width: 100%;
 	height: 50%;
-	background-color: gray;
+	background-color: white;
 }
 /* 레이아웃 하단 - 글쓰기 버튼 */
 .btn{
 	display: inline-block;
-	width: 5%;
-	height: 30%;
+	width: 10%;
+	height: 35%;
 	text-align: center;
 	font-size: 10pt;
-	background-color: lime;
+	margin-top: 10px;
+}
+/* 레이아웃 하단 - 글쓰기 버튼 크기 */
+#btn_btn{
+	width: 60px;
+	height: 30px;
+	margin: 0 auto;
 }
 /* 레이아웃 하단 - 하단 */
 .bottom_bt{
 	width: 100%;
 	height: 50%;
-	background-color: aqua;
+	background-color: white;
 }
 /* 레이아웃 하단 - 페이징 */
 .paging{
@@ -77,5 +83,5 @@ table{
 	text-align: center;
 	margin: 0 auto;
 	font-size: 10pt;
-	background-color: olive;
+	background-color: white;
 }

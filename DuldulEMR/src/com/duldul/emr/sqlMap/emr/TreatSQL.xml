@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Treat">
+	<select id="getPatient"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT ROWNUM AS NO, P.PATIENT_NUM, P.PATIENT_NAME, P.PHONE1, P.PHONE2, P.ADDRESS, M.CODE_NAME_BLOOD AS BLOOD
+		FROM PATIENT P LEFT OUTER JOIN (SELECT M.PATIENT_NUM, C.CODE_NAME AS CODE_NAME_BLOOD
+        		                        FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '3') C
+                		                                              ON M.BLOOD = C.SMALL) M
+                        		  ON P.PATIENT_NUM = M.PATIENT_NUM	
+		WHERE 1 = 1	
+		<isNotEmpty property ="pop_serachText">
+		AND
+		P.PATIENT_NUM LIKE '%' || #pop_serachText# || '%' OR P.PATIENT_NAME LIKE '%' || #pop_serachText# || '%'
+		</isNotEmpty>
+	</select>
+</sqlMap>
