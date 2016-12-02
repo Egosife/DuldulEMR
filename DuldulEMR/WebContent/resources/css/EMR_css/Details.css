@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
-/* 2016-11-24 이관우 개발 
+/* 2016-11-24 이관우 개발
+		   28  최종 수정
 	환자 상세조회 페이지(기본 레이아웃 디자인 제작) */
  
  body { /* 기본셋팅 */
@@ -7,19 +8,19 @@
 	font-size: 0pt;
  }
  
- div {
+ div { /* div셋팅 */
 	vertical-align: top;
 	overflow: hidden;
  }
  
- table {
+ table { /* 테이블 */
  	width: 90%;
  	height: 100%;
  	margin: 0 auto;
  	font-size: 16pt;
  }
  
- .textbox_d {
+ .textbox_d { /* 텍스트 박스 */
  	width: 100%;
  	height: 100%;
  	font-size: 20pt;
@@ -57,7 +58,7 @@
  	background-color: #8C8C8C;
  }
  
- .Det_top_l { /* 상세조회 상단 이미지바탕 */
+ .Det_top_l { /* 상세조회 상단 이미지 바탕 */
  	display: inline-block;
  	width: 20%;
  	height: 100%;
@@ -112,7 +113,7 @@
  	background-color: #D5D5D5;
  }
  
- #jin {
+ #jin { /* 진료버튼 */
  	display: inline-block;
  	width: 60px;
  	height: 40px;

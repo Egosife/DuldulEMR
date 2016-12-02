@@ -4,4 +4,55 @@
 <!-- xml은 민감하기 때문에 오타가 났을경우 돌아가지 않는다 -->
 <sqlMap namespace="Patient_Data">
 
+	<select id="pat_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT NO, PATIENT_NUM, PATIENT_NAME, BIRTH, PHONE1, ADDRESS, BLOOD
+		FROM (
+		SELECT ROW_NUMBER() OVER(ORDER BY P.PATIENT_NUM ASC) AS NO, P.PATIENT_NUM, PATIENT_NAME, TO_CHAR(BIRTH) AS BIRTH, PHONE1, ADDRESS, M.BLOOD
+		FROM PATIENT P LEFT OUTER JOIN PATIENTMORE M
+		ON P.PATIENT_NUM = M.PATIENT_NUM
+		WHERE 1 = 1
+		<isNotEmpty property="search_Text1">
+			<isEqual property="sel_b" compareValue="PATIENT_NUM">
+				AND P.PATIENT_NUM LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="PATIENT_NAME">
+				AND P.PATIENT_NAME LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="BIRTH">
+				AND P.BIRTH LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="PHONE1">
+				AND P.PHONE1 LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="ADDRESS">
+				AND P.ADDRESS LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+		</isNotEmpty>
+		) A
+		WHERE NO BETWEEN #start# AND #end#
+	</select> <!-- 데이터 쿼리 -->
+	
+	<select id="Pat_Count" parameterClass="java.util.HashMap" resultClass="Integer">
+		SELECT COUNT(PATIENT_NUM) AS CNT
+		FROM PATIENT
+		WHERE 1 = 1
+		<isNotEmpty property="search_Text1">
+			<isEqual property="sel_b" compareValue="PATIENT_NUM">
+				AND PATIENT_NUM LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="PATIENT_NAME">
+				AND PATIENT_NAME LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="BIRTH">
+				AND BIRTH LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="PHONE1">
+				AND PHONE1 LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+			<isEqual property="sel_b" compareValue="ADDRESS">
+				AND ADDRESS LIKE '%' || #search_Text1# || '%'
+			</isEqual>
+		</isNotEmpty>
+	</select> <!-- 카운터 쿼리 -->
+
 </sqlMap>

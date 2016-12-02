@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 /* 2016-11-24 이관우 개발
+		   28  최종 수정
 	직원 정보 조회 페이지(기본 레이아웃 디자인 제작) */
  
  body { /* 기본셋팅 */
@@ -7,7 +8,7 @@
 	font-size: 0pt;
  }
  
- div {
+ div { /* div 셋팅 */
 	vertical-align: top;
  }
  
@@ -108,6 +109,6 @@
  	vertical-align: top;
  }
   
- #Eselect_box, #Esearch_Text1, #Esearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색 */
+ #Eselect_box, #Esearch_Text1, #Esearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색버튼 간격 */
  	margin-top: 30px;
  }
