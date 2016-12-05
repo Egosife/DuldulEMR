@@ -83,6 +83,31 @@ public class Patient_Controller { //2016-11-30 이관우 컨트롤러 작성
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = "/EMP_list") //직원리스트 Emp_page(ajax)
+	public @ResponseBody ResponseEntity<String> EMP_list(HttpServletRequest request,
+			@RequestParam HashMap<String, String> parang,
+			ModelAndView modelAndView) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(parang.get("Emp_page")),
+				Patient_iService.EMP_Count(parang));
+		
+		parang.put("start", Integer.toString(pb.getStartCount()));
+		parang.put("end", Integer.toString(pb.getEndCount()));
+		
+		ArrayList<HashMap<String, String>> list = Patient_iService.EMP_DataList(parang);
+		
+		modelMap.put("list", list);
+		modelMap.put("pb", pb);
+		
+		HttpHeaders resposeHeaders = new HttpHeaders();
+		resposeHeaders.add("Content-Type", "text/json; charset=UTF-8");
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				resposeHeaders, HttpStatus.CREATED);
+	}
+	
 	@RequestMapping(value = "/set") //환자 일정조회
 	public ModelAndView EMR_set(HttpServletRequest request, ModelAndView modelAndView) {
 		modelAndView.setViewName("EMR/Patient_set");

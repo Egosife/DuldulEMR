@@ -22,7 +22,7 @@
 	<!-- Patient_SQL 이관우 -->
 	<sqlMap resource="/com/duldul/emr/sqlMap/p_SQL/Patient_SQL.xml" />
 	<!-- AjaxBoard쿼리 -->
-	<sqlMap resource="/com/duldul/emr/sqlMap/daily/dailySQL.xml" />
+	<!-- <sqlMap resource="/com/duldul/emr/sqlMap/daily/dailySQL.xml" /> -->
 
 </sqlMapConfig>
  

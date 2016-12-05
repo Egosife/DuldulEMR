@@ -4,55 +4,119 @@
 <!-- xml은 민감하기 때문에 오타가 났을경우 돌아가지 않는다 -->
 <sqlMap namespace="Patient_Data">
 
+<!-- 2016-12-01 환자조회 데이터, 카운터 쿼리 추가
+			 02  직원조회 데이터, 카운터 쿼리 추가 -->
+			 
 	<select id="pat_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-		SELECT NO, PATIENT_NUM, PATIENT_NAME, BIRTH, PHONE1, ADDRESS, BLOOD
-		FROM (
-		SELECT ROW_NUMBER() OVER(ORDER BY P.PATIENT_NUM ASC) AS NO, P.PATIENT_NUM, PATIENT_NAME, TO_CHAR(BIRTH) AS BIRTH, PHONE1, ADDRESS, M.BLOOD
-		FROM PATIENT P LEFT OUTER JOIN PATIENTMORE M
-		ON P.PATIENT_NUM = M.PATIENT_NUM
+		SELECT A.NO, A.PATIENT_NUM, A.PATIENT_NAME, A.BIRTH, A.PHONE1, A.ADDRESS, A.BLOOD
+		FROM 
+		(
+		SELECT ROW_NUMBER() OVER(ORDER BY A.PATIENT_NUM ASC) AS NO, P.PATIENT_NUM, P.PATIENT_NAME, TO_CHAR(BIRTH, 'YYYY-MM-DD') AS BIRTH, PHONE1, ADDRESS, CODE_NAME AS BLOOD
+		FROM PATIENT P LEFT OUTER JOIN (SELECT M.PATIENT_NUM, C.CODE_NAME
+		FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '3') C
+		ON M.BLOOD = C.SMALL) A
+		ON P.PATIENT_NUM = A.PATIENT_NUM
 		WHERE 1 = 1
 		<isNotEmpty property="search_Text1">
-			<isEqual property="sel_b" compareValue="PATIENT_NUM">
+			<isEqual property="selP_b" compareValue="PATIENT_NUM">
 				AND P.PATIENT_NUM LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="PATIENT_NAME">
+			<isEqual property="selP_b" compareValue="PATIENT_NAME">
 				AND P.PATIENT_NAME LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="BIRTH">
+			<isEqual property="selP_b" compareValue="BIRTH">
 				AND P.BIRTH LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="PHONE1">
+			<isEqual property="selP_b" compareValue="PHONE1">
 				AND P.PHONE1 LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="ADDRESS">
+			<isEqual property="selP_b" compareValue="ADDRESS">
 				AND P.ADDRESS LIKE '%' || #search_Text1# || '%'
 			</isEqual>
 		</isNotEmpty>
 		) A
 		WHERE NO BETWEEN #start# AND #end#
-	</select> <!-- 데이터 쿼리 -->
+	</select> <!-- 환자조회 데이터 쿼리 -->
 	
 	<select id="Pat_Count" parameterClass="java.util.HashMap" resultClass="Integer">
 		SELECT COUNT(PATIENT_NUM) AS CNT
 		FROM PATIENT
 		WHERE 1 = 1
 		<isNotEmpty property="search_Text1">
-			<isEqual property="sel_b" compareValue="PATIENT_NUM">
+			<isEqual property="selP_b" compareValue="PATIENT_NUM">
 				AND PATIENT_NUM LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="PATIENT_NAME">
+			<isEqual property="selP_b" compareValue="PATIENT_NAME">
 				AND PATIENT_NAME LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="BIRTH">
+			<isEqual property="selP_b" compareValue="BIRTH">
 				AND BIRTH LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="PHONE1">
+			<isEqual property="selP_b" compareValue="PHONE1">
 				AND PHONE1 LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-			<isEqual property="sel_b" compareValue="ADDRESS">
+			<isEqual property="selP_b" compareValue="ADDRESS">
 				AND ADDRESS LIKE '%' || #search_Text1# || '%'
 			</isEqual>
 		</isNotEmpty>
-	</select> <!-- 카운터 쿼리 -->
-
+	</select> <!-- 환자조회 카운터 쿼리 -->
+	
+	<select id="Emp_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT NO, EMP_NUM, EMP_NAME, POSITION_CODE, OFFICE_CODE, EMAIL, PHONE
+		FROM (
+		SELECT ROW_NUMBER() OVER(ORDER BY EMP_NUM ASC) AS NO, EMP_NUM, EMP_NAME, B.CODE_NAME AS POSITION_CODE, C.CODE_NAME AS OFFICE_CODE, EMAIL, PHONE, E.HOSPITAL_CODE
+		FROM EMP E LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '9') C
+		ON E.OFFICE_CODE = C.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '8') B
+		ON E.POSITION_CODE = B.SMALL
+		WHERE 1 = 1
+		AND E.HOSPITAL_CODE = #sHospital_Code#
+		<isNotEmpty property="Esearch_Text1">
+			<isEqual property="selE_b" compareValue="EMP_NUM">
+				AND E.EMP_NUM LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="EMP_NAME">
+				AND E.EMP_NAME LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="POSITION_CODE">
+				AND B.CODE_NAME LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="OFFICE_CODE">
+				AND C.CODE_NAME LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="PHONE">
+				AND E.PHONE LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+		</isNotEmpty>
+		) A
+		WHERE NO BETWEEN #start# AND #end#
+	</select> <!-- 직원조회 데이터 쿼리 -->
+	
+	<select id="Emp_Count" parameterClass="java.util.HashMap" resultClass="Integer">
+		SELECT COUNT(EMP_NUM) AS CNT
+		FROM EMP E LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '9') C
+		ON E.OFFICE_CODE = C.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '8') B
+		ON E.POSITION_CODE = B.SMALL
+		WHERE 1 = 1
+		AND E.HOSPITAL_CODE = #sHospital_Code#
+		<isNotEmpty property="Esearch_Text1">
+			<isEqual property="selE_b" compareValue="EMP_NUM">
+				AND EMP_NUM LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="EMP_NAME">
+				AND EMP_NAME LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="POSITION_CODE">
+				AND B.CODE_NAME LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="OFFICE_CODE">
+				AND C.CODE_NAME LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+			<isEqual property="selE_b" compareValue="PHONE">
+				AND PHONE LIKE '%' || #Esearch_Text1# || '%'
+			</isEqual>
+		</isNotEmpty>
+	</select> <!-- 환자조회 카운터 쿼리 -->
+	
 </sqlMap>
