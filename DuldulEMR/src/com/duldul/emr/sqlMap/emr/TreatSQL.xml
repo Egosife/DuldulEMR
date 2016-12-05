@@ -17,4 +17,43 @@
 		P.PATIENT_NUM LIKE '%' || #pop_serachText# || '%' OR P.PATIENT_NAME LIKE '%' || #pop_serachText# || '%'
 		</isNotEmpty>
 	</select>
+	<select id="getPatient_info"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT P.PATIENT_NUM, P.PATIENT_NAME, TO_CHAR(P.BIRTH,'YYYY/MM/DD') AS BIRTH,
+		       SUBSTR(PHONE1,1,3) AS PHONE11,SUBSTR(PHONE1,4,4) AS PHONE12,SUBSTR(PHONE1,8) AS PHONE13,
+		       SUBSTR(PHONE2,1,3) AS PHONE21,SUBSTR(PHONE2,4,4) AS PHONE22,SUBSTR(PHONE2,8) AS PHONE23,
+		       P.ADDRESS, D.HEI||' cm' AS HEI, D.WEI||' kg' AS WEI, '좌:'||D.LEFT_EYE||', 우:'||D.RIGHT_EYE AS EYE, D.HANDICAP, D.DISEASE,
+		       D.BLOOD, D.SMORK, D.MARRI
+		FROM PATIENT P LEFT OUTER JOIN (SELECT M.PATIENT_NUM, M.LEFT_EYE, M.RIGHT_EYE, M.HEI, M.WEI, M.HANDICAP, M.DISEASE,
+		                                       C.CODE_NAME AS BLOOD, O.CODE_NAME AS SMORK, G.SMALL AS MARRI
+		                                FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '3') C
+		                                                              ON M.BLOOD = C.SMALL
+		                                                   LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '7') O
+		                                                              ON M.DRINKING = O.SMALL
+		                                                   LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '5') G
+		                                                              ON M.MARRIAGE = G.SMALL) D
+		                          ON P.PATIENT_NUM = D.PATIENT_NUM
+		WHERE P.PATIENT_NUM = #patinum#
+	</select>
+	
+	<select id="getTreatSEQ"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT TREAT_NUMBER_SEQ.NEXTVAL AS TREATSEQ
+		FROM DUAL
+	</select>
+	
+	<insert id="treat_commit"
+			parameterClass="java.util.HashMap">
+		INSERT INTO TREATINFO
+		(TREAT_NUM,HOSPITAL_CODE,PATIENT_NUM,EMP_NUM,SORT_TYPE,CONDITION,OFFICE,ETC)
+		VALUES(#TREATSEQ#, #hos_code#, #pati_num#, #emp_num#, #treat_type#, 0, #treatsort_type#, #etcdata#)
+	</insert>
+	<insert id="treat_commit_time"
+			parameterClass="java.util.HashMap">
+		INSERT INTO TIME(TREAT_NUM, TAKE_DATE, TAKE_TIME)
+		VALUES(#TREATSEQ#,SYSDATE,SYSDATE)
+		<!-- VALUES(TREAT_NUMBER_SEQ.CURRVAL,TO_CHAR(SYSDATE,'YYYY-MM-DD'),TO_CHAR(SYSDATE,'HH24:MI')) -->
+	</insert>
 </sqlMap>

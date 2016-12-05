@@ -257,4 +257,11 @@ function Interval_Time(){
 	interDate += "<br/>";
 	interDate += day+"요일 "+date.getHours()+" : "+Minutes;
 	$("#nowtime").html(interDate);
+	
+	//세션 유지 체크
+	var session_check = $("#Activated_Session_Check").serialize();
+	if(session_check.Activated_Session = null){
+		alert("오랫동안 사용하지 않아 접속이 종료되었습니다.");
+		location.href = "Logon";
+	}
 }

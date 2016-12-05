@@ -68,4 +68,58 @@ public class TreatmentController {
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 				responseHeaders, HttpStatus.CREATED);
 	}
+
+	//환자 선택
+	@RequestMapping(value="/treat_patientselect")
+	public @ResponseBody ResponseEntity<String> treat_patientselect(HttpServletRequest request,
+																	@RequestParam HashMap<String, String> params,
+																	HttpSession session,
+																	ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		HashMap<String, String> pati_info = iTreatmentService.getPatient_info(params);
+		modelMap.put("pati_info", pati_info);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+	
+	//환자 접수
+	@RequestMapping(value="/Treatment_commit")
+	public @ResponseBody ResponseEntity<String> Treatment_commit(HttpServletRequest request,
+																 @RequestParam HashMap<String, String> params,
+																 HttpSession session,
+															 	 ModelAndView modelAndView) throws Throwable{
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		HashMap<String, String> treatSEQ = iTreatmentService.getTreatSEQ();
+		
+		System.out.println(treatSEQ);
+
+		if(!treatSEQ.isEmpty()){
+			params.putAll(treatSEQ);
+			
+			String commit_treat = iTreatmentService.treat_commit(params);
+		
+			if(commit_treat == "true"){
+				String res = iTreatmentService.treat_commit_time(params);
+				modelMap.put("res", res);
+			}
+		}else{
+			modelMap.put("res", "fail");
+		}
+
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
 }

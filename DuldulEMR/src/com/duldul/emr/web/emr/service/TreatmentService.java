@@ -18,5 +18,25 @@ public class TreatmentService implements ITreatmentService {
 	public ArrayList<HashMap<String, String>> getPatient(HashMap<String, String> params) throws Throwable {
 		return iTreatmentDao.getPatient(params);
 	}
+
+	@Override
+	public HashMap<String, String> getPatient_info(HashMap<String, String> params) throws Throwable {
+		return iTreatmentDao.getPatient_info(params);
+	}
+
+	@Override
+	public String treat_commit(HashMap<String, String> params) throws Throwable {
+		return iTreatmentDao.treat_commit(params);
+	}
+
+	@Override
+	public String treat_commit_time(HashMap<String, String> params) throws Throwable {
+		return iTreatmentDao.treat_commit_time(params);
+	}
+
+	@Override
+	public HashMap<String, String> getTreatSEQ() throws Throwable {
+		return iTreatmentDao.getTreatSEQ();
+	}
 	
 }

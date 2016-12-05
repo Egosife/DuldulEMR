@@ -13,6 +13,11 @@
 <title>DuldulEMR</title>
 </head>
 <body>
+<!-- 로그인 상태 확인 -->
+<form action="#" id="Activated_Session_Check" method="post">
+<input type="hidden" name="Activated_Session" value="${sHospital_Code}">
+</form>
+<div class="page_loading" style="display: none;"></div>
 <div class='main_layout'>
 <!-- 계정정보 영역 -->
 	<div class="main_topbar">
