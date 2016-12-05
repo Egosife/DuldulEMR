@@ -17,6 +17,7 @@ $(document).ready(function(){
 	});
 	
 	$("#saveBtn").on("click", function(){
+
 		
 		var insertForm = $("#insertForm");
 		
@@ -75,6 +76,7 @@ function removePre(data){ //데이터가 들어옴
 	<input type="hidden" name="Hospital_code" value="${sHospital_Code}"/>
 	<input type="hidden" name="sEmp_Num" value="${sEmp_Num}"/>
 	<input type="hidden" name="sEmp_Name" value="${sEmp_Name}"/>
+	<input type="hidden" id="s" name="s" value=""/>
 </form>
 
 

@@ -58,6 +58,24 @@ public class BbsDao implements IBbsDao {
 			return res;
 		}
 
+		@Override
+		public int deleteTest(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return sqlMapClient.delete("Bbs.deleteTest",params);
+		}
+
+		@Override
+		public int updateTest(HashMap<String, String> params) throws Throwable {
+		
+			return sqlMapClient.update("Bbs.updateTest",params);
+		}
+
+		@Override
+		public int visit(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return sqlMapClient.update("Bbs.visit", params);
+		}
+
 		
 
 }

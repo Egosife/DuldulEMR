@@ -38,6 +38,24 @@ public class BbsService implements IBbsService{
 		return  iBbsDao.insertTest(params);
 	}
 
+	@Override
+	public int deleteTest(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.deleteTest(params);
+	}
+
+	@Override
+	public int updateTest(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.updateTest(params);
+	}
+
+	@Override
+	public int visit(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.visit(params);
+	}
+
 
 
 	

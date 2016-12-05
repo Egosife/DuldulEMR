@@ -5,14 +5,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/rest.css" />
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
  <!-- script 영역 -->
+<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -67,8 +68,8 @@ $(document).ready(function(){
    		<b>휴진신청</b>
    </div>
    <div class="rest_page" >
-   		<p>시작 <input type="text" id="datepicker1"></p> 
-   		<p>종료 <input type="text" id="datepicker2"></p> 
+   		<p>시작 <input type="text" id="datepicker1" readonly></p> 
+   		<p>종료 <input type="text" id="datepicker2" readonly></p> 
    </div>
    
    <div class="rest_reason" >

@@ -14,6 +14,7 @@
 
 //목록 버튼 클릭했을시
 $(document).ready(function(){
+	visit();
 		$("#listBtn").on("click", function(){
 			
 			$("#actionForm").attr("action","notice");
@@ -21,7 +22,7 @@ $(document).ready(function(){
 		});
 		
 		$("#changeBtn").on("click", function(){
-			$("#actionForm").attr("action","test10");
+			$("#actionForm").attr("action","bbs_detail_modify");
 			$("#actionForm").submit();			
 		});
 		
@@ -49,11 +50,29 @@ $(document).ready(function(){
 			
 		});
 	});
+	
+function visit() {
+	var params = $("#actionForm").serialize();
+	$.ajax({
+		type : "post",
+		url : "visit",
+		dataType : "json",
+		data : params,
+		success : function(result){
+			alert("조회수 증가 성공");
+         },
+         error : function(result) {
+          	alert("error!");
+         }
+	});
+}
 </script>
 </head>
 <body>
 <form action="#" id="actionForm"  method="post">
-
+	<input type="hidden" name="page" value="${param.page}"/>
+	<input type="hidden" name="searchText" value="${param.searchText}"/>
+	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 </form>
 
 

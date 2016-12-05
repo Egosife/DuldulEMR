@@ -61,6 +61,19 @@ public class BbsController {
 			return modelAndView;
 		}//사내게시판 페이지 연결 끝 
 		
+		//수정화면
+		@RequestMapping(value="/bbs_detail_modify")
+		public ModelAndView bbs_detail_modify(HttpServletRequest request,
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+
+			HashMap<String, String> con = iBbsService.getBbsCon(params);
+			//con은 컨텐츠의 약자
+			modelAndView.addObject("con",con);
+			modelAndView.setViewName("EMR/bbs_detail_modify");
+			
+			return modelAndView;//컨트롤러의 가장 기본적인 형태
+		}
 		
 		//글쓰기 페이지 연결
 		@RequestMapping(value="/bbs_write")
@@ -154,6 +167,8 @@ public class BbsController {
 			ObjectMapper mapper = new ObjectMapper();
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			
+			System.out.println(params);
+			
 			String res = iBbsService.insertTest(params);
 			
 			modelMap.put("res", res);
@@ -165,5 +180,65 @@ public class BbsController {
 					responseHeaders,HttpStatus.CREATED);
 			
 	}
-	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+		@RequestMapping(value="/deleteTest")
+		public @ResponseBody ResponseEntity<String> deleteTest(
+				HttpServletRequest request, 
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			int res = iBbsService.deleteTest(params);
+			//update가 int를 받을수있는지
+			modelMap.put("res", res);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+					responseHeaders,HttpStatus.CREATED);
+			
+	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		@RequestMapping(value="/updateTest")
+		public @ResponseBody ResponseEntity<String> updateTest(
+				HttpServletRequest request, 
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			int res = iBbsService.updateTest(params);
+			//update가 int를 받을수있는지
+			modelMap.put("res", res);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+					responseHeaders,HttpStatus.CREATED);
+		}
+		
+		@RequestMapping(value="/visit")
+		public @ResponseBody ResponseEntity<String> visit(
+				HttpServletRequest request, 
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			int res = iBbsService.visit(params);
+			//update가 int를 받을수있는지
+			modelMap.put("res", res);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+					responseHeaders,HttpStatus.CREATED);
+		}
 }

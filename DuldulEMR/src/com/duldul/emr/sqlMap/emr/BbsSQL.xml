@@ -32,7 +32,7 @@
 	<select id="getBbsCon" 
 			parameterClass="java.util.HashMap" 
 			resultClass="java.util.HashMap">
-		    SELECT P.SERIAL_NUM, P.TITLE, F.FILE_NAME,P.WRITER, P.REPORTING,P.CONTENT
+		    SELECT P.SERIAL_NUM, P.TITLE, F.FILE_NAME,P.WRITER, TO_CHAR(P.REPORTING, 'YYYY-MM-DD') AS REPORTING,P.CONTENT
     		FROM POST P LEFT OUTER JOIN FILEUPLOAD F
                              ON P.SERIAL_NUM = F.SERIAL_NUM
     		WHERE P.SERIAL_NUM = #POST_NUM#	
@@ -40,8 +40,29 @@
 	
 	<insert id="insertTest"
 			parameterClass="java.util.HashMap">
-		INSERT INTO POST(TITLE,CONTENT,WRITER)
-		VALUES(POST_SEQ.NEXTVAL, #textCon#, #textFile#)
+		INSERT INTO POST(SERIAL_NUM,EMP_NUM,HOSPITAL_CODE,SEG_CODE,POST_NUM,TITLE,CONTENT,REPORTING,WRITER)
+	<!-- 	VALUES (POSTING_NUMBER.NEXTVAL,9999990000,999999,0,41,'TEST','TEST TEST TEST',SYSDATE,'테스트관리자') -->
+		VALUES (POSTING_NUMBER.NEXTVAL,#Hospital_code#,#sEmp_Num#,#s#,#num#,#sEmp_Name#,#postTitle#,#postCon#,SYSDATE,)
 	</insert>
-	
+	<!-- 삭제 디비 -->
+	<delete id="deleteTest"
+			parameterClass="java.util.HashMap">
+		DELETE FROM POST
+		WHERE POST_NUM = #POST_NUM#
+	</delete>
+	<!-- 수정 디비 -->
+	<update  id="updateTest"
+			parameterClass="java.util.HashMap">
+		UPDATE POST SET WRITER = #writer#,
+						TITLE = #title#,
+						CONTENT = #content#,
+						FILE_NAME = #file#
+		WHERE POST_NUM = #POST_NUM#
+	</update>
+	<!-- 조회수 디비 -->
+	<update  id="visit"
+			parameterClass="java.util.HashMap">
+		UPDATE POST SET VIEWS = VIEWS + 1
+		WHERE SERIAL_NUM = #POST_NUM#
+	</update>
 </sqlMap>

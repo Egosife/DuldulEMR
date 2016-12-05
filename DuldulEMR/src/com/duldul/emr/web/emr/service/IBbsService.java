@@ -13,6 +13,12 @@ public interface IBbsService {
 
 	public String insertTest(HashMap<String, String> params)throws Throwable;
 
+	public int deleteTest(HashMap<String, String> params)throws Throwable;
+
+	public int updateTest(HashMap<String, String> params)throws Throwable;
+
+	public int visit(HashMap<String, String> params) throws Throwable;
+
 
 	
 }

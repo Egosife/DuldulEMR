@@ -22,6 +22,7 @@ $(document).ready(function(){
 	
 	
 	$("#insertBtn").on("click", function(){
+		$("#s").attr("value","${s}");
 		$("#actionForm").attr("action","bbs_write");
 		$("#actionForm").submit();		
 	});
@@ -37,6 +38,7 @@ $(document).ready(function(){
 		$("#actionForm").submit();
 		
 	});
+	
 });
 
 
@@ -121,7 +123,7 @@ function refreshList(){
    </div>
 
    <div class="content">
-		<table border="1" align="center">
+		<table border="1" align="center" >
 	<thead>
 		<tr>
 	        <th>번호</th>

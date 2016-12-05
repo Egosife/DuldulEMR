@@ -12,6 +12,12 @@ public interface IBbsDao {
 	HashMap<String, String> getBbsCon(HashMap<String, String> params)throws Throwable;
 
 	String insertTest(HashMap<String, String> params) throws Throwable;
+
+	int deleteTest(HashMap<String, String> params) throws Throwable;
+
+	int updateTest(HashMap<String, String> params) throws Throwable;
+
+	int visit(HashMap<String, String> params) throws Throwable;
 	
 
 
