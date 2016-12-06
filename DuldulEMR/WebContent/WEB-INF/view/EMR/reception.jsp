@@ -6,17 +6,53 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/main/reception.css" /> <!-- 레이아웃 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
-<!-- Popup CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/calendar/calendar.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
+<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
+<script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script type="text/javascript" src="resources/script/common/popup.js"></script>
 <script type="text/javascript" src="resources/script/treatment/treatment.js"></script>
-	
+<script type="text/javascript" src="resources/script/calendar/calendar.js"></script>
 <script type="text/javascript">
-
+$(document).ready(function(){
+	showCalendar(d.getFullYear(),(d.getMonth() + 1));
+});
 </script>
 
+<!-- calendar select script -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$.datepicker.setDefaults({
+		monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		showMonthAfterYear:true,
+		showOn: 'button',
+		closeText: '닫기',
+		buttonImage: 'resources/images/calender.png',
+		buttonImageOnly: true,
+		dateFormat: 'yy/mm/dd'    
+	}); 
+	
+	$("#date_start").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+			var startDate = parseInt($("#date_end").val().replace("-", '').replace("-", ''));
+			var endDate = parseInt(dateText.replace(/-/g,''));
+			
+            if (endDate > startDate) {
+            	alert("조회 기간은 과거로 설정하세요.");
+            	//달력에 종료 날짜 넣어주기
+        		$("#date_start").val($("#stdt").val());
+			} else {
+				$("#stdt").val($("#date_start").val());
+			}
+		}
+	});
+});
+</script>
 <title>reception</title>
 </head>
 <body>
@@ -252,10 +288,10 @@
 					<div class="rep_boxcontent">
 						<hr>
 						날짜 선택
-						<input type="text" class="rep_date_content2" name="treat_date" disabled="disabled">
+						<input type="text" class="rep_date_content2" id="date_start" name="treat_date">
 						<br/>
 						시간 선택
-						<input type="text" class="rep_date_content2" name="trest_time" disabled="disabled">
+						<input type="text" class="rep_date_content2" name="trest_time">
 					</div>
 					<div class="rep_boxbtn">
 						<input type="button" value="금일" class="rep_date_content2" disabled="disabled">

@@ -28,22 +28,7 @@ $(document).ready(function(){
 	
 	//페이지 띄어주기
 	$("body").on("click",".btnlist_btns",function(){
-		//console.log(this);
-		//console.log($(this).attr('value'));
-		var val = $(this).attr('value').split("*");
-		
-		//생성된 탭이 없을 경우 생성해준다.
-		var activated_check = $("#tab_"+val[0]).length;
-		if(activated_check <= 0){
-			Bbs_Type(this);
-			Add_Tab(this); //탭에 선택된 오브젝트 값 전송
-		}else{
-			Bbs_Type(this);
-			if($("#tab-close_"+val[0]).css('display') == 'none'){
-			View_Tab_Content(val[0]);
-			}
-		}
-			
+		Tab_Check(this);
 	});
 	
 	//탭 내용 보기
@@ -73,6 +58,8 @@ $(document).ready(function(){
 	})//탭 닫기 end
 	
 })//ready end
+
+
 
 //게시판 타입 기억
 function Bbs_Type(obj){
@@ -137,44 +124,67 @@ function Bbstype_Setsession(num){
 	})// ajax end
 }
 
+//탭  유무 체크
+function Tab_Check(obj){
+	var tab = $(obj).attr('tab').split("*");
+	
+	//생성된 탭이 없을 경우 생성해준다.
+	var activated_check = $("#tab_"+tab[0]).length;
+	
+	if(activated_check <= 0){
+		Bbs_Type(obj);
+		Add_Tab(obj); //탭에 선택된 오브젝트 값 전송
+	}else{
+		Bbs_Type(obj);
+		if($("#tab-close_"+tab[0]).css('display') == 'none'){
+		View_Tab_Content(tab[0]);
+		}
+	}
+}
+
 //탭 추가
 function Add_Tab(obj){
-	//console.log(obj);
-	var val = $(obj).attr('value').split("*");
+	var tab = $(obj).attr('tab').split("*");
+	var tab_id = "tab_"+tab[0];
+	var tab_close = "tab-close_"+tab[0];
+	
 	var id = $(obj).attr('id').split("_");
-	var tab_id = "tab_"+val[0];
-	var tab_type = "tabM_"+id[1]+"_"+id[2];
-	var tab_value = "tabV_"+id[1]+"_"+id[2];
-	var tab_close = "tab-close_"+val[0];
+	if(id.length > 2){
+		var tab_type = "tabM_"+id[1]+"_"+id[2];
+		var tab_value = "tabV_"+id[1]+"_"+id[2];
+	}else{
+		var tab_type = "tabM_"+id[0];
+		var tab_value = "tabV_"+id[0];
+	}
 	
 	var html="";
 	html += "<div class='main_tab' id='" +tab_id+"' value='"+tab_value+"'>";
-		html += "<div class='tab_layout' id='"+tab_type+"' value='"+val[0]+"'>";
-			html += "<div class='tab_text' value='"+val[0]+"'>"+val[1]+"</div>";
+		html += "<div class='tab_layout' id='"+tab_type+"' value='"+tab[0]+"'>";
+			html += "<div class='tab_text' value='"+tab[0]+"'>"+tab[1]+"</div>";
 		html += "</div>";
-		html += "<div class='main_tab_close' id='"+tab_close+"' value='"+val[0]+"'></div>";
+		html += "<div class='main_tab_close' id='"+tab_close+"' value='"+tab[0]+"'></div>";
 	html += "</div>";
 	$("#tab_bar").append(html);
 	
 	html = "";
-	html += "<div class='pages' id='content_"+val[0]+"' value='"+val[0]+"'></div>"
+	html += "<div class='pages' id='content_"+tab[0]+"' value='"+tab[0]+"'></div>"
 	$("#main_content_page").append(html);
 	html = "";
 	
 	$("#"+tab_id).css('display','none');
 	$("#"+tab_id).show("fast");
 	
-	$("#content_"+val[0]).load(val[0]);
+	$("#content_"+tab[0]).load(tab[0]);
 	
-	View_Tab_Content(val[0]);
+	View_Tab_Content(tab[0]);
 }
 
 //선택된 탭만 보이게 하기
-function View_Tab_Content(id){
+function View_Tab_Content(tab){
 	$(".pages").css('display','none');
 	$(".main_tab_close").css('display','none');
-	$("#content_"+id).fadeIn('fast');
-	$("#tab-close_"+id).fadeIn('slow');
+	$("#content_"+tab).fadeIn('fast');
+	$("#tab-close_"+tab).fadeIn('slow');
 }
 
 

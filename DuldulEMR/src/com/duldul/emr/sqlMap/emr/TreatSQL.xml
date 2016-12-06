@@ -47,13 +47,13 @@
 	<insert id="treat_commit"
 			parameterClass="java.util.HashMap">
 		INSERT INTO TREATINFO
-		(TREAT_NUM,HOSPITAL_CODE,PATIENT_NUM,EMP_NUM,SORT_TYPE,CONDITION,OFFICE,ETC)
-		VALUES(#TREATSEQ#, #hos_code#, #pati_num#, #emp_num#, #treat_type#, 0, #treatsort_type#, #etcdata#)
+		(TREAT_NUM,HOSPITAL_CODE,PATIENT_NUM,EMP_NUM,SORT_TYPE,OFFICE,ETC)
+		VALUES(#TREATSEQ#, #hos_code#, #pati_num#, #emp_num#, #treat_type#, #treatsort_type#, #etcdata#)
 	</insert>
 	<insert id="treat_commit_time"
 			parameterClass="java.util.HashMap">
-		INSERT INTO TIME(TREAT_NUM, TAKE_DATE, TAKE_TIME)
-		VALUES(#TREATSEQ#,SYSDATE,SYSDATE)
-		<!-- VALUES(TREAT_NUMBER_SEQ.CURRVAL,TO_CHAR(SYSDATE,'YYYY-MM-DD'),TO_CHAR(SYSDATE,'HH24:MI')) -->
+		INSERT INTO TIME(TREAT_NUM, TAKE_DATE)
+		VALUES(#TREATSEQ#,SYSDATE)
+		<!-- 여기 수정 요망 - 예약일때, 아닐때 ㅇㅇ -->
 	</insert>
 </sqlMap>
