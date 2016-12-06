@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Daily">
+
+	<select id="getemp_List" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT P.EMP_NAME, M.CODE_NAME AS POSITION, P.EMP_NUM, C.CODE_NAME AS OFFICE
+		FROM EMP P LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='8')M
+		ON P.POSITION_CODE = M.SMALL
+		LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='9')C
+		ON P.OFFICE_CODE = C.SMALL
+		WHERE 1=1 
+		AND P.EMP_NUM = #EMP_NUM#
+	</select>
+	
+	<select id="getDaily" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT *
+		FROM(SELECT ROWNUM AS NO, ROWNO,DAILY_NUM, RECODE_DATE, CONTENT
+		     FROM(SELECT ROWNUM AS ROWNO,DAILY_NUM, RECODE_DATE,CONTENT
+		           FROM(SELECT DAILY_NUM,TO_CHAR(RECORD_DATE,'YYYY-MM-DD') AS RECODE_DATE, CONTENT
+		                FROM DAILY
+		                ORDER BY RECODE_DATE)
+		            ORDER BY ROWNUM DESC))
+		      WHERE 1 = 1
+		AND NO BETWEEN #start# AND #end#
+	</select>
+	
+	<select id="getDailyCount" parameterClass="java.util.HashMap" resultClass="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM DAILY
+	WHERE 1=1
+	</select>
+	
+	<select id="getDailyCon" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+    SELECT DAILY_NUM, TO_CHAR(RECORD_DATE,'YYYY-MM-DD') AS RDATE, EMP_NUM, HOSPITAL_CODE,CONTENT
+    FROM DAILY
+    WHERE 1=1
+    AND DAILY_NUM = #TURN#
+	</select>
+ 	<insert id="dailyInsert" parameterClass="java.util.HashMap">
+	INSERT INTO DULDUL.DAILY(DAILY_NUM,RECORD_DATE,HOSPITAL_CODE,EMP_NUM,CONTENT)
+	VALUES(DAILY_NUMBER.NEXTVAL,#records#,#hospital#,#nums#,#contents#)
+	</insert>
+
+	<update id="dailyUpdate" parameterClass="java.util.HashMap">
+	UPDATE DAILY SET CONTENT = #content#
+	WHERE ROWNUM = #rowNum#
+	</update>
+	   
+	<delete id="dailyDelete" parameterClass="java.util.HashMap">
+	DELETE FROM DAILY
+	WHERE DAILY_NUM = #DAILY_NUM#
+	</delete> 
+	
+</sqlMap>

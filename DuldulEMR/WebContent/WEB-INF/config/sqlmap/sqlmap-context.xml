@@ -17,12 +17,12 @@
 	<sqlMap resource="/com/duldul/emr/sqlMap/emr/EmrSQL.xml" />
 	<!-- Treatment 쿼리 -->
 	<sqlMap resource="/com/duldul/emr/sqlMap/emr/TreatSQL.xml" />
-	<!-- AjaxBoard쿼리 -->
+	<!-- Bbs_SQL 윤희상 -->
 	<sqlMap resource="/com/duldul/emr/sqlMap/emr/BbsSQL.xml" />
 	<!-- Patient_SQL 이관우 -->
 	<sqlMap resource="/com/duldul/emr/sqlMap/p_SQL/Patient_SQL.xml" />
-	<!-- AjaxBoard쿼리 -->
-	<!-- <sqlMap resource="/com/duldul/emr/sqlMap/daily/dailySQL.xml" /> -->
+	<!-- Daily_SQL (김남기) -->
+	<sqlMap resource="/com/duldul/emr/sqlMap/daily/dailySQL.xml" />
 
 </sqlMapConfig>
  
