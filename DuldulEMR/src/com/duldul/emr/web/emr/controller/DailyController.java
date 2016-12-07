@@ -146,9 +146,9 @@ public class DailyController {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
-		int res = IDailyService.dailyDelete(params);
+		int ress = IDailyService.dailyDelete(params);
 		
-		modelMap.put("res", res);
+		modelMap.put("ress", ress);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");

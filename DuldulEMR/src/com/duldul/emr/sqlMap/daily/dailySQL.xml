@@ -44,13 +44,14 @@
 	</insert>
 
 	<update id="dailyUpdate" parameterClass="java.util.HashMap">
-	UPDATE DAILY SET CONTENT = #content#
-	WHERE ROWNUM = #rowNum#
+	UPDATE DAILY SET RECORD_DATE = #records#,
+					 CONTENT = #contents#
+	WHERE DAILY_NUM = #TURN#
 	</update>
 	   
 	<delete id="dailyDelete" parameterClass="java.util.HashMap">
 	DELETE FROM DAILY
-	WHERE DAILY_NUM = #DAILY_NUM#
+	WHERE DAILY_NUM = #TURN#
 	</delete> 
 	
 </sqlMap>

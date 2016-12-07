@@ -13,7 +13,10 @@ div{
 .logo{
 	width: 100%;
 	height: 40%;
-	background-color: blue;
+/* 	background-image:url("../../images/EMR/112.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%; */
+	
 }
 /* 레이아웃 중단 */
 .middle{

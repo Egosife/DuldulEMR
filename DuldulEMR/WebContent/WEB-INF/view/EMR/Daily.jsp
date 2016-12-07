@@ -121,7 +121,7 @@ function dailyList(){
 <div class="main_knk"> <!-- 메인 레이아웃 -->
 	<div class="top_knk"> <!-- 레이아웃 상단 -->
 		<div class="b_information"><b>기본 정보</b></div> <!-- 레이아웃 - 기본 정보 -->
-		<table border="1"> <!-- 기본 정보 테이블 -->
+		<table border="1" class="d_table"> <!-- 기본 정보 테이블 -->
 			<tr>
 				<td>성 명</td>
 				<td>직 책</td>
@@ -133,7 +133,7 @@ function dailyList(){
 	</div>
 	<div class="middle_knk"> <!-- 레이아웃 중단 -->
 		<div class="report"><b>업무 일지</b></div> <!-- 레이아웃 중단 - 업무 일지 -->
-		<table border="1"> <!-- 업무 일지 테이블 -->
+		<table border="1" class="d_table"> <!-- 업무 일지 테이블 -->
 			<tr>
 				<td>일 차</td>
 				<td>업무 일자</td>

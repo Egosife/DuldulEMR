@@ -22,7 +22,7 @@
 	background-color: #DDDDDD;
 }
 /* 테이블 셋팅 */
-table{
+.d_table{
 	width: 80%;
 	text-align: center;
 	font-size: 12pt;

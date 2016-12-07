@@ -34,14 +34,44 @@ $(document).ready(function(){
 	});
 	
 	$("#listBtn").on("click",function(){ //목록
-		$("#dailyForm").attr("action","Daily"); 
-		$("#dailyForm").submit();
+		$("#updateForm").attr("action","Daily"); 
+		$("#updateForm").submit();
 	}); //listBtn 끝
 	
 	$("#updateBtn").on("click",function(){ //수정
-		$("#dailyForm").attr("action","Daily");
-		$("#dailyForm").submit();
+		var updateForm = $("#updateForm");
+		
+		updateForm.ajaxForm(uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
+		updateForm.submit();
 	});//updateBtn	
+	
+	function uploadResultCallBack(data,result){ //data엔 json이 들어가있음
+		if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦
+
+			var params = $("#updateForm").serialize();
+			
+			$.ajax({
+				type : "post",
+				url : "dailyUpdate",
+				dataType : "json",
+				data : params,
+				success : function(result){
+					if(result.res>0){ //result.res가 0보다 크면
+						$("#dailyForm").attr("action","Daily");
+						$("#dailyForm").submit();
+					}else{
+						alert("저장 中 문제가 발생했습니다.");
+					}
+				},
+				error : function(result){
+					alert("에러!!");
+				}
+			}); //ajax 끝
+		}else{
+			alert("貯藏 失敗!"); //저장 실패
+		}
+	} //uploadResultCallBack 끝
+	
 	$("#deleteBtn").on("click",function(){
 		if(confirm("정말 삭제하시겠습니까?")){
 			var params = $("#dailyForm").serialize();
@@ -52,7 +82,7 @@ $(document).ready(function(){
 				dataType : "json",
 				data : params,
 				success : function(result){
-					if(result.res>0){
+					if(result.ress>0){
 						location.href="Daily";
 					}else{
 						alert("삭제 中에 문제가 발생하였습니다.")
@@ -70,26 +100,28 @@ $(document).ready(function(){
 </head>
 <body>
 <form action="" id="dailyForm" method="post">
-	<input type="hidden" name="numbers" value="${cond.numbers}"/>
+	<input type="hidden" name="TURN" value="${param.TURN}"/>
 </form>
+<form id="updateForm" method="post">
+	<input type="hidden" name="TURN" value="${param.TURN}"/>
 <div class="main_mm"> <!-- 메인 레이아웃 -->
    <div class="top_tt"> <!-- 레이아웃 상단 -->
       <div class="daily"><b>업무 일지</b></div> <!-- 레이아웃 상단 - 업무 일지 -->
       <div class="calender">업무 날짜</div> <!-- 레이아웃 상단 - 업무 날짜  -->
      	 <div class="cal_btn"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
-        	 <input type="text" placeholder="날짜를 선택하세요" class="cal_text" id="datepicker1" readonly value="${cond.RDATE}">
+        	<input type="text" placeholder="날짜를 선택하세요" name="records" class="cal_text" id="datepicker1" readonly value="${cond.RDATE}">
     	  </div>
    </div><hr> <!-- 구분선 -->
    <div class="middle_mm"> <!-- 레이아웃 중단 -->
 	<div class="mid_work">업무 내용</div> <!-- 레이아웃  중단 - 업무 내용 -->
       <div class="mid_text"> <!-- 레이아웃  중단 - 업무 내용 입력 -->
-         <input type="text" placeholder="내용을 입력하세요" class="text_size"value="${cond.CONTENT}"/>
+         <input type="text" placeholder="내용을 입력하세요" name="contents" class="text_size"value="${cond.CONTENT}"/><br/>
       </div>
    </div><hr/>
    <div class="bottom_bb"> <!-- 레이아웃 하단  -->
       <div class="bottom_top12"> <!-- 레이아웃 하단 - 상단 -->
          <div class="btn_1">
-         	<input type="button" value="수정" class="btn_button" id="updateBtn"> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
+         	<input type="button" value="수정" class="btn_button" id="updateBtn">
          	<input type="button" value="취소" class="btn_button" id="listBtn"/>
          	<input type="button" value="삭제" class="btn_button" id="deleteBtn"/> 
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
@@ -99,5 +131,6 @@ $(document).ready(function(){
       </div>
    </div>
 </div>
+</form>
 </body>
 </html>
