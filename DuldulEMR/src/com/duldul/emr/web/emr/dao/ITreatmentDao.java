@@ -14,4 +14,8 @@ public interface ITreatmentDao {
 	String treat_commit_time(HashMap<String, String> params) throws Throwable;
 
 	HashMap<String, String> getTreatSEQ() throws Throwable;
+
+	ArrayList<HashMap<String, String>> getTreatType() throws Throwable;
+
+	ArrayList<HashMap<String, String>> gettreatsort_type() throws Throwable;
 }

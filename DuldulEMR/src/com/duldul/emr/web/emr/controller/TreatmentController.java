@@ -122,4 +122,42 @@ public class TreatmentController {
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 				responseHeaders, HttpStatus.CREATED);
 	}
+
+	//접수 타입 받아오기
+	@RequestMapping(value="/getTreatType")
+	public @ResponseBody ResponseEntity<String> getTreatType(HttpServletRequest request,
+			ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		ArrayList<HashMap<String, String>> treatType = iTreatmentService.getTreatType();
+		
+		modelMap.put("type", treatType);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+
+	//진료과 타입 받아오기
+	@RequestMapping(value="/gettreatsort_type")
+	public @ResponseBody ResponseEntity<String> gettreatsort_type(HttpServletRequest request,
+			ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		ArrayList<HashMap<String, String>> treatsort_type = iTreatmentService.gettreatsort_type();
+		
+		modelMap.put("treatsort", treatsort_type);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
 }

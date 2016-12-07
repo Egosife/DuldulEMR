@@ -56,4 +56,19 @@
 		VALUES(#TREATSEQ#,SYSDATE)
 		<!-- 여기 수정 요망 - 예약일때, 아닐때 ㅇㅇ -->
 	</insert>
+
+	<select id="getTreatType"
+			resultClass="java.util.HashMap">
+		SELECT SMALL, CODE_NAME
+		FROM CODEDATA
+		WHERE BIG = 13
+	</select>
+
+	<select id="gettreatsort_type"
+			resultClass="java.util.HashMap">
+		SELECT SMALL, CODE_NAME
+		FROM CODEDATA
+		WHERE BIG = 9
+	</select>
+
 </sqlMap>

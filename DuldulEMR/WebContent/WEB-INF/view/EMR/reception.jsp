@@ -13,8 +13,8 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script type="text/javascript" src="resources/script/common/popup.js"></script>
-<script type="text/javascript" src="resources/script/treatment/treatment.js"></script>
 <script type="text/javascript" src="resources/script/calendar/calendar.js"></script>
+<script type="text/javascript" src="resources/script/treatment/treatment.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	showCalendar(d.getFullYear(),(d.getMonth() + 1));
@@ -35,6 +35,14 @@ $(document).ready(function() {
 		dateFormat: 'yy/mm/dd'    
 	}); 
 	
+
+/* 	$("#treatsort_type").on("change",function(){
+		
+	})//treatsort_type end
+ */
+});
+
+function Date_Select_Start(){
 	$("#date_start").datepicker({
 		dateFormat : 'yy-mm-dd',
 		duration: 200,
@@ -51,7 +59,105 @@ $(document).ready(function() {
 			}
 		}
 	});
-});
+}
+//구분 셀렉트 값 가져오기
+function SetTreatType(){
+	$.ajax({
+		type : "post",
+		url : "getTreatType",
+		success : function(result){
+			var html = "";
+			for(var i = 0 ; i < result.type.length ; i++){
+				html += "<option value=";
+				html += result.type[i].SMALL;
+				if(i == 0){
+					html += "selected>";
+					html += result.type[i].CODE_NAME;
+					html += "</option>";
+				}else{
+					html += ">";
+					html += result.type[i].CODE_NAME;
+					html += "</option>";
+				}
+			}
+			$("#treat_type").html(html);
+			html="";
+		},
+		error : function(result){
+			alert("ERROR - getTreatType");
+		}
+	})// ajax end
+	
+}
+
+//진료과 셀렉트 값 가져오기
+function Settreatsort_type(){
+	$.ajax({
+		type : "post",
+		url : "gettreatsort_type",
+		success : function(result){
+			var html = "";
+			for(var i = 0 ; i < result.treatsort.length ; i++){
+				html += "<option value=";
+				html += result.treatsort[i].SMALL;
+				if(i == 0){
+					html += "selected>";
+					html += result.treatsort[i].CODE_NAME;
+					html += "</option>";
+				}else{
+					html += ">";
+					html += result.treatsort[i].CODE_NAME;
+					html += "</option>";
+				}
+			}
+			$("#treatsort_type").html(html);
+			html="";
+		},
+		error : function(result){
+			alert("ERROR - gettreatsort_type");
+		}
+	})// ajax end
+	
+}
+
+function SetTimeSelecter(){
+	var html="";
+	
+	//시간 선택 만들기
+	for(var i = 0 ; i < 24 ; i++){
+		html += "<option value=";
+		html += i;
+		if(i == 0){
+			html += "selected>";
+			html += i;
+			html += "</option>";
+		}else{
+			html += ">";
+			html += i;
+			html += "</option>";
+		}
+	}
+	$("#select_hour").html(html);
+	
+	html="";
+	
+	for(var i = 0 ; i < 60 ; i+=5){
+		html += "<option value=";
+		html += i;
+		if(i == 0){
+			html += "selected>";
+			html += i;
+			html += "</option>";
+		}else{
+			html += ">";
+			html += i;
+			html += "</option>";
+		}
+	}
+	$("#select_min").html(html);
+	
+	html="";
+}
 </script>
 <title>reception</title>
 </head>
@@ -265,14 +371,7 @@ $(document).ready(function() {
 						<hr>
 						구분
 						<br/>
-						<select name="treat_type" size="1" class="rep_date_content1" disabled="disabled">
-					        <option value=0 selected>외래</option>
-					        <option value=1>내원</option>
-					        <option value=2>병동</option>
-					        <option value=3>응급</option>
-					        <option value=4>재진</option>
-					        <option value=5>여기 DB로 불러와라!</option>
-					    </select>
+						<select id="treat_type" name="treat_type" size="1" class="rep_date_content1" disabled="disabled"></select>
 
 					</div>
 					<div class="rep_boxbtn">
@@ -287,11 +386,25 @@ $(document).ready(function() {
 					</div>
 					<div class="rep_boxcontent">
 						<hr>
-						날짜 선택
-						<input type="text" class="rep_date_content2" id="date_start" name="treat_date">
-						<br/>
-						시간 선택
-						<input type="text" class="rep_date_content2" name="trest_time">
+						<table>
+							<tr>
+								<td>
+									날짜 선택
+								</td>
+								<td>
+									<input type="text" class="rep_date_content2" id="date_start" name="treat_date" readonly="readonly" disabled="disabled">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									시간 선택
+								</td>
+								<td>
+									<select id="select_hour" name="select_hour" class="rep_date_content2" style="width: 25%;" disabled="disabled"></select>
+								    <select id="select_min" name="select_min" class="rep_date_content2" style="width: 25%;" disabled="disabled"></select>
+								</td>
+							</tr>
+						</table>
 					</div>
 					<div class="rep_boxbtn">
 						<input type="button" value="금일" class="rep_date_content2" disabled="disabled">
@@ -314,7 +427,7 @@ $(document).ready(function() {
 							</tr>
 							<tr>
 								<td>
-									<input type="text" class="rep_date_content3" name="treatsort_type" disabled="disabled">
+									<select id="treatsort_type" name="treatsort_type" class="rep_date_content3" disabled="disabled"></select>
 								</td>
 							</tr>
 							<tr>
@@ -324,7 +437,7 @@ $(document).ready(function() {
 							</tr>
 							<tr>
 								<td>
-									<input type="text" class="rep_date_content3" name="doctor_name" disabled="disabled">
+									<select id="doctor_name" name="doctor_name" class="rep_date_content3" disabled="disabled"></select>
 								</td>
 							</tr>
 						</table>

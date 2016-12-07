@@ -38,5 +38,15 @@ public class TreatmentService implements ITreatmentService {
 	public HashMap<String, String> getTreatSEQ() throws Throwable {
 		return iTreatmentDao.getTreatSEQ();
 	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> getTreatType() throws Throwable {
+		return iTreatmentDao.getTreatType();
+	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> gettreatsort_type() throws Throwable {
+		return iTreatmentDao.gettreatsort_type();
+	}
 	
 }

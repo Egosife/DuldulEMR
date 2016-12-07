@@ -1,11 +1,13 @@
 /**
  * 161202 이동건 - 진료 소스 생성
  */
+//진료 접수 정보 저장용 변수
 var treat_data = ["","","","",""];
 
 $(document).ready(function(){
-//진료 접수 정보 저장용 변수
-
+	SetTreatType();
+	Settreatsort_type();
+	
 	$("body").on("click","[name='pati-selectBtn']",function(){
 		var pati_num = $(this).attr("id").split('_');
 //		console.log($(this).attr("id"));
@@ -128,10 +130,13 @@ $(document).ready(function(){
 		//console.log(treat_data);
 		$(".rep_date_content1").attr('disabled',true);
 		$(".rep_date_content2").attr('disabled',false);
+		Date_Select_Start();
+		SetTimeSelecter();
 	})
 	$("#rep_date_content2_btn").on("click",function(){
 		treat_data[2] = $("#treat_form").serialize();
 		//console.log(treat_data);
+		$("#date_start").attr('id','date_start_off');
 		$(".rep_date_content2").attr('disabled',true);
 		$(".rep_date_content3").attr('disabled',false);
 	})

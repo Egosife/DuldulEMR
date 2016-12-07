@@ -41,20 +41,7 @@ $(document).ready(function(){
 	
 	//탭 닫기
 	$("body").on("click",".main_tab_close",function(){
-		var tab_id = "tab_"+$(this).attr('value');
-
-		$("#"+tab_id).hide('fast',function(){
-			$("#"+tab_id).remove();
-		});
-		$("#content_"+$(this).attr('value')).remove();
-		
-		var id = $("#main_content_page").children('div:first').attr("value");
-		var val = $("#tab_bar").children('div:first').attr("value");
-		if(val != null){
-			Bbs_Type_Val(val);
-		}
-		
-		View_Tab_Content(id);
+		Close_Tab(this);
 	})//탭 닫기 end
 	
 })//ready end
@@ -124,20 +111,43 @@ function Bbstype_Setsession(num){
 	})// ajax end
 }
 
+//탭 닫기
+function Close_Tab(obj){
+	var tab_id = "tab_"+$(obj).attr('tab');
+
+	$("#"+tab_id).hide('fast',function(){
+		$("#"+tab_id).remove();
+	});
+	$("#content_"+$(obj).attr('tab')).remove();
+	
+	var id = $("#main_content_page").children('div:first').attr("value");
+	var val = $("#tab_bar").children('div:first').attr("value");
+	if(val != null){
+		Bbs_Type_Val(val);
+	}
+	
+	View_Tab_Content(id);
+}
+
 //탭  유무 체크
 function Tab_Check(obj){
 	var tab = $(obj).attr('tab').split("*");
+	var useid = $(obj).attr('id');
 	
 	//생성된 탭이 없을 경우 생성해준다.
-	var activated_check = $("#tab_"+tab[0]).length;
+	var activated_check = $("#tab_"+tab[2]).length;
 	
 	if(activated_check <= 0){
-		Bbs_Type(obj);
+		if(useid != null){
+			Bbs_Type(obj);
+		}
 		Add_Tab(obj); //탭에 선택된 오브젝트 값 전송
 	}else{
-		Bbs_Type(obj);
-		if($("#tab-close_"+tab[0]).css('display') == 'none'){
-		View_Tab_Content(tab[0]);
+		if(useid != null){
+			Bbs_Type(obj);
+		}
+		if($("#tab-close_"+tab[2]).css('display') == 'none'){
+		View_Tab_Content(tab[2]);
 		}
 	}
 }
@@ -145,38 +155,43 @@ function Tab_Check(obj){
 //탭 추가
 function Add_Tab(obj){
 	var tab = $(obj).attr('tab').split("*");
-	var tab_id = "tab_"+tab[0];
-	var tab_close = "tab-close_"+tab[0];
-	
-	var id = $(obj).attr('id').split("_");
-	if(id.length > 2){
-		var tab_type = "tabM_"+id[1]+"_"+id[2];
-		var tab_value = "tabV_"+id[1]+"_"+id[2];
+	var tab_id = "tab_"+tab[2];
+	var tab_close = "tab-close_"+tab[2];
+	var useid = $(obj).attr('id');
+	if(useid != null){
+		var id = $(obj).attr('id').split("_");
+		if(id.length > 2){
+			var tab_type = "tabM_"+id[1]+"_"+id[2];
+			var tab_value = "tabV_"+id[1]+"_"+id[2];
+		}else{
+			var tab_type = "tabM_"+id[0];
+			var tab_value = "tabV_"+id[0];
+		}
 	}else{
-		var tab_type = "tabM_"+id[0];
-		var tab_value = "tabV_"+id[0];
+		var tab_type = "tabM_"+tab[2];
+		var tab_value = "tabV_"+tab[2];
 	}
 	
 	var html="";
 	html += "<div class='main_tab' id='" +tab_id+"' value='"+tab_value+"'>";
-		html += "<div class='tab_layout' id='"+tab_type+"' value='"+tab[0]+"'>";
-			html += "<div class='tab_text' value='"+tab[0]+"'>"+tab[1]+"</div>";
+		html += "<div class='tab_layout' id='"+tab_type+"' value='"+tab[2]+"'>";
+			html += "<div class='tab_text' value='"+tab[2]+"'>"+tab[1]+"</div>";
 		html += "</div>";
-		html += "<div class='main_tab_close' id='"+tab_close+"' value='"+tab[0]+"'></div>";
+		html += "<div class='main_tab_close' id='"+tab_close+"' value='"+tab[2]+"' tab='"+tab[2]+"'></div>";
 	html += "</div>";
 	$("#tab_bar").append(html);
 	
 	html = "";
-	html += "<div class='pages' id='content_"+tab[0]+"' value='"+tab[0]+"'></div>"
+	html += "<div class='pages' id='content_"+tab[2]+"' value='"+tab[2]+"'></div>"
 	$("#main_content_page").append(html);
 	html = "";
 	
 	$("#"+tab_id).css('display','none');
 	$("#"+tab_id).show("fast");
 	
-	$("#content_"+tab[0]).load(tab[0]);
+	$("#content_"+tab[2]).load(tab[0]);
 	
-	View_Tab_Content(tab[0]);
+	View_Tab_Content(tab[2]);
 }
 
 //선택된 탭만 보이게 하기
