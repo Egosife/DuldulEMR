@@ -56,6 +56,12 @@ public class BbsService implements IBbsService{
 		return iBbsDao.visit(params);
 	}
 
+	@Override
+	public HashMap<String, String> getMaxPOST_Count(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.getMaxPOST_Count(params);
+	}
+
 
 
 	

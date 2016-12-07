@@ -9,11 +9,13 @@
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs_write.css" />
  <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#cancleBtn").on("click", function(){
-		$("#actionForm").attr("action","notice");
-		$("#actionForm").submit();			
+		//$("#actionForm").attr("action","notice");
+		//$("#actionForm").submit();
+		Close_Tab(this);
 	});
 	
 	$("#saveBtn").on("click", function(){
@@ -42,7 +44,8 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 			data : params,
 			success : function(result){
 				if(result.res == "true"){
-					location.href = "notice";
+					alert("저장 .")
+					location.href = "emrmain";
 				}else{
 					alert("저장 중 문제가 발생했습니다.")
 				}
@@ -69,16 +72,11 @@ function removePre(data){ //데이터가 들어옴
 </script>
 </head>
 <body>
-<form action="#" id="actionForm"  method="post">
+<%-- <form action="#" id="actionForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
+</form> --%>
 	
-	<input type="hidden" name="Hospital_code" value="${sHospital_Code}"/>
-	<input type="hidden" name="sEmp_Num" value="${sEmp_Num}"/>
-	<input type="hidden" name="sEmp_Name" value="${sEmp_Name}"/>
-	<input type="hidden" id="s" name="s" value=""/>
-</form>
-
 
 
 
@@ -86,26 +84,32 @@ function removePre(data){ //데이터가 들어옴
    <div class="header">
    		<b>글 쓰기</b>
    </div>
-
+<form action="fileUploadAjax" id="insertForm" method="post" enctype="multipart/form-data">
    <div class="content">
 		제목 <input type="text" id="TitleText" name="postTitle" /> 
 	</div>
 
    <div class="writter">
-   <form action="fileUploadAjax" id="insertForm" method="post" enctype="multipart/form-data"> 
-   	파일첨부<input type="file" name="postFile" value="불러오기" id="insertBtn"/>
-   	</form>
-   </div>
+      <input type="hidden" name="write" value="${sEmp_Name}"/>
+	  <input type="hidden" name="gbn" value="${sBbs_Type}"/>
+      <input type="hidden" name="empNo" value="${sEmp_Num}"/>
+      <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
+   	파일첨부<input type="file" name="postFile"/>
+   	<input type = "hidden" name="textfile" id="textFile"/>
+   	
+ 
    <div class="page_num" >
    		
    		<textarea rows="30" cols="125" name="postCon"></textarea>
    		
    </div>
+   
+     </div>
    <div class="search">
-  	 <center><input type="button" value="저장" id="saveBtn"/>
-  	 <input type="button" value="취소" id="cancleBtn"/></center>
+  	 <center><input type="button" value="저장" id="saveBtn" />
+  	 <input type="button" value="취소" id="cancleBtn" tab="bbs_write"/></center>
 	</div>
- 
+ </form>
 </div>
 
 </body>

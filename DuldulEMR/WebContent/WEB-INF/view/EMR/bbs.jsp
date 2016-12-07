@@ -56,7 +56,7 @@ function refreshList(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].POST_NUM + "'>";
+					html += "<tr name='" + result.list[i].SERIAL_NUM + "'>";
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
 					html += "<td>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";

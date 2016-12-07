@@ -6,8 +6,8 @@
 	<select id="getBbs" 
 			parameterClass="java.util.HashMap"
 			resultClass="java.util.HashMap">
-	SELECT POST_NUM,TITLE,WRITER,REPORTING,VIEWS
-	FROM ((SELECT ROW_NUMBER() OVER(ORDER BY POST_NUM DESC)AS RNUM,POST_NUM,TITLE,WRITER,TO_CHAR(REPORTING, 'YYYY-MM-DD') AS REPORTING,VIEWS
+	SELECT SERIAL_NUM,POST_NUM,TITLE,WRITER,REPORTING,VIEWS
+	FROM ((SELECT ROW_NUMBER() OVER(ORDER BY POST_NUM DESC)AS RNUM,SERIAL_NUM,POST_NUM,TITLE,WRITER,TO_CHAR(REPORTING, 'YYYY-MM-DD') AS REPORTING,VIEWS
       FROM POST
       WHERE 1=1 AND SEG_CODE = #gbn#
     <isNotEmpty property="searchText">
@@ -40,10 +40,22 @@
 	
 	<insert id="insertTest"
 			parameterClass="java.util.HashMap">
-		INSERT INTO POST(SERIAL_NUM,EMP_NUM,HOSPITAL_CODE,SEG_CODE,POST_NUM,TITLE,CONTENT,REPORTING,WRITER)
-	<!-- 	VALUES (POSTING_NUMBER.NEXTVAL,9999990000,999999,0,41,'TEST','TEST TEST TEST',SYSDATE,'테스트관리자') -->
-		VALUES (POSTING_NUMBER.NEXTVAL,#Hospital_code#,#sEmp_Num#,#s#,#num#,#sEmp_Name#,#postTitle#,#postCon#,SYSDATE,)
+		INSERT INTO POST(SERIAL_NUM,   EMP_NUM, HOSPITAL_CODE,  SEG_CODE,  POST_NUM,  TITLE,   CONTENT, REPORTING, WRITER)
+		VALUES (POSTING_NUMBER.NEXTVAL,#empNo#, #hospitalCode#, #gbn#, #MAX_POSTNUM#, #postTitle#, #postCon# ,SYSDATE, #write#)
 	</insert>
+	 
+	<!-- 글번호 --> 
+ 	<select id="getMaxPOST_Count" 
+			parameterClass="java.util.HashMap" 
+			resultClass="java.util.HashMap">
+		SELECT MAX(POST_NUM)+1 AS MAX_POSTNUM 
+		FROM POST 
+		WHERE 1 = 1
+		AND SEG_CODE = #gbn# 
+		AND HOSPITAL_CODE = #hospitalCode#
+	</select>
+	
+	
 	<!-- 삭제 디비 -->
 	<delete id="deleteTest"
 			parameterClass="java.util.HashMap">
@@ -53,10 +65,9 @@
 	<!-- 수정 디비 -->
 	<update  id="updateTest"
 			parameterClass="java.util.HashMap">
-		UPDATE POST SET WRITER = #writer#,
-						TITLE = #title#,
+		UPDATE POST SET TITLE = #postTitle#,
 						CONTENT = #content#,
-						FILE_NAME = #file#
+						FILE_NAME = #FileText#
 		WHERE POST_NUM = #POST_NUM#
 	</update>
 	<!-- 조회수 디비 -->

@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs_detail.css" />
  <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 
 
@@ -22,8 +23,9 @@ $(document).ready(function(){
 		});
 		
 		$("#changeBtn").on("click", function(){
-			$("#actionForm").attr("action","bbs_detail_modify");
-			$("#actionForm").submit();			
+			 $("#actionForm").attr("action","bbs_detail_modify");
+			$("#actionForm").submit();	 
+			//Tab_Check(this);
 		});
 		
 		$("#deleteBtn").on("click", function(){
@@ -50,7 +52,7 @@ $(document).ready(function(){
 			
 		});
 	});
-	
+	// 조회수
 function visit() {
 	var params = $("#actionForm").serialize();
 	$.ajax({
@@ -59,7 +61,7 @@ function visit() {
 		dataType : "json",
 		data : params,
 		success : function(result){
-			alert("조회수 증가 성공");
+			
          },
          error : function(result) {
           	alert("error!");
@@ -72,36 +74,36 @@ function visit() {
 <form action="#" id="actionForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
-	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
+	<%-- <input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/> --%>
 </form>
 
 
-<div class="wrap">
-   <div class="header">
+<div class="bbs_detail_wrap">
+   <div class="bbs_detail_header">
    		<b>상세보기</b>
    </div>
 
-   <div class="writter">
+   <div class="bbs_detail_writter">
 		작성자  <input type="text" id="WritterText" readonly value="${con.WRITER}"  />  
 	</div>	
 
-   <div class="date">
+   <div class="bbs_detail_date">
    	등록일 <input type="text" id="DateText" readonly value="${con.REPORTING}"/>  
    </div>
-   <div class="title" >
+   <div class="bbs_detail_title" >
    		제목 <input type="text" id="TitleText" readonly value="${con.TITLE}"/> 
    </div>
    
-   <div class="content">
+   <div class="bbs_detail_content">
    <textarea id="textarea_test" rows="30" cols="125" name="contents" readonly > ${con.CONTENT}</textarea>
 	</div>
 	
-	  <div class="title" >
+	  <div class="bbs_detail_file" >
    		첨부파일 <input type="text" id="FileText"readonly value="${con.FILE_NAME}"/> 
    	</div>
    	
-   	<div class="button" style="text-align:right">
-   		<input type="button" value="수정" id="changeBtn"/>
+   	<div class="bbs_detail_button" style="text-align:right">
+   		<input type="button" value="수정" id="changeBtn" /> <!-- tab="bbs_detail_modify*글 수정" -->
    		<input type="button" value="삭제" id="deleteBtn"/>
    		<input type="button" value="목록" id="listBtn"/>
    	</div>

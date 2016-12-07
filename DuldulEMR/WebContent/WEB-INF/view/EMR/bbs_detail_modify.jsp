@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs_detail.css" />
  <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 
 
@@ -34,7 +35,7 @@ $(document).ready(function(){
 			if(result == "success"){ //결과가 성공이네.......그럼 json을 자바스크립트 bean으로 만든다
 				var resData = eval("(" + removePre(data) + ")");
 				if(resData.fileName[0] !=null){
-				$("#testFile").val(resData.fileName[0]);
+				$("#FileText").val(resData.fileName[0]);
 				}
 				var params = $("#updateForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
 				
@@ -73,41 +74,40 @@ $(document).ready(function(){
 		</script>
 </head>
 <body>
-<div class="wrap">
+<div class="bbs_detail_wrap">
 <form action="#" id="actionForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
-	<input type="text" name="POST_NUM" value="${param.POST_NUM}"/>
+	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 	
-	<input type="text" name="writer" value="${con.WRITER}"/>
-	<input type="text" name="title" value="${con.TITLE}"/>
-	<input type="text" name="content" value="${con.CONTENT}"/>
-	<input type="text" name="file" value="${con.FILE_NAME}"/>
+	<input type="hidden" name="writer" value="${con.WRITER}"/>
+	<input type="hidden" name="title" value="${con.TITLE}"/>
+	<input type="hidden" name="content" value="${con.CONTENT}"/>
 </form>
 
 <form action="fileUploadAjax" id="updateForm" method="post" enctype="multipart/form-data">
      
 <input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
-   <div class="header">
+   <div class="bbs_detail_header">
    		<b>상세보기</b>
    </div>
 
-   <div class="writter">
+   <div class="bbs_detail_writter">
 		작성자  <input type="text" id="WritterText" readonly value="${con.WRITER}"  />  
 	</div>	
 
-   <div class="date">
+   <div class="bbs_detail_date">
    	등록일 <input type="text" id="DateText" readonly value="${con.REPORTING}"/>  
    </div>
-   <div class="title" >
+   <div class="bbs_detail_title" >
    		제목 <input type="text" id="TitleText"  value="${con.TITLE}"/> 
    </div>
    
-   <div class="content">
+   <div class="bbs_detail_content">
    <textarea id="textarea_test" rows="30" cols="125" name="contents"  > ${con.CONTENT}</textarea>
 	</div>
 	
-	  <div class="title" >
+	  <div class="bbs_detail_file" >
    		첨부파일 <input type="file" id="FileText" readonly value="${con.FILE_NAME}"/> 
    	</div>
    	<div id="showFile">
@@ -128,7 +128,7 @@ $(document).ready(function(){
 		</c:choose>
 		</c:if>
 	</div>
-	  	<div class="button" style="text-align:right">
+	  	<div class="bbs_detail_button" style="text-align:right">
    		<input type="button" value="수정" id="changeBtn"/>
 
    		<input type="button" value="취소" id="cancleBtn"/>

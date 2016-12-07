@@ -76,6 +76,12 @@ public class BbsDao implements IBbsDao {
 			return sqlMapClient.update("Bbs.visit", params);
 		}
 
+		@Override
+		public HashMap<String, String> getMaxPOST_Count(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return (HashMap<String, String>) sqlMapClient.queryForObject("Bbs.getMaxPOST_Count",params);
+		}
+
 		
 
 }

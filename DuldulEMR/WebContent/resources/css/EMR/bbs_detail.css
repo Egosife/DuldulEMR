@@ -1,21 +1,21 @@
 @CHARSET "UTF-8";
 
- .wrap{
+.bbs_detail_wrap{
 	 width:100%;
 	 height:900px; 
 	 background-color: #dddddd;
 	 }
 /* 상세보기 라는 글자가 적혀있는 부분 */
-.header{
+.bbs_detail_header{
 		width:100%;
 		height:80px;
 		margin-left:50px; 
 		margin-bottom:10px;
-		background-color: #FFFFCC;
+		background-color: #aaaaaa;
 		}
 		
 /* 작성자 구역 */
-.writter{
+.bbs_detail_writter{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
@@ -23,7 +23,7 @@
 	 	background-color: #FFFFFF;
 		}
 /* 등록일  */
-.date{
+.bbs_detail_date{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
@@ -31,7 +31,7 @@
 	 	background-color: #00FFFF;
 		}
 /* 제목 */
-.title{
+.bbs_detail_title{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
@@ -40,7 +40,7 @@
 	 	
 		}
 /* 내용 */
-.content{
+.bbs_detail_content{
 		 width:100%;
 		height:460px;
 		margin-left:50px; 
@@ -48,7 +48,7 @@
 	 	background-color: #FFCCFF;
 		}
 /* 첨부파일 */	
-.file{
+.bbs_detail_file{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
@@ -56,7 +56,7 @@
 	 	background-color: #FFCCFF;
 		}
 /* 수정,삭제,목록 있는 버튼 */
-.button{
+.bbs_detail_button{
  		 width:100%;
 		height:30px;
 		margin-left:50px; 

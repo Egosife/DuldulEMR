@@ -18,6 +18,8 @@ public interface IBbsDao {
 	int updateTest(HashMap<String, String> params) throws Throwable;
 
 	int visit(HashMap<String, String> params) throws Throwable;
+
+	HashMap<String, String> getMaxPOST_Count(HashMap<String, String> params)throws Throwable;
 	
 
 

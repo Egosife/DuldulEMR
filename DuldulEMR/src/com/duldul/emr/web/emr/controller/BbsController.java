@@ -37,6 +37,8 @@ public class BbsController {
 		public ModelAndView bbs_detail(HttpServletRequest request,
 				@RequestParam HashMap<String, String> params,
 				ModelAndView modelAndView) throws Throwable{
+			
+			System.out.println(params);
 
 			HashMap<String, String> con = iBbsService.getBbsCon(params);
 			//con은 컨텐츠의 약자
@@ -46,6 +48,9 @@ public class BbsController {
 			
 			return modelAndView;//컨트롤러의 가장 기본적인 형태
 		} //글 상세보기 페이지 연결 끝
+	
+		
+		
 		
 	/*	
 		}*/
@@ -75,6 +80,7 @@ public class BbsController {
 			return modelAndView;//컨트롤러의 가장 기본적인 형태
 		}
 		
+		
 		//글쓰기 페이지 연결
 		@RequestMapping(value="/bbs_write")
 		public ModelAndView bbs_write(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
@@ -83,6 +89,8 @@ public class BbsController {
 			
 			return modelAndView;
 		} //글쓰기 페이지 연결 끝
+		//글쓰기 페이지 연결
+		
 		
 		//초기화면 페이지 연결
 		@RequestMapping(value="/main_first")
@@ -169,6 +177,10 @@ public class BbsController {
 			
 			System.out.println(params);
 			
+			HashMap<String, String> con = iBbsService.getMaxPOST_Count(params);
+			
+			params.putAll(con);
+			
 			String res = iBbsService.insertTest(params);
 			
 			modelMap.put("res", res);
@@ -241,4 +253,5 @@ public class BbsController {
 			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 					responseHeaders,HttpStatus.CREATED);
 		}
+		
 }

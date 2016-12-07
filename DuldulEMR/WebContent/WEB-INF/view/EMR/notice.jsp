@@ -22,9 +22,11 @@ $(document).ready(function(){
 	
 	
 	$("#insertBtn").on("click", function(){
-		$("#s").attr("value","${s}");
-		$("#actionForm").attr("action","bbs_write");
-		$("#actionForm").submit();		
+		//$("#s").attr("value","${s}");
+		//$("#actionForm").attr("action","bbs_write");
+		//$("#actionForm").submit();
+		//$("#insertBtn").attr('tab','bbs_write?asd='+${s}+'*글쓰기');
+		Open_Tab(this);
 	});
 
 	$("#page_num").on("click","span",function(){
@@ -33,10 +35,10 @@ $(document).ready(function(){
 	});
 	
 	$("#tb").on("click","tr",function(){
-		$("input[name='POST_NUM']").val($(this).attr("name"));
-		$("#actionForm").attr("action","bbs_detail");
-		$("#actionForm").submit();
-		
+		//$("input[name='POST_NUM']").val($(this).attr("name"));
+		//$("#actionForm").attr("action","bbs_detail");
+		//$("#actionForm").submit();
+		Open_Tab(this);
 	});
 	
 });
@@ -55,7 +57,7 @@ function refreshList(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].POST_NUM + "'>";
+					html += "<tr name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail'>";
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
 					html += "<td>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";
@@ -124,8 +126,8 @@ function refreshList(){
 
    <div class="content">
 		<table border="1" align="center" >
-	<thead>
-		<tr>
+	<thead >
+		<tr >
 	        <th>번호</th>
             <th>제목</th>
             <th>작성자</th>
@@ -140,7 +142,7 @@ function refreshList(){
 	</div>
 
    <div class="writter">
-   		<input type="button" value="글 쓰기" class="insert_Btn" id="insertBtn" />
+   		<input type="button" value="글 쓰기" class="insert_Btn" id="insertBtn" tab="bbs_write*글쓰기*bbs_write" />
    </div>
    <div class="page_num" id="page_num"></div>
   <div class="search">

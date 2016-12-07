@@ -19,6 +19,8 @@ public interface IBbsService {
 
 	public int visit(HashMap<String, String> params) throws Throwable;
 
+	public HashMap<String, String> getMaxPOST_Count(HashMap<String, String> params) throws Throwable;
+
 
 	
 }
