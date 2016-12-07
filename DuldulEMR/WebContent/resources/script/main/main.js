@@ -28,7 +28,7 @@ $(document).ready(function(){
 	
 	//페이지 띄어주기
 	$("body").on("click",".btnlist_btns",function(){
-		Tab_Check(this);
+		Open_Tab(this);
 	});
 	
 	//탭 내용 보기
@@ -130,7 +130,7 @@ function Close_Tab(obj){
 }
 
 //탭  유무 체크
-function Tab_Check(obj){
+function Open_Tab(obj){
 	var tab = $(obj).attr('tab').split("*");
 	var useid = $(obj).attr('id');
 	
