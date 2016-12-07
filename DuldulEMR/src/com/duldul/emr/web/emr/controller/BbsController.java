@@ -33,27 +33,43 @@ public class BbsController {
 		
 		//글 상세보기 페이지 연결
 		@RequestMapping(value="/bbs_detail")
-		
 		public ModelAndView bbs_detail(HttpServletRequest request,
 				@RequestParam HashMap<String, String> params,
 				ModelAndView modelAndView) throws Throwable{
 			
-			System.out.println(params);
-
 			HashMap<String, String> con = iBbsService.getBbsCon(params);
-			//con은 컨텐츠의 약자
+			
 			System.out.println("asdsadsadadsadadsadsad===> "+con);
+			//bbs_detail을 클릭했을시 아예 조회수 +1을 해준다
+			int res = iBbsService.visit(params);
+			System.out.println(params);
+			
 			modelAndView.addObject("con",con);
 			modelAndView.setViewName("EMR/bbs_detail");
 			
-			return modelAndView;//컨트롤러의 가장 기본적인 형태
+			return modelAndView;
 		} //글 상세보기 페이지 연결 끝
 	
-		
-		
-		
-	/*	
+		/*@RequestMapping(value="/visit")
+		public @ResponseBody ResponseEntity<String> visit(
+				HttpServletRequest request, 
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			int res = iBbsService.visit(params);
+			
+			modelMap.put("res", res);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+					responseHeaders,HttpStatus.CREATED);
 		}*/
+
 		
 		
 		//사내게시판 페이지 연결
@@ -205,6 +221,8 @@ public class BbsController {
 			int res = iBbsService.deleteTest(params);
 			//update가 int를 받을수있는지
 			modelMap.put("res", res);
+			System.out.println(params);
+			System.out.println(res);
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
 			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
@@ -234,24 +252,6 @@ public class BbsController {
 					responseHeaders,HttpStatus.CREATED);
 		}
 		
-		@RequestMapping(value="/visit")
-		public @ResponseBody ResponseEntity<String> visit(
-				HttpServletRequest request, 
-				@RequestParam HashMap<String, String> params,
-				ModelAndView modelAndView) throws Throwable{
-			
-			ObjectMapper mapper = new ObjectMapper();
-			Map<String, Object> modelMap = new HashMap<String, Object>();
-			
-			int res = iBbsService.visit(params);
-			//update가 int를 받을수있는지
-			modelMap.put("res", res);
-			
-			HttpHeaders responseHeaders = new HttpHeaders();
-			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
-			
-			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
-					responseHeaders,HttpStatus.CREATED);
-		}
+		
 		
 }

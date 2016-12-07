@@ -35,7 +35,15 @@ $(document).ready(function(){
 	$("body").on("click",".tab_layout",function(){
 		Bbs_Type(this);
 		if($("#tab-close_"+$(this).attr('value')).css('display') == 'none'){
-			View_Tab_Content($(this).attr('value'));
+			var tabId = $(this).attr('value');
+			
+			if(tabId == 'a') {
+				View_Tab_Content($(this).attr('value'), function(){
+					refreshListA();
+				});
+			} else {
+				View_Tab_Content($(this).attr('value'));
+			}
 		}
 	})//탭 내용 보기 end
 	
@@ -199,6 +207,14 @@ function View_Tab_Content(tab){
 	$(".pages").css('display','none');
 	$(".main_tab_close").css('display','none');
 	$("#content_"+tab).fadeIn('fast');
+	$("#tab-close_"+tab).fadeIn('slow');
+}
+
+//선택된 탭만 보이게 하기
+function View_Tab_Content(tab, fnc){
+	$(".pages").css('display','none');
+	$(".main_tab_close").css('display','none');
+	$("#content_"+tab).fadeIn('fast', fnc);
 	$("#tab-close_"+tab).fadeIn('slow');
 }
 

@@ -14,23 +14,35 @@
 
 
 //목록 버튼 클릭했을시
+var updateFlag = false;
+
 $(document).ready(function(){
-	visit();
-		$("#listBtn").on("click", function(){
-			
-			$("#actionForm").attr("action","notice");
-			$("#actionForm").submit();			
-		});
+
 		
 		$("#changeBtn").on("click", function(){
-			 $("#actionForm").attr("action","bbs_detail_modify");
-			$("#actionForm").submit();	 
-			//Tab_Check(this);
+		//	 $("#actionForm").attr("action","bbs_detail_modify");
+			//$("#actionForm").submit();	 
+			//Open_Tab(this);
+			if(updateFlag){
+				updateFlag = false;
+				$("#changeBtn").attr("value","수정");
+				$("#TitleText").attr("readonly", "readonly");
+				$("#textarea_test").attr("readonly", "readonly");
+				
+			}else{
+				updateFlag = true;
+				$("#changeBtn").attr("value","완료");
+				$("#TitleText").removeAttr("readonly");
+				$("#textarea_test").removeAttr("readonly");
+			}
+			
 		});
 		
 		$("#deleteBtn").on("click", function(){
+			var coca = $(this);
 			if(confirm("지울꺼니?")){
-				var params = $("#actionForm").serialize();
+				var params = $("#deleteForm").serialize();
+				console.log(params);
 				$.ajax({
 					type : "post",
 					url : "deleteTest",
@@ -38,7 +50,7 @@ $(document).ready(function(){
 					data : params,
 					success : function(result){
 						if(result.res > 0){
-							location.href = "notice";	
+							Close_Tab(coca);
 						}else{
 							alert("삭제가 안된다능.")
 						}
@@ -52,60 +64,45 @@ $(document).ready(function(){
 			
 		});
 	});
-	// 조회수
-function visit() {
-	var params = $("#actionForm").serialize();
-	$.ajax({
-		type : "post",
-		url : "visit",
-		dataType : "json",
-		data : params,
-		success : function(result){
-			
-         },
-         error : function(result) {
-          	alert("error!");
-         }
-	});
-}
+
 </script>
 </head>
 <body>
-<form action="#" id="actionForm"  method="post">
+<form action="#" id="deleteForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
-	<%-- <input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/> --%>
+	<input type="text" name="POST_NUM" value="${param.POST_NUM}"/>
 </form>
 
 
-<div class="bbs_detail_wrap">
-   <div class="bbs_detail_header">
+<div class="wrap">
+   <div class="header">
    		<b>상세보기</b>
    </div>
 
-   <div class="bbs_detail_writter">
+   <div class="writter">
 		작성자  <input type="text" id="WritterText" readonly value="${con.WRITER}"  />  
 	</div>	
 
-   <div class="bbs_detail_date">
+   <div class="date">
    	등록일 <input type="text" id="DateText" readonly value="${con.REPORTING}"/>  
    </div>
-   <div class="bbs_detail_title" >
+   <div class="title" >
    		제목 <input type="text" id="TitleText" readonly value="${con.TITLE}"/> 
    </div>
    
-   <div class="bbs_detail_content">
-   <textarea id="textarea_test" rows="30" cols="125" name="contents" readonly > ${con.CONTENT}</textarea>
+   <div class="content">
+   <textarea id="textarea_test" rows="30" cols="125" name="contents" readonly >${con.CONTENT}</textarea>
 	</div>
 	
-	  <div class="bbs_detail_file" >
+	  <div class="file" >
    		첨부파일 <input type="text" id="FileText"readonly value="${con.FILE_NAME}"/> 
    	</div>
    	
-   	<div class="bbs_detail_button" style="text-align:right">
-   		<input type="button" value="수정" id="changeBtn" /> <!-- tab="bbs_detail_modify*글 수정" -->
-   		<input type="button" value="삭제" id="deleteBtn"/>
-   		<input type="button" value="목록" id="listBtn"/>
+   	<div class="button" >
+   		<input type="button" value="수정" id="changeBtn" tab="bbs_detail_modify*글수정*bbs_detail_modify" /> <!--  -->
+   		<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail"/>
+
    	</div>
  
 </div>

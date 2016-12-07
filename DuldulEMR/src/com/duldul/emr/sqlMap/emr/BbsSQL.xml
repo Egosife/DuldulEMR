@@ -60,7 +60,7 @@
 	<delete id="deleteTest"
 			parameterClass="java.util.HashMap">
 		DELETE FROM POST
-		WHERE POST_NUM = #POST_NUM#
+		WHERE SERIAL_NUM = #POST_NUM#
 	</delete>
 	<!-- 수정 디비 -->
 	<update  id="updateTest"

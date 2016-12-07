@@ -1,67 +1,74 @@
 @CHARSET "UTF-8";
 
-.bbs_detail_wrap{
+ .wrap{
 	 width:100%;
 	 height:900px; 
 	 background-color: #dddddd;
 	 }
 /* 상세보기 라는 글자가 적혀있는 부분 */
-.bbs_detail_header{
+.header{
 		width:100%;
 		height:80px;
 		margin-left:50px; 
 		margin-bottom:10px;
-		background-color: #aaaaaa;
+		background-color: #FFFFCC;
+			 	font-size: 14pt;
 		}
 		
 /* 작성자 구역 */
-.bbs_detail_writter{
+.writter{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
 		margin-bottom:10px;
+			 	font-size: 12pt;
 	 	background-color: #FFFFFF;
 		}
 /* 등록일  */
-.bbs_detail_date{
+.date{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
 		margin-bottom:10px;
+			 	font-size: 12pt;
 	 	background-color: #00FFFF;
 		}
 /* 제목 */
-.bbs_detail_title{
+.title{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FFFF00;
+	 		 	font-size: 12pt;
 	 	
 		}
 /* 내용 */
-.bbs_detail_content{
+.content{
 		 width:100%;
 		height:460px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FFCCFF;
+	 		 	font-size: 12pt;
 		}
 /* 첨부파일 */	
-.bbs_detail_file{
+.file{
 		 width:100%;
 		height:30px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FFCCFF;
+	 		 	font-size: 12pt;
 		}
 /* 수정,삭제,목록 있는 버튼 */
-.bbs_detail_button{
+.button{
  		 width:100%;
 		height:30px;
 		margin-left:50px; 
 		margin-bottom:10px;
 	 	background-color: #FFCCFF;
+	 		 	font-size: 12pt;
  		}
  		/* 제목 텍스트박스 길게만드려고 */
 #TitleText{

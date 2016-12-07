@@ -74,40 +74,40 @@ $(document).ready(function(){
 		</script>
 </head>
 <body>
-<div class="bbs_detail_wrap">
+<div class="wrap">
 <form action="#" id="actionForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
-	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
+	<input type="text" name="POST_NUM" value="${param.POST_NUM}"/>
 	
-	<input type="hidden" name="writer" value="${con.WRITER}"/>
-	<input type="hidden" name="title" value="${con.TITLE}"/>
-	<input type="hidden" name="content" value="${con.CONTENT}"/>
+	<input type="text" name="writer" value="${con.WRITER}"/>
+	<input type="text" name="title" value="${con.TITLE}"/>
+	<input type="text" name="content" value="${con.CONTENT}"/>
 </form>
 
 <form action="fileUploadAjax" id="updateForm" method="post" enctype="multipart/form-data">
      
 <input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
-   <div class="bbs_detail_header">
+   <div class="header">
    		<b>상세보기</b>
    </div>
 
-   <div class="bbs_detail_writter">
+   <div class="writter">
 		작성자  <input type="text" id="WritterText" readonly value="${con.WRITER}"  />  
 	</div>	
 
-   <div class="bbs_detail_date">
+   <div class="date">
    	등록일 <input type="text" id="DateText" readonly value="${con.REPORTING}"/>  
    </div>
-   <div class="bbs_detail_title" >
+   <div class="title" >
    		제목 <input type="text" id="TitleText"  value="${con.TITLE}"/> 
    </div>
    
-   <div class="bbs_detail_content">
+   <div class="content">
    <textarea id="textarea_test" rows="30" cols="125" name="contents"  > ${con.CONTENT}</textarea>
 	</div>
 	
-	  <div class="bbs_detail_file" >
+	  <div class="title" >
    		첨부파일 <input type="file" id="FileText" readonly value="${con.FILE_NAME}"/> 
    	</div>
    	<div id="showFile">
@@ -128,7 +128,7 @@ $(document).ready(function(){
 		</c:choose>
 		</c:if>
 	</div>
-	  	<div class="bbs_detail_button" style="text-align:right">
+	  	<div class="button" style="text-align:right">
    		<input type="button" value="수정" id="changeBtn"/>
 
    		<input type="button" value="취소" id="cancleBtn"/>

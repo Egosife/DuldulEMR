@@ -12,12 +12,12 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	refreshList();
+	refreshListA();
 	$("#searchBtn").on("click",function(){
 		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
-		refreshList();
+		refreshListA();
 	});
 	
 	
@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 	$("#page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
-		refreshList();
+		refreshListA();
 	});
 	
 	$("#tb").on("click","tr",function(){
@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 
 
-function refreshList(){
+function refreshListA(){
 	var params = $("#actionForm").serialize();
 		
 		$.ajax({
@@ -103,10 +103,12 @@ function refreshList(){
 	      });
 	   
 	}
+
 </script> 
 </head>
 <body>
 <form action="#" method="post" id="actionForm">
+	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 <input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
