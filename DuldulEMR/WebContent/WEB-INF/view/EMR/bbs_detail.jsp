@@ -29,6 +29,36 @@ $(document).ready(function(){
 				$("#TitleText").attr("readonly", "readonly");
 				$("#textarea_test").attr("readonly", "readonly");
 				
+				function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임(success 인지 fail인지),,,,data는 json받은거임
+					if(result == "success"){ //결과가 성공이네.......그럼 json을 자바스크립트 bean으로 만든다
+						var resData = eval("(" + removePre(data) + ")");
+						if(resData.fileName[0] !=null){
+						$("#FileText").val(resData.fileName[0]);
+						}
+						var params = $("#updateForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
+						
+						$.ajax({
+							type : "post",
+							url : "updateTest",
+							dataType : "json",
+							data : params,
+							success : function(result){
+								if(result.res> 0){
+									$("#actionForm").attr("action","bbs_detail");
+									$("#actionForm").submit();			
+								}else{
+									alert("수정 중 문제가 발생했습니다.")
+								}
+					         },
+					         error : function(result) {
+					          	alert("error!");
+					         }
+						});
+					}else{
+						alert("저장실패");
+					}
+				} //eval의 용도는 자바스크립는 bean용도로 사용하게.........
+				
 			}else{
 				updateFlag = true;
 				$("#changeBtn").attr("value","완료");
