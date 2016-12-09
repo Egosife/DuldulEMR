@@ -9,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-treatment 확인
+
 </body>
 </html>

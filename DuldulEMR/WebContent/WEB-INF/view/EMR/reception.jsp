@@ -6,22 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/main/reception.css" /> <!-- 레이아웃 -->
-<link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/calendar/calendar.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script type="text/javascript" src="resources/script/common/popup.js"></script>
-<script type="text/javascript" src="resources/script/calendar/calendar.js"></script>
-<script type="text/javascript" src="resources/script/treatment/treatment.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	showCalendar(d.getFullYear(),(d.getMonth() + 1));
-});
-</script>
+<script type="text/javascript" src="resources/script/treatment/reception.js"></script>
 
-<!-- calendar select script -->
 <script type="text/javascript">
 $(document).ready(function() {
 	$.datepicker.setDefaults({
@@ -76,7 +64,7 @@ $(document).ready(function() {
 });
 
 function Date_Select_Start(){
-	$("#date_start").datepicker({
+	$("#rep_date_start").datepicker({
 		dateFormat : 'yy-mm-dd',
 		duration: 200,
 		onSelect:function(dateText, inst){
@@ -86,9 +74,9 @@ function Date_Select_Start(){
             if (endDate > startDate) {
             	alert("조회 기간은 과거로 설정하세요.");
             	//달력에 종료 날짜 넣어주기
-        		$("#date_start").val($("#stdt").val());
+        		$("#rep_date_start").val($("#stdt").val());
 			} else {
-				$("#stdt").val($("#date_start").val());
+				$("#stdt").val($("#rep_date_start").val());
 			}
 		}
 	});
@@ -376,7 +364,7 @@ function SetTimeSelecter(){
 <input type="hidden" id="pati_num" name="pati_num" value="">
 <input type="hidden" id="treatsort_doc" name="treatsort_doc" value="">
 </form>
-<form action="#" id="treat_form" method="post">
+<form action="#" id="treat_form" method="post" style="height: 100%">
 			<div class="rep_repdata">
 				<div class="rep_sort">
 					<div class="rep_boxtitle">
@@ -421,7 +409,7 @@ function SetTimeSelecter(){
 									날짜 선택
 								</td>
 								<td>
-									<input type="text" class="rep_date_content2" id="date_start" name="treat_date" readonly="readonly" disabled="disabled">
+									<input type="text" class="rep_date_content2" id="rep_date_start" name="treat_date" readonly="readonly" disabled="disabled">
 								</td>
 							</tr>
 							<tr>
