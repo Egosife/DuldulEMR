@@ -28,7 +28,7 @@ $(document).ready(function(){
 	
 	//페이지 띄어주기
 	$("body").on("click",".btnlist_btns",function(){
-		ReOpen_Tab(this);
+		Open_Tab(this);
 	});
 	
 	//탭 내용 보기
@@ -137,7 +137,7 @@ function Close_Tab(obj){
 	View_Tab_Content(id);
 }
 //탭 닫기
-function Close_Tab(obj,tab){
+function ReClose_Tab(obj,tab){
 	var tab_id = "tab_"+tab;
 	
 	$("#content_"+tab).remove();
@@ -192,7 +192,7 @@ function ReOpen_Tab(obj){
 		if(useid != null){
 			Bbs_Type(obj);
 		}
-		Close_Tab(obj,tab[2]);
+		ReClose_Tab(obj,tab[2]);
 		Add_Tab(obj); //탭에 선택된 오브젝트 값 전송
 	}
 }
