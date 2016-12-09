@@ -28,7 +28,7 @@ $(document).ready(function(){
 	
 	//페이지 띄어주기
 	$("body").on("click",".btnlist_btns",function(){
-		Open_Tab(this);
+		ReOpen_Tab(this);
 	});
 	
 	//탭 내용 보기
@@ -140,7 +140,7 @@ function Close_Tab(obj){
 function Close_Tab(obj,tab){
 	var tab_id = "tab_"+tab;
 	
-	$("#content_"+$(obj).attr('tab')).remove();
+	$("#content_"+tab).remove();
 	$("#"+tab_id).remove();
 	
 	var id = $("#main_content_page").children('div:first').attr("value");
