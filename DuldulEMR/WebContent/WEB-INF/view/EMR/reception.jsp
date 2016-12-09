@@ -12,18 +12,8 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$.datepicker.setDefaults({
-		monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		showMonthAfterYear:true,
-		showOn: 'button',
-		closeText: '닫기',
-		buttonImage: 'resources/images/calender.png',
-		buttonImageOnly: true,
-		dateFormat: 'yy/mm/dd'    
-	}); 
-	
-
+	SetTreatType();
+	Settreatsort_type();
  	$("#treatsort_type").on("change",function(){
  		//console.log($("#treatsort_type option:selected").val());
  		$("#treatsort_doc").attr('value',$("#treatsort_type option:selected").val())

@@ -5,8 +5,7 @@
 var treat_data = ["","","","",""];
 
 $(document).ready(function(){
-	SetTreatType();
-	Settreatsort_type();
+	
 	
 	$("body").on("click","[name='pati-selectBtn']",function(){
 		var pati_num = $(this).attr("id").split('_');
@@ -150,7 +149,7 @@ $(document).ready(function(){
 			$("#rep_time_td").html(html);
 			html="";
 			
-			$("#date_start").attr('value',nowdate);
+			$("#rep_date_start").attr('value',nowdate);
 			$("#select_hour").attr('value',nowhours);
 			$("#select_min").attr('value',nowmin);
 			
@@ -208,7 +207,9 @@ $(document).ready(function(){
 			dataType : "json",
 			data : params,
 			success : function(result){
+				var objt = {tab:"reception*환자접수*reception"}
 				alert(result.res)
+				ReOpen_Tab(objt);
 			},
 			error : function(result){
 				alert("ERROR - Treatment");
