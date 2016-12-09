@@ -136,6 +136,21 @@ function Close_Tab(obj){
 	
 	View_Tab_Content(id);
 }
+//탭 닫기
+function Close_Tab(obj,tab){
+	var tab_id = "tab_"+tab;
+	
+	$("#content_"+$(obj).attr('tab')).remove();
+	$("#"+tab_id).remove();
+	
+	var id = $("#main_content_page").children('div:first').attr("value");
+	var val = $("#tab_bar").children('div:first').attr("value");
+	if(val != null){
+		Bbs_Type_Val(val);
+	}
+	
+	View_Tab_Content(id);
+}
 
 //탭  유무 체크
 function Open_Tab(obj){
@@ -157,6 +172,28 @@ function Open_Tab(obj){
 		if($("#tab-close_"+tab[2]).css('display') == 'none'){
 		View_Tab_Content(tab[2]);
 		}
+	}
+}
+//탭 오픈 시 새로고침
+function ReOpen_Tab(obj){
+	var tab = $(obj).attr('tab').split("*");
+	var useid = $(obj).attr('id');
+	
+	//생성된 탭이 없을 경우 생성해준다.
+	var activated_check = $("#tab_"+tab[2]).length;
+	
+	if(activated_check <= 0){
+		if(useid != null){
+			Bbs_Type(obj);
+		}
+		Add_Tab(obj); //탭에 선택된 오브젝트 값 전송
+	}else{
+		
+		if(useid != null){
+			Bbs_Type(obj);
+		}
+		Close_Tab(obj,tab[2]);
+		Add_Tab(obj); //탭에 선택된 오브젝트 값 전송
 	}
 }
 
@@ -210,7 +247,7 @@ function View_Tab_Content(tab){
 	$("#tab-close_"+tab).fadeIn('slow');
 }
 
-//선택된 탭만 보이게 하기
+//선택된 탭만 보이게 하기(새로고침)
 function View_Tab_Content(tab, fnc){
 	$(".pages").css('display','none');
 	$(".main_tab_close").css('display','none');

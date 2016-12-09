@@ -36,10 +36,43 @@ $(document).ready(function() {
 	}); 
 	
 
-/* 	$("#treatsort_type").on("change",function(){
-		
+ 	$("#treatsort_type").on("change",function(){
+ 		//console.log($("#treatsort_type option:selected").val());
+ 		$("#treatsort_doc").attr('value',$("#treatsort_type option:selected").val())
+ 		
+ 		var params = $("#treat_form_s").serialize();
+ 		
+ 		$.ajax({
+ 			type : "post",
+ 			url : "getdoctor",
+			dataType : "json",
+			data : params,
+ 			success : function(result){
+ 				var html = "";
+ 				for(var i = 0 ; i < result.getdoctor.length ; i++){
+ 					html += "<option value='";
+ 					html += result.getdoctor[i].EMP_NUM;
+ 					if(i == 0){
+ 						html += "'selected>";
+ 						html += result.getdoctor[i].EMP_NAME;
+ 						html += "</option>";
+ 					}else{
+ 						html += "'>";
+ 						html += result.getdoctor[i].EMP_NAME;
+ 						html += "</option>";
+ 					}
+ 				}
+ 				$("#doctor_name").html(html);
+ 				html="";
+ 			},
+ 			error : function(result){
+ 				alert("ERROR - getdoctor");
+ 			}
+ 		})// ajax end 
+ 	
+ 		
 	})//treatsort_type end
- */
+
 });
 
 function Date_Select_Start(){
@@ -68,14 +101,14 @@ function SetTreatType(){
 		success : function(result){
 			var html = "";
 			for(var i = 0 ; i < result.type.length ; i++){
-				html += "<option value=";
+				html += "<option name='TreatType' value='";
 				html += result.type[i].SMALL;
 				if(i == 0){
-					html += "selected>";
+					html += "'selected>";
 					html += result.type[i].CODE_NAME;
 					html += "</option>";
 				}else{
-					html += ">";
+					html += "'>";
 					html += result.type[i].CODE_NAME;
 					html += "</option>";
 				}
@@ -97,18 +130,13 @@ function Settreatsort_type(){
 		url : "gettreatsort_type",
 		success : function(result){
 			var html = "";
+			html += "<option value='-1'selected>선택</option>"
 			for(var i = 0 ; i < result.treatsort.length ; i++){
-				html += "<option value=";
+				html += "<option value='";
 				html += result.treatsort[i].SMALL;
-				if(i == 0){
-					html += "selected>";
+					html += "' >";
 					html += result.treatsort[i].CODE_NAME;
 					html += "</option>";
-				}else{
-					html += ">";
-					html += result.treatsort[i].CODE_NAME;
-					html += "</option>";
-				}
 			}
 			$("#treatsort_type").html(html);
 			html="";
@@ -125,14 +153,14 @@ function SetTimeSelecter(){
 	
 	//시간 선택 만들기
 	for(var i = 0 ; i < 24 ; i++){
-		html += "<option value=";
+		html += "<option value='";
 		html += i;
 		if(i == 0){
-			html += "selected>";
+			html += "'selected>";
 			html += i;
 			html += "</option>";
 		}else{
-			html += ">";
+			html += "'>";
 			html += i;
 			html += "</option>";
 		}
@@ -142,14 +170,14 @@ function SetTimeSelecter(){
 	html="";
 	
 	for(var i = 0 ; i < 60 ; i+=5){
-		html += "<option value=";
+		html += "<option value='";
 		html += i;
 		if(i == 0){
-			html += "selected>";
+			html += "'selected>";
 			html += i;
 			html += "</option>";
 		}else{
-			html += ">";
+			html += "'>";
 			html += i;
 			html += "</option>";
 		}
@@ -346,6 +374,7 @@ function SetTimeSelecter(){
 <input type="hidden" name="hos_code" value="${sHospital_Code}">
 <input type="hidden" name="emp_num" value="${sEmp_Num}">
 <input type="hidden" id="pati_num" name="pati_num" value="">
+<input type="hidden" id="treatsort_doc" name="treatsort_doc" value="">
 </form>
 <form action="#" id="treat_form" method="post">
 			<div class="rep_repdata">
@@ -399,9 +428,9 @@ function SetTimeSelecter(){
 								<td>
 									시간 선택
 								</td>
-								<td>
-									<select id="select_hour" name="select_hour" class="rep_date_content2" style="width: 25%;" disabled="disabled"></select>
-								    <select id="select_min" name="select_min" class="rep_date_content2" style="width: 25%;" disabled="disabled"></select>
+								<td id="rep_time_td">
+									시<select id="select_hour" name="select_hour" class="rep_date_content2" style="width: 25%;" disabled="disabled"></select>
+								    분<select id="select_min" name="select_min" class="rep_date_content2" style="width: 25%;" disabled="disabled"></select>
 								</td>
 							</tr>
 						</table>

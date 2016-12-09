@@ -18,4 +18,6 @@ public interface ITreatmentDao {
 	ArrayList<HashMap<String, String>> getTreatType() throws Throwable;
 
 	ArrayList<HashMap<String, String>> gettreatsort_type() throws Throwable;
+
+	ArrayList<HashMap<String, String>> getdoctor(HashMap<String, String> params) throws Throwable;
 }

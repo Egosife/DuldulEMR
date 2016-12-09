@@ -93,4 +93,9 @@ public class TreatmentDao implements ITreatmentDao {
 	public ArrayList<HashMap<String, String>> gettreatsort_type() throws Throwable {
 		return (ArrayList<HashMap<String, String>>) sqlMaptreat.queryForList("Treat.gettreatsort_type");
 	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> getdoctor(HashMap<String, String> params) throws Throwable {
+		return (ArrayList<HashMap<String, String>>) sqlMaptreat.queryForList("Treat.getdoctor",params);
+	}
 }

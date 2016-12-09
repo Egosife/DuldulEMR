@@ -101,6 +101,8 @@ public class TreatmentController {
 		
 		HashMap<String, String> treatSEQ = iTreatmentService.getTreatSEQ();
 		
+		System.out.println("이쪽이다아ㅏㅏ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(params);
 		System.out.println(treatSEQ);
 
 		if(!treatSEQ.isEmpty()){
@@ -153,6 +155,28 @@ public class TreatmentController {
 		ArrayList<HashMap<String, String>> treatsort_type = iTreatmentService.gettreatsort_type();
 		
 		modelMap.put("treatsort", treatsort_type);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+
+	//진료진 정보 받아오기
+	@RequestMapping(value="/getdoctor")
+	public @ResponseBody ResponseEntity<String> getdoctor(HttpServletRequest request,
+			 @RequestParam HashMap<String, String> params,
+			 ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		ArrayList<HashMap<String, String>> getdoctor = iTreatmentService.getdoctor(params);
+		
+		System.out.println(getdoctor);
+		
+		modelMap.put("getdoctor", getdoctor);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 

@@ -48,5 +48,10 @@ public class TreatmentService implements ITreatmentService {
 	public ArrayList<HashMap<String, String>> gettreatsort_type() throws Throwable {
 		return iTreatmentDao.gettreatsort_type();
 	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> getdoctor(HashMap<String, String> params) throws Throwable {
+		return iTreatmentDao.getdoctor(params);
+	}
 	
 }

@@ -128,10 +128,44 @@ $(document).ready(function(){
 	$("#rep_date_content1_btn").on("click",function(){
 		treat_data[1] = $("#treat_form").serialize();
 		//console.log(treat_data);
-		$(".rep_date_content1").attr('disabled',true);
-		$(".rep_date_content2").attr('disabled',false);
-		Date_Select_Start();
-		SetTimeSelecter();
+		
+		//console.log($("input[name='rep_radio']:checked").val());
+		
+		if($("input[name='rep_radio']:checked").val() == 0){
+			var date = new Date();
+			var minutes = "";
+			//분 필터링
+			if(date.getMinutes() < 10){
+				Minutes = "0"+date.getMinutes();
+			}else{
+				Minutes = date.getMinutes();
+			}
+			var nowdate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+			var nowhours = date.getHours()
+			var nowmin = Minutes;
+			
+			var html ="";
+			html += "<input type='text' class='rep_date_content2' id='select_hour' name='select_hour' readonly='readonly' style='width: 25%;' disabled='disabled'>";
+			html += "<input type='text' class='rep_date_content2' id='select_min' name='select_min' readonly='readonly' style='width: 25%;' disabled='disabled'>";
+			$("#rep_time_td").html(html);
+			html="";
+			
+			$("#date_start").attr('value',nowdate);
+			$("#select_hour").attr('value',nowhours);
+			$("#select_min").attr('value',nowmin);
+			
+			
+			
+			treat_data[2] = $("#treat_form").serialize();
+			$(".rep_date_content1").attr('disabled',true);
+			$(".rep_date_content3").attr('disabled',false);
+		}else{
+			$(".rep_date_content1").attr('disabled',true);
+			$(".rep_date_content2").attr('disabled',false);
+			Date_Select_Start();
+			SetTimeSelecter();
+		}
+		
 	})
 	$("#rep_date_content2_btn").on("click",function(){
 		treat_data[2] = $("#treat_form").serialize();
@@ -141,10 +175,17 @@ $(document).ready(function(){
 		$(".rep_date_content3").attr('disabled',false);
 	})
 	$("#rep_date_content3_btn").on("click",function(){
-		treat_data[3] = $("#treat_form").serialize();
-		//console.log(treat_data);
-		$(".rep_date_content3").attr('disabled',true);
-		$(".rep_date_content4").attr('disabled',false);
+		
+		if($("#doctor_name").val() == null){
+			alert("담당의를 선택하셔야 합니다.");
+		}else{
+			treat_data[3] = $("#treat_form").serialize();
+			//console.log(treat_data);
+			$(".rep_date_content3").attr('disabled',true);
+			$(".rep_date_content4").attr('disabled',false);
+		}
+		
+		
 	})
 	$("#treatment_commit").on("click",function(){
 		treat_data[0] = $("#treat_form_s").serialize();

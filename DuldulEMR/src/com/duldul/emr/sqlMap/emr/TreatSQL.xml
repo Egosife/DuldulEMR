@@ -47,13 +47,21 @@
 	<insert id="treat_commit"
 			parameterClass="java.util.HashMap">
 		INSERT INTO TREATINFO
-		(TREAT_NUM,HOSPITAL_CODE,PATIENT_NUM,EMP_NUM,SORT_TYPE,OFFICE,ETC)
-		VALUES(#TREATSEQ#, #hos_code#, #pati_num#, #emp_num#, #treat_type#, #treatsort_type#, #etcdata#)
+		(TREAT_NUM,HOSPITAL_CODE,PATIENT_NUM,EMP_NUM,SORT_TYPE,OFFICE,ETC,EMP_NUM2)
+		VALUES(#TREATSEQ#, #hos_code#, #pati_num#, #emp_num#, #treat_type#, #treatsort_type#, #etcdata#, #doctor_name#)
 	</insert>
 	<insert id="treat_commit_time"
 			parameterClass="java.util.HashMap">
-		INSERT INTO TIME(TREAT_NUM, TAKE_DATE)
-		VALUES(#TREATSEQ#,SYSDATE)
+		<isEqual property="rep_radio" compareValue="0">
+			INSERT INTO TIME(TREAT_NUM, TAKE_DATE)
+			VALUES(#TREATSEQ#,SYSDATE)
+		</isEqual>
+ 		<isEqual property="rep_radio" compareValue="1">
+			INSERT INTO TIME(TREAT_NUM, APPOINTMENT_DATE)
+			VALUES(#TREATSEQ#,TO_DATE(#treat_date#||','||#select_hour#||':'||#select_min#,'YYYY-MM-DD,HH24:MI'))
+		</isEqual>
+			
+		
 		<!-- 여기 수정 요망 - 예약일때, 아닐때 ㅇㅇ -->
 	</insert>
 
@@ -69,6 +77,16 @@
 		SELECT SMALL, CODE_NAME
 		FROM CODEDATA
 		WHERE BIG = 9
+	</select>
+
+	<select id="getdoctor"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT EMP_NUM, EMP_NAME
+		FROM EMP
+		WHERE LV_CODE = 2 
+		AND HOSPITAL_CODE = #hos_code#
+		AND OFFICE_CODE = #treatsort_doc#
 	</select>
 
 </sqlMap>
