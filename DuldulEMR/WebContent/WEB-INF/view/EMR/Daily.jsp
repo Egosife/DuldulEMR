@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/Daily/Daily.css"><!-- 레이아웃 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <title>일일 업무 일지</title>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -13,8 +12,9 @@ $(document).ready(function(){
 	dailyList();
 	
 	$("#insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
-		$("#dailyForm").attr("action","Daily_write"); /* Daily_write로 넘어감 */
-		$("#dailyForm").submit();
+		/* $("#dailyForm").attr("action","Daily_write");
+		$("#dailyForm").submit(); */
+		Open_Tab(this);
 	}); //insertBtn end
 	
 	$("#pagingArea").on("click","span",function(){
@@ -23,9 +23,7 @@ $(document).ready(function(){
 	}); //pagingArea end
 	
 	$("#tb").on("click","tr",function(){
-		$("input[name='TURN']").val($(this).attr("name"));
-		$("#dailyForm").attr("action","Daily_details");
-		$("#dailyForm").submit();
+		Open_Tab(this);
 	}); //tb end
 });//ready end
 
@@ -63,7 +61,7 @@ function dailyList(){
 		success : function(result){
 			var html="";
 			for(var i=0; i<result.list.length; i++){
-				html += "<tr name='"+result.list[i].DAILY_NUM+"' value='"+result.list[i].DAILY_NUM+"'>";
+				html += "<tr name='"+result.list[i].DAILY_NUM+"' value='"+result.list[i].DAILY_NUM+"' tab='Daily_details?TURN="+result.list[i].DAILY_NUM+"*글 읽기*Daily_details'>";
 				html += "<td>"+result.list[i].ROWNO+"</td>";
 				html += "<td>"+result.list[i].RECODE_DATE+"</td>";
 				html += "<td>"+result.list[i].CONTENT+"</td>";
@@ -115,13 +113,14 @@ function dailyList(){
 </c:choose>
 <input type="hidden" name="TURN"/>
 <input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/>
+<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/>
 
 </form>
 <!-- 16.11.25 일일 업무 일지 조회, 김남기 -->
-<div class="main_knk"> <!-- 메인 레이아웃 -->
-	<div class="top_knk"> <!-- 레이아웃 상단 -->
-		<div class="b_information"><b>기본 정보</b></div> <!-- 레이아웃 - 기본 정보 -->
-		<table border="1" class="d_table"> <!-- 기본 정보 테이블 -->
+<div class="Dai_main_knk"> <!-- 메인 레이아웃 -->
+	<div class="Dai_top_knk"> <!-- 레이아웃 상단 -->
+		<div class="Dai_b_information"><b>기본 정보</b></div> <!-- 레이아웃 - 기본 정보 -->
+		<table border="1" class="Dai_d_table"> <!-- 기본 정보 테이블 -->
 			<tr>
 				<td>성 명</td>
 				<td>직 책</td>
@@ -131,26 +130,28 @@ function dailyList(){
 			<tbody id="tb_Top"></tbody>
 		</table>
 	</div>
-	<div class="middle_knk"> <!-- 레이아웃 중단 -->
-		<div class="report"><b>업무 일지</b></div> <!-- 레이아웃 중단 - 업무 일지 -->
-		<table border="1" class="d_table"> <!-- 업무 일지 테이블 -->
+	<div class="Dai_middle_knk"> <!-- 레이아웃 중단 -->
+		<div class="Dai_report"><b>업무 일지</b></div><!-- 레이아웃 중단 - 업무 일지 -->
+		<div class="Dai_layoutt_table">
+		<table border="1" class="Dai_db_table" style="table-layout: fixed;"> <!-- 업무 일지 테이블 -->
 			<tr>
-				<td>일 차</td>
-				<td>업무 일자</td>
-				<td>업무 내용</td>
+				<td width="5%">일 차</td>
+				<td width="10%">업무 일자</td>
+				<td width="85%">업무 내용</td>
 			</tr>
 			<tbody id="tb">
 			</tbody>
 		</table>
+		</div>
 	</div><hr>
-	<div class="bottom_knk"> <!-- 레이아웃 하단 -->
-		<div class="bottom_top"> <!-- 레이아웃 하단 - 상단 -->
-			<div class="btn_knk">
-				<input type="button" value="글쓰기" class="btn_btn" id="insertBtn"> <!-- 레이아웃 하단 - 글쓰기 버튼 크기  -->
+	<div class="Dai_bottom_knk"> <!-- 레이아웃 하단 -->
+		<div class="Dai_bottom_top"> <!-- 레이아웃 하단 - 상단 -->
+			<div class="Dai_btn_knk">
+				<input type="button" value="글쓰기" class="Dai_btn_btn" id="insertBtn" tab='Daily_write*일지작성*Daily_write'> <!-- 레이아웃 하단 - 글쓰기 버튼 크기  -->
 			</div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
 		</div>
-		<div class="bottom_bt"> <!-- 레이아웃 하단 - 하단 -->
-			<div class="paging" id="pagingArea" style="font-size: 12pt"></div> <!-- 레이아웃 하단 - 페이징 -->
+		<div class="Dai_bottom_bt"> <!-- 레이아웃 하단 - 하단 -->
+			<div class="Dai_paging" id="pagingArea" style="font-size: 12pt"></div> <!-- 레이아웃 하단 - 페이징 -->
 		</div>
 	</div>
 </div>

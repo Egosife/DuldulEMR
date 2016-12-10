@@ -5,26 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/Daily/Daily_write.css"><!-- 레이아웃 -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
-<link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
-
 <!-- script 영역 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
-<script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$.datepicker.setDefaults({
-		monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		showMonthAfterYear:true,
-		showOn: 'button',
-		closeText: '닫기',
-		buttonImage: 'resources/images/calender.png',
-		buttonImageOnly: true,
-		dateFormat: 'yy/mm/dd'    
-	}); 
 	
 	$("#datepicker1").datepicker({
 		dateFormat : 'yy-mm-dd',
@@ -32,21 +16,31 @@ $(document).ready(function(){
 		onSelect:function(dateText, inst){
 		}
 	});
+	
 	$("#cancelBtn").on("click",function(){
-		$("#dailyForm").attr("action","Daily"); /* 취소 버튼을 누르면 Daily로 넘어감 */
-		$("#dailyForm").submit();
+		Close_Tab(this);
 	}); //cancelBtn 끝
+	
 	$("#saveBtn").on("click",function(){
-		var insertForm = $("#insertForm");
-		insertForm.ajaxForm(uploadResultCallBack);
-		insertForm.submit();
+		if($("#datepicker1").val() == ""){
+			alert("날짜를 선택하세요.");
+		}else if($("#naeyoung").val() == ""){
+				alert("내용을 입력하세요.");
+			}else{		
+ 		 var daily_wri = $("#daily_wri");
+ 		
+ 		daily_wri.ajaxForm(uploadResultCallBack);
+ 		daily_wri.submit(); 
+			}
 	}); //saveBtn 끝
 }); //ready 끝
 function uploadResultCallBack(data,result){ 
+	var daily_open = {tab:"Daily*업무일지*j"};
+	var dailywrite_close = {tab:"Daily_write"};
 	if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦
 		
-		var params = $("#insertForm").serialize();
-		console.log(params);
+		var params = $("#daily_wri").serialize();
+		
 	$.ajax({
 			type : "post",
 			url : "dailyInsert",
@@ -54,7 +48,8 @@ function uploadResultCallBack(data,result){
 			data : params,
 			success : function(result){
 				if(result.res=="true"){
-					location.href="Daily";
+					ReOpen_Tab(daily_open);
+					Close_Tab(dailywrite_close);
 				}else{
 					alert("저장 중 문제가 발생했습니다.");
 				}
@@ -72,36 +67,35 @@ function uploadResultCallBack(data,result){
 </head>
 <!-- 16.11.25 일일 업무 일지 글쓰기, 김남기 -->
 <body>
-<form action="" id="dailyForm" method="post">
+<form action="" id="" method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
-	
 </form>
-		<form id="insertForm" method="post">
+		<form id="daily_wri" method="post">
 		<input type="hidden" name="nums" value="${sEmp_Num}"/>
 		<input type="hidden" name="hospital" value="${sHospital_Code}"/>
-<div class="main_mm"> <!-- 메인 레이아웃 -->
-   <div class="top_tt"> <!-- 레이아웃 상단 -->
-      <div class="daily"><b>업무 일지</b></div> <!-- 레이아웃 상단 - 업무 일지 -->
-      <div class="calender">업무 날짜</div> <!-- 레이아웃 상단 - 업무 날짜  -->
-     	 <div class="cal_btn" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
-        	 <input type="text" name="records" placeholder="날짜를 선택하세요" class="cal_text" id="datepicker1" readonly>
-    	  </div>
+<div class="Daily_main_mm"> <!-- 메인 레이아웃 -->
+   <div class="Daily_top_tt"> <!-- 레이아웃 상단 -->
+      <div class="Daily_daily"><b>업무 일지</b></div> <!-- 레이아웃 상단 - 업무 일지 -->
+      <div class="Daily_calender">업무 날짜</div> <!-- 레이아웃 상단 - 업무 날짜  -->
+     	 <div class="Daily_cal_btn" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
+        	<input type="text" name="records" placeholder="날짜를 선택하세요" class="Daily_cal_text" id="datepicker1" readonly>
+    	 </div>
    </div><hr> <!-- 구분선 -->
-   <div class="middle_mm"> <!-- 레이아웃 중단 -->
-	<div class="mid_work">업무 내용</div> <!-- 레이아웃  중단 - 업무 내용 -->
-      <div class="mid_text"> <!-- 레이아웃  중단 - 업무 내용 입력 -->
-         <input type="text" name="contents" placeholder="내용을 입력하세요" class="text_size" >
+   <div class="Daily_middle_mm"> <!-- 레이아웃 중단 -->
+	<div class="Daily_mid_work">업무 내용</div> <!-- 레이아웃  중단 - 업무 내용 -->
+      <div class="Daily_mid_text"> <!-- 레이아웃  중단 - 업무 내용 입력 -->
+         <textarea name="contents" id="naeyoung" class="Daily_text_size"></textarea>
       </div>
    </div><hr/>
-   <div class="bottom_bb"> <!-- 레이아웃 하단  -->
-      <div class="bottom_top12"> <!-- 레이아웃 하단 - 상단 -->
-         <div class="btn_1">
-         	<input type="button" value="등록" class="btn_button" id="saveBtn"> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
-         	<input type="button" value="취소" class="btn_button" id="cancelBtn"/> 
+   <div class="Daily_bottom_bb"> <!-- 레이아웃 하단  -->
+      <div class="Daily_bottom_top12"> <!-- 레이아웃 하단 - 상단 -->
+         <div class="Daily_btn_1">
+         	<input type="button" value="등록" class="Daily_btn_button" id="saveBtn"/> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
+         	<input type="button" value="취소" class="Daily_btn_button" id="cancelBtn" tab='Daily_write'/> 
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
       </div>
-      <div class="bottom_btb"> <!-- 레이아웃 하단 - 하단 -->
-         <div class="paging1"></div> <!-- 레이아웃 하단 - 페이징 -->
+      <div class="Daily_bottom_btb"> <!-- 레이아웃 하단 - 하단 -->
+         <div class="Daily_paging1"></div> <!-- 레이아웃 하단 - 페이징 -->
       </div>
    </div>
 </div>

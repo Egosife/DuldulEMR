@@ -15,15 +15,17 @@
 	</select>
 	
 	<select id="getDaily" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-		SELECT *
-		FROM(SELECT ROWNUM AS NO, ROWNO,DAILY_NUM, RECODE_DATE, CONTENT
+    SELECT *
+    FROM(SELECT ROWNUM AS NO, ROWNO,DAILY_NUM, RECODE_DATE, CONTENT
 		     FROM(SELECT ROWNUM AS ROWNO,DAILY_NUM, RECODE_DATE,CONTENT
 		           FROM(SELECT DAILY_NUM,TO_CHAR(RECORD_DATE,'YYYY-MM-DD') AS RECODE_DATE, CONTENT
 		                FROM DAILY
+		                WHERE EMP_NUM = #EMP_NUM#
+                    AND HOSPITAL_CODE = #HOSPITAL_CODE#
 		                ORDER BY RECODE_DATE)
 		            ORDER BY ROWNUM DESC))
-		      WHERE 1 = 1
-		AND NO BETWEEN #start# AND #end#
+		    WHERE 1 = 1
+			AND NO BETWEEN #start# AND #end#
 	</select>
 	
 	<select id="getDailyCount" parameterClass="java.util.HashMap" resultClass="Integer">

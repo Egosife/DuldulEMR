@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,9 +84,10 @@ public class DailyController {
 	
 	//일일 업무 일지 가져오기
 	@RequestMapping(value = "/dailyList")
-	public @ResponseBody ResponseEntity<String> dailyList(HttpServletRequest request,
+	public @ResponseBody ResponseEntity<String> dailyList(HttpServletRequest request, HttpSession session,
 			@RequestParam HashMap<String, String> params, ModelAndView modelAndView) throws Throwable {
-
+		
+		System.out.println(params);
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 
@@ -113,6 +115,9 @@ public class DailyController {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
 		String res = IDailyService.dailyInsert(params);
+		
+		System.out.println(params);
+		System.out.println(res);
 		
 		modelMap.put("res", res);
 		
@@ -147,7 +152,8 @@ public class DailyController {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
 		int ress = IDailyService.dailyDelete(params);
-		
+		System.out.println(params);
+		System.out.println(ress);
 		modelMap.put("ress", ress);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
