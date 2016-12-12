@@ -39,5 +39,114 @@ public class Patient_Dao implements Patient_iDao { //2016-11-30 이관우 디에
 		// TODO Auto-generated method stub
 		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Emp_DataList", parang); //sql id 지정
 	} //직원조회 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public HashMap<String, String> getDetails_info(HashMap<String, String> padar_padar) throws Throwable {
+		// TODO Auto-generated method stub
+		return (HashMap<String, String>) sqlMapC_t.queryForObject("Patient_Data.Details_DataList", padar_padar);
+	} //환자 상세조회 인터페이스 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> Det_DataList(HashMap<String, String> padar_padar) throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Det_DataList", padar_padar); //sql id 지정
+	} //진단기록 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> Det_DataList2(HashMap<String, String> padar_padar_padar) throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Det_DataList2", padar_padar_padar); //sql id 지정
+	} //처방기록 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public HashMap<String, String> insert_SEQ() throws Throwable {
+		return (HashMap<String, String>) sqlMapC_t.queryForObject("Patient_Data.insert_SEQ_NEXTVAL");
+	} //SEQ.NEXTVAL
+	
+	@Override
+	public String pat_insert(HashMap<String, String> paprika) throws Throwable {
+		String res = "false";
+		
+		//트랜잭션 생성
+		//한번에 여러건을 수정 할 시 에러를 대비.
+		sqlMapC_t.startTransaction(); // 여기부터 트랜잭션을 시작하겠다.
+		sqlMapC_t.startBatch(); // 한번에 몇십천건 을 수정할 땐 배치를 쓰는게 좋음.
+		
+		//작업이 완료 됬을 시 커밋.
+		try{
+			sqlMapC_t.insert("Patient_Data.pat_insert", paprika);
+			
+			sqlMapC_t.executeBatch(); // 쿼리를 한번에 날림
+			sqlMapC_t.commitTransaction(); //적용시킴
+			
+			res = "true";
+		} catch (Exception e) {
+			res = "false";
+			e.printStackTrace();
+			//에러가 나면 커밋이 안되므로  롤백이 됨
+		}
+		
+		sqlMapC_t.endTransaction(); //트랜잭션을 끝내겠다.
+		
+		return res;
+	} //환자정보
 
+	@Override
+	public String patmore_insert(HashMap<String, String> paprika) throws Throwable {
+		String res = "false";
+		
+		//트랜잭션 생성
+		//한번에 여러건을 수정 할 시 에러를 대비.
+		sqlMapC_t.startTransaction(); // 여기부터 트랜잭션을 시작하겠다.
+		sqlMapC_t.startBatch(); // 한번에 몇십천건 을 수정할 땐 배치를 쓰는게 좋음.
+		
+		//작업이 완료 됬을 시 커밋.
+		try{
+			sqlMapC_t.insert("Patient_Data.patmore_insert", paprika);
+			
+			sqlMapC_t.executeBatch(); // 쿼리를 한번에 날림
+			sqlMapC_t.commitTransaction(); //적용시킴
+			
+			res = "true";
+		} catch (Exception e) {
+			res = "false";
+			e.printStackTrace();
+			//에러가 나면 커밋이 안되므로  롤백이 됨
+		}
+		
+		sqlMapC_t.endTransaction(); //트랜잭션을 끝내겠다.
+		
+		return res;
+	} //환자추가정보
+	
+	@Override
+	public int Set_Count(HashMap<String, String> parigee) throws Throwable {
+		// TODO Auto-generated method stub
+		return (int) sqlMapC_t.queryForObject("Patient_Data.Set_Count", parigee); //sql id 지정
+	} //환자일정 조회 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> Set_DataList(HashMap<String, String> parigee) throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Set_DataList", parigee); //sql id 지정
+	} //환자일정 조회 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> Selectsort_type() throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.St_Data");
+	} //진료과 타입 받아오기
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> get_Selectdoc(HashMap<String, String> papamama) throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Doc_data",papamama);
+	} //진료의사 타입 받아오기
 }

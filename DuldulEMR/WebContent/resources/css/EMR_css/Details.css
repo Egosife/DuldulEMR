@@ -3,27 +3,46 @@
 		   28  최종 수정
 	환자 상세조회 페이지(기본 레이아웃 디자인 제작) */
  
- body { /* 기본셋팅 */
+ .D_body { /* 기본셋팅 */
 	margin: 0px;
 	font-size: 0pt;
  }
  
- div { /* div셋팅 */
+ .D_div { /* div셋팅 */
 	vertical-align: top;
 	overflow: hidden;
  }
  
- table { /* 테이블 */
- 	width: 90%;
+ .DD_td { /* 환자번호, 이름, 성별, 주소, 몸무게, 신장, 장애여부 글자 위치 */
+ 	text-align: center;
+ }
+ 
+ .D_table { /* 테이블 */
+ 	width: 100%;
  	height: 100%;
+ 	text-align: center; 
  	margin: 0 auto;
  	font-size: 16pt;
  }
  
- .textbox_d { /* 텍스트 박스 */
+ .Det_table { /* 진단기록, 처방기록 테이블 */
  	width: 100%;
- 	height: 100%;
- 	font-size: 20pt;
+ 	text-align: center; 
+ 	margin: 0 auto;
+ 	font-size: 16pt;
+ }
+ 
+ .D_td { /* 연락처1, 연락처2, 혈액형 글자크기, 텍스트 박스와 간격 */
+ 	width: 22%;
+ 	text-align: center;
+ 	font-size: 16pt;
+ }
+ 
+ .textbox_d { /* 텍스트 박스 */
+ 	width: 95%;
+ 	height: 95%;
+ 	text-align: center;
+ 	font-size: 12pt;
  }
  
  .Det_main { /* 메인화면 사이즈 */
@@ -84,7 +103,7 @@
  
  .Det_left { /* 상세조회 오른쪽상단 (왼쪽) */
  	display: inline-block;
- 	width: 35%;
+ 	width: 45%;
  	height: 100%;
  	font-size: 20pt;
  	background-color: #AAAAAA;
@@ -100,7 +119,7 @@
  
  .Det_right { /* 상세조회 오른쪽상단 (오른) */
  	display: inline-block;
- 	width: 35%;
+ 	width: 25%;
  	height: 100%;
  	font-size: 20pt;
  	background-color: #FFFFFF;
@@ -113,7 +132,7 @@
  	background-color: #D5D5D5;
  }
  
- #jin { /* 진료버튼 */
+ .D_jin { /* 진료버튼 */
  	display: inline-block;
  	width: 60px;
  	height: 40px;
@@ -142,9 +161,11 @@
  }
  
  .Det_mid_bot { /* 진단기록 테이블 */
- 	width: 100%;
+ 	width: 95%;
  	height: 90%;
  	font-size: 15pt;
+ 	overflow: auto;
+ 	margin: 0 auto;
  	background-color: #FFFFFF;
  }
  
@@ -167,8 +188,10 @@
  }
  
  .Det_bot_bot { /* 처방기록 테이블 */
- 	width: 100%;
+ 	width: 95%;
  	height: 90%;
  	font-size: 15pt;
+ 	overflow: auto;
+ 	margin: 0 auto;
  	background-color: #D5D5D5;
  }

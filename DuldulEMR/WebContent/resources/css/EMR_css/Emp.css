@@ -4,12 +4,12 @@
 		12-02  수정 및 추가
 	직원 정보 조회 페이지(기본 레이아웃 디자인 제작) */
  
- body { /* 기본셋팅 */
+ .E_body { /* 기본셋팅 */
 	margin: 0px;
 	font-size: 0pt;
  }
  
- div { /* div 셋팅 */
+ .E_div { /* div 셋팅 */
 	vertical-align: top;
  }
  
@@ -46,7 +46,7 @@
  	background-color: #DDDDDD;
  }
  
- table{ /* 직원조회 표 사이즈 12 - 02 수정 */
+ .EMP_table{ /* 직원조회 표 사이즈 12 - 02 수정 */
  	width: 95%;
  	text-align: center;
  	background-color: #FFFFFF;
@@ -59,7 +59,7 @@
  	background-color: #FFFFFF;
  }
  
- #EMPlist_Btn { /* 목록보기 2016 - 12 - 02 추가*/
+ .E_list_Btn { /* 목록보기 2016 - 12 - 02 추가*/
 	display: inline-block;
     width: 120px;
  	height: 56px;
@@ -93,7 +93,7 @@
   	background-color: #KKKKKK;	
  }
  
- #pagingE { /* 직원표 리스트 버튼  12 - 02 추가*/
+ .E_paging { /* 직원표 리스트 버튼  12 - 02 추가*/
  	font-size: 20pt;
  	margin-top: 33px;
  }
@@ -105,7 +105,7 @@
  	background-color: #DDDDDD;
  }
  
- #Eselect_box { /* 셀렉트 박스  */
+ .E_select_box { /* 셀렉트 박스  */
   	display: inline-block;
   	width: 160px;
   	height: 56px;
@@ -113,14 +113,14 @@
  	vertical-align: top;
  }
  
- #Esearch_Text1 { /* 텍스트 박스 */
+ .E_search_Text { /* 텍스트 박스 */
   	display: inline-block;
   	width: 700px;
   	height: 50px;
   	font-size: 20pt;
  }
   
- #Esearch_Btn { /* 검색 */
+ .E_search_Btn { /* 검색 */
   	display: inline-block;
     width: 100px;
  	height: 56px;
@@ -128,6 +128,6 @@
  	vertical-align: top;
  }
   
- #Eselect_box, #Esearch_Text1, #Esearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색버튼 간격 */
+ .E_select_box, .E_search_Text, .E_search_Btn { /* 셀렉트 박스, 텍스트 박스, 검색버튼 간격 */
  	margin-top: 30px;
  }

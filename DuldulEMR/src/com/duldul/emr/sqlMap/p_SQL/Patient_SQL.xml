@@ -5,7 +5,8 @@
 <sqlMap namespace="Patient_Data">
 
 <!-- 2016-12-01 환자조회 데이터, 카운터 쿼리 추가
-			 02  직원조회 데이터, 카운터 쿼리 추가 -->
+			 02  직원조회 데이터, 카운터 쿼리 추가 
+			 05  환자,직원조회 데이터 개발완료-->
 			 
 	<select id="pat_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
 		SELECT A.NO, A.PATIENT_NUM, A.PATIENT_NAME, A.BIRTH, A.PHONE1, A.ADDRESS, A.BLOOD
@@ -119,4 +120,184 @@
 		</isNotEmpty>
 	</select> <!-- 환자조회 카운터 쿼리 -->
 	
+	<select id="Details_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT A.PATIENT_NUM AS PAT_NUM, A.PATIENT_NAME, A.CODE_NAME AS SEX_CODE, A.ADDRESS, A.PHONE1, A.PHONE2, B.CODE_NAME AS BLOOD, B.WEI, B.HEI, B.HANDICAP
+		FROM
+		(
+		SELECT P.PATIENT_NUM, P.PATIENT_NAME, P.PHONE1, P.PHONE2, C.CODE_NAME, P.ADDRESS
+		FROM PATIENT P LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '2') C
+		ON P.SEX_CODE = C.SMALL
+		) A
+		LEFT OUTER JOIN
+		(
+		SELECT M.PATIENT_NUM, M.HEI, M.WEI, C.CODE_NAME, M.HANDICAP
+		FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '3') C
+		ON M.BLOOD = C.SMALL
+		) B
+		ON A.PATIENT_NUM = B.PATIENT_NUM
+		WHERE A.PATIENT_NUM = #patinum#
+	</select> <!-- 환자 상세조회 데이터 쿼리 -->
+	
+	<select id="Det_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT *
+		FROM
+		(
+		SELECT ROW_NUMBER() OVER(ORDER BY B.TREAT_NUM DESC) AS NO,
+		B.SYM, B.SPECIAL_NOTE, B.DIAGNOSIS, B.OPINION, TO_CHAR(B.POSTING_DATE, 'YYYY-MM-DD') AS POSTING_DATE, B.EMP_NUM2, B.PATIENT_NUM, B.TREAT_NUM, B.NUM
+		FROM (
+		SELECT ROW_NUMBER() OVER(PARTITION BY A.TREAT_NUM ORDER BY A.POSTING_DATE DESC) AS NO,
+		A.SYM, A.SPECIAL_NOTE, A.DIAGNOSIS, A.OPINION, A.POSTING_DATE, A.EMP_NUM2, P.PATIENT_NUM, A.TREAT_NUM, A.NUM
+		FROM
+		(
+		SELECT T.TREAT_NUM, T.SYM, T.SPECIAL_NOTE, T.DIAGNOSIS, T.OPINION, T.POSTING_DATE, F.EMP_NUM2, F.PATIENT_NUM, T.NUM
+		FROM TREATHISTORY T LEFT OUTER JOIN TREATINFO F
+		ON T.TREAT_NUM = F.TREAT_NUM
+		) A
+		LEFT OUTER JOIN PATIENT P
+		ON A.PATIENT_NUM = P.PATIENT_NUM
+		WHERE P.PATIENT_NUM = #patinum#
+		) B
+		WHERE NO = 1
+		ORDER BY NO ASC
+		) C
+		WHERE NO BETWEEN #start# AND #end#
+	</select> <!-- 진단기록 데이터 쿼리 -->
+	
+	<select id="Det_DataList2" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT NO, B.PILL_NAME, B.PRESCRIPTION_AMOUNT, B.DAY_DRUGTIME, B.ALL_DRUGTIME, B.EMP_NUM2, B.POSTING_DATE, B.PATIENT_NUM, B.TREAT_NUM
+		FROM
+		(
+		SELECT ROW_NUMBER() OVER(ORDER BY R.TREAT_NUM DESC) AS NO, A.PILL_NAME, A.PRESCRIPTION_AMOUNT, A.DAY_DRUGTIME, A.ALL_DRUGTIME, R.EMP_NUM2, TO_CHAR(A.POSTING_DATE, 'YYYY-MM-DD') AS POSTING_DATE, R.TREAT_NUM, R.PATIENT_NUM
+		FROM
+		(
+		SELECT T.TREAT_NUM, T.POSTING_DATE, P.PILL_NAME, P.PRESCRIPTION_AMOUNT, P.DAY_DRUGTIME, P.ALL_DRUGTIME
+		FROM PILL P LEFT OUTER JOIN TREATHISTORY T
+		ON P.TREAT_NUM = T.TREAT_NUM
+		AND P.NUM = T.NUM
+		) A LEFT OUTER JOIN TREATINFO R
+		ON A.TREAT_NUM = R.TREAT_NUM
+		WHERE R.TREAT_NUM = #treat_num#
+		) B
+	</select> <!-- 처방기록 데이터 쿼리 -->
+	
+	<select id="insert_SEQ_NEXTVAL" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT PATIENT_LGW_SEQ.NEXTVAL AS PATIENTSEQ
+		FROM DUAL
+	</select> <!-- SEQ.NEXTVAL -->
+	
+	<insert id="pat_insert" parameterClass="java.util.HashMap">
+		INSERT INTO PATIENT(PATIENT_NUM, PATIENT_NAME, BIRTH, PHONE1, PHONE2, SEX_CODE, ADDRESS, EMAIL)
+		VALUES (#PATIENTSEQ#, #PATIENT_NAME#, #BIRTH#, #PHONE1#, #PHONE2#, #pat_sex#, #ADDRESS#, #EMAIL#)
+	</insert> <!-- 환자정보 데이터 쿼리 -->
+	
+	<insert id="patmore_insert" parameterClass="java.util.HashMap">
+		INSERT INTO PATIENTMORE(PATIENT_NUM, HEI, WEI, LEFT_EYE, RIGHT_EYE, BLOOD, HANDICAP, DISEASE, SMOKING, DRINKING, MARRIAGE)
+		VALUES (#PATIENTSEQ#, #HEI#, #WEI#, #LEFT_EYE#, #RIGHT_EYE#, #B_type#, #HANDICAP#, #DISEASE#, #hip#, #chm#, #marri#)
+	</insert> <!-- 환자 추가정보 데이터 쿼리 -->
+	
+	<select id="Set_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT NO, A.PATIENT_NUM, A.APPOINTMENT_TIME, A.TAKE_TIME, A.PATIENT_NAME, A.OFFICE, A.EMP_NAME, A.SORT_TYPE, A.TAKE_DATE, A.CONDITION, A.ETC, A.TREAT_NUM
+		FROM
+		(
+		SELECT ROW_NUMBER() OVER(ORDER BY TAKE_DATE ASC) AS NO, T.PATIENT_NUM, P.PATIENT_NAME, K.EMP_NAME, S.CODE_NAME AS SORT_TYPE, M.CODE_NAME AS CONDITION, T.ETC, L.CODE_NAME AS OFFICE, TO_CHAR(I.TAKE_DATE, 'YYYY-MM-DD') AS TAKE_DATE, TO_CHAR(I.TAKE_DATE, 'HH24:MI') AS TAKE_TIME, TO_CHAR(I.APPOINTMENT_DATE, 'YYYY-MM-DD') AS APPOINTMENT_DATE, TO_CHAR(I.APPOINTMENT_DATE, 'HH24:MI') AS APPOINTMENT_TIME, T.TREAT_NUM
+		FROM TREATINFO T LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '13') S
+		ON T.SORT_TYPE = S.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '4') M
+		ON T.CONDITION = M.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '9') L
+		ON T.OFFICE = L.SMALL
+		LEFT OUTER JOIN TIME I
+		ON T.TREAT_NUM = I.TREAT_NUM
+		LEFT OUTER JOIN (SELECT E.HOSPITAL_CODE, EMP_NAME, E.EMP_NUM
+		FROM EMP E LEFT OUTER JOIN HOSPITAL H
+		ON E.HOSPITAL_CODE = H.HOSPITAL_CODE
+		WHERE E.HOSPITAL_CODE = #sHospital_Code#) K
+		ON T.EMP_NUM2 = K.EMP_NUM
+		LEFT OUTER JOIN PATIENT P
+		ON T.PATIENT_NUM = P.PATIENT_NUM
+		WHERE 1 = 1
+		<isEmpty property="St_calendar">
+			AND (TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(TAKE_DATE, 'YYYY-MM-DD')
+			OR TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(APPOINTMENT_DATE, 'YYYY-MM-DD'))
+		</isEmpty>
+		<isNotEmpty property="St_calendar">
+ 			AND (#St_calendar# = TO_CHAR(TAKE_DATE, 'YYYY-MM-DD')
+			OR #St_calendar# = TO_CHAR(APPOINTMENT_DATE, 'YYYY-MM-DD'))
+ 		</isNotEmpty>
+		<isNotEmpty property="St_box">
+			AND T.SORT_TYPE = #St_box#
+ 		</isNotEmpty>
+ 		<isNotEmpty property="Tselect_box2">
+			AND T.OFFICE = #Tselect_box2#
+ 		</isNotEmpty>
+ 		 <isNotEmpty property="Tselect_box3">
+			AND T.EMP_NUM2 = #Tselect_box3#
+ 		</isNotEmpty>
+		) A
+		WHERE 1 = 1
+		<isNotEmpty property="S_search_Text1">
+			<isEqual property="selSet_b" compareValue="PATIENT_NUM">
+				AND A.PATIENT_NUM LIKE '%' || #S_search_Text1# || '%'
+			</isEqual>
+			<isEqual property="selSet_b" compareValue="PATIENT_NAME">
+				AND A.PATIENT_NAME LIKE '%' || #S_search_Text1# || '%'
+			</isEqual>
+			<isEqual property="selSet_b" compareValue="OFFICE">
+				AND A.OFFICE LIKE '%' || #S_search_Text1# || '%'
+			</isEqual>
+			<isEqual property="selSet_b" compareValue="EMP_NUM2">
+				AND A.EMP_NUM2 LIKE '%' || #S_search_Text1# || '%'
+			</isEqual>
+			<isEqual property="selSet_b" compareValue="SORT_TYPE">
+				AND A.SORT_TYPE LIKE '%' || #S_search_Text1# || '%'
+			</isEqual>
+			<isEqual property="selSet_b" compareValue="TAKE_DATE">
+				AND A.TAKE_DATE LIKE '%' || #S_search_Text1# || '%'
+			</isEqual>
+			<isEqual property="selSet_b" compareValue="CONDITION">
+				AND A.CONDITION LIKE '%' || #S_search_Text1# || '%'
+			</isEqual>
+		</isNotEmpty>
+		AND NO BETWEEN #start# AND #end#
+	</select> <!-- 환자일정 조회정보 데이터 쿼리 -->
+	
+	<select id="Set_Count" parameterClass="java.util.HashMap" resultClass="Integer">
+		SELECT COUNT(PATIENT_NUM) AS CNT
+		FROM
+		(
+		SELECT ROW_NUMBER() OVER(ORDER BY TAKE_DATE ASC) AS NO, T.PATIENT_NUM, P.PATIENT_NAME, K.EMP_NAME, S.CODE_NAME AS SORT_TYPE, M.CODE_NAME AS CONDITION, T.ETC, L.CODE_NAME AS OFFICE, TO_CHAR(I.TAKE_DATE, 'YYYY-MM-DD') AS TAKE_DATE, TO_CHAR(I.TAKE_DATE, 'HH24:MI') AS TAKE_TIME, TO_CHAR(I.APPOINTMENT_DATE, 'YYYY-MM-DD') AS APPOINTMENT_DATE, TO_CHAR(I.APPOINTMENT_DATE, 'HH24:MI') AS APPOINTMENT_TIME
+		FROM TREATINFO T LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '13') S
+		ON T.SORT_TYPE = S.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '4') M
+		ON T.CONDITION = M.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '9') L
+		ON T.OFFICE = L.SMALL
+		LEFT OUTER JOIN TIME I
+		ON T.TREAT_NUM = I.TREAT_NUM
+		LEFT OUTER JOIN (SELECT E.HOSPITAL_CODE, EMP_NAME, E.EMP_NUM
+		FROM EMP E LEFT OUTER JOIN HOSPITAL H
+		ON E.HOSPITAL_CODE = H.HOSPITAL_CODE
+		WHERE E.HOSPITAL_CODE = #sHospital_Code#) K
+		ON T.EMP_NUM2 = K.EMP_NUM
+		LEFT OUTER JOIN PATIENT P
+		ON T.PATIENT_NUM = P.PATIENT_NUM
+		WHERE TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(TAKE_DATE, 'YYYY-MM-DD')
+		OR TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(APPOINTMENT_DATE, 'YYYY-MM-DD')
+		) A
+		WHERE 1 = 1
+	</select> <!-- 환자일정 조회 카운터 쿼리 -->
+	
+	<select id="St_Data" resultClass="java.util.HashMap">
+		SELECT SMALL, CODE_NAME
+		FROM CODEDATA
+		WHERE BIG = 9
+	</select> <!-- 진료과 데이터 타입 쿼리 -->
+
+	<select id="Doc_data" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT EMP_NUM, EMP_NAME
+		FROM EMP
+		WHERE LV_CODE = 2 
+		AND HOSPITAL_CODE = #sHospital_Code#
+		AND OFFICE_CODE = #Select_doc#
+	</select> <!-- 진료의사 데이터 타입 쿼리 -->
 </sqlMap>

@@ -1,20 +1,21 @@
 @CHARSET "UTF-8";
 /* 2016-11-23 이관우 개발 
 		   28  최종 수정
-	환자등록 페이지(기본 레이아웃 디자인 제작) */
+	환자등록 페이지(기본 레이아웃 디자인 제작)
+		12-06 id로 받은 css 클래스로 수정 */
 	
- body { /* 기본셋팅 */
+ .S_body { /* 기본셋팅 */
 	margin: 0px;
 	font-size: 0pt;
  }
  
- table { /* 테이블 */
+ .S_table { /* 테이블 */
 	width: 90%;
 	height: 100%;
 	margin: 0 auto;
 }
  
- div { /* div셋팅 */
+ .S_div { /* div셋팅 */
 	vertical-align: top;
 	overflow: hidden;
  }
@@ -87,13 +88,14 @@
  	background-color: #FFFFFF;
  }
  
- #img_Btn { /* 이미지 등록 버튼 간격 */
+ .S_imgBtn { /* 이미지 등록 버튼 간격 */
  	display: inline-block;
- 	width: 100px;
+ 	width: 195px;
  	height: 30px;
  	font-size: 11pt;
  	vertical-align: top;
  	margin-top: 7px;
+ 	margin-left: 120px;
  }
  
  .Sign_miright { /* 환자등록 중간 바탕 - 반으로 쪼갬(오른) */
@@ -183,7 +185,7 @@
  	background-color: #FFFFFF;
  }
  
- #sign_Btn { /* 등록버튼 */
+ .S_sign_Btn { /* 등록버튼 */
  	display: inline-block;
  	width: 50px;
  	height: 30px;
@@ -193,7 +195,7 @@
  	margin-right: 20px;
  }
  
- #bback_Btn { /* 이전버튼 */
+ .S_bback_Btn { /* 이전버튼 */
  	display: inline-block;
  	width: 50px;
  	height: 30px;

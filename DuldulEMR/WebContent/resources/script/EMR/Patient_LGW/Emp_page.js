@@ -18,14 +18,12 @@ $(document).ready(function(){
 	
 	$("#pagingE").on("click", "span", function(){ //리스트 버른을 눌렀을시
 		$("input[name='Emp_page']").val($(this).attr("name"));
-		
 		Emp_list();
 	});
 	
 	$("#EMPlist_Btn").on("click", function(){ //목록보기
 		$("input[name='Esearch_Text1']").val("");
 		$("input[name='Emp_page']").val("1");
-		
 		Emp_list();
 	});
 });
@@ -88,6 +86,5 @@ function Esearch() { //직원검색
 	$("input[name='Esearch_Text1']").val($("#Esearch_Text1").val());
 	$("input[name='Emp_page']").val("1");
 	$("input[name='selE_b']").val($("select[name='selE_b']").val());
-	
 	Emp_list();
 };

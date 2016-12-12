@@ -2,14 +2,15 @@
 /* 2016-11-22 이관우 개발
 		   23 .top_btn 삭제
 		   28  최종 수정
-	환자 정보조회 페이지(기본 레이아웃 디자인 제작) */
+	환자 정보조회 페이지(기본 레이아웃 디자인 제작) 
+		12-06 id로 받은 css 클래스로 수정 */
  
- body { /* 기본셋팅 */
+ .p_body { /* 기본셋팅 */
 	margin: 0px;
 	font-size: 0pt;
  }
  
- div { /* div셋팅 */
+ .p_div { /* div셋팅 */
 	vertical-align: top;
  }
  
@@ -46,7 +47,7 @@
  	background-color: #DDDDDD;
  }
  
- table{ /* 환자조회 표 12 - 01 수정 */
+ .p_table{ /* 환자조회 표 12 - 01 수정 */
  	width: 95%;
  	text-align: center;
  	background-color: #FFFFFF;
@@ -59,7 +60,7 @@
  	background-color: #FFFFFF;
  }
  
- #Pat_Btn { /* 환자등록 버튼 */
+ .p_Btn { /* 환자등록 버튼 */
  	display: inline-block;
     width: 120px;
  	height: 56px;
@@ -69,7 +70,7 @@
  	margin-right: 10px;
  }
  
- #Patlist_Btn { /* 목록보기 2016 - 12 - 01 추가*/
+ .pl_Btn { /* 목록보기 2016 - 12 - 01 추가*/
 	display: inline-block;
     width: 120px;
  	height: 56px;
@@ -103,7 +104,7 @@
   	background-color: #FFFFFF;	
  }
  
- #pagingP { /* 환자표 리스트 버튼  12 - 01 추가*/
+ .P_paging { /* 환자표 리스트 버튼  12 - 01 추가*/
  	font-size: 20pt;
  	margin-top: 33px;
  }
@@ -115,29 +116,29 @@
  	background-color: #DDDDDD;
  }
  
-  #select_box { /* 셀렉트 박스  */
+ .p_sel { /* 셀렉트 박스  */
   	display: inline-block;
   	width: 160px;
  	height: 56px;
  	font-size: 20pt;
  	vertical-align: top;
-  }
+ }
  
-  #search_Text1 { /* 텍스트 박스 */
+ .p_search_text { /* 텍스트 박스 */
   	display: inline-block;
   	width: 700px;
   	height: 50px;
   	font-size: 20pt;
-  }
+ }
   
-  #search_Btn { /* 검색 버튼 */
+ .p_search_Btn { /* 검색 버튼 */
   	display: inline-block;
     width: 100px;
  	height: 56px;
  	font-size: 20pt;
  	vertical-align: top;
-  }
+ }
   
-  #select_box, #search_Text1, #search_Btn { /* 셀렉트 박스, 텍스트 박스, 검색 버튼 간격 */
+ .p_sel, .p_search_text, .p_search_Btn { /* 셀렉트 박스, 텍스트 박스, 검색 버튼 간격 */
   	margin-top: 30px;
-  }
+ }

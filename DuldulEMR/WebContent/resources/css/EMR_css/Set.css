@@ -3,12 +3,12 @@
 		   28  최종 수정
 	환자 일정조회 페이지(기본 레이아웃 디자인 제작) */
 	
- body { /* 기본셋팅 */
+ .Set_body { /* 기본셋팅 */
 	margin: 0px;
 	font-size: 0pt;
  }
  
- div { /* div셋팅 */
+ .Set_div { /* div셋팅 */
 	vertical-align: top;
  }
  
@@ -34,7 +34,7 @@
  	background-color: #F6F6F6;
  }
  
- #Tselect_box1, #Tselect_box2, #Tselect_box3, #check { /* 구분, 진료과, 주치의, 조회 */
+ .Set_Tselect_box1, .Set_Tselect_box2, .Set_Tselect_box3, .Set_check { /* 구분, 진료과, 주치의, 조회 */
  	display: inline-block;
  	width: 170px;
  	height: 56px;
@@ -43,7 +43,7 @@
  	margin-top: 10px;
  }
  
- #calendar { /* 일시 */
+ .Set_calendar { /* 일시 */
  	display: inline-block;
  	width: 150px;
  	height: 50px;
@@ -59,8 +59,9 @@
  	background-color: #DDDDDD;
  }
  
- table{ /* 환자일정 표 사이즈 */
+ .Set_table{ /* 환자일정 표 사이즈 */
  	width: 95%;
+ 	text-align: center;
  	background-color: #FFFFFF;
  }
  
@@ -101,22 +102,22 @@
  	background-color: #DDDDDD;
  }
  
-  #Sselect_box { /* 셀렉트 박스  */
+ .Set_sselect_box { /* 셀렉트 박스  */
   	display: inline-block;
   	width: 160px;
  	height: 56px;
  	font-size: 20pt;
  	vertical-align: top;
-  }
+ }
  
-  #Ssearch_Text1 { /* 텍스트 박스 */
+ .Set_Ssearch_Text1 { /* 텍스트 박스 */
   	display: inline-block;
   	width: 700px;
   	height: 50px;
   	font-size: 20pt;
-  }
+ }
   
-  #Ssearch_Btn { /* 검색 */
+ .Set_Ssearch_Btn { /* 검색 */
   	display: inline-block;
     width: 100px;
  	height: 56px;
@@ -124,6 +125,6 @@
  	vertical-align: top;
   }
   
-  #Sselect_box, #Ssearch_Text1, #Ssearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색버튼 간격 */
+ .Set_sselect_box, .Set_Ssearch_Text1, .Set_Ssearch_Btn { /* 셀렉트 박스, 텍스트 박스, 검색버튼 간격 */
   	margin-top: 30px;
   }
