@@ -2,8 +2,7 @@
 .wrap{
 	 width:100%;
 	 height:900px; 
-	 background-color: #CC44CC;
-	 }
+}
 /* 나의 신청현황 및 기록 이라는 글자가 적혀있는 부분 */
 .header{
 		width:100%;
@@ -12,7 +11,7 @@
 		margin-bottom:10px;
 		background-color: #FFFFCC;
 		font-size: 14px;
-		}
+}
 		
 /* 공지사항 게시판 내용이 보여지는 화면 */
 .content{
@@ -22,7 +21,7 @@
 		margin-bottom:10px;
 	 	background-color: #FF0000;
 	 	font-size: 12px;
-		}
+}
 /* 글 쓰기 버튼이 위치하는 구간 */
 .writter{
 		width:100%;
@@ -31,7 +30,7 @@
 		margin-bottom:10px;
 	 	background-color: #00FFFF;
 	 
-		}
+}
 /* 페이지 넘기는 부분의 구역 */
 .page_num{
 		width:100%;
@@ -41,7 +40,7 @@
 	 	background-color: #FFFF00;
 	 	text-align: center;
 	 		font-size: 12px;
-		}
+}
 
 /* 나의 신청현황 및 기록 이라는 글자가 적혀있는 부분 */
 .header_1{
@@ -51,7 +50,7 @@
 		margin-bottom:10px;
 		background-color: #FFbbCC;
 		font-size: 14px;
-		}
+}
 		
 /* 공지사항 게시판 내용이 보여지는 화면 */
 .content_1{
@@ -61,7 +60,7 @@
 		margin-bottom:10px;
 	 	background-color: #bbaaFF;
 	 	font-size: 12px;
-		}
+}
 /* 페이지 넘기는 부분의 구역 */
 .page_num_1{
 		width:100%;
@@ -71,7 +70,7 @@
 	 	background-color: #bbFF00;
 	 	text-align: center;
 	 		font-size: 12px;
-		}
+}
 .select{
 		width:100%;
 		height:30px;
@@ -80,7 +79,7 @@
 	 	background-color: #FFCCFF;
 	 	font-size: 12px;
 
-		}
+}
 /* 글쓰기 버튼 위치를 오른쪽 방향으로(상대위치변경) */
 .new_Btn{
 	position: relative;

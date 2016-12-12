@@ -9,29 +9,28 @@
 /* 레이아웃 상단 */
 .Dai_top_knk{
 	width: 100%;
-	height: 20%;
+	height: 25%;
 	background-color: #DDDDDD;
 }
 /* 레이아웃 상단 - 기본 정보 */
 .Dai_b_information{
-	width: 80%;
-	height: 20%;
-	margin: 0 auto;
-	font-size: 14pt;
+	width: 100%;
+	height: 25%;
+	font-size: 34pt;
 	background-color: #F6F6F6;
 }
 /* 테이블 셋팅 */
 .Dai_d_table{
-	width: 80%;
+	width: 85%;
 	text-align: center;
-	font-size: 12pt;
+	font-size: 18pt;
 	margin: 0 auto;
 	background-color: white;
 }
 .Dai_db_table{
 	width: 100%;
 	text-align: center;
-	font-size: 12pt;
+	font-size: 14pt;
 	margin: 0 auto;
 	background-color: white;
 }
@@ -43,17 +42,16 @@
 }
 /* 레이아웃 중단 - 업무 일지 */
 .Dai_report{
-	width: 80%;
-	height: 7%;
-	margin: 0 auto;
-	font-size: 14pt;
+	width: 100%;
+	height: 11%;
+	font-size: 34pt;
 	background-color: #F6F6F6;
 }
 .Dai_layoutt_table{
-	width: 80%;
-	height: 93%;
+	width: 77%;
+	height: 89%;
 	margin: 0 auto;
-	overflow-y: scroll; 
+	overflow-y: auto; 
 }
 /* 레이아웃 하단 */
 .Dai_bottom_knk{
@@ -71,15 +69,15 @@
 .Dai_btn_knk{
 	display: inline-block;
 	width: 10%;
-	height: 35%;
+	height: 40%;
 	text-align: center;
-	font-size: 10pt;
 	margin-top: 10px;
 }
 /* 레이아웃 하단 - 글쓰기 버튼 크기 */
 .Dai_btn_btn{
-	width: 60px;
-	height: 30px;
+	width: 70px;
+	height: 35px;
+	font-size: 14pt;
 	margin: 0 auto;
 }
 /* 레이아웃 하단 - 하단 */

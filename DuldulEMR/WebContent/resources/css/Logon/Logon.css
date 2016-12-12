@@ -7,15 +7,15 @@ div{
 .main{
 	width: 100%;
 	height: 850px;
-	background-color: aqua;
+	background-color: white;
 }
 /* 레이아웃 상단  */
 .logo{
 	width: 100%;
 	height: 40%;
-/* 	background-image:url("../../images/EMR/112.png");
+ 	background-image:url("../../images/EMR/112.png");
 	background-repeat: no-repeat;
-	background-size: 100% 100%; */
+	background-size: 100% 100%;
 	
 }
 /* 레이아웃 중단 */
@@ -23,27 +23,27 @@ div{
 	width: 100%;
 	height: 20%;
 	text-align: center;
-	background-color: fuchsia;
+	background-color: white;
 }
 /* 레이아웃 중단 - 가운데 정렬 */
 .login{
 	display: inline-block;
 	width: 40%;
 	height: 100%;
-	background-color: orange;
+	background-color: white;
 }
 /* 레이아웃 중단 - 텍스트 */
 .text{
 	display: inline-block;
 	height: 63px;
-	background-color: gray;
+	background-color: white;
 }
 /* 레이아웃 중단 - 로그인 버튼 */
 .btn{
 	display: inline-block;
 	width: 15%;
 	height: 63px;
-	background-color: lime;
+	background-color: #DDDDDD;
 	cursor: pointer;
 }
 /* 레이아웃 중단 - 체크박스 */
@@ -56,12 +56,12 @@ div{
 	width: 100%;
 	height: 40%;
 	text-align: center;
-	background-color: green;
+	background-color: white;
 }
 /* 레이아웃 하단 - 가운데 정렬 */
 .guide{
 	display: inline-block;
 	width: 40%;
 	height: 100%;
-	background-color: teal;
+	background-color: white;
 }

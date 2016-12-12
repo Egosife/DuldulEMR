@@ -5,101 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/Daily/Daily.css"><!-- 레이아웃 -->
+<script type="text/javascript" src="resources/script/Daily/Daily.js"></script> <!-- 자바 스크립트 -->
+
 <title>일일 업무 일지</title>
-<script type="text/javascript">
-$(document).ready(function(){
-	emp_List();
-	dailyList();
-	
-	$("#insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
-		/* $("#dailyForm").attr("action","Daily_write");
-		$("#dailyForm").submit(); */
-		Open_Tab(this);
-	}); //insertBtn end
-	
-	$("#pagingArea").on("click","span",function(){
-		$("input[name='page']").val($(this).attr("name"));
-		dailyList();
-	}); //pagingArea end
-	
-	$("#tb").on("click","tr",function(){
-		Open_Tab(this);
-	}); //tb end
-});//ready end
-
-function emp_List(){
-	var params = $("#dailyForm").serialize();
-	
-	$.ajax({
-		type : "post",
-		url : "emp_List",
-		dataType : "json",
-		data : params,
-		success : function(result){
-			var html="";
-			
-				html += "<tr name='"+result.list.EMP_NAME+"'>";
-				html += "<td>"+result.list.EMP_NAME+"</td>";
-				html += "<td>"+result.list.POSITION+"</td>";
-				html += "<td>"+result.list.EMP_NUM+"</td>";
-				html += "<td>"+result.list.OFFICE+"</td>";
-				html += "</tr>";
-			
-			$("#tb_Top").html(html);
-		}
-	});
-}
-
-function dailyList(){
-	var params = $("#dailyForm").serialize();
-	
-	$.ajax({
-		type : "post",
-		url : "dailyList",
-		dataType : "json",
-		data : params,
-		success : function(result){
-			var html="";
-			for(var i=0; i<result.list.length; i++){
-				html += "<tr name='"+result.list[i].DAILY_NUM+"' value='"+result.list[i].DAILY_NUM+"' tab='Daily_details?TURN="+result.list[i].DAILY_NUM+"*글 읽기*Daily_details'>";
-				html += "<td>"+result.list[i].ROWNO+"</td>";
-				html += "<td>"+result.list[i].RECODE_DATE+"</td>";
-				html += "<td>"+result.list[i].CONTENT+"</td>";
-				html += "</tr>";
-			}
-			$("#tb").html(html);
-			
-			//페이지 단계
-			html="";
-			html += "<span name='1'> 처음  </span>";
-			
-			if($("input[name='page']").val()==1){
-				html += "<span name='1'> 이전 </span>"; 
-			}else{
-				html += "<span name='"+($("input[name='page']").val()-1)+"'> 이전  </span>";
-			}
-			
-			for(var i=result.pb.startPcount; i<=result.pb.endPcount; i++){
-				if(i==$("input[name='page']").val()){
-					html += "<span name='"+ i +"'><b>"+ i +"</b></span>";
-				}else{
-					html += "<span name='"+ i +"'>"+ i +"</span>";
-				}
-			}
-			if($("input[name='page']").val()==result.pb.maxPcount){
-				html += "<span name='"+result.pb.maxPcount+"'> 다음 </span>";
-			}else{
-				html += "<span name='"+($("input[name='page']").val() * 1 + 1)+"'> 다음 </span>";
-			}
-			html +="<span name='"+result.pb.maxPcount+"'> 마지막 </span>";
-			$("#pagingArea").html(html);
-		},
-		error : function(result){
-			alert("error!!");
-		}
-	}); //ajax 끝
-}
-</script>
 </head>
 <body>
 <form action="" id="dailyForm" method="post">
@@ -111,9 +19,8 @@ function dailyList(){
 		<input type="hidden" name="page" value="${param.page}"/>
 	</c:otherwise>
 </c:choose>
-<input type="hidden" name="TURN"/>
-<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/>
-<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/>
+<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
+<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 -->
 
 </form>
 <!-- 16.11.25 일일 업무 일지 조회, 김남기 -->
@@ -127,7 +34,7 @@ function dailyList(){
 				<td>사원 번호</td>
 				<td>근무과</td>
 			</tr>
-			<tbody id="tb_Top"></tbody>
+			<tbody id="tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
 		</table>
 	</div>
 	<div class="Dai_middle_knk"> <!-- 레이아웃 중단 -->
@@ -139,8 +46,7 @@ function dailyList(){
 				<td width="10%">업무 일자</td>
 				<td width="85%">업무 내용</td>
 			</tr>
-			<tbody id="tb">
-			</tbody>
+			<tbody id="tb"></tbody> <!-- 내용 데이터 가져오기 -->
 		</table>
 		</div>
 	</div><hr>
@@ -151,7 +57,7 @@ function dailyList(){
 			</div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
 		</div>
 		<div class="Dai_bottom_bt"> <!-- 레이아웃 하단 - 하단 -->
-			<div class="Dai_paging" id="pagingArea" style="font-size: 12pt"></div> <!-- 레이아웃 하단 - 페이징 -->
+			<div class="Dai_paging" id="pagingArea"></div> <!-- 레이아웃 하단 - 페이징 -->
 		</div>
 	</div>
 </div>
