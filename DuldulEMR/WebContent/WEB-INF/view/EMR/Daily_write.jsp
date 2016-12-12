@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/Daily/Daily_write.css"><!-- 레이아웃 -->
 <!-- script 영역 -->
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="resources/script/Daily/Daily_write.js"></script> <!-- 자바 스크립트 -->
 <title>업무 일지 글쓰기</title>
 </head>
 <!-- 16.11.25 일일 업무 일지 글쓰기, 김남기 -->
