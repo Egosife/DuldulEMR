@@ -1,58 +1,111 @@
 @CHARSET "UTF-8";
-.wrap{
-	 width:100%;
-	 height:900px; 
-	 background-color: #4444CC;
-	 }
-/* 공지사항이라는 글자가 적혀있는 부분 */
-.header{
-		width:100%;
-		height:80px;
-		margin-left:50px; 
-		margin-bottom:10px;
-		background-color: #FFFFCC;
-		font-size: 14pt;
-		}
-		
-/* 공지사항 게시판 내용이 보여지는 화면 */
-.content{
-		width:100%;
-		height:500px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #FFFFFF;
-	 	font-size: 12pt;
-		}
-/* 글 쓰기 버튼이 위치하는 구간 */
-.writter{
-		width:100%;
-		height:30px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #00FFFF;
-	 	font-size: 12pt;
-		}
-/* 페이지 넘기는 부분의 구역 */
-.page_num{
-		width:100%;
-		height:40px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #FFFF00;
-	 	text-align: center;
-	 	font-size: 12pt;
-		}
-/* 검색하는 구역 */
-.search{
-		width:100%;
-		height:50px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #FFCCFF;
-	 	font-size: 12pt;
-		}
-/* 글쓰기 버튼 위치를 오른쪽 방향으로(상대위치변경) */
-.insert_Btn{
-	position: relative;
-	left : 800px;
-}
+
+ /* 공지사항 메인페이지 사이즈 */
+.bbs_main{
+ 	display: inline-block;
+ 	width: 100%;
+	height: 900px;
+	background-color: #EAEAEA;
+ }
+
+.bbs_top { /* 공지사항 메인 탑 */
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 75%;
+ 	background-color: #5D5D5D;
+ }
+ 
+ .bbs_header{ /* 공지사항이라는 글자가 적혀있는 부분 */
+ 	width: 100%;
+ 	height: 10%;
+ 	font-size: 40pt;
+ 	background-color: #F6F6F6;
+ }
+ 
+.bbs_name { /* 공지사항 간격 */
+ 	margin-left: 45px;
+ }
+ 
+ .bbs_top_table { /* 공지사항 테이블*/
+ 	width: 100%;
+ 	height: calc(80% - 40px);
+ 	font-size: 20pt;
+ 	padding-top: 40px;
+ 	background-color: #DDDDDD;
+ }
+ 
+.bbs_table{ /* 테이블 크기 및 색깔 지정 */
+ 	width: 95%;
+ 	text-align: center;
+ 	background-color: #FFFFFF;
+ }
+
+ .bbs_bar { /* 공지사항 메인 탑 - 글쓰기 바 */
+ 	width: 100%;
+ 	height: 10%;
+ 	text-align: right;
+ 	background-color: #FFFFFF;
+ }
+
+ .bbs_bottom { /* 공지사항 메인 바텀 */
+ 	display: inline-block;
+ 	width: 100%;
+ 	height: 25%;
+ 	background-color: #ABABAB;
+ }
+ 
+ .bbs_bottom_list { /* 공지사항 메인 바텀 - 글쓰기 버튼 */
+ 	width: 100%;
+ 	height: 50%;
+ 	text-align: center;
+  	background-color: #FFFFFF;	
+ }
+ 
+ .page_num { /* 페이징*/
+ 	font-size: 20pt;
+ 	margin-top: 33px;
+ }
+ 
+ .bbs_bottom_search { /* 공지사항 메인 바텀 검색버튼 */
+ 	width: 100%;
+ 	height: 50%;
+ 	text-align: center;
+ 	background-color: #DDDDDD;
+ }
+ 
+  #bbs_keyField { /* 셀렉트 박스  */
+  	display: inline-block;
+  	width: 160px;
+ 	height: 56px;
+ 	font-size: 20pt;
+ 	vertical-align: top;
+  }
+ 
+  #bbs_search_Text { /* 텍스트 박스 */
+  	display: inline-block;
+  	width: 700px;
+  	height: 50px;
+  	font-size: 20pt;
+  }
+  
+   #bbs_insertBtn { /* 글쓰기 버튼 */
+ 	display: inline-block;
+    width: 120px;
+ 	height: 56px;
+ 	font-size: 20pt;
+ 	vertical-align: top;
+ 	margin-top: 5.5px;
+ 	margin-right: 10px;
+ }
+  
+  #bbs_searchBtn { /* 검색 버튼 */
+  	display: inline-block;
+    width: 100px;
+ 	height: 56px;
+ 	font-size: 20pt;
+ 	vertical-align: top;
+  }
+  
+ #bbs_keyField, #bbs_search_Text, #bbs_searchBtn { /* 셀렉트 박스, 텍스트 박스, 검색 버튼 간격 */
+  	margin-top: 30px;
+  }

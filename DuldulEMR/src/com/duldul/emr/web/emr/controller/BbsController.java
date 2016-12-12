@@ -30,6 +30,8 @@ public class BbsController {
 		
 		@Autowired
 		public IPagingService iPagingService;
+
+
 		
 		//글 상세보기 페이지 연결
 		@RequestMapping(value="/bbs_detail")
@@ -48,8 +50,25 @@ public class BbsController {
 			modelAndView.setViewName("EMR/bbs_detail");
 			
 			return modelAndView;
+			
 		} //글 상세보기 페이지 연결 끝
-	
+		@RequestMapping(value="/bbs_detail2")
+		public ModelAndView bbs_detail2(HttpServletRequest request,
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+			
+			HashMap<String, String> con = iBbsService.getBbsCon(params);
+			
+			System.out.println("asdsadsadadsadadsadsad===> "+con);
+			//bbs_detail을 클릭했을시 아예 조회수 +1을 해준다
+			int res = iBbsService.visit(params);
+			System.out.println(params);
+			
+			modelAndView.addObject("con",con);
+			modelAndView.setViewName("EMR/bbs_detail2");
+			
+			return modelAndView;
+		}
 		/*@RequestMapping(value="/visit")
 		public @ResponseBody ResponseEntity<String> visit(
 				HttpServletRequest request, 
@@ -165,6 +184,7 @@ public class BbsController {
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			
 			PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")), iBbsService.getBbsCount(params));
+			
 			
 			params.put("start", Integer.toString(pb.getStartCount()));
 			params.put("end", Integer.toString(pb.getEndCount()));

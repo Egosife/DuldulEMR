@@ -9,40 +9,44 @@
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/main_first.css" />
  
  
- <!-- script 영역 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+
 <script type="text/javascript">
 
 $(document).ready(function(){
-	refreshList();
+	refreshListA();
 	$("#searchBtn").on("click",function(){
 		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
-		refreshList();
+		refreshListA();
 	});
 	
 	
 	$("#insertBtn").on("click", function(){
-		$("#actionForm").attr("action","bbs_write");
-		$("#actionForm").submit();		
+		//$("#s").attr("value","${s}");
+		//$("#actionForm").attr("action","bbs_write");
+		//$("#actionForm").submit();
+		//$("#insertBtn").attr('tab','bbs_write?asd='+${s}+'*글쓰기');
+		Open_Tab(this);
 	});
 
 	$("#page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
-		refreshList();
+		refreshListA();
 	});
 	
 	$("#tb").on("click","tr",function(){
-		$("input[name='POST_NUM']").val($(this).attr("name"));
-		$("#actionForm").attr("action","bbs_detail");
-		$("#actionForm").submit();
-		
+		//$("input[name='POST_NUM']").val($(this).attr("name"));
+		//$("#actionForm").attr("action","bbs_detail");
+		//$("#actionForm").submit();
+		Open_Tab(this);
 	});
+	
 });
 
 
-function refreshList(){
+
+function refreshListA(){
 	var params = $("#actionForm").serialize();
 		
 		$.ajax({
@@ -54,7 +58,7 @@ function refreshList(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].POST_NUM + "'>";
+					html += "<tr name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail'>";
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
 					html += "<td>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";
@@ -100,10 +104,13 @@ function refreshList(){
 	      });
 	   
 	}
+
 </script> 
 </head>
 <body>
 <form action="#" method="post" id="actionForm">
+	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
+<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
 			<input type="hidden" name="page" value="1"/>
@@ -113,7 +120,7 @@ function refreshList(){
 		</c:otherwise>
 	</c:choose>
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
-	<input type="hidden" name="testNo"/>
+	<input type="hidden" name="POST_NUM"/>
 </form>
 
 <div class="wrap">

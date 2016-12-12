@@ -43,8 +43,8 @@ $(document).ready(function(){
 					success : function(result){
 						if(result.res > 0){
 						//	Close_Tab(coca);
-							var newTab = {tab:"notice*공지사항*notice"}
-							var closeTab ={tab:"bbs_detail"}
+							var closeTab ={tab:"bbs_detail2"}
+							var newTab = {tab:"bbs*사내게시판*bbs"}
 							Close_Tab(closeTab);
 							ReOpen_Tab(newTab);
 						}else{
@@ -82,8 +82,8 @@ function uploadResultCallBack(data, result){
 					$("#textarea_test").attr("readonly", "readonly");
 					
 					
-					var newTab = {tab:"notice*공지사항*notice"}
-					var closeTab ={tab:"bbs_detail"}
+					var closeTab ={tab:"bbs_detail2"}
+					var newTab = {tab:"bbs*사내게시판*bbs"}
 					Close_Tab(closeTab);
 					ReOpen_Tab(newTab);
 					
@@ -158,8 +158,8 @@ function uploadResultCallBack(data, result){
 	</div>
 
    	<div class="bbs_detail_button" >
-	<input type="button" value="수정" id="changeBtn" tab="bbs_detail"/> <!--  --> 
-	<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail"/> 
+	<input type="button" value="수정" id="changeBtn" tab="bbs_detail2"/> <!--  --> 
+	<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail2"/> 
 
    	</div>
  

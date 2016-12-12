@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs_write.css" />
  <!-- script 영역 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 		
 		var insertForm = $("#insertForm");
-		
+
 		insertForm.ajaxForm(uploadResultCallBack);//ajaxForm:이폼 실행하면 아작스폼으로 하겠다 하는게 ajaxForm
 		insertForm.submit();			
 	
@@ -30,7 +30,10 @@ $(document).ready(function(){
 });
 
 function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임(success 인지 fail인지),,,,data는 json받은거임
+
+	
 	if(result == "success"){ //결과가 성공이네.......그럼 json을 자바스크립트 bean으로 만든다
+
 		var resData = eval("(" + removePre(data) + ")");
 		console.log(data);
 		$("#textFile").val(resData.fileName[0]);
@@ -45,7 +48,11 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 			success : function(result){
 				if(result.res == "true"){
 					alert("저장 .")
-					location.href = "emrmain";
+						var closeTab ={tab:"bbs_write"}
+						var newTab = {tab:"notice*공지사항*notice"}
+					ReOpen_Tab(newTab);
+					Close_Tab(closeTab);
+					
 				}else{
 					alert("저장 중 문제가 발생했습니다.")
 				}
@@ -80,33 +87,34 @@ function removePre(data){ //데이터가 들어옴
 
 
 
-<div class="wrap">
-   <div class="header">
+<div class="bbs_write_wrap">
+   <div class="bbs_write_header">
    		<b>글 쓰기</b>
    </div>
 <form action="fileUploadAjax" id="insertForm" method="post" enctype="multipart/form-data">
-   <div class="content">
+   <div class="bbs_write_content">
 		제목 <input type="text" id="TitleText" name="postTitle" /> 
 	</div>
 
-   <div class="writter">
+   <div class="bbs_write_writter">
       <input type="hidden" name="write" value="${sEmp_Name}"/>
 	  <input type="hidden" name="gbn" value="${sBbs_Type}"/>
       <input type="hidden" name="empNo" value="${sEmp_Num}"/>
       <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
    	파일첨부<input type="file" name="postFile"/>
-   	<input type = "hidden" name="textfile" id="textFile"/>
+   	<input type = "text" name="textfile" id="textFile"/>
    	
  
-   <div class="page_num" >
+  
+   
+     </div>
+      <div class="bbs_write_page_num" >
    		
    		<textarea rows="30" cols="125" name="postCon"></textarea>
    		
    </div>
-   
-     </div>
-   <div class="search">
-  	 <center><input type="button" value="저장" id="saveBtn" />
+   <div class="bbs_write_search">
+  	 <center><input type="button" value="저장" id="saveBtn" tab="bbs_write" />
   	 <input type="button" value="취소" id="cancleBtn" tab="bbs_write"/></center>
 	</div>
  </form>

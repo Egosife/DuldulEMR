@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/notice.css" />
 
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+
 <script type="text/javascript">
 
 $(document).ready(function(){
 	refreshListA();
-	$("#searchBtn").on("click",function(){
+	$("#notice_searchBtn").on("click",function(){
 		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
@@ -21,7 +21,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$("#insertBtn").on("click", function(){
+	$("#notice_insertBtn").on("click", function(){
 		//$("#s").attr("value","${s}");
 		//$("#actionForm").attr("action","bbs_write");
 		//$("#actionForm").submit();
@@ -121,43 +121,43 @@ function refreshListA(){
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
 	<input type="hidden" name="POST_NUM"/>
 </form>
-<div class="wrap">
-   <div class="header">
-   		<b>공지사항</b>
-   </div>
-
-   <div class="content">
-		<table border="1" align="center" >
-	<thead >
-		<tr >
-	        <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
-		</tr>
-	</thead>
-	<tbody id="tb">
-		
-	</tbody>
-</table>
+<div class="notice_main">
+   <div class="notice_top">
+   		<div class="notice_header">
+   			<div class="notice_name">공지사항</div>
+   		</div>
+   		<div class="notice_top_table">
+   			<table border="1" align="center" class="notice_table" >
+   				<thead >
+					<tr >
+	  					<th>번호</th>
+        			    <th>제목</th>
+         			    <th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+			<tbody id="tb"></tbody>
+		</table>
 	</div>
-
-   <div class="writter">
-   		<input type="button" value="글 쓰기" class="insert_Btn" id="insertBtn" tab="bbs_write*글쓰기*bbs_write" />
+		<div class="notice_bar">
+			<input type="button" value="글 쓰기" class="insert_Btn" 
+				   id="notice_insertBtn" tab="bbs_write*글쓰기*bbs_write" />
+		</div>
    </div>
-   <div class="page_num" id="page_num"></div>
-  <div class="search">
-   	<center>
-   		   <select name="keyField">
-                <option value="title">제목</option>
-            </select>
-   		<input type="text" id="searchText" value="${param.searchText}"/>
-		<input type="button" value="검색" id="searchBtn"/>
-	</center>
+	<div class="notice_bottom">
+  		 <div class="notice_bottom_list">
+			<hr>
+			<div class="page_num" id="page_num"></div>
+		</div>
+		<div class="notice_bottom_search">
+			 <select name="keyField" id="keyField">
+    	            <option value="title">제목</option>
+    	     </select>
+				<input type="text" id="search_Text" value="${param.searchText}"/>
+				<input type="button" value="검색" id="notice_searchBtn"/>
+		</div>
+	</div>
 </div>
- 
-</div>
-
 </body>
 </html>

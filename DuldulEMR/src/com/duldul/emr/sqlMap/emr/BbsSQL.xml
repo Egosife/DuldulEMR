@@ -66,9 +66,8 @@
 	<update  id="updateTest"
 			parameterClass="java.util.HashMap">
 		UPDATE POST SET TITLE = #postTitle#,
-						CONTENT = #content#,
-						FILE_NAME = #FileText#
-		WHERE POST_NUM = #POST_NUM#
+						CONTENT = #content#
+		WHERE SERIAL_NUM = #POST_NUM#
 	</update>
 	<!-- 조회수 디비 -->
 	<update  id="visit"

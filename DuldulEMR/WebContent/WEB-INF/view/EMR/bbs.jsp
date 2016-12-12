@@ -6,40 +6,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-    <!-- CSS 영역 -->
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/bbs.css" />
- <!-- CSS 영역 -->
- 
- <!-- script 영역 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+
+
 <script type="text/javascript">
 
 $(document).ready(function(){
 	refreshList();
-	$("#searchBtn").on("click",function(){
+	$("#bbs_searchBtn").on("click",function(){
 		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
-		refreshList();
+		refreshListA();
 	});
 	
 	
-	$("#insertBtn").on("click", function(){
-		$("#actionForm").attr("action","bbs_write");
-		$("#actionForm").submit();		
+	$("#bbs_insertBtn").on("click", function(){
+		//$("#s").attr("value","${s}");
+		//$("#actionForm").attr("action","bbs_write");
+		//$("#actionForm").submit();
+		//$("#insertBtn").attr('tab','bbs_write?asd='+${s}+'*글쓰기');
+		Open_Tab(this);
 	});
 
 	$("#page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
-		refreshList();
+		refreshListA();
 	});
 	
 	$("#tb").on("click","tr",function(){
-		$("input[name='POST_NUM']").val($(this).attr("name"));
-		$("#actionForm").attr("action","bbs_detail");
-		$("#actionForm").submit();
-		
+		//$("input[name='POST_NUM']").val($(this).attr("name"));
+		//$("#actionForm").attr("action","bbs_detail");
+		//$("#actionForm").submit();
+		Open_Tab(this);
 	});
+	
 });
 
 
@@ -56,7 +57,7 @@ function refreshList(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].SERIAL_NUM + "'>";
+					html += "<tr name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail2'>";
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
 					html += "<td>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";
@@ -102,10 +103,12 @@ function refreshList(){
 	      });
 	   
 	}
+
 </script> 
 </head>
 <body>
 <form action="#" method="post" id="actionForm">
+	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 <input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
@@ -118,43 +121,43 @@ function refreshList(){
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
 	<input type="hidden" name="POST_NUM"/>
 </form>
-<div class="wrap">
-   <div class="header">
-   		<b>사내게시판</b>
-   </div>
-
-   <div class="content">
-		<table border="1" align="center">
-	<thead>
-		<tr>
-	        <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
-		</tr>
-	</thead>
-	<tbody id="tb">
-		
-	</tbody>
-</table>
+<div class="bbs_main">
+   <div class="bbs_top">
+   		<div class="bbs_header">
+   			<div class="bbs_name">사내게시판</div>
+   		</div>
+   		<div class="bbs_top_table">
+   			<table border="1" align="center" class="bbs_table" >
+   				<thead >
+					<tr >
+	  					<th>번호</th>
+        			    <th>제목</th>
+         			    <th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+			<tbody id="tb"></tbody>
+		</table>
 	</div>
-
-   <div class="writter">
-   		<input type="button" value="글 쓰기" class="insert_Btn" id="insertBtn" />
+		<div class="bbs_bar">
+			<input type="button" value="글 쓰기" class="insert_Btn" 
+				   id="bbs_insertBtn" tab="bbs_write*글쓰기*bbs_write" />
+		</div>
    </div>
-   <div class="page_num" id="page_num"></div>
-  <div class="search">
-   	<center>
-   		   <select name="keyField">
-                <option value="title">제목</option>
-            </select>
-   		<input type="text" id="searchText" value="${param.searchText}"/>
-		<input type="button" value="검색" id="searchBtn"/>
-	</center>
+	<div class="bbs_bottom">
+  		 <div class="bbs_bottom_list">
+			<hr>
+			<div class="page_num" id="page_num"></div>
+		</div>
+		<div class="bbs_bottom_search">
+			 <select name="keyField" id="bbs_keyField">
+    	            <option value="title">제목</option>
+    	     </select>
+				<input type="text" id="bbs_search_Text" value="${param.searchText}"/>
+				<input type="button" value="검색" id="bbs_searchBtn"/>
+		</div>
+	</div>
 </div>
- 
-</div>
-
 </body>
 </html>

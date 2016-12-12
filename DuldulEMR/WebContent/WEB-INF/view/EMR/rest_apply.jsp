@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
 <link rel="stylesheet" type="text/css"  href="resources/css/EMR/rest_apply.css" />
  
- <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
+
 <script type="text/javascript">
 
 /*  */$(document).ready(function(){
