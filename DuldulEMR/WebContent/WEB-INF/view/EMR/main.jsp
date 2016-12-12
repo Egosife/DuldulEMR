@@ -122,7 +122,7 @@ $(document).ready(function() {
 			<div class="main_menu_btn" id="menu2_btn">일 정 관 리</div>
 				<div class="menu_btnlist" id="menu2">
 					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" tab="set*환자일정*set">환자일정</div>
-					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" tab="rest*휴진현황*rest">휴진현황</div>
+					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" tab="rest_apply*휴진현황*rest_apply">휴진현황</div>
 				</div>
 			<div class="main_menu_btn" id="menu3_btn">업 무 메 뉴</div>
 				<div class="menu_btnlist" id="menu3">
