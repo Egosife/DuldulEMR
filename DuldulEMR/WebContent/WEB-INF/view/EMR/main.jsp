@@ -7,9 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/main/main.css" /> <!-- 레이아웃 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
-<script type="text/javascript" src="resources/script/main/main.js"></script>
-<script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <!-- calendar select css -->
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
@@ -21,6 +18,8 @@
 <script type="text/javascript" 
 		src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="resources/script/main/main.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 
 <!-- calendar Script -->
 <script type="text/javascript" src="resources/script/calendar/calendar.js"></script>
@@ -88,7 +87,6 @@ $(document).ready(function() {
 				</div>
 			<div class="main_menu_btn" id="menu3_btn">업 무 메 뉴</div>
 				<div class="menu_btnlist" id="menu3">
-					<div class="btnlist_btns" id="menu_3_0" name="menu_btn" tab="treatment*진료실시입력*treatment">진료실시입력</div>
 					<div class="btnlist_btns" id="menu_3_1" name="menu_btn" tab="reception*환자접수*reception">환자접수</div>
 				</div>
 			<div class="main_menu_btn" id="menu4_btn">의 무 기 록</div>

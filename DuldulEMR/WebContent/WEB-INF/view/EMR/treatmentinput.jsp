@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,10 +16,17 @@
 		<div class="div_treat_patient_info">
 			<div class="div_treat_title">환자 정보</div>
 			<div class="div_treat_patient_info_photo">
-				<img alt="${p.PHOTO}" src="resources/upload/${p.PHOTO}">
+			<c:choose>
+				<c:when test="${empty p.PHOTO}">
+					<img alt="NoImage" src="resources/upload/sample.gif" style="width: 100%; height: 100%;">
+				</c:when>
+				<c:otherwise>
+					<img alt="${p.PHOTO}" src="resources/upload/${p.PHOTO}" style="width: 100%; height: 100%;">
+				</c:otherwise>
+			</c:choose>
 			</div>
 			<div class="div_treat_patient_info_stat">
-				<table style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 					<thead>
 						<tr>
 							<th>환자번호</th>
@@ -57,7 +65,7 @@
 		<div class="div_treat_patient_treathis">
 			<div class="div_treat_title">진료 내역</div>
 			<div class="div_treat_patient_treathisd">
-				<table style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 					<thead>
 						<tr>
 							<th>증상</th>
@@ -74,7 +82,7 @@
 		<div class="div_treat_patient_pillhis">
 			<div class="div_treat_title">처방 정보</div>
 			<div class="div_treat_patient_treathisp">
-				<table style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 					<thead>
 						<tr>
 							<th>치료 종류</th>
@@ -86,7 +94,7 @@
 				</table>
 			</div>
 			<div class="div_treat_patient_treathispp">
-				<table style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 					<thead>
 						<tr>
 							<th>처방약</th>
@@ -143,25 +151,25 @@
 	<input type="hidden" name="treatnum" value="${param.TREATNUM}">
 		<div class="div_treat_care_treat">
 			<div class="div_treat_title">치료 안내</div>
-			<table style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 				<tr>
 					<th>치료 종류</th>
-					<td><input type="text" id="care_type"></td>
+					<td><input type="text" id="care_type" style="width: 100; height: 100%"></td>
 				</tr>
 				<tr>
 					<th>치료 내용</th>
-					<td><input type="text" id="care_con"></td>
+					<td><input type="text" id="care_con" style="width: 100; height: 100%"></td>
 				</tr>
 				<tr>
 					<th>참고 사항</th>
-					<td><input type="text" id="care_etc"></td>
+					<td><input type="text" id="care_etc" style="width: 100; height: 100%"></td>
 				</tr>
 			</table>
 			<input type="button" id="btn_treatcare" value="입력">
 		</div>
 		<div class="div_treat_care_treatinfo">
 			<div class="div_treat_title">치료 정보</div>
-			<table style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 				<thead>
 					<tr>
 						<th>치료 종류</th>
@@ -175,29 +183,29 @@
 		</div>
 		<div class="div_treat_care_pillname">
 			<div class="div_treat_title">처방전</div>
-			<table style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 				<tr>
 					<th>처방약</th>
-					<td><input type="text" id="pill_name"></td>
+					<td><input type="text" id="pill_name" style="width: 100; height: 100%"></td>
 				</tr>
 				<tr>
 					<th>처방량</th>
-					<td><input type="text" id="pill_vol" ></td>
+					<td><input type="text" id="pill_vol" style="width: 100; height: 100%"></td>
 				</tr>
 				<tr>
 					<th>1일 투여 횟수</th>
-					<td><input type="text" id="pill_day" ></td>
+					<td><input type="text" id="pill_day" style="width: 100; height: 100%"></td>
 				</tr>
 				<tr>
 					<th>총 투여 일 수</th>
-					<td><input type="text" id="pill_maxday" ></td>
+					<td><input type="text" id="pill_maxday" style="width: 100; height: 100%"></td>
 				</tr>
 			</table>
 			<input type="button" id="btn_treatpill" value="입력">
 		</div>
 		<div class="div_treat_care_pillinfo">
 			<div class="div_treat_title">처방 정보</div>
-			<table style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
 				<thead>
 					<tr>
 						<th>처방약</th>
