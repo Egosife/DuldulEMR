@@ -14,7 +14,7 @@
 $(document).ready(function(){
 	refreshListA();
 	$("#notice_searchBtn").on("click",function(){
-		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
+		$("input[name='searchText']").val($("#notice_searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
 		refreshListA();
@@ -109,7 +109,7 @@ function refreshListA(){
 <body>
 <form action="#" method="post" id="actionForm">
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
-<input type="hidden" name="gbn" value="${gbn}"/>
+	<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
 			<input type="hidden" name="page" value="1"/>
@@ -119,7 +119,6 @@ function refreshListA(){
 		</c:otherwise>
 	</c:choose>
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
-	<input type="hidden" name="POST_NUM"/>
 </form>
 <div class="notice_main">
    <div class="notice_top">
@@ -154,7 +153,7 @@ function refreshListA(){
 			 <select name="keyField" id="keyField">
     	            <option value="title">제목</option>
     	     </select>
-				<input type="text" id="search_Text" value="${param.searchText}"/>
+				<input type="text" id="notice_searchText" value="${param.searchText}"/>
 				<input type="button" value="검색" id="notice_searchBtn"/>
 		</div>
 	</div>
