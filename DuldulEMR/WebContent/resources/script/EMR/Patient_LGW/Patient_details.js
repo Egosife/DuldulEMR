@@ -4,6 +4,8 @@
 		   08 ajax 추가
 		   13  개발완료 */
 
+//환자 상세조회
+
 $(document).ready(function(){
 	var papajohns = "${papajohns.pizza}";
 	patient_Details_list(papajohns);

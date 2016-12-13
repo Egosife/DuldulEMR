@@ -4,6 +4,8 @@
 		 12-01 - JSP개발 완료 
 		 	05 - 키 이벤트 추가, 혈액형 수정**/
 
+//환자조회
+
 $(document).ready(function(){
 	patient_list(); //function patient_list()를 불러옴
 	

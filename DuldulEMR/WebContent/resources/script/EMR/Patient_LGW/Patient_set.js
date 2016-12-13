@@ -1,7 +1,9 @@
 /* 2016-11-25 이관우 개발 
 		12-12  전체 수정 
 		   13  개발완료 */
-		   
+
+//환자일정
+
 $(document).ready(function(){
 	Set_list(); //function Set_list()를 불러옴
 	Selectsort_type(); //진료과 셀렉트 값

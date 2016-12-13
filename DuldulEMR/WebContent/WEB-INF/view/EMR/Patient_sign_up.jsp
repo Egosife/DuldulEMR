@@ -12,10 +12,10 @@
 
 <!-- 2016-11-23 이관우 개발
 		12-06 id로 받은 css 클래스추가
-		   13  개발완료 -->
+		   13  최종 개발완료 -->
 
 <body class='S_body'>
-<form action="#" id="act_S" method="post">
+<form action="#" id="action_S" method="post">
 	<input type="hidden" name="sign_page" value="${paprika.sign_page}" />
 	<input type="hidden" name="S_searchText" value="${paprika.S_searchText}" />
 </form>

@@ -3,6 +3,8 @@
 	 	    05 키 이벤트 엔터 추가 
 		    05 개발완료 **/
 		   
+//직원조회
+
 $(document).ready(function(){
 	Emp_list(); //function Emp_list()를 불러옴
 	console.log("aasdad");

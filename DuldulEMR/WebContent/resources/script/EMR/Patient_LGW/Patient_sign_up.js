@@ -2,6 +2,8 @@
 		12-06 id로 받은 css 클래스추가
 		   13  개발완료 */
 
+//환자등록
+
 $(document).ready(function(){
 	
 	$("#sign_Btn").on("click", function(){ //등록 버튼
