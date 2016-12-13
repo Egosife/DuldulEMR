@@ -21,4 +21,8 @@ public class RestService implements IRestService {
 	public int getRestCount(HashMap<String, String> params) throws Throwable {
 		return iRestDao.getRestCount(params);
 	}
+	@Override
+	public ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params) throws Throwable {
+		return iRestDao.getRestList(params);
+	}
 }

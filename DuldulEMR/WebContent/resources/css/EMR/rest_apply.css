@@ -45,7 +45,7 @@
 /* 버튼 위치지정 레이아웃 */
 .rest_apply_btn_btn{
 	width: 13%;
-	height: 60%;
+	height: 80%;
 	font-size: 10pt;
 	margin: 0 87%;
 }
@@ -54,15 +54,7 @@
 	width: 70px;
 	height: 35px;
 	font-size: 14pt;
-	margin: 0 auto;
-}
-/* 검색 버튼 크기 */
-.rest_apply_btn_btn_siva{
-	display: inline-block;
-	width: 70px;
-	height: 35px;
-	font-size: 14pt;
-	margin: 0 auto;
+	margin: 10px auto;
 }
 /* 페이징 레이아웃 */
 .rest_apply_top_pag{
@@ -116,14 +108,6 @@
 	height: 100%;
 	font-size: 25pt;
 }
-/* 직책,진료과 크기 지정 */
-.rest_apply_drop{
-	display: inline-block;
-	width: 30%;
-	height: 30px;
-	font-size: 14pt;
-	text-align: center;
-}
 /* 테이블 레이아웃 */
 .rest_apply_btm_table{
 	width: 100%;
@@ -135,6 +119,7 @@
 	width: 80%;
 	height: 100%;
 	margin: 0 auto;
+	overflow: auto;
 }
 /* 페이징 레이아웃 */
 .rest_apply_btm_pag{

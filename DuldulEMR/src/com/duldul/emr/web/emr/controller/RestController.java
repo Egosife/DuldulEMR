@@ -58,7 +58,7 @@ public class RestController {
 		return modelAndView;
 	} 		//관리자가 휴진 신청 승인 및 미승인 하는 페이지 연결
 	
-	//일일 업무 일지 가져오기
+	//나의 신청 및 현황 기록
 	@RequestMapping(value = "/my_rest_List")
 	public @ResponseBody ResponseEntity<String> my_rest_List(HttpServletRequest request, HttpSession session,
 			@RequestParam HashMap<String, String> params, ModelAndView modelAndView) throws Throwable {
@@ -70,8 +70,34 @@ public class RestController {
 						IRestService.getRestCount(params));
 		params.put("start", Integer.toString(pb.getStartCount()));
 		params.put("end", Integer.toString(pb.getEndCount()));
-
+		
+		
 		ArrayList<HashMap<String, String>> list = IRestService.getRest(params);
+
+		modelMap.put("list", list);
+		modelMap.put("pb", pb);
+		
+		System.out.println("asdf");
+		System.out.println(list);
+		System.out.println("asdf");
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");
+
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap), responseHeaders, HttpStatus.CREATED);
+	}
+	@RequestMapping(value = "/Emp_rest")
+	public @ResponseBody ResponseEntity<String> Emp_rest(HttpServletRequest request, HttpSession session,
+			@RequestParam HashMap<String, String> params, ModelAndView modelAndView) throws Throwable {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+
+		PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")),
+						IRestService.getRestCount(params));
+		params.put("start", Integer.toString(pb.getStartCount()));
+		params.put("end", Integer.toString(pb.getEndCount()));
+
+		ArrayList<HashMap<String, String>> list = IRestService.getRestList(params);
 
 		modelMap.put("list", list);
 		modelMap.put("pb", pb);
