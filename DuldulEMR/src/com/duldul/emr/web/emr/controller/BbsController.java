@@ -146,33 +146,6 @@ public class BbsController {
 			return modelAndView;
 		} //공지사항 페이지 연결 끝
 		
-		//휴진신청 작성하는 페이지 연결
-		@RequestMapping(value="/rest")
-		public ModelAndView rest(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
-			
-			modelAndView.setViewName("EMR/rest");
-			
-			return modelAndView;
-		} //휴진신청 작성하는 페이지 연결 끝
-		
-		//나의 휴진 신청현황 및 휴진현황 페이지 연결
-		@RequestMapping(value="/rest_apply")
-		public ModelAndView rest_apply(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
-			
-			modelAndView.setViewName("EMR/rest_apply");
-			
-			return modelAndView;
-		} //나의 휴진 신청현황 및 휴진현황 페이지 연결 끝
-		
-		//관리자가 휴진 신청 승인 및 미승인 하는 페이지 연결
-		@RequestMapping(value="/rest_apply_confirm")
-		public ModelAndView rest_apply_confirm(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
-			
-			modelAndView.setViewName("EMR/rest_apply_confirm");
-			
-			return modelAndView;
-		} 		//관리자가 휴진 신청 승인 및 미승인 하는 페이지 연결
-		
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		@RequestMapping(value="/refreshTest")
 		public @ResponseBody ResponseEntity<String> refreshTest(

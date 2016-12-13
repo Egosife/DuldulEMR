@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Rest">
+	<select id="getRest" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT TO_CHAR(REPORTING,'YYYY-MM-DD'), TO_CHAR(START_DATE,'YYYY-MM-DD') || ' ~ ' || TO_CHAR(END_DATE,'YYYY-MM-DD') AS TERM, R_REASON,R_CHECK
+		FROM REST
+	</select>
+	<select id="getRestCount" parameterClass="java.util.HashMap" resultClass="Integer">
+		SELECT COUNT(*) AS CNT
+		FROM REST
+		WHERE 1=1
+	</select>
+</sqlMap>

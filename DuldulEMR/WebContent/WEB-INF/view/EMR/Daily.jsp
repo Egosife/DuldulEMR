@@ -41,10 +41,15 @@
 		<div class="Dai_report"><b>업무 일지</b></div><!-- 레이아웃 중단 - 업무 일지 -->
 		<div class="Dai_layoutt_table">
 		<table border="1" class="Dai_db_table" style="table-layout: fixed;"> <!-- 업무 일지 테이블 -->
+			<colgroup>
+				<col style="width: 5%;">
+				<col style="width: 10%;">
+				<col style="width: 85%;">
+			</colgroup>
 			<tr>
-				<td width="5%">일 차</td>
-				<td width="10%">업무 일자</td>
-				<td width="85%">업무 내용</td>
+				<td>일 차</td>
+				<td>업무 일자</td>
+				<td>업무 내용</td>
 			</tr>
 			<tbody id="tb"></tbody> <!-- 내용 데이터 가져오기 -->
 		</table>
