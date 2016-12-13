@@ -1,70 +1,129 @@
 @CHARSET "UTF-8";
 
- .wrap{
-	 width:100%;
-	 height:900px; 
-	 background-color: #4444CC;
-	 }
-/* 기본정보 라는 글자가 적혀있는 부분 */
-.header{
-		width:900px;
-		height:80px;
-		margin-left:50px; 
-		margin-bottom:10px;
-		background-color: #FFFFCC;
-		font-size: 14pt;
-		}
-		
-/* 휴진 신청하는 사람의 기본정보 화면 부분 */
-.content{
-		width:900px;
-		height:100px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #ffffff;
-	 	font-size: 12pt;
-		}
-/* 휴진 신청 이라는 글자가 적혀있는 부분  */
-.rest_header{
-		width:900px;
-		height:80px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #00FFFF;
-	    font-size: 14pt;
-		}
-/* 휴진 날짜 신청하는 날짜 선택 */
-.rest_page{
-		width:900px;
-		height:80px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #FFFF00;
-	 	font-size: 12pt;
-	 	
-		}
-/* 휴진 신청 이유 적는 부분 */
-.rest_reason{
-		width:900px;
-		height:360px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #FFFF00;
-	 	font-size: 12pt;
-	 	
-		}
-/* 등록하는 버튼 부분 */
-.button{
-		width:900px;
-		height:30px;
-		margin-left:50px; 
-		margin-bottom:10px;
-	 	background-color: #FFCCFF;
-		}
-/* 휴진 신청하는 사람의 기본정보 화면 테이블 크기 조절 */
-table{
-   width: 80%;
-   text-align: center;
-   margin: 0 auto;
+
+/* 메인 레이아웃 */
+.rest_main{
+	width: 100%;
+	height: 900px;
+}
+/* 레이아웃 상단 */
+.rest_top{
+	width: 100%;
+	height: 25%;
+	background-color: #DDDDDD;
+}
+/* 레이아웃 상단 - 기본 정보 */
+.rest_b_information{
+	width: 100%;
+
+	font-size: 34pt;
+	background-color: #F6F6F6;
+}
+/* 테이블 셋팅 */
+.rest_d_table{
+	width: 85%;
+	text-align: center;
+	font-size: 18pt;
+	margin: 0 auto;
+	background-color: white;
+}
+.rest_db_table{
+	width: 100%;
+	text-align: center;
+	font-size: 14pt;
+	margin: 0 auto;
+	background-color: white;
 }
 
+
+/* 레이아웃 중단 */
+.rest_middle{
+	width: 100%;
+	height: 60%;
+	background-color: #DDDDDD;
+}
+/* 레이아웃 중단 - 업무 일지 */
+.rest_report{
+	width: 100%;
+	font-size: 34pt;
+	background-color: #F6F6F6;
+}
+.rest_calender{
+	display: inline-block;
+	width: 24%;
+	font-size: 18pt;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #DDDDDD;
+}
+/* 레이아웃 상단 - 날짜 선택 */
+.rest_cal_btn{
+	display: inline-block;
+	width: 40%;
+	text-align: center;
+	margin-top: 72px;
+	
+}
+/* 레이아웃 상단 - 날짜 선택 텍스트 */
+.rest_cal_text{
+	width: 50%;
+	height: 30px;
+	font-size: 14pt;
+	text-align: center;
+}
+
+.rest_middle2{
+	width: 100%;
+	height: 60%;
+	background-color: #F6F6F6;
+}
+
+/* 레이아웃 중단 - 휴진 내용 */
+.rest_mid_work{
+	display: inline-block;
+	width: 15%;
+	font-size: 18pt;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #DDDDDD;
+	height: 30%;
+}
+/* 레이아웃 중단 - 내용 입력 */
+.rest_mid_text{
+	display: inline-block;
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	padding-left: 7%;
+}
+/* 레이아웃 중단 - 내용 입력 텍스트 */
+.rest_text_size{
+	width: 80%;
+	height: 50%;   
+	font-size: 14pt;
+	vertical-align: middle;
+}
+
+
+/* 레이아웃 하단 */
+.rest_bottom_bb{
+	width: 100%;
+	height: 25%;
+	text-align: right;
+}
+/* 레이아웃 하단 - 글쓰기 버튼 */
+.rest_btn_1{
+	display: inline-block;
+	width: 15%;
+	height: 35%;
+	text-align: center;
+	font-size: 10pt;
+	margin: 0 auto;
+}
+/* 레이아웃 하단 - 글쓰기 버튼 크기 */
+.rest_btn_button{
+	width: 70px;
+	height: 35px;
+	font-size: 14pt;
+	margin: 0 auto;
+}

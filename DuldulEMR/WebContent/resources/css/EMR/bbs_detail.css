@@ -1,81 +1,156 @@
 @CHARSET "UTF-8";
 
-.bbs_detail_wrap{
-	 width:100%;
-	 height:900px; 
-	 background-color: #dddddd;
-	 }
-/* 상세보기 라는 글자가 적혀있는 부분 */
-.bbs_detail_header{
-		width:100%;
-		height:80px;
-		margin-left:50px; 
-		margin-bottom:10px;
-		background-color: #FFFFCC;
-			 	font-size: 14pt;
-		}
-		
-/* 작성자 구역 */
-.bbs_detail_writter{
-		 width:100%;
-		height:30px;
-		margin-left:50px;
-		margin-bottom:10px;
-			 	font-size: 12pt;
-	 	background-color: #FFFFFF;
-		}
-/* 등록일  */
+/* 메인 레이아웃 */
+.bbs_detail_main{  
+	width: 100%;
+	height: 900px;
+	background-color: white;
+}
+/* 레이아웃 상단 */
+.bbs_detail_top{ 
+	width: 100%;
+	height: 18%;
+	background-color: #F6F6F6;
+}
+/* 레이아웃 상단 - 글쓰기 */
+.bbs_detail_top_title{
+	width: 100%;
+	height: 30%;
+	font-size: 29pt;
+	margin: 0 auto;
+	background-color: #DDDDDD;
+}
+/* 레이아웃 상단 - 작성자 */
+.bbs_detail_writer{
+	display: inline-block;
+	width: 15%;
+	height: 22%;
+	font-size: 18pt;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #DDDDDD;
+}
+/* 레이아웃 상단 - 날짜 */
 .bbs_detail_date{
-		 width:100%;
-		height:30px;
-		margin-left:50px;
-		margin-bottom:10px;
-			 	font-size: 12pt;
-	 	background-color: #00FFFF;
-		}
-/* 제목 */
+	display: inline-block;
+	width: 15%;
+	height: 22%;
+	font-size: 18pt;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #DDDDDD;
+}
+/* 레이아웃 상단 - 제목 */
 .bbs_detail_title{
-		 width:100%;
-		height:30px;
-		margin-left:50px;
-		margin-bottom:10px;
-	 	background-color: #FFFF00;
-	 		 	font-size: 12pt;
-	 	
-		}
-/* 내용 */
+	display: inline-block;
+	width: 15%;
+	height: 22%;
+	font-size: 18pt;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #DDDDDD;
+}
+.bbs_detail_writer{
+	display: inline-block;
+	width: 15%;
+	height: 22%;
+	font-size: 18pt;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #DDDDDD;
+}
+.bbs_detail_date{
+	display: inline-block;
+	width: 15%;
+	height: 22%;
+	font-size: 18pt;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: #DDDDDD;
+}
+
+/* 레이아웃 상단 - 텍스트 있는 부분 */
+.bbs_detail_total{
+	display: inline-block;
+	width: 70%;
+	text-align: center;
+	margin-top: 72px;
+	background-color: #F6F6F6;
+}
+
+/* 레이아웃 상단 - 제목 텍스트 */
+.bbs_detail_writer_text{
+	width: 50%;
+	height: 30px;
+	font-size: 14pt;
+	text-align: center;
+}
+
+/* 레이아웃 상단 - 제목 텍스트 */
+.bbs_detail_date_text{
+	width: 50%;
+	height: 30px;
+	font-size: 14pt;
+	text-align: center;
+}
+/* 레이아웃 상단 - 제목 텍스트 */
+.bbs_detail_title_text{
+	width: 50%;
+	height: 30px;
+	font-size: 14pt;
+	text-align: center;
+}
+
+
+/* 레이아웃 중단 */
+.bbs_detail_mid{
+	width: 100%;
+	height: 60%;
+	background-color: #F6F6F6;
+}
+/* 레이아웃 중단 - 글쓰기 */
 .bbs_detail_content{
-		 width:100%;
-		height:460px;
-		margin-left:50px;
-		margin-bottom:10px;
-	 	background-color: #FFCCFF;
-	 		 	font-size: 12pt;
-		}
-/* 첨부파일 */	
-.bbs_detail_file{
-		 width:100%;
-		height:30px;
-		margin-left:50px;
-		margin-bottom:10px;
-	 	background-color: #FFCCFF;
-	 		 	font-size: 12pt;
-		}
-/* 수정,삭제,목록 있는 버튼 */
+	display: inline-block;
+	width: 15%;
+	height: 7%;
+	text-align: center;
+	font-size: 18pt;
+	background-color: #DDDDDD;
+}
+/* 레이아웃 중단 - 내용 입력 */
+.bbs_detail_content_text{
+	display: inline-block;
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	padding-left: 7%;
+}
+/* 레이아웃 중단 - 내용 입력 텍스트 */
+.bbs_detail_size{
+	width: 80%;
+	height: 99%;   
+	font-size: 14pt;
+	vertical-align: middle;
+}
+/* 레이아웃 하단 */
+.bbs_detail_bottom_bb{
+	width: 100%;
+	height: 25%;
+	text-align: right;
+}
+/* 레이아웃 하단 - 글쓰기 버튼 */
+.bbs_detail_1{
+	display: inline-block;
+	width: 15%;
+	height: 35%;
+	text-align: center;
+	font-size: 10pt;
+	margin: 0 auto;
+}
+/* 레이아웃 하단 - 글쓰기 버튼 크기 */
 .bbs_detail_button{
- 		 width:100%;
-		height:30px;
-		margin-left:50px;
-		margin-bottom:10px;
-	 	background-color: #FFCCFF;
-	 		 	font-size: 12pt;
- 		}
- 		/* 제목 텍스트박스 길게만드려고 */
-#TitleText{
-		width:800px;
-			}
-			/* 첨부파일 텍스트박스 길게만드려고 */
-#FileText{
-		width:800px;
-			}
- 
+	width: 70px;
+	height: 35px;
+	font-size: 14pt;
+	margin: 0 auto;
+}

@@ -31,7 +31,7 @@ $(document).ready(function(){
 		});
 		
 		$("#deleteBtn").on("click", function(){
-			//var coca = $(this);
+
 			if(confirm("지울꺼니?")){
 				var params = $("#deleteForm").serialize();
 				console.log(params);
@@ -42,7 +42,7 @@ $(document).ready(function(){
 					data : params,
 					success : function(result){
 						if(result.res > 0){
-						//	Close_Tab(coca);
+			
 							var newTab = {tab:"notice*공지사항*notice"}
 							var closeTab ={tab:"bbs_detail"}
 							Close_Tab(closeTab);
@@ -67,7 +67,7 @@ function uploadResultCallBack(data, result){
 	if(result == "success"){
 	
 		var params = $("#updateForm").serialize();
-	
+		
 		$.ajax({
 			type : "post",
 			url : "updateTest",
@@ -110,60 +110,52 @@ function uploadResultCallBack(data, result){
 
 </form>
 
-<form action="fileUploadAjax" id="updateForm" method="post" enctype="multipart/form-data">
-<div class="bbs_detail_wrap">
-<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
-   <div class="bbs_detail_header">
-   		<b>상세보기</b>
+			<form action="#" id="updateForm" method="post">
+	  <input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
+	  <input type="hidden" name="write" value="${sEmp_Name}"/>
+	  <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
+	  <input type="hidden" name="gbn" value="${sBbs_Type}"/>
+      <input type="hidden" name="empNo" value="${sEmp_Num}"/>
+<div class="bbs_detail_main">
+   <div class="bbs_detail_top">
+    	<div class="bbs_detail_top_title"><b>글쓰기</b></div>
+<!--  	 <div class="bbs_detail_writer">작성자</div>
+ 	  <div class="bbs_detail_date">등록일</div><br/> -->
+    	 <div class="bbs_detail_title">제목</div>  
+    
+
+ 			<div class="bbs_detail_total" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
+        		<%--  <input type="text" class = "bbs_detail_writer_text" id="WritterText" readonly value="${con.WRITER}"  />
+	 <input type="text" class = "bbs_detail_date_text" id="DateText" readonly value="${con.REPORTING}"/> --%>
+		 <input type="text" class = "bbs_detail_title_text" id="TitleText" 
+		 		name="postTitle" readonly value="${con.TITLE}"/>  
+
+    		 </div>
+    	   </div>
+   				<hr> <!-- 구분선 -->	 
+
+	  
+   
+
+    <div class="bbs_detail_mid"> 
+    <div class="bbs_detail_content">글 내용</div>
+    
+     <div class="bbs_detail_content_text">
+       		<textarea id="textarea_test" class="bbs_detail_size" rows="10" cols="100" 
+       			 	  name="content" readonly >${con.CONTENT}</textarea>
+    </div>
+  </div>
+  <hr/>
+   <div class="bbs_detail_bottom_bb"> 
+  		 <div class="bbs_detail_1">
+  			<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button"/> <!--  --> 
+			<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail" class="bbs_detail_button"/> 
+         </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
 
-   <div class="bbs_detail_writter">
-		작성자  <input type="text" id="WritterText" readonly value="${con.WRITER}"  />
-	</div>	
-
-   <div class="bbs_detail_date">
-   	등록일 <input type="text" id="DateText" readonly value="${con.REPORTING}"/> 
-   </div>
-   <div class="bbs_detail_title" >
-	제목 <input type="text" id="TitleText" name="postTitle" readonly value="${con.TITLE}"/> 
    </div>
    
-   <div class="bbs_detail_content">
-<textarea id="textarea_test" rows="30" cols="125" name="content" readonly >${con.CONTENT}</textarea>
-	</div>
-	
-	  <div class="bbs_detail_file" >
-첨부파일
-
- <input type="text" id="FileText"readonly value="${con.FILE_NAME}"/> 
-   	</div>
-   	
-   		<div id="showFile">
-		<c:if test="${!empty con.FILE_NAME}">
-		기존파일
-		<input type="button" value="파일삭제" id="fileDelBtn"/>
-		<br/>
-		<c:choose>
-				<c:when test = "${con.FILE_EXT eq 'jpg'||
-							      con.FILE_EXT eq 'gif'||
-							      con.FILE_EXT eq 'png'}">
-				<img alt="${con.FILE_NAME}" 
-				     src="resources/upload/${con.FILE_NAME}" />
-				</c:when>
-				<c:otherwise>
-					<a href="resources/upload/${con.FILE_NAME}" download> ${con.FILE_NAME}" </a>
-				</c:otherwise>
-		</c:choose>
-		</c:if>
-	</div>
-
-   	<div class="bbs_detail_button" >
-	<input type="button" value="수정" id="changeBtn" tab="bbs_detail"/> <!--  --> 
-	<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail"/> 
-
-   	</div>
- 
-</div>
-</form>
+		</form>
+		
 </body>
 </html>
