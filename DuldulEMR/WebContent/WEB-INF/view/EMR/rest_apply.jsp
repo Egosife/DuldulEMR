@@ -35,8 +35,8 @@ function my_rest_List(){
 			var html="";
 			for(var i=0; i<result.list.length; i++){
 				html += "<tr name='"+result.list[i].SERIAL_NUM+"' value='"+result.list[i].SERIAL_NUM+"' tab='rest?TURN="+result.list[i].SERIAL_NUM+"*윤희상*rest'>";
-				html += "<td>"+result.list[i].SERIAL_NUM+"</td>"; //날짜
-				html += "<td>"+result.list[i].START_DATE||' ~ '||END_DATE+"</td>"; //일차
+				html += "<td>"+result.list[i].REPORTING+"</td>"; //
+				html += "<td>"+result.list[i].TERM+"</td>"; //일차
 				html += "<td>"+result.list[i].R_REASON+"</td>"; //날짜
 				html += "<td>"+result.list[i].R_CHECK+"</td>"; //내용
 				html += "</tr>";

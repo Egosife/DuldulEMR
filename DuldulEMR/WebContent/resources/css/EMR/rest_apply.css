@@ -27,6 +27,7 @@
 	width: 80%;
 	height: 100%;
 	margin: 0 auto;
+	overflow: auto;
 }
 /* 테이블 */
 .rest_apply_set_table{

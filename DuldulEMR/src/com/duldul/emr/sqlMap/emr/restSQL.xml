@@ -4,8 +4,13 @@
 
 <sqlMap namespace="Rest">
 	<select id="getRest" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-		SELECT TO_CHAR(REPORTING,'YYYY-MM-DD'), TO_CHAR(START_DATE,'YYYY-MM-DD') || ' ~ ' || TO_CHAR(END_DATE,'YYYY-MM-DD') AS TERM, R_REASON,R_CHECK
-		FROM REST
+		
+		SELECT TO_CHAR(R.REPORTING,'YYYY-MM-DD') AS REPORTING, TO_CHAR(R.START_DATE,'YYYY-MM-DD') || ' ~ ' || TO_CHAR(R.END_DATE,'YYYY-MM-DD') AS TERM,
+		R.R_REASON,C.CODE_NAME AS R_CHECK
+		FROM REST R LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='11')C
+	    ON R.R_CHECK = C.SMALL
+	    WHERE 1=1
+	    ORDER BY REPORTING DESC
 	</select>
 	<select id="getRestCount" parameterClass="java.util.HashMap" resultClass="Integer">
 		SELECT COUNT(*) AS CNT
