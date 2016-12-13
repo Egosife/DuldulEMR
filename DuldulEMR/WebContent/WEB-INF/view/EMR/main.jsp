@@ -43,50 +43,11 @@ $(document).ready(function() {
 		buttonImageOnly: true,
 		dateFormat: 'yy/mm/dd'    
 	}); 
-	
-	$("#date_start").datepicker({
-		dateFormat : 'yy-mm-dd',
-		duration: 200,
-		onSelect:function(dateText, inst){
-			var startDate = parseInt($("#date_end").val().replace("-", '').replace("-", ''));
-			var endDate = parseInt(dateText.replace(/-/g,''));
-			
-            if (endDate > startDate) {
-            	alert("조회 기간은 과거로 설정하세요.");
-            	//달력에 종료 날짜 넣어주기
-        		$("#date_start").val($("#stdt").val());
-			} else {
-				$("#stdt").val($("#date_start").val());
-			}
-		}
-	});
-	
-	$("#date_end").datepicker({
-		dateFormat : 'yy-mm-dd',
-		duration: 200,
-		onSelect:function(dateText, inst){
-			var startDate = parseInt($("#date_start").val().replace("-", '').replace("-", ''));
-			var endDate = parseInt(dateText.replace(/-/g,''));
-			
-            if (startDate > endDate) {
-            	alert("조회 기간은 과거로 설정하세요.");
-            	//달력에 종료 날짜 넣어주기
-        		$("#date_end").val($("#eddt").val());
-			} else {
-				$("#eddt").val($("#date_end").val());
-			}
-		}
-	});
 });
 </script>
 <title>DuldulEMR</title>
 </head>
 <body>
-<!-- 로그인 상태 확인 -->
-<form action="#" id="Activated_Session_Check" method="post">
-<input type="hidden" name="Activated_Session" value="${sHospital_Code}">
-</form>
-<div class="page_loading" style="display: none;"></div>
 <div class='main_layout'>
 <!-- 계정정보 영역 -->
 	<div class="main_topbar">

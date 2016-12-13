@@ -1,0 +1,159 @@
+@CHARSET "UTF-8";
+.div_treat_main {
+	width: 100%;
+	height: 100%;
+	background-color: red;
+}
+
+.div_treat_title{
+	width: 100%;
+	height: calc(10% - 5px);
+	font-size: 12pt;
+	background-color: white;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.div_treat_patient {
+	width: 100%;
+	height: calc(35% - 10px);
+	background-color: blue;
+	margin-bottom: 10px;
+}
+.div_treat_patient_info {
+	width: calc(30% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: purple;
+	padding: 10px;
+}
+
+.div_treat_patient_info_photo {
+	width: calc(40% - 5px);
+	height: calc(90% - 5px);
+	display: inline-block;
+	background-color: gray;
+	margin-right: 10px;
+}
+.div_treat_patient_info_stat {
+	width: calc(60% - 5px);
+	height: calc(90% - 5px);
+	display: inline-block;
+	background-color: lime;
+}
+
+.div_treat_patient_treathis {
+	width: calc(35% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: lime;
+	padding: 10px;
+}
+.div_treat_patient_treathisd {
+	width: 100%;
+	height: calc(90% - 5px);
+	overflow: auto;
+}
+.div_treat_patient_treathisp {
+	width: 100%;
+	height: calc(45% - 5px);
+	overflow: auto;
+	margin-bottom: 2px;
+}
+.div_treat_patient_treathispp {
+	width: 100%;
+	height: calc(45% - 2px);
+	overflow: auto;
+}
+.div_treat_patient_pillhis {
+	width: calc(35% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: orange;
+	padding: 10px;
+}
+
+.div_treat_doctor {
+	width: 100%;
+	height: calc(30% - 5px);
+	background-color: green;
+	margin-bottom: 10px;
+}
+.div_treat_doctor_sym {
+	width: calc(20% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: fuchsia;
+	padding: 10px;
+}
+.div_treat_doctor_diag {
+	width: calc(20% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: olive;
+	padding: 10px;
+}
+.div_treat_doctor_opinion {
+	width: calc(20% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: maroon;
+	padding: 10px;
+}
+.div_treat_doctor_spe {
+	width: calc(20% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: aqua;
+	padding: 10px;
+}
+.div_treat_doctor_adddata {
+	width: calc(20% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: teal;
+	padding: 10px;
+	font-size: 12pt;
+}
+
+.div_treat_care {
+	width: 100%;
+	height: calc(30% - 5px);
+	background-color: yellow;
+}
+.div_treat_care_treat {
+	width: calc(25% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: teal;
+	padding: 10px;
+}
+.div_treat_care_treatinfo {
+	width: calc(25% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: navy;
+	padding: 10px;
+}
+.div_treat_care_pillname {
+	width: calc(25% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: purple;
+	padding: 10px;
+}
+.div_treat_care_pillinfo {
+	width: calc(25% - 20px);
+	height: calc(100% - 20px);
+	display: inline-block;
+	background-color: silver;
+	padding: 10px;
+}
+.div_treat_btns {
+	width: 95%;
+	height: calc(5% - 15px);
+	background-color: green;
+	text-align: right;
+	padding-top: 5px;
+	margin: 0 auto;
+}

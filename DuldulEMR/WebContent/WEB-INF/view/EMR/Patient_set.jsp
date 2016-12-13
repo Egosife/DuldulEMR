@@ -95,7 +95,7 @@ function Set_list() {
 			var SL = ""; /* 메타 : Set_list 영문명 */
 			
 			for(var i = 0; i < result.list.length; i++) {
-				SL += "<tr tab='treatment?PATINUM="+result.list[i].PATIENT_NUM+",TREATNUM="+result.list[i].TREAT_NUM+"*진료실시입력*treatment'>";
+				SL += "<tr tab='treatment?PATINUM="+result.list[i].PATIENT_NUM+"&TREATNUM="+result.list[i].TREAT_NUM+"*진료실시입력*treatment'>";
 				SL += "<td>" + result.list[i].NO + "</td>"; /* 번호 */
 				SL += "<td>" + result.list[i].PATIENT_NUM + "</td>"; /* 환자번호 */
 				SL += "<td>" + result.list[i].APPOINTMENT_TIME + "</td>"; /* 예약시간 수정 */

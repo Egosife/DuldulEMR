@@ -89,4 +89,81 @@
 		AND OFFICE_CODE = #treatsort_doc#
 	</select>
 
+	<select id="getpatiinfo"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT P.PATIENT_NUM, P.PATIENT_NAME, M.PHOTO, M.HEIC, M.WEIK, M.EYE, M.HANDICAP, M.DISEASE, M.DRINKINGLV, M.SMOKINGLV, M.BLOODTYPE
+		FROM PATIENT P LEFT OUTER JOIN (SELECT M.PATIENT_NUM, M.PHOTO, M.HEI||' cm' AS HEIC, M.WEI||' kg' AS WEIK,'좌:'||M.LEFT_EYE||' 우:'||M.RIGHT_EYE AS EYE, M.HANDICAP, M.DISEASE, C.CODE_NAME AS DRINKINGLV, D.CODE_NAME AS SMOKINGLV, E.CODE_NAME AS BLOODTYPE
+        		                        FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 6) C
+		                                                                ON M.DRINKING = C.SMALL
+		                                                   LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 7) D
+		                                                                ON M.SMOKING = D.SMALL
+		                                                   LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 3) E
+		                                                                ON M.BLOOD = E.SMALL)M
+                           			ON P.PATIENT_NUM = M.PATIENT_NUM
+		WHERE P.PATIENT_NUM = #PATINUM#
+	</select>
+
+	<select id="gettreatinfo"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT T.TREAT_NUM, T.PATIENT_NUM, A.NUM, A.SYM, A.SPECIAL_NOTE, A.DIAGNOSIS, A.OPINION, TO_CHAR(A.POSTING_DATE,'YYYY-MM-DD') AS POSTING_DATE
+		FROM TREATINFO T LEFT OUTER JOIN (SELECT A.TREAT_NUM, A.NUM, A.SYM, A.SPECIAL_NOTE, A.DIAGNOSIS, A.OPINION, A.POSTING_DATE
+		                                  FROM (SELECT ROW_NUMBER() OVER (PARTITION BY TREAT_NUM ORDER BY MAX(NUM) DESC) AS R, TREAT_NUM, MAX(NUM) AS NUM, SYM, SPECIAL_NOTE, DIAGNOSIS, OPINION, POSTING_DATE
+		                                        FROM TREATHISTORY
+		                                        GROUP BY TREAT_NUM, SYM, SPECIAL_NOTE, DIAGNOSIS, OPINION, POSTING_DATE)A
+										  WHERE A.R = 1) A
+		                              ON T.TREAT_NUM = A.TREAT_NUM
+		WHERE POSTING_DATE IS NOT NULL
+		AND PATIENT_NUM = #patinum#
+		ORDER BY POSTING_DATE DESC
+	</select>
+
+	<select id="getpillinfo"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT TREAT_NUM, NUM, PILL_NAME, PRESCRIPTION_AMOUNT, DAY_DRUGTIME, ALL_DRUGTIME
+		FROM PILL
+		WHERE TREAT_NUM = #selecttreatnum#
+		AND NUM = #selectnum#
+	</select>
+	<select id="getcareinfo"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT TREAT_NUM, NUM, CARE_TYPE, CARE_INFO, CARE_NOTE
+		FROM CARE
+		WHERE TREAT_NUM = #selecttreatnum#
+		AND NUM = #selectnum#
+	</select>
+	
+	<insert id="inserttreathis"
+			parameterClass="java.util.HashMap">
+		INSERT INTO TREATHISTORY(NUM, TREAT_NUM, SYM, SPECIAL_NOTE, DIAGNOSIS, OPINION, POSTING_DATE)
+		VALUES(1,#treatnum#,#sym#,#spe#,#diag#,#opinion#,SYSDATE)
+	</insert>
+	
+	<insert id="inserttreatmore"
+			parameterClass="java.util.HashMap">
+		INSERT INTO TREATMENTMORE(NUM, TREAT_NUM, HOSPITALIZATION, SURGERY, REHOSPITALIZATION, FAMILY)
+		VALUES(1,#treatnum#,#zation#,#surgery#,#rehos#,#fam#)
+	</insert>
+
+	<insert id="inserttreatcare"
+			parameterClass="java.util.HashMap">
+		INSERT INTO CARE(NUM, TREAT_NUM, CARE_TYPE, CARE_INFO, CARE_NOTE)
+		VALUES(1,#treatnum#,#caretype#,#careinfo#,#carenote#)
+	</insert>
+
+	<insert id="inserttreatpill"
+			parameterClass="java.util.HashMap">
+		INSERT INTO PILL(NUM, TREAT_NUM, PILL_NAME, PRESCRIPTION_AMOUNT, DAY_DRUGTIME, ALL_DRUGTIME)
+		VALUES(1,#treatnum#,#pillname#,#presc#,#daydr#,#alldr#)
+	</insert>
+	
+	<update id="updatetreat"
+			parameterClass="java.util.HashMap">
+		UPDATE TREATINFO SET CONDITION = 1
+		WHERE TREAT_NUM = #treatnum#
+	</update>
+	
 </sqlMap>

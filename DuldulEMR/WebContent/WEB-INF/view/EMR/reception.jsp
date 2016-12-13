@@ -10,6 +10,7 @@
 <script type="text/javascript" src="resources/script/common/popup.js"></script>
 <script type="text/javascript" src="resources/script/treatment/reception.js"></script>
 
+
 <script type="text/javascript">
 $(document).ready(function() {
 	SetTreatType();
@@ -178,7 +179,7 @@ function SetTimeSelecter(){
 			<input type="checkbox" name="Wating_patient" value="1">대기 환자만 조회
 		</div>
 		<div class="rep_petitable">
-			<table border="1">
+			<table class="rep_table_Default" border="1">
 				<tr>
 					<th>번호</th>
 					<th>환자번호</th>
@@ -207,7 +208,7 @@ function SetTimeSelecter(){
 					</div>
 					<div class="rep_peticontentblock">
 						<hr>
-						<table>
+						<table class="rep_table_Default">
 							<tr>
 								<td>
 									환자 번호
@@ -236,7 +237,7 @@ function SetTimeSelecter(){
 					</div>
 					<div class="rep_peticontentblock">
 					<hr>
-						<table>
+						<table class="rep_table_Default">
 							<tr>
 								<td>
 									연락처 1
@@ -271,7 +272,7 @@ function SetTimeSelecter(){
 					</div>
 					<div class="rep_peticontentblock">
 					<hr>
-						<table>
+						<table class="rep_table_Default">
 							<tr>
 								<td>
 									키
@@ -310,7 +311,7 @@ function SetTimeSelecter(){
 					</div>
 					<div class="rep_peticontentblock">
 					<hr>
-						<table>
+						<table class="rep_table_Default">
 							<tr>
 								<td>
 									혈액형
@@ -362,7 +363,7 @@ function SetTimeSelecter(){
 					</div>
 					<div class="rep_boxcontent">
 						<hr>
-						<table>
+						<table class="rep_table_Default">
 							<tr>
 								<td>
 									<input type="radio" class="rep_date_content1" name="rep_radio" value="0" checked="checked" disabled="disabled"> 일반 접수
@@ -393,7 +394,7 @@ function SetTimeSelecter(){
 					</div>
 					<div class="rep_boxcontent">
 						<hr>
-						<table>
+						<table class="rep_table_Default">
 							<tr>
 								<td>
 									날짜 선택
@@ -426,7 +427,7 @@ function SetTimeSelecter(){
 					</div>
 					<div class="rep_boxcontent">
 						<hr>
-						<table>
+						<table class="rep_table_Default">
 							<tr>
 								<td>
 									진료과목

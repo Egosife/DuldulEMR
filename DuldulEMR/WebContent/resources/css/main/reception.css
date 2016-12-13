@@ -2,22 +2,9 @@
 /*
 *	161123 이동건 - reception.jsp css파일 생성
 */
-body {
-	font-size: 0pt;
-	margin: 0px;
-}
 
-table {
+.rep_table_Default {
 	width: 100%;
-}
-
-div {
-	vertical-align: top;
-	overflow: hidden;
-}
-
-tr {
-	cursor: pointer;
 }
 
 .rep_main {

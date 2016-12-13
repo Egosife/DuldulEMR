@@ -2,6 +2,7 @@ package com.duldul.emr.web.emr.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public interface ITreatmentDao {
 
@@ -20,4 +21,23 @@ public interface ITreatmentDao {
 	ArrayList<HashMap<String, String>> gettreatsort_type() throws Throwable;
 
 	ArrayList<HashMap<String, String>> getdoctor(HashMap<String, String> params) throws Throwable;
+
+	HashMap<String, String> getpatiinfo(HashMap<String, String> params)throws Throwable;
+
+	ArrayList<HashMap<String, String>> gettreatinfo(HashMap<String, String> params)throws Throwable;
+
+	ArrayList<HashMap<String, String>> getpillinfo(HashMap<String, String> params) throws Throwable;
+
+	String inserttreathis(HashMap<String, String> params) throws Throwable;
+
+	int updatetreat(HashMap<String, String> params) throws Throwable;
+
+	String inserttreatmore(HashMap<String, String> params) throws Throwable;
+
+	String inserttreatcare(List<String> patinum, List<String> treatnum, List<String> treatcare) throws Throwable;
+
+	String inserttreatpill(List<String> patinum, List<String> treatnum, List<String> treatpill) throws Throwable;
+
+	ArrayList<HashMap<String, String>> getcareinfo(HashMap<String, String> params) throws Throwable;
+
 }

@@ -2,6 +2,7 @@ package com.duldul.emr.web.emr.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.duldul.emr.web.emr.service.ITreatmentService;
 
+
 @Controller
 public class TreatmentController {
 
@@ -29,8 +31,13 @@ public class TreatmentController {
 	//치료실시입력 연결 start
 	@RequestMapping(value="/treatment")
 	public ModelAndView treatment(HttpServletRequest request,
-			ModelAndView modelAndView) {
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable {
 		
+		HashMap<String, String> getpatiinfo = iTreatmentService.getpatiinfo(params);
+		
+		modelAndView.addObject("p",getpatiinfo);
+
 		modelAndView.setViewName("EMR/treatmentinput");
 		
 		return modelAndView;
@@ -101,10 +108,6 @@ public class TreatmentController {
 		
 		HashMap<String, String> treatSEQ = iTreatmentService.getTreatSEQ();
 		
-		System.out.println("이쪽이다아ㅏㅏ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println(params);
-		System.out.println(treatSEQ);
-
 		if(!treatSEQ.isEmpty()){
 			params.putAll(treatSEQ);
 			
@@ -184,4 +187,120 @@ public class TreatmentController {
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 				responseHeaders, HttpStatus.CREATED);
 	}
+
+	//진료 기록 정보 받아오기
+	@RequestMapping(value="/treat_his")
+	public @ResponseBody ResponseEntity<String> treat_his(HttpServletRequest request,
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		ArrayList<HashMap<String, String>> gettreatinfo = iTreatmentService.gettreatinfo(params);
+		modelMap.put("gettreatinfo", gettreatinfo);
+
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+
+	//진료 기록 정보 받아오기
+	@RequestMapping(value="/pill_his")
+	public @ResponseBody ResponseEntity<String> pill_his(HttpServletRequest request,
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		ArrayList<HashMap<String, String>> getpillinfo = iTreatmentService.getpillinfo(params);
+		modelMap.put("getpillinfo", getpillinfo);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+	//진료 기록 정보 받아오기
+	@RequestMapping(value="/care_his")
+	public @ResponseBody ResponseEntity<String> care_his(HttpServletRequest request,
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		ArrayList<HashMap<String, String>> getcareinfo = iTreatmentService.getcareinfo(params);
+		modelMap.put("getcareinfo", getcareinfo);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+
+	//진료 기록
+	@RequestMapping(value="/inserttreathis")
+	public @ResponseBody ResponseEntity<String> inserttreathis(HttpServletRequest request,
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		String res = iTreatmentService.inserttreathis(params);
+		
+		if(res == "true"){
+			String res2 = iTreatmentService.inserttreatmore(params);
+			if(res2 == "true"){
+				int res3 = iTreatmentService.updatetreat(params);
+				modelMap.put("res", res);
+			}
+		}
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+
+	//진료 기록
+		@RequestMapping(value="/insertcares")
+		public @ResponseBody ResponseEntity<String> insertcares(HttpServletRequest request,
+				@RequestParam(value="patinum", required=false) List<String> patinum,
+				@RequestParam(value="treatnum", required=false) List<String> treatnum,
+				@RequestParam(value="treatcare", required=false) List<String> treatcare,
+				@RequestParam(value="treatpill", required=false) List<String> treatpill,
+				ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String,Object>();
+			
+			System.out.println(patinum.get(0));
+			System.out.println(treatnum.get(0));
+			System.out.println(treatcare);
+			System.out.println(treatpill);
+			
+			String res = iTreatmentService.inserttreatcare(patinum, treatnum, treatcare);
+			String res2 = iTreatmentService.inserttreatpill(patinum, treatnum, treatpill);
+			
+			if(res == "true" && res2 == "true"){
+				modelMap.put("res", "true");
+			}else{
+				modelMap.put("res", "false");
+			}
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+					responseHeaders, HttpStatus.CREATED);
+		}
+	
 }
