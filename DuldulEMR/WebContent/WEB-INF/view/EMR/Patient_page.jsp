@@ -11,8 +11,9 @@
 </head>
 
 <!-- 2016-11-22 이관우 개발
-		  	 30 div개발 완료 
-		  12-06 id로 받은 css 클래스추가 -->
+		  	 30 div 개발완료 
+		  12-06 id로 받은 css 클래스추가 
+		  	 13  최종 개발완료 -->
 		  	 
 <body class='p_body'>
 <form action="#" id="act" method="post">

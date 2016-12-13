@@ -73,12 +73,19 @@
  	background-color: #KKKKKK;
  }
  
- .Sign_img { /* 이미지 */
+ .Sign_img_S { /* 이미지 자리 */
  	width: 350px;
  	height: 350px;
  	margin: 0 auto;
  	margin-top: 7.5px;
  	background-color: #353535;
+ }
+ 
+ .Sign_img { /* 이미지 자리 바뀜*/
+ 	width: 350px;
+ 	height: 350px;
+ 	margin: 0 auto;
+ 	background-color: #FFFFFF;
  }
  
  .Sign_leftbottom { /* 이미지 등록 버튼 */

@@ -126,7 +126,7 @@ public class Patient_Controller { //2016-11-30 이관우 컨트롤러 작성
 		modelMap.put("list", list); //진단기록
 		
 		//System.out.println(Det_info);
-		//System.out.println(list);
+		System.out.println("ASDADASDASD"+list);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");

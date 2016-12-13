@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/main/main.css" /> <!-- 레이아웃 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
 <script type="text/javascript" src="resources/script/main/main.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <!-- calendar select css -->
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />

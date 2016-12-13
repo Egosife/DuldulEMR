@@ -11,7 +11,8 @@
 </head>
 
 <!-- 2016-11-22 이관우 개발
-		  12-05 div개발 완료 -->
+		  12-05 div개발 완료 
+		  	 13  최종개발 완료 -->
 
 <body class='E_body'>
 <form action="#" id="act_E" method="post">

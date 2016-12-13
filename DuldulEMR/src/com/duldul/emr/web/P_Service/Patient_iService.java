@@ -27,13 +27,13 @@ public interface Patient_iService { //2016-11-30 이관우 인터페이스 서�
 	//처방기록 인터페이스 서비스
 	
 	public HashMap<String, String> insert_SEQ() throws Throwable;
-	//SEQ.NEXTVAL
+	//SEQ.NEXTVAL 인터페이스 서비스
 	
 	public String pat_insert(HashMap<String, String> paprika) throws Throwable;
-	//환자정보
+	//환자정보 인터페이스 서비스
 	
 	public String patmore_insert(HashMap<String, String> paprika) throws Throwable;
-	//환자추가정보
+	//환자추가정보 인터페이스 서비스
 	
 	int Set_Count(HashMap<String, String> parigee) throws Throwable;
 	//환자일정 조회 인터페이스 서비스
@@ -42,8 +42,8 @@ public interface Patient_iService { //2016-11-30 이관우 인터페이스 서�
 	//환자일정 조회 인터페이스 서비스
 
 	public ArrayList<HashMap<String, String>> Selectsort_type() throws Throwable;
-	//진료과 타입 받아오기
+	//진료과 타입 인터페이스 서비스
 	
 	public ArrayList<HashMap<String, String>> get_Selectdoc(HashMap<String, String> papamama) throws Throwable;
-	//진료의사 타입 받아오기
+	//진료의사 타입 인터페이스 서비스
 }

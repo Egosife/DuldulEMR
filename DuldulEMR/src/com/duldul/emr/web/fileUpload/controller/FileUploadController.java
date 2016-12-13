@@ -70,6 +70,7 @@ public class FileUploadController {
 			}
 		} catch (Exception e) {
 			// 공통 Exception 처리
+			e.printStackTrace();
 		}
 		
 		HashMap<String, List<String>> result = new HashMap<String,  List<String>>();

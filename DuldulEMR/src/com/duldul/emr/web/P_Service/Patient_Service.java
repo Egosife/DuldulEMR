@@ -60,19 +60,19 @@ public class Patient_Service implements Patient_iService { //2016-11-30 이관�
 	public HashMap<String, String> insert_SEQ() throws Throwable {
 		// TODO Auto-generated method stub
 		return Patient_Dao.insert_SEQ();
-	} //SEQ.NEXTVAL
+	} //SEQ.NEXTVAL 서비스클래스
 	
 	@Override
 	public String pat_insert(HashMap<String, String> paprika) throws Throwable {
 		// TODO Auto-generated method stub
 		return Patient_Dao.pat_insert(paprika);
-	} //환자정보
+	} //환자정보 서비스클래스
 	
 	@Override
 	public String patmore_insert(HashMap<String, String> paprika) throws Throwable {
 		// TODO Auto-generated method stub
 		return Patient_Dao.patmore_insert(paprika);
-	} //환자추가정보
+	} //환자추가정보 서비스클래스
 	
 	@Override
 	public int Set_Count(HashMap<String, String> parigee) throws Throwable {
@@ -90,12 +90,12 @@ public class Patient_Service implements Patient_iService { //2016-11-30 이관�
 	public ArrayList<HashMap<String, String>> Selectsort_type() throws Throwable {
 		// TODO Auto-generated method stub
 		return Patient_Dao.Selectsort_type();
-	} //진료과 타입 받아오기
+	} //진료과 타입 서비스클래스
 
 	@Override
 	public ArrayList<HashMap<String, String>> get_Selectdoc(HashMap<String, String> papamama) throws Throwable {
 		// TODO Auto-generated method stub
 		return Patient_Dao.get_Selectdoc(papamama);
-	} //진료의사 타입 받아오기
+	} //진료의사 타입 서비스클래스
 
 }

@@ -7,73 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>환자등록</title>
 <link rel="stylesheet" type="text/css" href="resources/css/EMR_css/Sign_up.css" /> <!-- 레이아웃 -->
-<script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
-<script type="text/javascript">
-/* 2016-11-23 이관우 개발
-		12-06 id로 받은 css 클래스추가 */
-
-$(document).ready(function(){
-	
-	$("#sign_Btn").on("click", function(){ //등록 버튼
-		var insertForm = $("#img_insertForm");
-		
-		insertForm.ajaxForm(Upload_Result_CallBack);
-		insertForm.submit();
-	});
-	
-	$("#bback_Btn").on("click", function(){ //이전 버튼
-		//location.href = "Patient_page";
-		Close_Tab(this);
-	});
-});
-
-function Upload_Result_CallBack(data, result) {
-	console.log(result);
-	if(result == "success"){
-		var result_Data = eval("(" + removePre(data) + ")");
-		console.log(result_Data);
-		$("#textFile").val(result_Data.fileName[0]);
-		console.log("#textFile");
-		var paprika = $("#img_insertForm").serialize();
-		console.log(paprika);
-		$.ajax({
-			type : "post",
-			url : "patient_insert",
-			dataType : "json",
-			data : paprika,
-			success : function(result) {
-				if(result.pm_insert == "true") {
-					var aaa = {tab:"Patient_page*환자조회*Patient_page"}
-					var ddd = {tab:"Sign_up"}
-					Close_Tab(ddd);
-					ReOpen_Tab(aaa);
-					//location.href = "Patient_page";
-				} else {
-					alert("저장 중 문제가 발생했습니다.");
-				}
-			},
-			error : function(result) {
-				alert("정보가 없습니다");
-			}
-		});
-	} else {
-		alert("저장실패");
-	}
-}
-
-function removePre(data) {
-	if(data.indexOf("<pre>") > -1) {
-		var st = data.indexOf(">");
-		var ed = data.indexOf("<", st);
-		
-		return data.substring(st + 1, ed);
-	} else {
-		return data;
-	}
-}
-
-</script>
+<script type="text/javascript" src="resources/script/EMR/Patient_LGW/Patient_sign_up.js"></script> <!-- 자바 스크립트 -->
 </head>
+
+<!-- 2016-11-23 이관우 개발
+		12-06 id로 받은 css 클래스추가
+		   13  개발완료 -->
 
 <body class='S_body'>
 <form action="#" id="act_S" method="post">
@@ -90,7 +29,7 @@ function removePre(data) {
 					<div class='Sign_mitop'>
 						<div class='Sign_mileft'>
 							<div class='Sign_leftTop'>
-								<div class='Sign_img'></div>
+								<div class='Sign_img_S' id="img_leftTop"></div>
 							</div>
 							<div class='Sign_leftbottom'>
 								<input class='S_imgBtn' type="file" id="img_Btn" name="imgfile_Btn" value="이미지 등록" />

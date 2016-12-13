@@ -12,7 +12,7 @@
 		SELECT A.NO, A.PATIENT_NUM, A.PATIENT_NAME, A.BIRTH, A.PHONE1, A.ADDRESS, A.BLOOD
 		FROM 
 		(
-		SELECT ROW_NUMBER() OVER(ORDER BY A.PATIENT_NUM ASC) AS NO, P.PATIENT_NUM, P.PATIENT_NAME, TO_CHAR(BIRTH, 'YYYY-MM-DD') AS BIRTH, PHONE1, ADDRESS, CODE_NAME AS BLOOD
+		SELECT ROW_NUMBER() OVER(ORDER BY A.PATIENT_NUM DESC) AS NO, P.PATIENT_NUM, P.PATIENT_NAME, TO_CHAR(BIRTH, 'YYYY-MM-DD') AS BIRTH, PHONE1, ADDRESS, CODE_NAME AS BLOOD
 		FROM PATIENT P LEFT OUTER JOIN (SELECT M.PATIENT_NUM, C.CODE_NAME
 		FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '3') C
 		ON M.BLOOD = C.SMALL) A
@@ -34,7 +34,7 @@
 			<isEqual property="selP_b" compareValue="ADDRESS">
 				AND P.ADDRESS LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-		</isNotEmpty>
+		</isNotEmpty> <!-- 검색 -->
 		) A
 		WHERE NO BETWEEN #start# AND #end#
 	</select> <!-- 환자조회 데이터 쿼리 -->
@@ -59,7 +59,7 @@
 			<isEqual property="selP_b" compareValue="ADDRESS">
 				AND ADDRESS LIKE '%' || #search_Text1# || '%'
 			</isEqual>
-		</isNotEmpty>
+		</isNotEmpty> <!-- 검색 -->
 	</select> <!-- 환자조회 카운터 쿼리 -->
 	
 	<select id="Emp_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
@@ -88,7 +88,7 @@
 			<isEqual property="selE_b" compareValue="PHONE">
 				AND E.PHONE LIKE '%' || #Esearch_Text1# || '%'
 			</isEqual>
-		</isNotEmpty>
+		</isNotEmpty> <!-- 검색 -->
 		) A
 		WHERE NO BETWEEN #start# AND #end#
 	</select> <!-- 직원조회 데이터 쿼리 -->
@@ -117,11 +117,11 @@
 			<isEqual property="selE_b" compareValue="PHONE">
 				AND PHONE LIKE '%' || #Esearch_Text1# || '%'
 			</isEqual>
-		</isNotEmpty>
+		</isNotEmpty> <!-- 검색 -->
 	</select> <!-- 환자조회 카운터 쿼리 -->
 	
 	<select id="Details_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-		SELECT A.PATIENT_NUM AS PAT_NUM, A.PATIENT_NAME, A.CODE_NAME AS SEX_CODE, A.ADDRESS, A.PHONE1, A.PHONE2, B.CODE_NAME AS BLOOD, B.WEI, B.HEI, B.HANDICAP
+		SELECT A.PATIENT_NUM AS PAT_NUM, A.PATIENT_NAME, A.CODE_NAME AS SEX_CODE, A.ADDRESS, A.PHONE1, A.PHONE2, B.CODE_NAME AS BLOOD, B.WEI, B.HEI, B.HANDICAP, B.PHOTO
 		FROM
 		(
 		SELECT P.PATIENT_NUM, P.PATIENT_NAME, P.PHONE1, P.PHONE2, C.CODE_NAME, P.ADDRESS
@@ -130,7 +130,7 @@
 		) A
 		LEFT OUTER JOIN
 		(
-		SELECT M.PATIENT_NUM, M.HEI, M.WEI, C.CODE_NAME, M.HANDICAP
+		SELECT M.PATIENT_NUM, M.HEI, M.WEI, C.CODE_NAME, M.HANDICAP, M.PHOTO
 		FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '3') C
 		ON M.BLOOD = C.SMALL
 		) B
@@ -160,7 +160,7 @@
 		WHERE NO = 1
 		ORDER BY NO ASC
 		) C
-		WHERE NO BETWEEN #start# AND #end#
+		WHERE NO BETWEEN 1 AND 10
 	</select> <!-- 진단기록 데이터 쿼리 -->
 	
 	<select id="Det_DataList2" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
@@ -188,12 +188,12 @@
 	<insert id="pat_insert" parameterClass="java.util.HashMap">
 		INSERT INTO PATIENT(PATIENT_NUM, PATIENT_NAME, BIRTH, PHONE1, PHONE2, SEX_CODE, ADDRESS, EMAIL)
 		VALUES (#PATIENTSEQ#, #PATIENT_NAME#, #BIRTH#, #PHONE1#, #PHONE2#, #pat_sex#, #ADDRESS#, #EMAIL#)
-	</insert> <!-- 환자정보 데이터 쿼리 -->
+	</insert> <!-- (환자등록)환자정보 데이터 쿼리 -->
 	
 	<insert id="patmore_insert" parameterClass="java.util.HashMap">
-		INSERT INTO PATIENTMORE(PATIENT_NUM, HEI, WEI, LEFT_EYE, RIGHT_EYE, BLOOD, HANDICAP, DISEASE, SMOKING, DRINKING, MARRIAGE)
-		VALUES (#PATIENTSEQ#, #HEI#, #WEI#, #LEFT_EYE#, #RIGHT_EYE#, #B_type#, #HANDICAP#, #DISEASE#, #hip#, #chm#, #marri#)
-	</insert> <!-- 환자 추가정보 데이터 쿼리 -->
+		INSERT INTO PATIENTMORE(PATIENT_NUM, HEI, WEI, LEFT_EYE, RIGHT_EYE, BLOOD, HANDICAP, DISEASE, SMOKING, DRINKING, MARRIAGE, PHOTO)
+		VALUES (#PATIENTSEQ#, #HEI#, #WEI#, #LEFT_EYE#, #RIGHT_EYE#, #B_type#, #HANDICAP#, #DISEASE#, #hip#, #chm#, #marri#, #textFile#)
+	</insert> <!-- (환자등록)환자 추가정보 데이터 쿼리 -->
 	
 	<select id="Set_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
 		SELECT NO, A.PATIENT_NUM, A.APPOINTMENT_TIME, A.TAKE_TIME, A.PATIENT_NAME, A.OFFICE, A.EMP_NAME, A.SORT_TYPE, A.TAKE_DATE, A.CONDITION, A.ETC, A.TREAT_NUM
@@ -219,20 +219,20 @@
 		<isEmpty property="St_calendar">
 			AND (TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(TAKE_DATE, 'YYYY-MM-DD')
 			OR TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(APPOINTMENT_DATE, 'YYYY-MM-DD'))
-		</isEmpty>
+		</isEmpty> <!-- 일시 -->
 		<isNotEmpty property="St_calendar">
  			AND (#St_calendar# = TO_CHAR(TAKE_DATE, 'YYYY-MM-DD')
 			OR #St_calendar# = TO_CHAR(APPOINTMENT_DATE, 'YYYY-MM-DD'))
- 		</isNotEmpty>
+ 		</isNotEmpty> <!-- 일시 -->
 		<isNotEmpty property="St_box">
 			AND T.SORT_TYPE = #St_box#
- 		</isNotEmpty>
+ 		</isNotEmpty> <!-- 구분 -->
  		<isNotEmpty property="Tselect_box2">
 			AND T.OFFICE = #Tselect_box2#
- 		</isNotEmpty>
+ 		</isNotEmpty> <!-- 진료과 -->
  		 <isNotEmpty property="Tselect_box3">
 			AND T.EMP_NUM2 = #Tselect_box3#
- 		</isNotEmpty>
+ 		</isNotEmpty> <!-- 진료의사 -->
 		) A
 		WHERE 1 = 1
 		<isNotEmpty property="S_search_Text1">
@@ -245,8 +245,8 @@
 			<isEqual property="selSet_b" compareValue="OFFICE">
 				AND A.OFFICE LIKE '%' || #S_search_Text1# || '%'
 			</isEqual>
-			<isEqual property="selSet_b" compareValue="EMP_NUM2">
-				AND A.EMP_NUM2 LIKE '%' || #S_search_Text1# || '%'
+			<isEqual property="selSet_b" compareValue="EMP_NAME">
+				AND A.EMP_NAME LIKE '%' || #S_search_Text1# || '%'
 			</isEqual>
 			<isEqual property="selSet_b" compareValue="SORT_TYPE">
 				AND A.SORT_TYPE LIKE '%' || #S_search_Text1# || '%'
@@ -256,7 +256,7 @@
 			</isEqual>
 			<isEqual property="selSet_b" compareValue="CONDITION">
 				AND A.CONDITION LIKE '%' || #S_search_Text1# || '%'
-			</isEqual>
+			</isEqual> <!-- 검색 -->
 		</isNotEmpty>
 		AND NO BETWEEN #start# AND #end#
 	</select> <!-- 환자일정 조회정보 데이터 쿼리 -->
