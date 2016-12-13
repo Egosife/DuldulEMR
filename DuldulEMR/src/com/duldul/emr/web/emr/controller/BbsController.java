@@ -124,16 +124,6 @@ public class BbsController {
 		} //글쓰기 페이지 연결 끝
 		//글쓰기 페이지 연결
 		
-		//글쓰기 페이지 연결
-		@RequestMapping(value="/bbs_write2")
-		public ModelAndView bbs_write2(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
-			
-			modelAndView.setViewName("EMR/bbs_write2");
-			
-			return modelAndView;
-		} //글쓰기 페이지 연결 끝
-		//글쓰기 페이지 연결
-		
 		
 		//초기화면 페이지 연결
 		@RequestMapping(value="/main_first")
