@@ -41,4 +41,8 @@
     	WHERE 1=1
     	AND NUM BETWEEN #start# AND #end#
 	</select>
+	<insert id="restInsert" parameterClass="java.util.HashMap">
+		INSERT INTO DULDUL.REST(SERIAL_NUM,REPORTING,START_DATE,END_DATE,R_REASON,EMP_NUM,HOSPITAL_CODE)
+		VALUES(REST_NUMBER.NEXTVAL,SYSDATE,#sdate#,#edate#,#reason#,#nums#,#hospital#)
+	</insert>
 </sqlMap>

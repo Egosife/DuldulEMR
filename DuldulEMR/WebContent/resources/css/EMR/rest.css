@@ -1,6 +1,4 @@
 @CHARSET "UTF-8";
-
-
 /* 메인 레이아웃 */
 .rest_main{
 	width: 100%;
@@ -34,13 +32,16 @@
 	margin: 0 auto;
 	background-color: white;
 }
-
-
 /* 레이아웃 중단 */
 .rest_middle{
 	width: 100%;
 	height: 60%;
 	background-color: #DDDDDD;
+}
+/* 레이아웃 중단의 상단 */
+.rest_mid_top{
+	width: 100%;
+	height: 26%;
 }
 /* 레이아웃 중단 - 업무 일지 */
 .rest_report{
@@ -48,28 +49,40 @@
 	font-size: 34pt;
 	background-color: #F6F6F6;
 }
+/* 휴진날짜, 날짜 텍스트 */
 .rest_calender{
 	display: inline-block;
-	width: 24%;
+	width: 7%;
+	height: 25%;
 	font-size: 18pt;
-	text-align: center;
 	vertical-align: bottom;
+	margin: 0 5%;
 	background-color: #DDDDDD;
 }
 /* 레이아웃 상단 - 날짜 선택 */
 .rest_cal_btn{
 	display: inline-block;
-	width: 40%;
+	width: 60%;
 	text-align: center;
-	margin-top: 72px;
+	margin-top: 5%;
+	font-size: 25pt;
 	
 }
 /* 레이아웃 상단 - 날짜 선택 텍스트 */
 .rest_cal_text{
-	width: 50%;
+	width: 30%;
 	height: 30px;
 	font-size: 14pt;
 	text-align: center;
+	margin-left: 16px;
+}
+/* 왼쪽 날짜 선택 텍스트 */
+.rest_cal_le{
+	width: 30%;
+	height: 30px;
+	font-size: 14pt;
+	text-align: center;
+	margin-right: 16px;
 }
 
 .rest_middle2{
@@ -82,29 +95,26 @@
 .rest_mid_work{
 	display: inline-block;
 	width: 15%;
+	height: 30%;
 	font-size: 18pt;
 	text-align: center;
-	vertical-align: bottom;
+	margin-left: 10px;
 	background-color: #DDDDDD;
-	height: 30%;
 }
 /* 레이아웃 중단 - 내용 입력 */
 .rest_mid_text{
 	display: inline-block;
-	width: 70%;
-	height: 100%;
+	width: 100%;
+	height: 63%;
 	margin: 0 auto;
-	padding-left: 7%;
 }
 /* 레이아웃 중단 - 내용 입력 텍스트 */
 .rest_text_size{
-	width: 80%;
-	height: 50%;   
+	width: 63%;
+	height: 97%;   
 	font-size: 14pt;
 	vertical-align: middle;
 }
-
-
 /* 레이아웃 하단 */
 .rest_bottom_bb{
 	width: 100%;

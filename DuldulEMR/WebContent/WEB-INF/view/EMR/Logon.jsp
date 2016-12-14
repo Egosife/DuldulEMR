@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="main"> <!-- 메인 레이아웃 -->
-	<div class="logo">이미지 공간</div> <!-- 레이아웃 상단 -->
+	<div class="logo"></div> <!-- 레이아웃 상단 -->
 	<div class="middle"> <!-- 레이아웃 중단 -->
 		<div class="login"> <!-- 레이아웃 중단 - 가운데 정렬 -->
 			<form action="#" id="loginForm" method="post">

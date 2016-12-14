@@ -14,4 +14,6 @@ public interface IRestService {
 	public int getRestCount(HashMap<String, String> params) throws Throwable;
 	
 	public ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params) throws Throwable;
+	
+	public String restInsert(HashMap<String, String> params) throws Throwable;
 }

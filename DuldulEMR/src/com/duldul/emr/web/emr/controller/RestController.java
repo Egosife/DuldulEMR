@@ -49,6 +49,26 @@ public class RestController {
 		return modelAndView;
 	} //휴진신청 작성하는 페이지 연결 끝
 	
+	//insert
+	@RequestMapping(value = "/restInsert")
+	public @ResponseBody ResponseEntity<String> restInsert(HttpServletRequest request,
+			@RequestParam HashMap<String, String> params, ModelAndView modelAndView) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		String res = IRestService.restInsert(params);
+		
+		System.out.println(params);
+		System.out.println(res);
+		
+		modelMap.put("res", res);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");
+
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap), responseHeaders, HttpStatus.CREATED);
+	}
+	
 	//관리자가 휴진 신청 승인 및 미승인 하는 페이지 연결
 	@RequestMapping(value="/rest_apply_confirm")
 	public ModelAndView rest_apply_confirm(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {

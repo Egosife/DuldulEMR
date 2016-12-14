@@ -25,4 +25,8 @@ public class RestService implements IRestService {
 	public ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params) throws Throwable {
 		return iRestDao.getRestList(params);
 	}
+	@Override
+	public String restInsert(HashMap<String, String> params) throws Throwable {
+		return iRestDao.restInsert(params);
+	}
 }

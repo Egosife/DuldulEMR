@@ -9,4 +9,6 @@ public interface IRestDao {
 	int getRestCount(HashMap<String, String> params) throws Throwable;
 	
 	ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params)throws Throwable;
+	
+	String restInsert(HashMap<String, String> params) throws Throwable;
 }
