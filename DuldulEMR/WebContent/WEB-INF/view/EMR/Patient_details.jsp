@@ -138,7 +138,7 @@
 				</div>
 			</div>
 			<div class='Det_top_b'>
-				<input class='D_jin' type="button" id="jin" value="진료" />
+				<input class='D_jin' type="button" id="jin" value="수정" />
 			</div>
 		</div>
 		<div class='Det_middle'>
