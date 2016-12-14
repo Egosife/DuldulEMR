@@ -100,7 +100,7 @@ $(document).ready(function(){
 			html+="<hr></div>";
 			
 			html+="<div class='pop_div_bot'>";
-					html+= "<table border='1' align='center' width='100%' >";
+					html+= "<table class='popup_table' border='1' align='center' width='100%' >";
 						html+= "<thead>";
 							html+= "<tr>";
 								html+= "<th>번호</th>";

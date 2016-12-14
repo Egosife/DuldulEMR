@@ -27,6 +27,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	showCalendar(d.getFullYear(),(d.getMonth() + 1));
+	
+	var startEMR = {tab : "main_first*초기화면*main_first"}
+	Open_Tab(startEMR);
 });
 </script>
 

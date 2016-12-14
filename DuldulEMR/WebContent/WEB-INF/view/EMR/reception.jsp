@@ -15,6 +15,22 @@
 $(document).ready(function() {
 	SetTreatType();
 	Settreatsort_type();
+	getTodayTreat();
+	
+	$("#watingpatibox").on("change",function(){
+		//console.log($(this).is(':checked'));
+		if($(this).is(':checked')){
+			$("#watingcheckbox_check").val("0");
+			//console.log($("#watingcheckbox_check").val());
+		}else{
+			$("#watingcheckbox_check").val(null);
+			//console.log($("#watingcheckbox_check").val());
+		}
+		
+		getTodayTreat();
+		
+	});
+	
  	$("#treatsort_type").on("change",function(){
  		//console.log($("#treatsort_type option:selected").val());
  		$("#treatsort_doc").attr('value',$("#treatsort_type option:selected").val())
@@ -53,6 +69,43 @@ $(document).ready(function() {
 	})//treatsort_type end
 
 });
+
+function getTodayTreat(){
+	var params = $("#treat_form_s").serialize();
+	
+	$.ajax({
+		type : "post",
+		url : "getTodayTreat",
+		dataType : "json",
+		data : params,
+		success : function(result){
+			var html = ""
+			
+			for(var i = 0 ; i < result.list.length ; i++){
+			html +="<tr name='"+result.list[i].TREAT_NUM+"'>";
+			html +="<td>"+result.list[i].NO+"</td>";
+			html +="<td>"+result.list[i].PATIENT_NUM+"</td>";
+			html +="<td>"+result.list[i].APPOINTMENT_TIME+"</td>";
+			html +="<td>"+result.list[i].TAKE_TIME+"</td>";
+			html +="<td>"+result.list[i].PATIENT_NAME+"</td>";
+			html +="<td>"+result.list[i].OFFICE+"</td>";
+			html +="<td>"+result.list[i].EMP_NAME+"</td>";
+			html +="<td>"+result.list[i].SORT_TYPE+"</td>";
+			html +="<td>"+result.list[i].TAKE_DATE+"</td>";
+			html +="<td>"+result.list[i].CONDITION+"</td>";
+			html +="<td>"+result.list[i].ETC+"</td>";
+			html +="</tr>";
+			}
+			$("#rep_petitabletb").html(html);
+		},
+		error : function(result){
+			alert("ERROR - getTodayTreat");
+		}
+		
+	})//ajax end
+}
+
+
 
 function Date_Select_Start(){
 	$("#rep_date_start").datepicker({
@@ -176,26 +229,28 @@ function SetTimeSelecter(){
 			현재 병원 일정
 		</div>
 		<div class="rep_petiopt">
-			<input type="checkbox" name="Wating_patient" value="1">대기 환자만 조회
+			<input type="checkbox" id="watingpatibox" value="1">대기 환자만 조회
 		</div>
 		<div class="rep_petitable">
-			<table class="rep_table_Default" border="1">
-				<tr>
-					<th>번호</th>
-					<th>환자번호</th>
-					<th>예약시간</th>
-					<th>접수시간</th>
-					<th>환자명</th>
-					<th>진료과</th>
-					<th>진료의사</th>
-					<th>구분</th>
-					<th>접수일</th>
-					<th>진료상태</th>
-					<th>비고</th>
-				</tr>
+			<table class="rep_pati_table" border="1">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>환자번호</th>
+						<th>예약시간</th>
+						<th>접수시간</th>
+						<th>환자명</th>
+						<th>진료과</th>
+						<th>진료의사</th>
+						<th>구분</th>
+						<th>접수일</th>
+						<th>진료상태</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+				<tbody id="rep_petitabletb"></tbody>
 			</table>
 		</div>
-		<div class="rep_petipage">1 2 3 4 5</div>
 	</div>
 	<div class="rep_info">
 		<div class="rep_title">접수 기록</div>
@@ -354,6 +409,7 @@ function SetTimeSelecter(){
 <input type="hidden" name="emp_num" value="${sEmp_Num}">
 <input type="hidden" id="pati_num" name="pati_num" value="">
 <input type="hidden" id="treatsort_doc" name="treatsort_doc" value="">
+<input type="hidden" id="watingcheckbox_check" name="Wating_patient" value="">
 </form>
 <form action="#" id="treat_form" method="post" style="height: 100%">
 			<div class="rep_repdata">

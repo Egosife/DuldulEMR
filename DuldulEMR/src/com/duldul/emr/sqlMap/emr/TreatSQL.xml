@@ -165,5 +165,39 @@
 		UPDATE TREATINFO SET CONDITION = 1
 		WHERE TREAT_NUM = #treatnum#
 	</update>
+	<update id="updatetime"
+			parameterClass="java.util.HashMap">
+		UPDATE TIME SET TREATMENT_TIME = SYSDATE, WATING_TIME = ((SYSDATE - TAKE_DATE)*24 *60)
+		WHERE TREAT_NUM = #treatnum#
+	</update>
 	
+	<select id="getTodayTreat"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		SELECT NO, A.PATIENT_NUM, A.APPOINTMENT_TIME, A.TAKE_TIME, A.PATIENT_NAME, A.OFFICE, A.EMP_NAME, A.SORT_TYPE, A.TAKE_DATE, A.CONDITION, A.ETC, A.TREAT_NUM
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY TAKE_DATE ASC) AS NO, T.PATIENT_NUM, P.PATIENT_NAME, K.EMP_NAME, S.CODE_NAME AS SORT_TYPE, M.CODE_NAME AS CONDITION, T.ETC, L.CODE_NAME AS OFFICE, TO_CHAR(I.TAKE_DATE, 'YYYY-MM-DD') AS TAKE_DATE, TO_CHAR(I.TAKE_DATE, 'HH24:MI') AS TAKE_TIME, TO_CHAR(I.APPOINTMENT_DATE, 'YYYY-MM-DD') AS APPOINTMENT_DATE, TO_CHAR(I.APPOINTMENT_DATE, 'HH24:MI') AS APPOINTMENT_TIME, T.TREAT_NUM
+		      FROM TREATINFO T LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '13') S
+		                                    ON T.SORT_TYPE = S.SMALL
+		                                    LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '4') M
+		                                    ON T.CONDITION = M.SMALL
+		                                    LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '9') L
+		                                    ON T.OFFICE = L.SMALL
+		                                    LEFT OUTER JOIN TIME I
+		                                    ON T.TREAT_NUM = I.TREAT_NUM
+		                                    LEFT OUTER JOIN (SELECT E.HOSPITAL_CODE, EMP_NAME, E.EMP_NUM
+		                                    FROM EMP E LEFT OUTER JOIN HOSPITAL H
+		                                    ON E.HOSPITAL_CODE = H.HOSPITAL_CODE
+		                                    WHERE E.HOSPITAL_CODE = #hos_code#) K
+		                                    ON T.EMP_NUM2 = K.EMP_NUM
+		                                    LEFT OUTER JOIN PATIENT P
+		                                    ON T.PATIENT_NUM = P.PATIENT_NUM
+			  WHERE 1 = 1
+			  AND (TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(TAKE_DATE, 'YYYY-MM-DD')
+			  OR TO_CHAR(SYSDATE, 'YYYY-MM-DD') = TO_CHAR(APPOINTMENT_DATE, 'YYYY-MM-DD'))
+			  <isNotEmpty property="Wating_patient">
+			  AND T.CONDITION = 0
+			  </isNotEmpty>
+			  )A
+	</select>
+
 </sqlMap>

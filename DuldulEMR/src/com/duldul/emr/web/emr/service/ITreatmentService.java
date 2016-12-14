@@ -40,4 +40,8 @@ public interface ITreatmentService {
 
 	ArrayList<HashMap<String, String>> getcareinfo(HashMap<String, String> params) throws Throwable;
 
+	ArrayList<HashMap<String, String>> getTodayTreat(HashMap<String, String> params) throws Throwable;
+
+	int updatetime(HashMap<String, String> params) throws Throwable;
+
 }

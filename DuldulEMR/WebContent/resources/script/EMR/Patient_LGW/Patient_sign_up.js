@@ -36,6 +36,7 @@ $(document).ready(function(){
 		var insertForm = $("#img_insertForm");
 		
 		insertForm.ajaxForm(Upload_Result_CallBack); //바꿀때 마다 ajaxForm을 타고 저장
+		console.log(Upload_Result_CallBack);
 		insertForm.submit();
 	});
 	

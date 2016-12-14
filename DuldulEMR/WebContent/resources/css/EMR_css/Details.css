@@ -82,7 +82,7 @@
  	width: 20%;
  	height: 100%;
  	float: left;
- 	background-color: #FFFFFF;
+ 	background-color: #747474;
  }
  
  .Det_top_img { /* 이미지 */
@@ -90,7 +90,7 @@
  	height: 260px;
  	margin: 0 auto;
  	margin-top: 3.5px;
- 	background-color: #8C8C8C;
+ 	background-color: #FFFFFF;
  }
  
  .Det_top_r { /* 상세조회 상단 (오른) */
