@@ -32,10 +32,9 @@
 	<select id="getBbsCon" 
 			parameterClass="java.util.HashMap" 
 			resultClass="java.util.HashMap">
-		    SELECT P.SERIAL_NUM, P.TITLE, F.FILE_NAME,P.WRITER, TO_CHAR(P.REPORTING, 'YYYY-MM-DD') AS REPORTING,P.CONTENT
-    		FROM POST P LEFT OUTER JOIN FILEUPLOAD F
-                             ON P.SERIAL_NUM = F.SERIAL_NUM
-    		WHERE P.SERIAL_NUM = #POST_NUM#	
+     SELECT SERIAL_NUM,TITLE, WRITER, TO_CHAR(REPORTING, 'YYYY-MM-DD') AS REPORTING,CONTENT
+    		FROM POST
+    		WHERE SERIAL_NUM = #POST_NUM#	
 	</select>
 	
 	
@@ -76,4 +75,76 @@
 		UPDATE POST SET VIEWS = VIEWS + 1
 		WHERE SERIAL_NUM = #POST_NUM#
 	</update>
+	
+	
+		<select id="main_notice1" 
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		 SELECT A.SERIAL_NUM, A.SEG,A.POST_NUM,A.TITLE,A.WRITER,A.REPORTING, A.VIEWS 
+		 FROM (
+		     SELECT ROW_NUMBER() OVER(ORDER BY P.REPORTING DESC) AS RNUM, C.CODE_NAME AS SEG,P.SERIAL_NUM,P.POST_NUM,P.TITLE,P.WRITER,TO_CHAR(P.REPORTING, 'YYYY-MM-DD') AS REPORTING,P.VIEWS
+	   		 FROM POST P LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='12')C
+	   		 ON P.SEG_CODE = C.SMALL
+	   		 WHERE 1=1 AND C.SMALL = '0'
+		 ) A
+   		 WHERE A.RNUM BETWEEN 1 AND 4
+	</select>
+
+	
+		<select id="main_notice2" 
+			parameterClass= "java.util.HashMap"
+			resultClass = "Integer">
+			SELECT COUNT(*) AS CNT
+			FROM POST
+			WHERE 1 = 1 AND SEG_CODE = '0'
+			
+	</select>
+	
+		<select id="main_bbs1" 
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+		 SELECT A.SERIAL_NUM, A.SEG,A.POST_NUM,A.TITLE,A.WRITER,A.REPORTING, A.VIEWS 
+		 FROM (
+		     SELECT ROW_NUMBER() OVER(ORDER BY P.REPORTING DESC) AS RNUM, C.CODE_NAME AS SEG,P.SERIAL_NUM,P.POST_NUM,P.TITLE,P.WRITER,TO_CHAR(P.REPORTING, 'YYYY-MM-DD') AS REPORTING,P.VIEWS
+	   		 FROM POST P LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='12')C
+	   		 ON P.SEG_CODE = C.SMALL
+	   		 WHERE 1=1 AND C.SMALL = '1'
+		 ) A
+   		 WHERE A.RNUM BETWEEN 1 AND 4
+	</select>
+	<!-- 검색 및 글번호 순서대로 나오는 -->
+	
+		<select id="main_bbs2" 
+			parameterClass= "java.util.HashMap"
+			resultClass = "Integer">
+   		 SELECT COUNT(*) AS CNT
+		 FROM POST
+	     WHERE 1 = 1 AND SEG_CODE = '1'
+	</select>
+	
+	<select id="main_rest2" parameterClass="java.util.HashMap" resultClass="Integer">
+		SELECT COUNT(*) AS CNT
+		FROM REST
+		WHERE 1=1
+	</select>
+	<select id="main_rest1" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	    SELECT * FROM(
+    	SELECT ROWNUM AS NUM,ENU,ENA,POTION,OFFS,TERM,R_REASON FROM(
+      	SELECT SI.EMP_NUM AS ENU,SI.EMP_NAME AS ENA, SI.POSITION AS POTION, SI.OFFICE AS OFFS,TO_CHAR(R.START_DATE,'YYYY-MM-DD') || ' ~ ' || TO_CHAR(R.END_DATE,'YYYY-MM-DD') AS TERM,R.R_REASON
+	    FROM REST R LEFT OUTER JOIN(
+	    SELECT E.EMP_NUM,E.EMP_NAME,C.CODE_NAME AS POSITION, C1.CODE_NAME AS OFFICE
+	    FROM EMP E LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='8')C
+	    ON E.POSITION_CODE = C.SMALL
+	    LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='9')C1
+	    ON E.OFFICE_CODE = C1.SMALL
+	    )SI
+	    ON R.EMP_NUM = SI.EMP_NUM                   
+    	ORDER BY TERM DESC))
+    	WHERE NUM BETWEEN 1 AND 2
+	</select>
+	
+	
+	
+	
+	
 </sqlMap>

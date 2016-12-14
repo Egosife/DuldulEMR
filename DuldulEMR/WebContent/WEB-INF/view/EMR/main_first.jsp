@@ -13,45 +13,41 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	refreshListA();
-	$("#searchBtn").on("click",function(){
-		$("input[name='searchText']").val($("#searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
-																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
-		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
-		refreshListA();
-	});
+	top_notice();
+ 	 middle_bbs();  
+ 	bottom_rest_apply(); 
 	
-	
-	$("#insertBtn").on("click", function(){
-		//$("#s").attr("value","${s}");
-		//$("#actionForm").attr("action","bbs_write");
-		//$("#actionForm").submit();
-		//$("#insertBtn").attr('tab','bbs_write?asd='+${s}+'*글쓰기');
+	$("#top_notice").on("click","tr",function(){
 		Open_Tab(this);
 	});
+	$("#middle_bbs").on("click","tr",function(){
+		Open_Tab(this);
+	});
+	
+	
+	
+	$("#top_moreBtn").on("click", function(){
+		Open_Tab(this);
+	});
+	$("#middle_moreBtn").on("click", function(){
+		Open_Tab(this);
+	});
+	$("#bottom_moreBtn").on("click", function(){
+		Open_Tab(this);
+	});
+	
 
-	$("#page_num").on("click","span",function(){
-		$("input[name='page']").val($(this).attr("name"));
-		refreshListA();
-	});
-	
-	$("#tb").on("click","tr",function(){
-		//$("input[name='POST_NUM']").val($(this).attr("name"));
-		//$("#actionForm").attr("action","bbs_detail");
-		//$("#actionForm").submit();
-		Open_Tab(this);
-	});
-	
+
 });
 
 
+function top_notice(){
 
-function refreshListA(){
-	var params = $("#actionForm").serialize();
-		
+	var params = $("#main_top_notice").serialize();
+	
 		$.ajax({
 			type : "post",
-			url : "refreshTest",
+			url : "refreshTest3",
 			dataType : "json",
 			data : params,
 			success : function(result){
@@ -66,7 +62,42 @@ function refreshListA(){
 					html += "<td>" + result.list[i].VIEWS + "</td>";
 					html += "</tr>";
 				}
-				$("#tb").html(html);
+				$("#top_notice").html(html);
+				
+				//페이지 그리는 단계
+				
+			
+	         },
+	         error : function(result) {
+	            alert("뭘봐!!");
+	         }
+	      });
+
+	
+}
+	
+
+ function middle_bbs(){
+	var params = $("#main_middle_bbs").serialize();
+		
+		$.ajax({
+			type : "post",
+			url : "refreshTest4",
+			dataType : "json",
+			data : params,
+			success : function(result){
+				var html ="";
+				
+				for(var k = 0; k < result.list.length; k++){
+					html += "<tr name='" + result.list[k].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[k].SERIAL_NUM+"*글보기*bbs_detail2'>";
+					html += "<td>" + result.list[k].POST_NUM + "</td>";
+					html += "<td>" + result.list[k].TITLE + "</td>";
+					html += "<td>" + result.list[k].WRITER + "</td>";
+					html += "<td>" + result.list[k].REPORTING + "</td>";
+					html += "<td>" + result.list[k].VIEWS + "</td>";
+					html += "</tr>";
+				}
+				$("#middle_bbs").html(html);
 				
 				//페이지 그리는 단계
 				
@@ -80,11 +111,11 @@ function refreshListA(){
 	                  html += "<span name='" + ($("input[name='page']").val() - 1) + "'> < </span>"; //나머지는 그 값의 -1을 해라 
 	            }
 	            
-	            for(var i = result.pb.startPcount; i <= result.pb.endPcount; i++){ //시작페이지 부터 끝페이지까지 반복문으로 계속도는데
-	               if(i == $("input[name='page']").val()){  //보여질값이 i랑 같다면 
-	                  html += "<span name='" + i + "'><b>" + i + "</b></span>"; //그 번호를 굵게보여주라
+	            for(var k = result.pb.startPcount; k <= result.pb.endPcount; k++){ //시작페이지 부터 끝페이지까지 반복문으로 계속도는데
+	               if(k == $("input[name='page']").val()){  //보여질값이 i랑 같다면 
+	                  html += "<span name='" + k + "'><b>" + k + "</b></span>"; //그 번호를 굵게보여주라
 	               } else {
-	                  html += "<span name='" + i + "'>" + i + "</span>"; //아니면 굵게 보여주지 마라
+	                  html += "<span name='" + k + "'>" + k + "</span>"; //아니면 굵게 보여주지 마라
 	               }
 	            }
 	            
@@ -96,21 +127,47 @@ function refreshListA(){
 	            
 	            html += "<span name='" + result.pb.maxPcount + "'> >> </span>"; 
 	            
-	            $("#page_num").html(html); // <div id="page_num"></div> 이페이지에서 돌아가게
+	            $("#first_middle_paging").html(html); // <div id="page_num"></div> 이페이지에서 돌아가게
 	         },
 	         error : function(result) {
-	            alert("error!!");
+	            alert("즐!!");
 	         }
 	      });
 	   
-	}
-
-</script> 
+	}   
+ function bottom_rest_apply(){
+		var params = $("#main_bottom_rest").serialize();
+		
+		$.ajax({
+			type : "post",
+			url : "refreshTest5",
+			dataType : "json",
+			data : params,
+			success : function(result){
+				var html="";
+				for(var i=0; i<result.list.length; i++){
+					html += "<tr name='"+result.list[i].EMP_NUM+"'>";
+					html += "<td>"+result.list[i].ENU+"</td>"; //
+					html += "<td>"+result.list[i].ENA+"</td>"; //일차
+					html += "<td>"+result.list[i].POTION+"</td>"; //날짜
+					html += "<td>"+result.list[i].OFFS+"</td>"; //내용
+					html += "<td>"+result.list[i].TERM+"</td>"; //내용
+					html += "<td>"+result.list[i].R_REASON+"</td>"; //내용
+					html += "</tr>";
+				}
+				$("#bottom_rest_apply").html(html); //내용 데이터 가져오기
+			},
+			error : function(result){
+				alert("error!!");
+			}
+		}); //ajax 끝
+	} 
+	</script>
 </head>
 <body>
-<form action="#" method="post" id="actionForm">
+<form action="" method="post" id="main_top_notice">
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
-<input type="hidden" name="gbn" value="${gbn}"/>
+	<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
 		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
 			<input type="hidden" name="page" value="1"/>
@@ -120,79 +177,126 @@ function refreshListA(){
 		</c:otherwise>
 	</c:choose>
 	<input type="hidden" name="searchText" value="${param.searchText}"/> 
-	<input type="hidden" name="POST_NUM"/>
 </form>
 
-<div class="wrap">
-   <div class="header">
-   		<b>공지사항</b>
-   </div>
-    <div class="more" >
-   		<p><a href="http://localhost:8080/SampleSpring/aaa" target="_blank" > 더보기</a></p>
-   </div>
-   <div class="content">
-		<table border="1" >
-	<thead>
-		<tr>
-	       <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
-		</tr>
-	</thead>
-	<tbody id="tb">
-		
-	</tbody>
-</table>
-	</div>
+<form action="" method="post" id="main_middle_bbs">
+	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
+	<input type="hidden" name="gbn" value="${gbn}"/>
+	<c:choose>
+		<c:when test="${empty param.page}"> <!-- 넘어오는값중에 empty면 페이지를 1로 세팅-->
+			<input type="hidden" name="page" value="1"/>
+		</c:when>
+		<c:otherwise>
+			<input type="hidden" name="page" value="${param.page}"/> <!-- empty가 아니면 이부분으로 페이지를 보여지는세팅 -->
+		</c:otherwise>
+	</c:choose>
+	<input type="hidden" name="searchText" value="${param.searchText}"/> 
+</form>
 
-  
-   <div class="page_num" id="page_num"></div>
+<form action="" id="main_bottom_rest" method="post">
+<c:choose>
+	<c:when test="${empty param.page}">
+		<input type="hidden" name="page" value="1"/>
+	</c:when>
+	<c:otherwise>
+		<input type="hidden" name="page" value="${param.page}"/>
+	</c:otherwise>
+</c:choose>
+<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
+<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 --> 
+</form>
 
+<div class="first_main">
+   <div class="first_top">
+   		<div class="first_top_information"><b>공지사항</b>  
+   		<input type="button" value="더보기" class="more_Btn" 
+				   id="top_moreBtn" tab="notice*공지사항*notice" /></div>
+				
+   		<table border="1" align="center" class="first_top_table" >
+   		
+   					<colgroup>
+						<col style="width: 10%;">
+						<col style="width: 35%;">
+						<col style="width: 20%;">
+						<col style="width: 25%;">
+						<col style="width: 10%;">
+						
+					</colgroup>
+				
+					<tr>
+	  					<td>번호</td>
+        			    <td>제목</td>
+         			    <td>작성자</td>
+						<td>작성일</td>
+						<td>조회수</td>
+					</tr>
+				
+			<tbody id="top_notice"></tbody>
+				</table>
+				
+
+				
+   </div>
+
+   <div class="first_middle">
+   		<div class="first_middle_information"><b>사내게시판</b>
+   		<input type="button" value="더보기" class="more_Btn" 
+				   id="middle_moreBtn" tab="bbs*사내게시판*bbs" /></div>
+				   
+   		
+   		   		  
+   		<table border="1" align="center" class="first_middle_table" >
+					<colgroup>
+						<col style="width: 10%;">
+						<col style="width: 35%;">
+						<col style="width: 20%;">
+						<col style="width: 25%;">
+						<col style="width: 10%;">
+						
+					</colgroup>
+				
+					<tr >
+	  					<td>번호</td>
+        			    <td>제목</td>
+         			    <td>작성자</td>
+						<td>작성일</td>
+						<td>조회수</td>
+					</tr>
+			<tbody id="middle_bbs"></tbody>
+				</table>
+ </div>
+   		
+   	
+   		
    
-     <div class="header_1">
-   		<b>사내게시판</b>
-   </div>
-   <div class="more_1">
-   	   		<p><a href="http://localhost:8080/SampleSpring/" target="_blank" > 더보기</a></p>
-   </div>
 
-   <div class="content_1">
-		<table border="1" >
-	<thead>
-		<tr>
-	       <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
-		</tr>
-	</thead>
-	<tbody id="tb">
-		
-	</tbody>
-</table>
+   <div class="first_bottom">
+   		<div class="first_bottom_information"><b>휴진현황</b>
+   		<input type="button" value="더보기" class="more_Btn" 
+				   id="bottom_moreBtn" tab="rest_apply*휴진현황*rest_apply" /></div>
+				    
+
+   		<table border="1" align="center" class="first_bottom_table" >
+					<colgroup>
+						<col style="width: 10%;">
+						<col style="width: 15%;">
+						<col style="width: 10%;">
+						<col style="width: 15%;">
+						<col style="width: 15%;">
+						<col style="width: 35%;">
+					</colgroup>
+					<tr>
+						<td>직원 번호</td>
+						<td>성 명</td>
+						<td>직 책</td>
+						<td>진료과</td>
+						<td>휴진 날짜</td>
+						<td>휴진 사유</td>
+					</tr>
+			<tbody id="bottom_rest_apply"></tbody>
+				</table>
+
 	</div>
-
-  
-   <div class="page_num_1" id="page_num_1"></div>
-
-	  <div class="header_2">
-   		<b>휴진현황</b>
-   </div>
-   <div class="content_2">
-   		<div class="mini_content_1" style="float:left" >
-   		
-   		</div>
-   		
-   		<div class="mini_content_2" style="float:left" >
-
-   		
-   		</div>
-   		
-   </div>
-
 </div>
 
 </body>

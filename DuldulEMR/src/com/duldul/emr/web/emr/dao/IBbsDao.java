@@ -20,6 +20,18 @@ public interface IBbsDao {
 	int visit(HashMap<String, String> params) throws Throwable;
 
 	HashMap<String, String> getMaxPOST_Count(HashMap<String, String> params)throws Throwable;
+
+	int main_notice2(HashMap<String, String> params)throws Throwable;
+
+	ArrayList<HashMap<String, String>> main_notice1(HashMap<String, String> params)throws Throwable;
+
+	int main_bbs2(HashMap<String, String> params)throws Throwable;
+
+	ArrayList<HashMap<String, String>> main_bbs1(HashMap<String, String> params)throws Throwable;
+
+	int main_rest2(HashMap<String, String> params)throws Throwable;
+
+	ArrayList<HashMap<String, String>> main_rest1(HashMap<String, String> params)throws Throwable;
 	
 
 

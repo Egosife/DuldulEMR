@@ -62,6 +62,42 @@ public class BbsService implements IBbsService{
 		return iBbsDao.getMaxPOST_Count(params);
 	}
 
+	@Override
+	public int main_notice2(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.main_notice2(params);
+	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> main_notice1(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.main_notice1(params);
+	}
+
+	@Override
+	public int main_bbs2(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.main_bbs2(params);
+	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> main_bbs1(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.main_bbs1(params);
+	}
+
+	@Override
+	public int main_rest2(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.main_rest2(params);
+	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> main_rest1(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iBbsDao.main_rest1(params);
+	}
+
 
 
 	

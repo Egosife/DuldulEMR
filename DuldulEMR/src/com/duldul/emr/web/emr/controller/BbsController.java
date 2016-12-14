@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,11 +125,19 @@ public class BbsController {
 		} //글쓰기 페이지 연결 끝
 		//글쓰기 페이지 연결
 		
+		//초기화면 페이지 연결
+		@RequestMapping(value="/rest_apply2")
+		public ModelAndView rest_apply(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
+			
+			modelAndView.setViewName("EMR/rest_apply");
+			
+			return modelAndView;
+		} //초기화면 페이지 연결 끝
 		
 		//초기화면 페이지 연결
 		@RequestMapping(value="/main_first")
 		public ModelAndView main_first(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
-			
+			modelAndView.addObject("gbn", 0);
 			modelAndView.setViewName("EMR/main_first");
 			
 			return modelAndView;
@@ -145,6 +154,7 @@ public class BbsController {
 		} //공지사항 페이지 연결 끝
 		
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//공지사항
 		@RequestMapping(value="/refreshTest")
 		public @ResponseBody ResponseEntity<String> refreshTest(
 				HttpServletRequest request, 
@@ -154,7 +164,8 @@ public class BbsController {
 			ObjectMapper mapper = new ObjectMapper();
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			
-			PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")), iBbsService.getBbsCount(params));
+			PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")), 
+					iBbsService.getBbsCount(params));
 			
 			
 			params.put("start", Integer.toString(pb.getStartCount()));
@@ -172,6 +183,127 @@ public class BbsController {
 			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 					responseHeaders,HttpStatus.CREATED);
 	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//사내게시판
+		@RequestMapping(value="/refreshTest2")
+		public @ResponseBody ResponseEntity<String> refreshTest2(
+				HttpServletRequest request, 
+				@RequestParam HashMap<String, String> params,
+				ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")), 
+					iBbsService.getBbsCount(params));
+			
+			
+			params.put("start", Integer.toString(pb.getStartCount()));
+			params.put("end", Integer.toString(pb.getEndCount()));
+			
+			ArrayList<HashMap<String, String>> list
+						= iBbsService.getBbs(params);
+			
+			modelMap.put("list",list);
+			modelMap.put("pb",pb);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+					responseHeaders,HttpStatus.CREATED);
+	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			//메인화면 공지사항
+			@RequestMapping(value="/refreshTest3")
+			public @ResponseBody ResponseEntity<String> refreshTest3(
+			HttpServletRequest request, 
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")), 
+			iBbsService.main_notice2(params));
+			
+			
+			params.put("start", Integer.toString(pb.getStartCount()));
+			params.put("end", Integer.toString(pb.getEndCount()));
+			
+			ArrayList<HashMap<String, String>> list
+			= iBbsService.main_notice1(params);
+			
+			modelMap.put("list",list);
+			modelMap.put("pb",pb);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+			responseHeaders,HttpStatus.CREATED);
+			}
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			//메인화면 사내게시판
+			@RequestMapping(value="/refreshTest4")
+			public @ResponseBody ResponseEntity<String> refreshTest4(
+			HttpServletRequest request, 
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")), 
+			iBbsService.main_bbs2(params));
+			
+			
+			params.put("start", Integer.toString(pb.getStartCount()));
+			params.put("end", Integer.toString(pb.getEndCount()));
+			
+			ArrayList<HashMap<String, String>> list
+			= iBbsService.main_bbs1(params);
+			
+			modelMap.put("list",list);
+			System.out.println("sadsadsadsadsadsadsadasdas"+list);
+			modelMap.put("pb",pb);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+			responseHeaders,HttpStatus.CREATED);
+			}
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			//메인화면 휴진현황
+			@RequestMapping(value="/refreshTest5")
+			public @ResponseBody ResponseEntity<String> refreshTest5(
+			HttpServletRequest request, 
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			PagingBean pb = iPagingService.getPageingBean(Integer.parseInt(params.get("page")), 
+			iBbsService.main_rest2(params));
+			
+			
+			params.put("start", Integer.toString(pb.getStartCount()));
+			params.put("end", Integer.toString(pb.getEndCount()));
+			
+			ArrayList<HashMap<String, String>> list
+			= iBbsService.main_rest1(params);
+			
+			modelMap.put("list",list);
+			modelMap.put("pb",pb);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+			
+			return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+			responseHeaders,HttpStatus.CREATED);
+			}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		@RequestMapping(value="/insertTest")
 		public @ResponseBody ResponseEntity<String> insertTest(
@@ -243,6 +375,6 @@ public class BbsController {
 					responseHeaders,HttpStatus.CREATED);
 		}
 		
-		
+	
 		
 }

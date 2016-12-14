@@ -12,12 +12,12 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	refreshListA();
+	refreshList_notice();
 	$("#notice_searchBtn").on("click",function(){
 		$("input[name='searchText']").val($("#notice_searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
-		refreshListA();
+		refreshList_notice();
 	});
 	
 	
@@ -29,12 +29,12 @@ $(document).ready(function(){
 		Open_Tab(this);
 	});
 
-	$("#page_num").on("click","span",function(){
+	$("#notice_page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
-		refreshListA();
+		refreshList_notice();
 	});
 	
-	$("#tb").on("click","tr",function(){
+	$("#notice_notice").on("click","tr",function(){
 		//$("input[name='POST_NUM']").val($(this).attr("name"));
 		//$("#actionForm").attr("action","bbs_detail");
 		//$("#actionForm").submit();
@@ -45,8 +45,8 @@ $(document).ready(function(){
 
 
 
-function refreshListA(){
-	var params = $("#actionForm").serialize();
+function refreshList_notice(){
+	var params = $("#actionForm99").serialize();
 		
 		$.ajax({
 			type : "post",
@@ -65,7 +65,7 @@ function refreshListA(){
 					html += "<td>" + result.list[i].VIEWS + "</td>";
 					html += "</tr>";
 				}
-				$("#tb").html(html);
+				$("#notice_notice").html(html);
 				
 				//페이지 그리는 단계
 				
@@ -95,7 +95,7 @@ function refreshListA(){
 	            
 	            html += "<span name='" + result.pb.maxPcount + "'> >> </span>"; 
 	            
-	            $("#page_num").html(html); // <div id="page_num"></div> 이페이지에서 돌아가게
+	            $("#notice_page_num").html(html); // <div id="page_num"></div> 이페이지에서 돌아가게
 	         },
 	         error : function(result) {
 	            alert("error!!");
@@ -107,7 +107,7 @@ function refreshListA(){
 </script> 
 </head>
 <body>
-<form action="#" method="post" id="actionForm">
+<form action="" method="post" id="actionForm99">
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 	<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
@@ -136,7 +136,7 @@ function refreshListA(){
 						<th>조회수</th>
 					</tr>
 				</thead>
-			<tbody id="tb"></tbody>
+			<tbody id="notice_notice"></tbody>
 		</table>
 	</div>
 		<div class="notice_bar">
@@ -147,7 +147,7 @@ function refreshListA(){
 	<div class="notice_bottom">
   		 <div class="notice_bottom_list">
 			<hr>
-			<div class="page_num" id="page_num"></div>
+			<div class="notice_page_num" id="notice_page_num"></div>
 		</div>
 		<div class="notice_bottom_search">
 			 <select name="keyField" id="keyField">

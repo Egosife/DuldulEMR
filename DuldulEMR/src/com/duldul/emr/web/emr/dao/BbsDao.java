@@ -75,11 +75,48 @@ public class BbsDao implements IBbsDao {
 			// TODO Auto-generated method stub
 			return sqlMapClient.update("Bbs.visit", params);
 		}
-
+		@SuppressWarnings("unchecked")
 		@Override
 		public HashMap<String, String> getMaxPOST_Count(HashMap<String, String> params) throws Throwable {
 			// TODO Auto-generated method stub
 			return (HashMap<String, String>) sqlMapClient.queryForObject("Bbs.getMaxPOST_Count",params);
+		}
+
+		@Override
+		public int main_notice2(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return (int) sqlMapClient.queryForObject("Bbs.main_notice2", params);
+		}
+		
+		@SuppressWarnings("unchecked")//경고를 무시하겠다
+		@Override
+		public ArrayList<HashMap<String, String>> main_notice1(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return (ArrayList<HashMap<String, String>>) sqlMapClient.queryForList("Bbs.main_notice1", params);
+		}
+
+		@Override
+		public int main_bbs2(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return (int) sqlMapClient.queryForObject("Bbs.main_bbs2", params);
+		}
+		@SuppressWarnings("unchecked")//경고를 무시하겠다
+		@Override
+		public ArrayList<HashMap<String, String>> main_bbs1(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return (ArrayList<HashMap<String, String>>) sqlMapClient.queryForList("Bbs.main_bbs1", params);
+		}
+
+		@Override
+		public int main_rest2(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return (int) sqlMapClient.queryForObject("Bbs.main_rest2", params);
+		}
+		@SuppressWarnings("unchecked")//경고를 무시하겠다
+		@Override
+		public ArrayList<HashMap<String, String>> main_rest1(HashMap<String, String> params) throws Throwable {
+			// TODO Auto-generated method stub
+			return (ArrayList<HashMap<String, String>>) sqlMapClient.queryForList("Bbs.main_rest1", params);
 		}
 
 		

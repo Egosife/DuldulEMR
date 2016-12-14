@@ -12,12 +12,12 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	refreshList();
+	refreshList_bbs();
 	$("#bbs_searchBtn").on("click",function(){
 		$("input[name='searchText']").val($("#bbs_searchText").val()); //searchText가 히든인데 집어넣는이유가 $("#searchText")가 폼밖에있는거가 보여지고  'searchText'는 폼안에있는건 히든이여서 안보임
 																	//그래서 폼밖에있는게 폼안에있는거에 집어넣는거임 ..보여주려고
 		$("input[name='page']").val("1"); //내가 무엇을 검색하던 1페이지로 넘어가게 하는 기능
-		refreshList();
+		refreshList_bbs();
 	});
 	
 	
@@ -29,12 +29,12 @@ $(document).ready(function(){
 		Open_Tab(this);
 	});
 
-	$("#page_num").on("click","span",function(){
+	$("#bbs_page_num").on("click","span",function(){
 		$("input[name='page']").val($(this).attr("name"));
-		refreshList();
+		refreshList_bbs();
 	});
 	
-	$("#tb").on("click","tr",function(){
+	$("#bbs_bbs").on("click","tr",function(){
 		//$("input[name='POST_NUM']").val($(this).attr("name"));
 		//$("#actionForm").attr("action","bbs_detail");
 		//$("#actionForm").submit();
@@ -45,12 +45,12 @@ $(document).ready(function(){
 
 
 
-function refreshList(){
-	var params = $("#actionForm").serialize();
+function refreshList_bbs(){
+	var params = $("#actionForm11").serialize();
 		
 		$.ajax({
 			type : "post",
-			url : "refreshTest",
+			url : "refreshTest2",
 			dataType : "json",
 			data : params,
 			success : function(result){
@@ -65,7 +65,7 @@ function refreshList(){
 					html += "<td>" + result.list[i].VIEWS + "</td>";
 					html += "</tr>";
 				}
-				$("#tb").html(html);
+				$("#bbs_bbs").html(html);
 				
 				//페이지 그리는 단계
 				
@@ -95,7 +95,7 @@ function refreshList(){
 	            
 	            html += "<span name='" + result.pb.maxPcount + "'> >> </span>"; 
 	            
-	            $("#page_num").html(html); // <div id="page_num"></div> 이페이지에서 돌아가게
+	            $("#bbs_page_num").html(html); // <div id="page_num"></div> 이페이지에서 돌아가게
 	         },
 	         error : function(result) {
 	            alert("error!!");
@@ -107,7 +107,7 @@ function refreshList(){
 </script> 
 </head>
 <body>
-<form action="#" method="post" id="actionForm">
+<form action="" method="post" id="actionForm11">
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 	<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
@@ -136,7 +136,7 @@ function refreshList(){
 						<th>조회수</th>
 					</tr>
 				</thead>
-			<tbody id="tb"></tbody>
+			<tbody id="bbs_bbs"></tbody>
 		</table>
 	</div>
 		<div class="bbs_bar">
@@ -147,7 +147,7 @@ function refreshList(){
 	<div class="bbs_bottom">
   		 <div class="bbs_bottom_list">
 			<hr>
-			<div class="page_num" id="page_num"></div>
+			<div class="bbs_page_num" id="bbs_page_num"></div>
 		</div>
 		<div class="bbs_bottom_search">
 			 <select name="keyField" id="bbs_keyField">
