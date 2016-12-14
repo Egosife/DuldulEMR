@@ -77,9 +77,6 @@ public class RestController {
 		modelMap.put("list", list);
 		modelMap.put("pb", pb);
 		
-		System.out.println("asdf");
-		System.out.println(list);
-		System.out.println("asdf");
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");
 
@@ -101,7 +98,8 @@ public class RestController {
 
 		modelMap.put("list", list);
 		modelMap.put("pb", pb);
-
+		
+		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");
 

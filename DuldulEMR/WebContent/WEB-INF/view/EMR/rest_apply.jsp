@@ -10,12 +10,13 @@
 $(document).ready(function(){
 	my_rest_List();
 	Emp_rest();
+	Rest_Select();
 	
 	$("#insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
 		Open_Tab(this); // 탭을 오픈한다
 	}); //insertBtn end
 	
-	$("#pagingArea").on("click","span",function(){ //페이징을 클릭하면
+	$("#pagingArea_top").on("click","span",function(){ //페이징을 클릭하면
 		$("input[name='page']").val($(this).attr("name"));
 		my_rest_List();
 	}); //pagingArea end
@@ -27,6 +28,13 @@ $(document).ready(function(){
 	$("#tv").on("click","tr",function(){ //글을 클릭하면
 		Open_Tab(this); //탭을 오픈한다
 	}); //tb end
+	
+	$("#rest_cal").on("click", function(){ //조회를 클릭 했을시
+		rest_search();
+	});
+	$("#mokrok_Btn").on("click", function(){ //목록보기
+		ReOpen_Tab(this);
+	});
 });//ready end
 function my_rest_List(){
 	var params = $("#RestApplyForm").serialize();
@@ -41,9 +49,9 @@ function my_rest_List(){
 			for(var i=0; i<result.list.length; i++){
 				html += "<tr name='"+result.list[i].SERIAL_NUM+"' value='"+result.list[i].SERIAL_NUM+"' tab='rest?TURN="+result.list[i].SERIAL_NUM+"*윤희상*rest'>";
 				html += "<td>"+result.list[i].REPORTING+"</td>"; //
-				html += "<td>"+result.list[i].TERM+"</td>"; //일차
-				html += "<td>"+result.list[i].R_REASON+"</td>"; //날짜
-				html += "<td>"+result.list[i].R_CHECK+"</td>"; //내용
+				html += "<td>"+result.list[i].TERM+"</td>"; //
+				html += "<td>"+result.list[i].R_REASON+"</td>"; //
+				html += "<td>"+result.list[i].R_CHECK+"</td>"; //
 				html += "</tr>";
 			}
 			$("#tv").html(html); //내용 데이터 가져오기
@@ -71,7 +79,7 @@ function my_rest_List(){
 				html += "<span name='"+($("input[name='page']").val() * 1 + 1)+"'> 다음 </span>";
 			}
 			html +="<span name='"+result.pb.maxPcount+"'> 마지막 </span>";
-			$("#pagingArea").html(html);
+			$("#pagingArea_top").html(html);
 		},
 		error : function(result){
 			alert("error!!");
@@ -80,6 +88,8 @@ function my_rest_List(){
 }
 function Emp_rest(){
 	var params = $("#RestApplyForm").serialize();
+	
+	console.log(params);
 	
 	$.ajax({
 		type : "post",
@@ -90,12 +100,12 @@ function Emp_rest(){
 			var html="";
 			for(var i=0; i<result.list.length; i++){
 				html += "<tr name='"+result.list[i].EMP_NUM+"'>";
-				html += "<td>"+result.list[i].ENU+"</td>"; //
-				html += "<td>"+result.list[i].ENA+"</td>"; //일차
-				html += "<td>"+result.list[i].POTION+"</td>"; //날짜
-				html += "<td>"+result.list[i].OFFS+"</td>"; //내용
-				html += "<td>"+result.list[i].TERM+"</td>"; //내용
-				html += "<td>"+result.list[i].R_REASON+"</td>"; //내용
+				html += "<td>"+result.list[i].ENU+"</td>"; //직원 번호
+				html += "<td>"+result.list[i].ENA+"</td>"; //성명
+				html += "<td>"+result.list[i].POTION+"</td>"; //직책
+				html += "<td>"+result.list[i].OFFS+"</td>"; //진료과
+				html += "<td>"+result.list[i].TERM+"</td>"; //휴진 날짜
+				html += "<td>"+result.list[i].R_REASON+"</td>"; //휴진 사유
 				html += "</tr>";
 			}
 			$("#tt").html(html); //내용 데이터 가져오기
@@ -130,6 +140,19 @@ function Emp_rest(){
 		}
 	}); //ajax 끝
 } 
+function rest_search() { //환자일정 검색
+	$("#rest_sea").val($("#datepickersss").val());
+	$("input[name='page']").val("1");
+	Emp_rest();
+};
+function Rest_Select(){ //달력
+	$("#datepickersss").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+		}
+	});
+}
 </script>
 </head>
 <body>
@@ -142,6 +165,7 @@ function Emp_rest(){
 		<input type="hidden" name="page" value="${param.page}"/>
 	</c:otherwise>
 </c:choose>
+<input type="hidden" name="rest_sea" id="rest_sea"/>
 <input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
 <input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 --> 
 </form>
@@ -174,17 +198,19 @@ function Emp_rest(){
 			</div>
 		</div>
 		<div class="rest_apply_top_pag">
-			<div class="rest_apply_paging" id="pagingArea"></div>
+			<div class="rest_apply_paging" id="pagingArea_top"></div>
 		</div><hr/>
 	</div>
 	<div class="rest_apply_bottom">
 		<div class="rest_apply_rest"><b>휴진 현황</b></div>
 		<div class="rest_apply_text">
-			<div class="rest_apply_rrr">
-				<div class="rest_apply_ilsi">일 시
-					<input type="text" readonly class="rest_apply_box" name="records" id="details_calendar" placeholder="날짜 선택">
+				<div class="rest_apply_ilsi">
+					일 시 <input type="text" readonly class="rest_apply_box" name="records" id="datepickersss" placeholder="날짜 선택" >
 				</div>
-			</div>
+				<div class="rest_apply_iBtn">
+					<input type="button" value="검색" id="rest_cal" class="rest_apply_btn_btn_civa">
+					<input type="button" value="목록" id="mokrok_Btn" class="rest_apply_btn_btn_civa" tab="rest_apply*휴진현황*rest_apply">
+				</div>
 		</div>
 		<div class="rest_apply_btm_table">
 			<div class="rest_apply_btm_t">

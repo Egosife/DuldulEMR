@@ -21,7 +21,7 @@
 		           FROM(SELECT DAILY_NUM,TO_CHAR(RECORD_DATE,'YYYY-MM-DD') AS RECODE_DATE, CONTENT
 		                FROM DAILY
 		                WHERE EMP_NUM = #EMP_NUM#
-                    AND HOSPITAL_CODE = #HOSPITAL_CODE#
+                    	AND HOSPITAL_CODE = #HOSPITAL_CODE#
 		                ORDER BY RECODE_DATE)
 		            ORDER BY ROWNUM DESC))
 		    WHERE 1 = 1

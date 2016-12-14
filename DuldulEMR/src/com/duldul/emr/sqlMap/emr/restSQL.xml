@@ -11,6 +11,8 @@
      	FROM REST R LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='11')C
      	ON R.R_CHECK = C.SMALL
       	WHERE 1=1
+      	AND EMP_NUM = #EMP_NUM#
+        AND HOSPITAL_CODE = #HOSPITAL_CODE#
 	    ORDER BY REPORTING DESC))
 	    WHERE NO BETWEEN #start# AND #end#
 	</select>
@@ -30,8 +32,13 @@
 	    LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='9')C1
 	    ON E.OFFICE_CODE = C1.SMALL
 	    )SI
-	    ON R.EMP_NUM = SI.EMP_NUM                   
-    	ORDER BY TERM DESC))
-    	WHERE NUM BETWEEN #start# AND #end#
+	    ON R.EMP_NUM = SI.EMP_NUM
+	    <isNotEmpty property="rest_sea">
+	    WHERE TO_DATE(TO_CHAR(R.START_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') &lt;= TO_DATE(#rest_sea#,'YYYY-MM-DD')
+      	AND TO_DATE(TO_CHAR(R.END_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') &gt;= TO_DATE(#rest_sea#,'YYYY-MM-DD')     
+		</isNotEmpty>
+    	ORDER BY TERM DESC))    	
+    	WHERE 1=1
+    	AND NUM BETWEEN #start# AND #end#
 	</select>
 </sqlMap>
