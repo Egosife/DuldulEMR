@@ -34,7 +34,7 @@ public class BbsController {
 
 
 		
-		//글 상세보기 페이지 연결
+		//공지사항 글 상세보기 페이지 연결
 		@RequestMapping(value="/bbs_detail")
 		public ModelAndView bbs_detail(HttpServletRequest request,
 				@RequestParam HashMap<String, String> params,
@@ -52,7 +52,7 @@ public class BbsController {
 			
 			return modelAndView;
 			
-		} //글 상세보기 페이지 연결 끝
+		} //사내게시판 글 상세보기 페이지 연결 끝
 		@RequestMapping(value="/bbs_detail2")
 		public ModelAndView bbs_detail2(HttpServletRequest request,
 				@RequestParam HashMap<String, String> params,
@@ -105,34 +105,36 @@ public class BbsController {
 		
 		
 		
-		//글쓰기 페이지 연결
+		//공지사항 글쓰기 페이지 연결
 		@RequestMapping(value="/bbs_write")
 		public ModelAndView bbs_write(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
 			
 			modelAndView.setViewName("EMR/bbs_write");
 			
 			return modelAndView;
-		} //글쓰기 페이지 연결 끝
-		//글쓰기 페이지 연결
+		} //공지사항 글쓰기 페이지 연결 끝
 		
 		//글쓰기 페이지 연결
+		
+		//사내게시판 글쓰기 페이지 연결
 		@RequestMapping(value="/bbs_write2")
 		public ModelAndView bbs_write2(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
 			
 			modelAndView.setViewName("EMR/bbs_write2");
 			
 			return modelAndView;
-		} //글쓰기 페이지 연결 끝
-		//글쓰기 페이지 연결
+		} //사내게시판글쓰기 페이지 연결 끝
 		
-		//초기화면 페이지 연결
+	
+		
+		//초기화면에서 휴진현황 페이지 연결
 		@RequestMapping(value="/rest_apply2")
 		public ModelAndView rest_apply(HttpServletRequest request, ModelAndView modelAndView)throws Throwable  {
 			
 			modelAndView.setViewName("EMR/rest_apply");
 			
 			return modelAndView;
-		} //초기화면 페이지 연결 끝
+		} 		//초기화면에서 휴진현황 페이지 연결 끝
 		
 		//초기화면 페이지 연결
 		@RequestMapping(value="/main_first")
@@ -305,7 +307,8 @@ public class BbsController {
 			responseHeaders,HttpStatus.CREATED);
 			}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		@RequestMapping(value="/insertTest")
+		//글 등록 컨트롤러
+			@RequestMapping(value="/insertTest")
 		public @ResponseBody ResponseEntity<String> insertTest(
 				HttpServletRequest request, 
 				@RequestParam HashMap<String, String> params,
@@ -332,7 +335,8 @@ public class BbsController {
 			
 	}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-		@RequestMapping(value="/deleteTest")
+		//글 삭제 컨트롤러
+			@RequestMapping(value="/deleteTest")
 		public @ResponseBody ResponseEntity<String> deleteTest(
 				HttpServletRequest request, 
 				@RequestParam HashMap<String, String> params,
@@ -355,7 +359,8 @@ public class BbsController {
 			
 	}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		@RequestMapping(value="/updateTest")
+		//글 수정 컨트롤러
+			@RequestMapping(value="/updateTest")
 		public @ResponseBody ResponseEntity<String> updateTest(
 				HttpServletRequest request, 
 				@RequestParam HashMap<String, String> params,
