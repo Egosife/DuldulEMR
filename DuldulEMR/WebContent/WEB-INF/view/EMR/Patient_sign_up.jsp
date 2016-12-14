@@ -11,8 +11,8 @@
 </head>
 
 <!-- 2016-11-23 이관우 개발
-		12-06 id로 받은 css 클래스추가
-		   13  최종 개발완료 -->
+		  12-06 id로 받은 css 클래스추가
+		     13  최종 개발완료 -->
 
 <body class='S_body'>
 <form action="#" id="action_S" method="post">
