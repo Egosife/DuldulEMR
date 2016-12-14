@@ -9,6 +9,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	my_rest_List();
+	Emp_rest();
 	
 	$("#insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
 		Open_Tab(this); // 탭을 오픈한다
@@ -17,6 +18,10 @@ $(document).ready(function(){
 	$("#pagingArea").on("click","span",function(){ //페이징을 클릭하면
 		$("input[name='page']").val($(this).attr("name"));
 		my_rest_List();
+	}); //pagingArea end
+	$("#paging_Area").on("click","span",function(){ //페이징을 클릭하면
+		$("input[name='page']").val($(this).attr("name"));
+		Emp_rest();
 	}); //pagingArea end
 	
 	$("#tv").on("click","tr",function(){ //글을 클릭하면
@@ -72,6 +77,58 @@ function my_rest_List(){
 			alert("error!!");
 		}
 	}); //ajax 끝
+}
+function Emp_rest(){
+	var params = $("#RestApplyForm").serialize();
+	
+	$.ajax({
+		type : "post",
+		url : "Emp_rest",
+		dataType : "json",
+		data : params,
+		success : function(result){
+			var html="";
+			for(var i=0; i<result.list.length; i++){
+				html += "<tr name='"+result.list[i].EMP_NUM+"'>";
+				html += "<td>"+result.list[i].ENU+"</td>"; //
+				html += "<td>"+result.list[i].ENA+"</td>"; //일차
+				html += "<td>"+result.list[i].POTION+"</td>"; //날짜
+				html += "<td>"+result.list[i].OFFS+"</td>"; //내용
+				html += "<td>"+result.list[i].TERM+"</td>"; //내용
+				html += "<td>"+result.list[i].R_REASON+"</td>"; //내용
+				html += "</tr>";
+			}
+			$("#tt").html(html); //내용 데이터 가져오기
+			
+			//페이징 처리 단계
+			html="";
+			html += "<span name='1'> 처음  </span>";
+			
+			if($("input[name='page']").val()==1){
+				html += "<span name='1'> 이전 </span>"; 
+			}else{
+				html += "<span name='"+($("input[name='page']").val()-1)+"'> 이전  </span>";
+			}
+			
+			for(var i=result.pb.startPcount; i<=result.pb.endPcount; i++){
+				if(i==$("input[name='page']").val()){
+					html += "<span name='"+ i +"'><b>"+ i +"</b></span>";
+				}else{
+					html += "<span name='"+ i +"'>"+ i +"</span>";
+				}
+			}
+			if($("input[name='page']").val()==result.pb.maxPcount){
+				html += "<span name='"+result.pb.maxPcount+"'> 다음 </span>";
+			}else{
+				html += "<span name='"+($("input[name='page']").val() * 1 + 1)+"'> 다음 </span>";
+			}
+			html +="<span name='"+result.pb.maxPcount+"'> 마지막 </span>";
+			$("#paging_Area").html(html);
+		},
+		error : function(result){
+			alert("error!!");
+		}
+	}); //ajax 끝
 } 
 </script>
 </head>
@@ -86,9 +143,9 @@ function my_rest_List(){
 	</c:otherwise>
 </c:choose>
 <input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
-<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 -->
-
+<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 --> 
 </form>
+
 <div class="rest_apply_main">
 	<div class="rest_apply_top">
 		<div class="rest_apply_request"><b>나의 신청 현황 및 기록</b></div>
@@ -125,24 +182,7 @@ function my_rest_List(){
 		<div class="rest_apply_text">
 			<div class="rest_apply_rrr">
 				<div class="rest_apply_ilsi">일 시
-					<input type="text" readonly class="rest_apply_box">
-				</div>
-				<div class="rest_apply_ilsi">진료과
-						<select name="keyField" class="rest_apply_drop">
-		         			<option value="title">선 택</option>
-		         			<option value="title">진료과0</option>
-		         			<option value="title">진료과1</option>
-		         			<option value="title">진료과2</option>
-		         		</select>
-				</div>
-				<div class="rest_apply_ilsi">직 책
-						<select name="keyField" class="rest_apply_drop">
-		         			<option value="title">선 택</option>
-		         			<option value="title">직책0</option>
-		         			<option value="title">직책1</option>
-		         			<option value="title">직책2</option>
-		         		</select>
-				<input type="button" value="검색" class="rest_apply_btn_btn_siva">
+					<input type="text" readonly class="rest_apply_box" name="records" id="details_calendar" placeholder="날짜 선택">
 				</div>
 			</div>
 		</div>
@@ -151,11 +191,11 @@ function my_rest_List(){
 				<table border="1" class="rest_apply_set_table">
 					<colgroup>
 						<col style="width: 10%;">
-						<col style="width: 5%;">
-						<col style="width: 10%;">
+						<col style="width: 15%;">
 						<col style="width: 10%;">
 						<col style="width: 15%;">
-						<col style="width: 50%;">
+						<col style="width: 15%;">
+						<col style="width: 35%;">
 					</colgroup>
 					<tr>
 						<td>직원 번호</td>
@@ -165,11 +205,12 @@ function my_rest_List(){
 						<td>휴진 날짜</td>
 						<td>휴진 사유</td>
 					</tr>
-				</table>			
+					<tbody id="tt"></tbody>
+				</table>
 			</div>
 		</div>
 		<div class="rest_apply_btm_pag">
-			<div class="rest_apply_bt_paging">1 2 3 4 5</div>
+			<div class="rest_apply_bt_paging" id="paging_Area"></div>
 		</div>
 	</div>
 </div>

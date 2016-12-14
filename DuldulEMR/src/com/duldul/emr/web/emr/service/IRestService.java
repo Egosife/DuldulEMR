@@ -12,4 +12,6 @@ public interface IRestService {
 	
 	//페이징 처리
 	public int getRestCount(HashMap<String, String> params) throws Throwable;
+	
+	public ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params) throws Throwable;
 }

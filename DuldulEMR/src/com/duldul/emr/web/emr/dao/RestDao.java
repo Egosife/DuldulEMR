@@ -19,9 +19,15 @@ public class RestDao implements IRestDao{
     public ArrayList<HashMap<String, String>> getRest(HashMap<String, String> params) throws Throwable {
        return (ArrayList<HashMap<String, String>>) sqlMapClient.queryForList("Rest.getRest", params);
     }
+    
     @Override
     public int getRestCount(HashMap<String, String> params) throws Throwable {
   	  return (int) sqlMapClient.queryForObject("Rest.getRestCount", params);
     }
     
+    @SuppressWarnings("unchecked")
+    @Override
+    public ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params) throws Throwable {
+       return (ArrayList<HashMap<String, String>>) sqlMapClient.queryForList("Rest.getRestList", params);
+    }
 }
