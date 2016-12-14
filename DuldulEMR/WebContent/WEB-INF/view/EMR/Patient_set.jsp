@@ -55,7 +55,7 @@
 				<table class='Set_table' border="1" align="center">
 					<colgroup>
 						<col style="width: 3%;">
-						<col style="width: 5%;">
+						<col style="width: 7%;">
 						<col style="width: 7%;">
 						<col style="width: 7%;">
 						<col style="width: 5%;">
