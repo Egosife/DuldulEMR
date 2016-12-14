@@ -141,7 +141,7 @@ function ReClose_Tab(obj,tab){
 	var tab_id = "tab_"+tab;
 	
 	$("#content_"+tab).remove();
-	$("#"+tab_id).remove();
+	//$("#"+tab_id).remove();
 	
 	var id = $("#main_content_page").children('div:first').attr("value");
 	var val = $("#tab_bar").children('div:first').attr("value");
@@ -149,7 +149,7 @@ function ReClose_Tab(obj,tab){
 		Bbs_Type_Val(val);
 	}
 	
-	View_Tab_Content(id);
+	//View_Tab_Content(id);
 }
 
 //탭  유무 체크
@@ -193,10 +193,51 @@ function ReOpen_Tab(obj){
 			Bbs_Type(obj);
 		}
 		ReClose_Tab(obj,tab[2]);
-		Add_Tab(obj); //탭에 선택된 오브젝트 값 전송
+		ReAdd_Tab(obj); //탭에 선택된 오브젝트 값 전송
 	}
 }
 
+//탭 추가
+function ReAdd_Tab(obj){
+	var tab = $(obj).attr('tab').split("*");
+	var tab_id = "tab_"+tab[2];
+	var tab_close = "tab-close_"+tab[2];
+	var useid = $(obj).attr('id');
+	if(useid != null){
+		var id = $(obj).attr('id').split("_");
+		if(id.length > 2){
+			var tab_type = "tabM_"+id[1]+"_"+id[2];
+			var tab_value = "tabV_"+id[1]+"_"+id[2];
+		}else{
+			var tab_type = "tabM_"+id[0];
+			var tab_value = "tabV_"+id[0];
+		}
+	}else{
+		var tab_type = "tabM_"+tab[2];
+		var tab_value = "tabV_"+tab[2];
+	}
+	
+/*	var html="";
+	html += "<div class='main_tab' id='" +tab_id+"' value='"+tab_value+"'>";
+	html += "<div class='tab_layout' id='"+tab_type+"' value='"+tab[2]+"'>";
+	html += "<div class='tab_text' value='"+tab[2]+"'>"+tab[1]+"</div>";
+	html += "</div>";
+	html += "<div class='main_tab_close' id='"+tab_close+"' value='"+tab[2]+"' tab='"+tab[2]+"'></div>";
+	html += "</div>";
+	$("#tab_bar").append(html);*/
+	
+	html = "";
+	html += "<div class='pages' id='content_"+tab[2]+"' value='"+tab[2]+"'></div>"
+	$("#main_content_page").append(html);
+	html = "";
+	
+	//$("#"+tab_id).css('display','none');
+	//$("#"+tab_id).css('display','block');
+	
+	$("#content_"+tab[2]).load(tab[0]);
+	
+	ReView_Tab_Content(tab[2]);
+}
 //탭 추가
 function Add_Tab(obj){
 	var tab = $(obj).attr('tab').split("*");
@@ -237,6 +278,14 @@ function Add_Tab(obj){
 	$("#content_"+tab[2]).load(tab[0]);
 	
 	View_Tab_Content(tab[2]);
+}
+
+//선택된 탭만 보이게 하기
+function ReView_Tab_Content(tab){
+	$(".pages").css('display','none');
+	$(".main_tab_close").css('display','none');
+	$("#content_"+tab).css('display','block');
+	$("#tab-close_"+tab).css('display','block');
 }
 
 //선택된 탭만 보이게 하기
