@@ -30,7 +30,7 @@
 		                                FROM PATIENTMORE M LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '3') C
 		                                                              ON M.BLOOD = C.SMALL
 		                                                   LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '7') O
-		                                                              ON M.DRINKING = O.SMALL
+		                                                              ON M.SMOKING = O.SMALL
 		                                                   LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = '5') G
 		                                                              ON M.MARRIAGE = G.SMALL) D
 		                          ON P.PATIENT_NUM = D.PATIENT_NUM
