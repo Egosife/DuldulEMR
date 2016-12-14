@@ -102,4 +102,14 @@ public class TreatmentService implements ITreatmentService {
 		return iTreatmentDao.getcareinfo(params);
 	}
 
+	@Override
+	public ArrayList<HashMap<String, String>> getTodayTreat(HashMap<String, String> params) throws Throwable {
+		return iTreatmentDao.getTodayTreat(params);
+	}
+
+	@Override
+	public int updatetime(HashMap<String, String> params) throws Throwable {
+		return iTreatmentDao.updatetime(params);
+	}
+
 }

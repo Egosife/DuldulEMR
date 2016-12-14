@@ -262,4 +262,14 @@ public class TreatmentDao implements ITreatmentDao {
 		return (ArrayList<HashMap<String, String>>) sqlMaptreat.queryForList("Treat.getcareinfo",params);
 	}
 
+	@Override
+	public ArrayList<HashMap<String, String>> getTodayTreat(HashMap<String, String> params) throws Throwable {
+		return (ArrayList<HashMap<String, String>>) sqlMaptreat.queryForList("Treat.getTodayTreat",params);
+	}
+
+	@Override
+	public int updatetime(HashMap<String, String> params) throws Throwable {
+		return sqlMaptreat.update("Treat.updatetime",params);
+	}
+
 }

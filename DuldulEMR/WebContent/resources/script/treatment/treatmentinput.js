@@ -15,7 +15,6 @@ $(document).ready(function(){
 			data: params,
 			success: function(result){
 				if(result.res == "true"){
-					alert("성공");
 					
 					var paramsArray = $("#form_treat_care").serializeArray();
 					
@@ -25,9 +24,13 @@ $(document).ready(function(){
 						dataType: "json",
 						data: paramsArray,
 						success: function(result){
-							
+							if(result.resl == "true"){
+								alert("완료");
+							}else{
+								alert("ERROR - insertcares");
+							}
 						},error: function(result){
-							
+							alert("ERROR - insertcares");
 						}
 					});
 					

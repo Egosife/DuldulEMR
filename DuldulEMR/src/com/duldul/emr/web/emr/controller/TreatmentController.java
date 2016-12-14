@@ -129,6 +129,26 @@ public class TreatmentController {
 	}
 
 	//접수 타입 받아오기
+	@RequestMapping(value="/getTodayTreat")
+	public @ResponseBody ResponseEntity<String> getTodayTreat(HttpServletRequest request,
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		ArrayList<HashMap<String, String>> list = iTreatmentService.getTodayTreat(params);
+		
+		modelMap.put("list", list);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+
+	//접수 타입 받아오기
 	@RequestMapping(value="/getTreatType")
 	public @ResponseBody ResponseEntity<String> getTreatType(HttpServletRequest request,
 			ModelAndView modelAndView) throws Throwable{
@@ -206,7 +226,6 @@ public class TreatmentController {
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 				responseHeaders, HttpStatus.CREATED);
 	}
-
 	//진료 기록 정보 받아오기
 	@RequestMapping(value="/pill_his")
 	public @ResponseBody ResponseEntity<String> pill_his(HttpServletRequest request,
@@ -259,6 +278,7 @@ public class TreatmentController {
 			String res2 = iTreatmentService.inserttreatmore(params);
 			if(res2 == "true"){
 				int res3 = iTreatmentService.updatetreat(params);
+				int res4 = iTreatmentService.updatetime(params);
 				modelMap.put("res", res);
 			}
 		}
@@ -282,18 +302,13 @@ public class TreatmentController {
 			ObjectMapper mapper = new ObjectMapper();
 			Map<String, Object> modelMap = new HashMap<String,Object>();
 			
-			System.out.println(patinum.get(0));
-			System.out.println(treatnum.get(0));
-			System.out.println(treatcare);
-			System.out.println(treatpill);
-			
 			String res = iTreatmentService.inserttreatcare(patinum, treatnum, treatcare);
 			String res2 = iTreatmentService.inserttreatpill(patinum, treatnum, treatpill);
 			
 			if(res == "true" && res2 == "true"){
-				modelMap.put("res", "true");
+				modelMap.put("resl", "true");
 			}else{
-				modelMap.put("res", "false");
+				modelMap.put("resl", "false");
 			}
 			
 			HttpHeaders responseHeaders = new HttpHeaders();

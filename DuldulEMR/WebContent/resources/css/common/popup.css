@@ -22,14 +22,18 @@ body {
 	margin-top: -300px;
 	margin-left: -500px;
 	background-color: #FFFFFF;
-	border: 2px solid #992299;
+	border: 2px solid gray;
 	z-index: 1000;
+}
+
+.popup_table{
+	width: 100%;
 }
 
 .popup_title {
 	line-height:40px;
 	height: 12%;
-	background-color: #992299;
+	background-color: gray;
 }
 
 .popup_title_text {
