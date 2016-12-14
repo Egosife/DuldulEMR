@@ -31,13 +31,10 @@ $(document).ready(function(){
 
 function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임(success 인지 fail인지),,,,data는 json받은거임
 
-	
+	var closeTab ={tab:"bbs_write2"};
+	var newTab = {tab:"bbs*사내게시판*bbs"};
 	if(result == "success"){ //결과가 성공이네.......그럼 json을 자바스크립트 bean으로 만든다
 
-		var resData = eval("(" + removePre(data) + ")");
-		console.log(data);
-		$("#textFile").val(resData.fileName[0]);
-	
 		var params = $("#insertForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
 		
 		$.ajax({
@@ -48,13 +45,12 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 			success : function(result){
 				if(result.res == "true"){
 					alert("저장 .")
-						var closeTab ={tab:"bbs_write2"}
-						var newTab = {tab:"bbs*사내게시판*bbs"}
+						
 					ReOpen_Tab(newTab);
 					Close_Tab(closeTab);
 					
 				}else{
-					alert("저장 중 문제가 발생했습니다.")
+					alert("저장 중 문제가 발생했습니다.");
 				}
 	         },
 	         error : function(result) {
@@ -66,59 +62,53 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 	}
 } //eval의 용도는 자바스크립는 bean용도로 사용하게.........
 
-function removePre(data){ //데이터가 들어옴
-	if(data.indexOf("<pre>") > -1 ){ // >-1:존재한다는 소리			indexOf:위치 찾는거
-		var st = data.indexOf(">"); //끝나는 부분의 위치 찾는
-		var ed = data.indexOf("<",st); // >(이거)찾은거부터 <(이거) 찾는다
-		
-		return data.substring(st + 1, ed);//<(이거) 다음꺼부터 >(이거)까지 데이터를 찾는다
-	}else{
-		return data;
-	}
-}
+
 </script>
 </head>
-<body>
+<body>	
 <%-- <form action="#" id="actionForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
 </form> --%>
 	
 
-
-
-<div class="bbs_write_wrap">
-   <div class="bbs_write_header">
-   		<b>글 쓰기</b>
-   </div>
-<form action="fileUploadAjax" id="insertForm" method="post" enctype="multipart/form-data">
-   <div class="bbs_write_content">
-		제목 <input type="text" id="TitleText" name="postTitle" /> 
-	</div>
-
-   <div class="bbs_write_writter">
-      <input type="hidden" name="write" value="${sEmp_Name}"/>
+			<form id="insertForm" method="post">
+	  <input type="hidden" name="write" value="${sEmp_Name}"/>
+	  <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
 	  <input type="hidden" name="gbn" value="${sBbs_Type}"/>
       <input type="hidden" name="empNo" value="${sEmp_Num}"/>
-      <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
-   	파일첨부<input type="file" name="postFile"/>
-   	<input type = "text" name="textfile" id="textFile"/>
-   	
- 
-  
-   
-     </div>
-      <div class="bbs_write_page_num" >
-   		
-   		<textarea rows="30" cols="125" name="postCon"></textarea>
-   		
-   </div>
-   <div class="bbs_write_search">
-  	 <center><input type="button" value="저장" id="saveBtn" tab="bbs_write2" />
-  	 <input type="button" value="취소" id="cancleBtn" tab="bbs_write2"/></center>
-	</div>
- </form>
-</div>
+<div class="bbs_write_main">
+   <div class="bbs_write_top">
+    	<div class="bbs_write_top_title"><b>글쓰기</b></div>
+    	 <div class="bbs_write_title">제목</div> <!-- 레이아웃 상단 - 업무 날짜  -->
+    
 
+ 			<div class="bbs_write_total" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
+        		<input type="text" id="TitleText" name="postTitle" placeholder="제목을 입력하세요"/> 
+    		 </div>
+    	   </div>
+   				<hr> <!-- 구분선 -->	 
+
+	  
+   
+
+    <div class="bbs_write_mid"> 
+    <div class="bbs_write_content">글 내용</div>
+     <div class="bbs_write_content_text">
+       		<textarea rows="10" cols="100" name="postCon" class="bbs_write_size" placeholder="내용을 입력하세요"></textarea>
+    </div>
+  </div>
+  <hr/>
+   <div class="bbs_write_bottom_bb"> 
+  		 <div class="bbs_write_1">
+  			 <input type="button" value="저장" id="saveBtn" tab="bbs_write" class="bbs_write_button"/>
+  	 		<input type="button" value="취소" id="cancleBtn" tab="bbs_write" class="bbs_write_button"/>	
+         </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
+   </div>
+
+   </div>
+   
+		</form>
+		
 </body>
 </html>

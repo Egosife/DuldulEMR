@@ -38,11 +38,7 @@
     		WHERE P.SERIAL_NUM = #POST_NUM#	
 	</select>
 	
-	<insert id="insertTest"
-			parameterClass="java.util.HashMap">
-		INSERT INTO POST(SERIAL_NUM,   EMP_NUM, HOSPITAL_CODE,  SEG_CODE,  POST_NUM,  TITLE,   CONTENT, REPORTING, WRITER)
-		VALUES (POSTING_NUMBER.NEXTVAL,#empNo#, #hospitalCode#, #gbn#, #MAX_POSTNUM#, #postTitle#, #postCon# ,SYSDATE, #write#)
-	</insert>
+	
 	 
 	<!-- 글번호 --> 
  	<select id="getMaxPOST_Count" 
@@ -55,6 +51,11 @@
 		AND HOSPITAL_CODE = #hospitalCode#
 	</select>
 	
+	<insert id="insertTest"
+			parameterClass="java.util.HashMap">
+		INSERT INTO POST(SERIAL_NUM,   EMP_NUM, HOSPITAL_CODE,  SEG_CODE,  POST_NUM,  TITLE,   CONTENT, REPORTING, WRITER)
+		VALUES (POSTING_NUMBER.NEXTVAL,#empNo#, #hospitalCode#, #gbn#, #MAX_POSTNUM#, #postTitle#, #postCon# ,SYSDATE, #write#)
+	</insert>
 	
 	<!-- 삭제 디비 -->
 	<delete id="deleteTest"
