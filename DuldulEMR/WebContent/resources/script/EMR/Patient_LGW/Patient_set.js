@@ -33,6 +33,9 @@ $(document).ready(function(){
 	});
 	
 	$("#Setlist_Btn").on("click", function(){ //목록보기
+		//$("input[name='S_search_Text1']").val("");
+		//$("input[name='Set_page']").val("1");
+		//Set_list();
 		ReOpen_Tab(this);
 	});
 	
