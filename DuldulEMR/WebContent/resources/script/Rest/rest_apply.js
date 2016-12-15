@@ -40,7 +40,7 @@ function my_rest_List(){
 		success : function(result){
 			var html="";
 			for(var i=0; i<result.list.length; i++){
-				html += "<tr name='"+result.list[i].SERIAL_NUM+"' value='"+result.list[i].SERIAL_NUM+"' tab='rest?TURN="+result.list[i].SERIAL_NUM+"*윤희상*rest'>";
+				html += "<tr name='"+result.list[i].SERIAL_NUM+"' value='"+result.list[i].SERIAL_NUM+"' tab='rest?TURN="+result.list[i].SERIAL_NUM+"*휴진 신청기록*rest'>";
 				html += "<td>"+result.list[i].REPORTING+"</td>"; //
 				html += "<td>"+result.list[i].TERM+"</td>"; //
 				html += "<td>"+result.list[i].R_REASON+"</td>"; //

@@ -32,7 +32,7 @@
       <input type="hidden" name="empNo" value="${sEmp_Num}"/>
 <div class="bbs_detail_main">
    <div class="bbs_detail_top">
-    	<div class="bbs_detail_top_title"><b>글쓰기</b></div>
+    	<div class="bbs_detail_top_title"><b>글 보기</b></div>
 <!--  	 <div class="bbs_detail_writer">작성자</div>
  	  <div class="bbs_detail_date">등록일</div><br/> -->
     	 <div class="bbs_detail_title">제목</div>  
