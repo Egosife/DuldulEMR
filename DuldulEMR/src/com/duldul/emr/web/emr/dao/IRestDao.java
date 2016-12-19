@@ -10,5 +10,11 @@ public interface IRestDao {
 	
 	ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params)throws Throwable;
 	
+	HashMap<String, String> getRestCon(HashMap<String, String> params)throws Throwable;
+	
 	String restInsert(HashMap<String, String> params) throws Throwable;
+	
+	int detail_sujeong(HashMap<String, String> params) throws Throwable;
+	
+	int detail_sakje(HashMap<String, String> params) throws Throwable;
 }

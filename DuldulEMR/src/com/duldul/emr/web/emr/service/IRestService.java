@@ -15,5 +15,11 @@ public interface IRestService {
 	
 	public ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params) throws Throwable;
 	
+	public HashMap<String, String> getRestCon(HashMap<String, String> params) throws Throwable;
+	
 	public String restInsert(HashMap<String, String> params) throws Throwable;
+	
+	public int detail_sujeong(HashMap<String, String> params) throws Throwable;
+	
+	public int detail_sakje(HashMap<String, String> params) throws Throwable;
 }

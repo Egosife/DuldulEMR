@@ -6,164 +6,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css"  href="resources/css/EMR/rest.css" />
+<title>휴진 자세히 보기</title>
+<link rel="stylesheet" type="text/css"  href="resources/css/EMR/rest.css" /> <!-- 레이아웃 -->
+<script type="text/javascript" src="resources/script/Rest/rest_detail.js"></script> <!-- 자바 스크립트 -->
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	emp_List(); 
-
-	$("#rest_datepicker1").datepicker({ //날짜 가져오기
-		dateFormat : 'yy-mm-dd',
-		duration: 200,
-		onSelect:function(dateText, inst){
-		}
-	});
-	$("#rest_datepicker2").datepicker({ //날짜 가져오기
-		dateFormat : 'yy-mm-dd',
-		duration: 200,
-		onSelect:function(dateText, inst){
-		}
-	});
-	
-	$("#rest_saveBtn").on("click", function(){
-		if($(this).val() == "완료"){
-			var updateForm = $("#rest");
-			rest.ajaxForm(uploadResultCallBack);
-			rest.submit();
-			
-		}else{
-			$("#rest_changeBtn").attr("value","완료");
-			
-			$("#rest_rest").removeAttr("readonly");
-		}
-		
-	});
-	
-	$("#rest_cancelBtn").on("click", function(){
-
-		if(confirm("지울꺼니?")){
-			var params = $("#deleteForm").serialize();
-			console.log(params);
-			$.ajax({
-				type : "post",
-				url : "rest_delete",
-				dataType : "json",
-				data : params,
-				success : function(result){
-					if(result.res > 0){
-		
-						var newTab = {tab:"rest_apply*휴진현황*rest_apply"}
-						var closeTab ={tab:"rest_detail"}
-						Close_Tab(closeTab);
-						ReOpen_Tab(newTab);
-					}else{
-						alert("삭제가 안된다능.")
-					}
-		         },
-		         error : function(result) {
-		          	alert("error!");
-		         }
-			});
-		
-		}
-		
-	});
-});//ready end
-
-function emp_List(){
-	var params = $("#restForm").serialize();
-	
-	$.ajax({
-		type : "post",
-		url : "emp_List",
-		dataType : "json",
-		data : params,
-		success : function(result){
-			var html="";
-			
-				html += "<tr name='"+result.list.EMP_NAME+"'>";
-				html += "<td>"+result.list.EMP_NAME+"</td>"; //직원 이름
-				html += "<td>"+result.list.POSITION+"</td>"; //직책
-				html += "<td>"+result.list.EMP_NUM+"</td>"; //사원 번호
-				html += "<td>"+result.list.OFFICE+"</td>"; //근무과
-				html += "</tr>";
-				$("#tb_emp").html(html); //직원 데이터 가져오기
-		}
-	});
-}
-////////////////////////////////직원 데이터 가져오는곳
-
-
-function uploadResultCallBack(data, result){ 
-
-	
-	if(result == "success"){
-	
-		var params = $("#rest").serialize();
-		
-		$.ajax({
-			type : "post",
-			url : "rest_update",
-			dataType : "json",
-			data : params,
-			success : function(result){
-				if(result.res > 0){
-					alert("수정했습니다.")
-					
-					$("#rest_changeBtn").attr("value","수정");
-					
-					$("#rest_rest").attr("readonly", "readonly");
-					
-					
-					var newTab = {tab:"rest_apply*휴진현황*rest_apply"}
-					var closeTab ={tab:"rest_detail"}
-					Close_Tab(closeTab);
-					ReOpen_Tab(newTab);
-					
-				}else{
-					alert("수정 중 문제가 발생했습니다.")
-				}
-	         },
-	         error : function(result) {
-	          	alert("error!");
-	         }
-		});
-	} else {
-		alert("저장실패");
-	} 
-}
-</script>
 
 </head>
 <body>
-<form action="#" id="deleteForm"  method="post">
-	<input type="hidden" name="page" value="${param.page}"/>
-	<input type="hidden" name="searchText" value="${param.searchText}"/>
-	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
-	
-
+<!-- 직원 데이터 가져오기 -->
+<form action="" id="restEmp_Form" method="post">
+	<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
+	<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 -->
 </form>
-
-<form action="" id="restForm" method="post">
-<input type="TEXT" name="REST_NUM" value="${param.REST_NUM}"/>
-<c:choose>
-	<c:when test="${empty param.page}">
-		<input type="hidden" name="page" value="1"/>
-	</c:when>
-	<c:otherwise>
-		<input type="hidden" name="page" value="${param.page}"/>
-	</c:otherwise>
-</c:choose>
-<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
-<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 -->
-
+<!-- 삭제  -->
+<form action="" id="tail_del"  method="post">
+	<input type="hidden" name=SNUM value="${param.SNUM}"/>
 </form>
-<form id="rest" method="post">
-		<input type="TEXT" name="REST_NUM" value="${param.REST_NUM}"/>
-		<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
-		<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 -->
-
+<!-- 수정 -->
+<form action="" id="tail_up" method="post">
+	<input type="hidden" name="SNUM" value="${param.SNUM}"/>
 <div class="rest_main"> 
 	<div class="rest_top"> 
 		<div class="rest_b_information"><b>기본 정보</b></div> 
@@ -178,27 +39,28 @@ function uploadResultCallBack(data, result){
 		</table>
 	</div>
 	<div class="rest_middle"> <!-- 레이아웃 중단 -->
-		<div class="rest_report"><b>휴진 신청</b>	</div>
-			<div class="rest_calender">휴진 날짜</div>
-			<div class="rest_cal_btn" style="text-align: center"> 
-        	<input type="text" name="records"  class="rest_cal_text" id="rest_datepicker1" readonly value="${conm.START_DATE}"> <!--  placeholder="날짜를 선택하세요" -->
-        	<input type="text" name="records"  class="rest_cal_text" id="rest_datepicker2" readonly value="${conm.END_DATE}">
-    	 </div>
-    	
+		<div class="rest_report"><b>휴진 신청</b></div>
+			<div class="rest_mid_top">
+				<div class="rest_calender">휴진 날짜</div>
+					<div class="rest_cal_btn"> 
+		        		<input type="text" name="sdate" placeholder="날짜를 선택하세요" class="rest_cal_text" id="rest_taildatepicker1" readonly value="${conn.SDATE}"> ~ 
+		        		<input type="text" name="edate" placeholder="날짜를 선택하세요" class="rest_cal_text" id="rest_taildatepicker2" readonly value="${conn.EDATE}">
+		    	 	</div>
+    	 	</div>
+    	<!-- 레이아웃  중단 - 업무 내용 -->
       <div class="rest_mid_text">
       <div class="rest_mid_work">휴진 내용</div>
-         <textarea name="contents" id="rest_rest" class="rest_text_size" readonly value="${conm.R_REASON}"></textarea>
+         <textarea name="reason" id="rest_rest" placeholder="내용을 입력하세요" class="rest_text_size">${conn.R_REASON}</textarea>
       </div>
    </div><hr>
     <div class="rest_bottom_bb"> <!-- 레이아웃 하단  -->
          <div class="rest_btn_1">
-         	<input type="button" value="등록" class="rest_btn_button" id="rest_changeBtn"/> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
-         	<input type="button" value="취소" class="rest_btn_button" id="rest_cancelBtn" tab='Daily_write'/> 
+         	<input type="button" value="수정" class="rest_btn_button" id="sujeongBtn"/> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
+         	<input type="button" value="취소" class="rest_btn_button" id="chisoBtn" tab='rest_detail'/>
+         	<input type="button" value="삭제" class="rest_btn_button" id="sakjeBtn"/>
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
    </div> <!-- 구분선 -->
-	
-  
-		</form>
+</form>
 </body>
 </html>

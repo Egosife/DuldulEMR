@@ -63,7 +63,7 @@ $(document).ready(function(){
 				data : params,
 				success : function(result){
 					if(result.ress>0){
-						alert("삭제 되었습니다.") //경고창 띄우기
+						alert("삭제 되었습니다."); //경고창 띄우기
 						ReOpen_Tab(dailyopen); //업무일지 탭과 페이지를 연다
 						Close_Tab(dailydetails_close); //글 읽기 탭과 페이지를 닫는다
 					}else{

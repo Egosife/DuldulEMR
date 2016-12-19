@@ -5,8 +5,8 @@
 <sqlMap namespace="Rest">
 	<select id="getRest" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
 		SELECT * FROM(
-	    SELECT ROWNUM AS NO,REPORTING,TERM,R_REASON,R_CHECK FROM(
-      	SELECT TO_CHAR(R.REPORTING,'YYYY-MM-DD') AS REPORTING, TO_CHAR(R.START_DATE,'YYYY-MM-DD') || ' ~ ' || TO_CHAR(R.END_DATE,'YYYY-MM-DD') AS TERM,
+	    SELECT SERIAL_NUM,ROWNUM AS NO,REPORTING,TERM,R_REASON,R_CHECK FROM(
+      	SELECT R.SERIAL_NUM,TO_CHAR(R.REPORTING,'YYYY-MM-DD') AS REPORTING, TO_CHAR(R.START_DATE,'YYYY-MM-DD') || ' ~ ' || TO_CHAR(R.END_DATE,'YYYY-MM-DD') AS TERM,
       	R.R_REASON,C.CODE_NAME AS R_CHECK
      	FROM REST R LEFT OUTER JOIN(SELECT * FROM CODEDATA WHERE BIG='11')C
      	ON R.R_CHECK = C.SMALL
@@ -41,8 +41,24 @@
     	WHERE 1=1
     	AND NUM BETWEEN #start# AND #end#
 	</select>
+	<select id="getRestCon" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	    SELECT SERIAL_NUM,REPORTING,TO_CHAR(START_DATE,'YYYY-MM-DD')AS SDATE,TO_CHAR(END_DATE,'YYYY-MM-DD')AS EDATE,R_REASON,EMP_NUM,HOSPITAL_CODE
+	    FROM REST
+	    WHERE 1=1
+	    AND SERIAL_NUM = #SNUM#
+	</select>
 	<insert id="restInsert" parameterClass="java.util.HashMap">
 		INSERT INTO DULDUL.REST(SERIAL_NUM,REPORTING,START_DATE,END_DATE,R_REASON,EMP_NUM,HOSPITAL_CODE)
 		VALUES(REST_NUMBER.NEXTVAL,SYSDATE,#sdate#,#edate#,#reason#,#nums#,#hospital#)
 	</insert>
+	<update id="detail_sujeong" parameterClass="java.util.HashMap">
+		UPDATE REST SET START_DATE = #sdate#,
+						 END_DATE = #edate#,
+						 R_REASON = #reason#
+		WHERE SERIAL_NUM = #SNUM#
+	</update>
+	<delete id="detail_sakje" parameterClass="java.util.HashMap">
+		DELETE FROM REST
+		WHERE SERIAL_NUM = #SNUM#
+	</delete> 
 </sqlMap>

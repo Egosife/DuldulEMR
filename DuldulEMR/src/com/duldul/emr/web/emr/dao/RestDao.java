@@ -12,7 +12,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 public class RestDao implements IRestDao{
 
     @Autowired
-    public SqlMapClient sqlMapClient;
+    public SqlMapClient sqlMapClient; 
     
     @SuppressWarnings("unchecked")
     @Override
@@ -30,6 +30,13 @@ public class RestDao implements IRestDao{
     public ArrayList<HashMap<String, String>> getRestList(HashMap<String, String> params) throws Throwable {
        return (ArrayList<HashMap<String, String>>) sqlMapClient.queryForList("Rest.getRestList", params);
     }
+    
+	@SuppressWarnings("unchecked")
+	@Override
+	public HashMap<String, String> getRestCon(HashMap<String, String> params) throws Throwable {
+		return (HashMap<String, String>) sqlMapClient.queryForObject("Rest.getRestCon",params) ;
+	}
+    
     @Override
     public String restInsert(HashMap<String, String> params) throws Throwable {
 		String res = "false";
@@ -52,4 +59,13 @@ public class RestDao implements IRestDao{
 		sqlMapClient.endTransaction();
   	 return res;
 	}
+    @Override
+    public int detail_sujeong(HashMap<String, String> params) throws Throwable {
+  	  return sqlMapClient.update("Rest.detail_sujeong",params);
+		}
+    
+    @Override
+    public int detail_sakje(HashMap<String, String> params) throws Throwable {
+  	  return sqlMapClient.delete("Rest.detail_sakje",params);
+    }
 }
