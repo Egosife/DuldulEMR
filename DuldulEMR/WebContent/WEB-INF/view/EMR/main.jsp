@@ -56,7 +56,7 @@ $(document).ready(function() {
 			ReOpen_Tab(tab);
 			break;
 		case 1:
-			var tab = {tab : "adminopt*관리자옵션*adminopt"};
+			var tab = {tab : "manager_opt*매니저옵션*manager_opt"};
 			ReOpen_Tab(tab);
 			break;
 		case 2:
