@@ -26,7 +26,7 @@
 				AND P.PATIENT_NAME LIKE '%' || #search_Text1# || '%'
 			</isEqual>
 			<isEqual property="selP_b" compareValue="BIRTH">
-				AND P.BIRTH LIKE '%' || #search_Text1# || '%'
+				AND TO_CHAR(P.BIRTH, 'YYYYMMDD') LIKE '%' || #search_Text1# || '%'
 			</isEqual>
 			<isEqual property="selP_b" compareValue="PHONE1">
 				AND P.PHONE1 LIKE '%' || #search_Text1# || '%'

@@ -255,4 +255,12 @@ public class Patient_Controller { //2016-11-30 이관우 컨트롤러 작성
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 				responseHeaders, HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value = "/Service_page") //회원정보수정
+	public ModelAndView EMR_Service_page(HttpServletRequest request, ModelAndView modelAndView) {
+		modelAndView.setViewName("EMR/Emp_service");
+		
+		return modelAndView;
+	}
+
 }
