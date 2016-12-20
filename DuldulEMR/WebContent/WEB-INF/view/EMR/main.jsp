@@ -46,6 +46,28 @@ $(document).ready(function() {
 		buttonImageOnly: true,
 		dateFormat: 'yy/mm/dd'    
 	}); 
+	
+	$("#optbtn").on("click",function(){
+		var acctype = ${sLv_Code}
+		
+		switch (acctype) {
+		case 0:
+			var tab = {tab : "adminopt*관리자옵션*adminopt"};
+			ReOpen_Tab(tab);
+			break;
+		case 1:
+			var tab = {tab : "adminopt*관리자옵션*adminopt"};
+			ReOpen_Tab(tab);
+			break;
+		case 2:
+		case 3:
+			var tab = {tab : "Service_page*회원옵션*Service_page"};
+			ReOpen_Tab(tab);
+			break;
+		}
+		
+	});
+	
 });
 </script>
 <title>DuldulEMR</title>
@@ -59,7 +81,7 @@ $(document).ready(function() {
 		</div>
 		<div class="main_topbar_account">
 			${sEmp_Name} (${sEmp_Num})
-			<div class="main_topbar_account_opt"></div>
+			<div class="main_topbar_account_opt" id="optbtn"></div>
 			<div class="main_topbar_account_logout" id="logoff">LOGOUT</div>
 		</div>
 	</div>
