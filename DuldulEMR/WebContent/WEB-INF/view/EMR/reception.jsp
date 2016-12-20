@@ -6,8 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/main/reception.css" /> <!-- 레이아웃 -->
-<link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
-<script type="text/javascript" src="resources/script/common/popup.js"></script>
 <script type="text/javascript" src="resources/script/treatment/reception.js"></script>
 
 

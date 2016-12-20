@@ -6,23 +6,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="resources/css/main/main.css" /> <!-- 레이아웃 -->
-<!-- calendar select css -->
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/main/main.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/common/popup.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui-1.10.4.custom.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/common/calendar.css" />
-
-<!-- calendar css -->
 <link rel="stylesheet" type="text/css" href="resources/css/calendar/calendar.css" />
 
 <!-- jQuery Script -->
-<script type="text/javascript" 
-		src="resources/script/jquery/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
-<script type="text/javascript" src="resources/script/main/main.js"></script>
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 
-<!-- calendar Script -->
+<!-- Script -->
+<script type="text/javascript" src="resources/script/main/main.js"></script>
 <script type="text/javascript" src="resources/script/calendar/calendar.js"></script>
+<script type="text/javascript" src="resources/script/common/popup.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
