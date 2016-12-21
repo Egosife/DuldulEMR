@@ -13,6 +13,7 @@
 </head>
 <body>
 <form action="" method="post" id="actionForm99">
+	<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/>
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 	<input type="hidden" name="gbn" value="${gbn}"/>
 	<c:choose>
@@ -45,8 +46,15 @@
 		</table>
 	</div>
 		<div class="notice_bar">
-			<input type="button" value="글 쓰기" class="insert_Btn" 
-				   id="notice_insertBtn" tab="bbs_write*글쓰기*bbs_write" />
+		<!-- (0:관리자 , 1:매니저) 권한이 있는 계정들만 글쓰기라는 버튼이 보이게하려  -->
+			<c:choose>
+				<c:when test="${sLv_Code == 0 || sLv_Code == 1}">
+				
+					<input type="button" value="글 쓰기" class="insert_Btn" 
+						   id="notice_insertBtn" tab="bbs_write*글쓰기*bbs_write" />
+						   
+				</c:when>
+			</c:choose>
 		</div>
    </div>
 	<div class="notice_bottom">

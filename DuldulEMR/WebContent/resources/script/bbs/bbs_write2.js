@@ -37,15 +37,15 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 					Close_Tab(closeTab);
 					
 				}else{
-					alert("저장 중 문제가 발생했습니다.");
+					alert("Error - Write_2001");
 				}
 	         },
 	         error : function(result) {
-	          	alert("error!");
+	        	 alert("Error - Write_2002");
 	         }
 		});
 	}else{
-		alert("저장실패");
+		alert("Error - Write_2003");
 	}
 } //eval의 용도는 자바스크립는 bean용도로 사용하게.........
 

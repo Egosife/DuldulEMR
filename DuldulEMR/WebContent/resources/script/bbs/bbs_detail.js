@@ -35,11 +35,11 @@ $(document).ready(function(){
 							Close_Tab(closeTab);
 							ReOpen_Tab(newTab);
 						}else{
-							alert("삭제가 안된다능.")
+				            alert("Error - Detail_delete_1001");
 						}
 			         },
 			         error : function(result) {
-			          	alert("error!");
+			             alert("Error - Detail_delete_1002");
 			         }
 				});
 			
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			
 		});
 	});
-//파일 업로드 관련
+
 function uploadResultCallBack(data, result){ 
 
 	
@@ -75,14 +75,14 @@ function uploadResultCallBack(data, result){
 					ReOpen_Tab(newTab);
 					
 				}else{
-					alert("수정 중 문제가 발생했습니다.")
+		            alert("Error - Detail_1001");
 				}
 	         },
 	         error : function(result) {
-	          	alert("error!");
+	             alert("Error - Detail_1002");
 	         }
 		});
 	} else {
-		alert("저장실패");
+        alert("Error - Detail_1003");
 	} 
 }

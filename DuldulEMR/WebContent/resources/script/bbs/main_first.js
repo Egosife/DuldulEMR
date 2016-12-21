@@ -53,7 +53,7 @@ function top_notice(){
 
 	         },
 	         error : function(result) {
-	            alert("뭘봐!!");
+	            alert("Error - Main_first_0001");//메인페이지에서 공지사항 부분 글을 못불러올때 나오는 에러, 해결방법 = 세션을 확인한다, 페이지를 닫았다가 열어본다, 데이터베이스를 재가동 해본다, 인터넷 브라우저 사용기록을 지워본다, 이래도 안되면 문의전화 주세요
 	         }
 	      });
 
@@ -84,7 +84,7 @@ function top_notice(){
 				$("#middle_bbs").html(html);
 	         },
 	         error : function(result) {
-	            alert("즐!!");
+		            alert("Error - Main_first_0002");//메인페이지에서 사내게시판 부분 글을 못불러올때 나오는 에러, 해결방법 = 세션을 확인한다, 페이지를 닫았다가 열어본다, 데이터베이스를 재가동 해본다, 인터넷 브라우저 사용기록을 지워본다, 이래도 안되면 문의전화 주세요
 	         }
 	      });
 	   
@@ -113,7 +113,7 @@ function top_notice(){
 				$("#bottom_rest_apply").html(html); //내용 데이터 가져오기
 			},
 			error : function(result){
-				alert("error!!");
+	            alert("Error - Main_first_0003");//메인페이지에서 휴진현황 부분 글을 못불러올때 나오는 에러, 해결방법 = 세션을 확인한다, 페이지를 닫았다가 열어본다, 데이터베이스를 재가동 해본다, 인터넷 브라우저 사용기록을 지워본다, 이래도 안되면 문의전화 주세요
 			}
 		}); //ajax 끝
 	} 

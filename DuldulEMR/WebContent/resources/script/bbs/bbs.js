@@ -79,7 +79,7 @@ function refreshList_bbs(){
 	            $("#bbs_page_num").html(html); // <div id="page_num"></div> 이페이지에서 돌아가게
 	         },
 	         error : function(result) {
-	            alert("error!!");
+	        	 alert("Error - BBS_0001");
 	         }
 	      });
 	   

@@ -60,8 +60,15 @@
   <hr/>
    <div class="bbs_detail_bottom_bb"> 
   		 <div class="bbs_detail_1">
-  			<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button"/> <!--  --> 
-			<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail" class="bbs_detail_button"/> 
+  		 	<c:choose>
+				<c:when test="${sLv_Code == 0 || sLv_Code == 1}">
+				
+					<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button"/> 
+					<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail" class="bbs_detail_button"/> 
+						   
+				</c:when>
+			</c:choose>
+  		
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
 
