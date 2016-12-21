@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+/* 2016-20-20 이관우 개발 */
 
  .Es_body { /* 기본셋팅 */
 	margin: 0px;
@@ -30,8 +31,9 @@
 
  .textbox_Es { /* 텍스트 박스 - s */
  	width: 80%;
- 	height: 70%;
+ 	height: 50%;
  	font-size: 20pt;
+ 	text-align: center;
  }
  
  .Es_top { /* 메인 탑 */
@@ -80,6 +82,16 @@
  .Es_change_Btn { /* 수정버튼 */
 	display: inline-block;
     width: 120px;
+ 	height: 56px;
+ 	font-size: 20pt;
+ 	vertical-align: top;
+ 	margin-top: 5.5px;
+ 	margin-right: 10px; 
+ }
+ 
+ .Es_password_Btn { /* 비밀번호변경 버튼 */
+	display: inline-block;
+    width: 185px;
  	height: 56px;
  	font-size: 20pt;
  	vertical-align: top;

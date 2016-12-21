@@ -300,4 +300,36 @@
 		AND HOSPITAL_CODE = #sHospital_Code#
 		AND OFFICE_CODE = #Select_doc#
 	</select> <!-- 진료의사 데이터 타입 쿼리 -->
+	
+	<select id="Service_Data" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT PHONE, C.CODE_NAME AS LV_CODE, A.CODE_NAME AS POSITION_CODE, B.CODE_NAME AS OFFICE_CODE, TO_CHAR(BIRTH, 'YYYY-DD-MM')AS BIRTH, EMAIL, ADDRESS, EMP_NUM
+		FROM EMP E LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 8) A
+		ON E.POSITION_CODE = A.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 9) B
+		ON E.OFFICE_CODE = B.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 10) C
+		ON E.LV_CODE = C.SMALL
+		WHERE EMP_NUM = #Emp_Num#
+	</select> <!-- 회원정보수정 데이터 쿼리 -->
+	
+	<update id="update_Service" parameterClass="java.util.HashMap">
+		UPDATE EMP SET PHONE = #Phone#,
+		EMAIL = #Email#,
+		ADDRESS = #Address#
+		WHERE EMP_NUM = #Emp_Num#
+		AND HOSPITAL_CODE = #Hospital_Code#
+	</update> <!-- 회원정보수정 쿼리 -->
+	
+	<select id="Password_Data" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT PW
+		FROM EMP
+		WHERE EMP_NUM = #Emp_Num#
+		AND HOSPITAL_CODE = #Hospital_Code#
+	</select> <!-- 비밀번호 확인 쿼리 -->
+	
+	<update id="update_Password" parameterClass="java.util.HashMap">
+		UPDATE EMP SET PW = #Emp_New_Password#
+		WHERE EMP_NUM = #Emp_Num#
+		AND HOSPITAL_CODE = #Hospital_Code#
+	</update> <!-- 비밀번호 변경 쿼리 -->
 </sqlMap>

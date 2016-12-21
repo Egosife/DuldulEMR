@@ -262,5 +262,79 @@ public class Patient_Controller { //2016-11-30 이관우 컨트롤러 작성
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/Service_data") //회원정보수정 데이터(ajax)
+	public @ResponseBody ResponseEntity<String> Service_data(HttpServletRequest request,
+			@RequestParam HashMap<String, String> sheep_paring,
+			HttpSession session, ModelAndView modelAndView) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		System.out.println(sheep_paring);
+		
+		HashMap<String, String> Es_info = Patient_iService.getService_info(sheep_paring); //회원정보수정
+		
+		modelMap.put("Es_info", Es_info); //환자 상세정보
+		
+		System.out.println("ASDADASDASD" + Es_info);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/update_Service") //회원정보수정
+	public @ResponseBody ResponseEntity<String> update_Service(HttpServletRequest request,
+			@RequestParam HashMap<String, String> Yora_Fire,
+			ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		int res = Patient_iService.update_Service(Yora_Fire);
+		//update가 int를 받을수있는지
+		modelMap.put("res", res);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders,HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/Emp_Password_Service") //비밀번호 변경
+	public @ResponseBody ResponseEntity<String> Emp_Password_Service(HttpServletRequest request,
+			@RequestParam HashMap<String, String> Mambos,
+			ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		if(Mambos.get("Emp_New_Password").equals(Mambos.get("Emp_New_Password_check"))){
+			HashMap<String, String> Es_password = Patient_iService.getPassword_info(Mambos); //현재 비밀번호를 불러옴
+			
+			System.out.println(Es_password.get("PW"));
+			
+			if(Mambos.get("Emp_Password").equals(Es_password.get("PW"))){
+				int res = Patient_iService.update_Password(Mambos); //비밀번호 업데이트
+				modelMap.put("res", res);
+				System.out.println(res);
+			}else{
+				modelMap.put("res", "3");
+			}
+		}else{
+			modelMap.put("res", "2");
+		}
+		
+		//int res = Patient_iService.update_Service(Mambos);
+		//update가 int를 받을수있는지
+		//modelMap.put("res", res);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type","text/json; charset=UTF-8");
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders,HttpStatus.CREATED);
+	}
 
 }

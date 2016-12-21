@@ -97,5 +97,29 @@ public class Patient_Service implements Patient_iService { //2016-11-30 이관�
 		// TODO Auto-generated method stub
 		return Patient_Dao.get_Selectdoc(papamama);
 	} //진료의사 타입 서비스클래스
+	
+	@Override
+	public HashMap<String, String> getService_info(HashMap<String, String> sheep_paring) throws Throwable {
+		// TODO Auto-generated method stub
+		return Patient_Dao.getService_info(sheep_paring);
+	} //회원정보수정 데이터 서비스클래스
+	
+	@Override
+	public int update_Service(HashMap<String, String> Yora_Fire) throws Throwable {
+		// TODO Auto-generated method stub
+		return Patient_Dao.update_Service(Yora_Fire);
+	} //회원정보수정 서비스클래스
+	
+	@Override
+	public HashMap<String, String> getPassword_info(HashMap<String, String> Mambos) throws Throwable {
+		// TODO Auto-generated method stub
+		return Patient_Dao.getPassword_info(Mambos);
+	} //비밀번호 확인 데이터 서비스클래스
+	
+	@Override
+	public int update_Password(HashMap<String, String> Mambos) throws Throwable {
+		// TODO Auto-generated method stub
+		return Patient_Dao.update_Password(Mambos);
+	} //비밀번호 변경 서비스클래스
 
 }

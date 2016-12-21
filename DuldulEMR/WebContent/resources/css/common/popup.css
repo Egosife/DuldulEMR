@@ -65,3 +65,81 @@ body {
 	width: 250px;
 	height: 25px;
 }
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.Es_pop_text {
+	width: 80%;
+	height: 70%;
+}
+
+.Es_bg_div {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #000000;
+	opacity:0.3;
+	z-index: 100;
+}
+
+.Es_popup_div {
+	display: inline-block;
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	top: 60%;
+	left: 65%;
+	margin-top: -300px;
+	margin-left: -500px;
+	background-color: #FFFFFF;
+	border: 2px solid gray;
+	z-index: 1000;
+}
+
+.Es_popup_table{
+	width: 100%;
+	height: 100%;
+	margin-left: 25px;
+}
+
+.Es_popup_title {
+	line-height: 35px;
+	height: 12%;
+	background-color: gray;
+}
+
+.Es_popup_title_text {
+	padding-left: 5px;
+	color: #FFFFFF;
+	vertical-align: top;
+	font-size: 15pt;
+	font-weight: bold;
+}
+
+.Es_popup_contents {
+	height: 88%;
+}
+.Es_popup_text {
+	height: 85%;
+	text-align: left;
+	white-space: pre-line;
+	overflow-y: auto;
+	font-size: 10pt;
+	/* padding: 5px; */
+	margin-left: 5px;
+}
+.Es_popup_btn {
+	height: 10%;
+	padding-top: 0px;
+	text-align: center;
+}
+
+.Es_btn_close {
+	width: 200px;
+	height: 25px;
+}
+
+.Es_btn_ok {
+	width: 200px;
+	height: 25px;
+}
