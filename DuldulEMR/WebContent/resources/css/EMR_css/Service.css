@@ -71,12 +71,12 @@
  	background-color: #DDDDDD;
  }
  
- .Es_bottom { /* 환자정보수정 수정버튼 */
+ .Es_bottom { /* 환자정보수정 아래 */
  	display: inline-block;
  	width: 100%;
  	height: 7.5%;
  	text-align: right;
- 	background-color: #5D5D5D;
+ 	background-color: #F6F6F6;
  }
  
  .Es_change_Btn { /* 수정버튼 */

@@ -336,5 +336,12 @@ public class Patient_Controller { //2016-11-30 이관우 컨트롤러 작성
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 				responseHeaders,HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value = "/Hospital_chart") //병원현황
+	public ModelAndView Hospital_chart(HttpServletRequest request, ModelAndView modelAndView) {
+		modelAndView.setViewName("EMR/Hospital_chart");
+		
+		return modelAndView;
+	}
 
 }
