@@ -71,7 +71,7 @@ $(document).ready(function(){
  				Sdoc="";
  			},
  			error : function(result){
- 				alert("정보가 없습니다");
+ 				alert("Error - Patient_set_7040");
  			}
  		})// ajax end 
 	})//treatsort_type end
@@ -130,7 +130,7 @@ function Set_list() {
 			$("#pagingS").html(SL);
 		},
 		error : function(result) {
-			alert("정보가 없습니다");
+			alert("Error - Patient_set_7041");
 		}
 	});
 }
@@ -162,7 +162,7 @@ function Selectsort_type(){ //진료과 셀렉트 값
 			St = "";
 		},
 		error : function(result){
-			alert("정보가 없습니다");
+			alert("Error - Patient_set_7042");
 		}
 	})// ajax end	
 };

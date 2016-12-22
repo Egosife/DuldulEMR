@@ -313,8 +313,8 @@ public class Patient_Controller { //2016-11-30 이관우 컨트롤러 작성
 		if(Mambos.get("Emp_New_Password").equals(Mambos.get("Emp_New_Password_check"))){
 			HashMap<String, String> Es_password = Patient_iService.getPassword_info(Mambos); //현재 비밀번호를 불러옴
 			
-			System.out.println(Es_password.get("PW"));
-			
+			//System.out.println(Es_password.get("PW"));
+			System.out.println("ads"+Mambos);
 			if(Mambos.get("Emp_Password").equals(Es_password.get("PW"))){
 				int res = Patient_iService.update_Password(Mambos); //비밀번호 업데이트
 				modelMap.put("res", res);

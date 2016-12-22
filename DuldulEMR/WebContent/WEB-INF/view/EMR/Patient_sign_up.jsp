@@ -53,7 +53,7 @@
 												생년월일
 											</td>
 											<td>
-												<input class="textbox_s" type="text" id="patient_bir" name="BIRTH" />
+												<input class="textbox_s" type="text" id="patient_bir" name="BIRTH" placeholder="19930831" />
 											</td>
 										</tr>
 										<tr>
@@ -61,7 +61,7 @@
 												연락처1
 											</td>
 											<td>
-												<input class="textbox_s" type="text" id="pho_num" name="PHONE1" />
+												<input class="textbox_s" type="text" id="pho_num" name="PHONE1" placeholder="01012345678" />
 											</td>
 										</tr>
 									</table>
@@ -73,7 +73,7 @@
 												연락처2
 											</td>
 											<td>
-												<input class="textbox_s" type="text" id="pho_num2" name="PHONE2" />
+												<input class="textbox_s" type="text" id="pho_num2" name="PHONE2" placeholder="01012345678" />
 											</td>
 										</tr>
 										<tr>
@@ -95,18 +95,21 @@
 							<div class='Sign_mibottom2'>
 								<table class='S_table'>
 									<tr>
-										<td>
+										<td style="width: 150px;">
 											주소
 										</td>
+ 										<td style="width: 100px;">
+											<input class='add_Btn' type="button" id="address_Btn" value="주소검색" />
+										</td>
 										<td>
-											<input class="textbox_s" type="text" id="add_ress" name="ADDRESS" />
+											<input class="textbox_s" type="text" id="add_ress" name="ADDRESS" readonly="readonly" />
 										</td>
 									</tr>
 									<tr>
 										<td>
 											E-mail
 										</td>
-										<td>	
+										<td colspan="2">	
 											<input class="textbox_s" type="text" id="e_mail" name="EMAIL" />
 										</td>
 									</tr>
@@ -114,7 +117,7 @@
 										<td>
 											Blood type
 										</td>
-										<td>
+										<td colspan="2">
 											<select class="textbox_s" name="B_type">
 												<option value="0">A-</option>
 												<option value="1">A+</option>
@@ -196,7 +199,7 @@
 											시력-좌
 										</td>
 										<td>
-											<input class="textbox_s" type="text" id="Pat_left_eye" name="LEFT_EYE" />
+											<input class="textbox_s" type="text" id="Pat_left_eye" name="LEFT_EYE" placeholder="0.0" />
 										</td>
 									</tr>
 									<tr>
@@ -204,7 +207,7 @@
 											시력-우
 										</td>
 										<td>
-											<input class="textbox_s" type="text" id="Pat_right_eye" name="RIGHT_EYE" />
+											<input class="textbox_s" type="text" id="Pat_right_eye" name="RIGHT_EYE" placeholder="0.0" />
 										</td>
 									</tr>
 									<tr>

@@ -37,7 +37,7 @@ $(document).ready(function(){
 					}
 		         },
 		         error : function(result) {
-		          	alert("정보가 없습니다.");
+		          	alert("Error - Emp_service_7040");
 		         }
 			});
 		}else{
@@ -53,7 +53,7 @@ $(document).ready(function(){
 		var html = "";
 		
 		html += "<form action='#' id='Password_update_Form' method='post' style='display: inline-block; width: 100%; height: 100%;'>";
-			html += "<input type='hidden' name='Hospital_Code' value='${sHospital_Code}'>";
+			html += "<input type='hidden' name='Hospital_Code' value='" + $("#Hospi_Code").val() + "'>";
 			html += "<table class='Es_popup_table'>";
 				html += "<tr>";
 					html += "<td class='Es_pop_td'>";
@@ -112,7 +112,7 @@ function Emp_Service_Data(power){
 			$("#Address").attr('value', restart.Es_info.ADDRESS); /* 주소 */
 		},
 		error : function(restart) {
-			alert("정보가 없습니다.");
+			alert("Error - Emp_service_7041");
 		}
 	});
 };
@@ -136,19 +136,19 @@ function Emp_Password(){ //비밀번호 변경(ajax)
 				success : function(result) {
 					switch (result.res) {
 					case 1:
-						alert("변경 성공");
+						alert("변경 했습니다.");
 						Es_closePopup2();
 						break;
 					case "2":
-						alert("새 비밀번호를 확인");
+						alert("새 비밀번호를 확인이 틀림니다.");
 						break;
 					case "3":
-						alert("현재 비밀번호가 틀림");
+						alert("현재 비밀번호가 틀림니다.");
 						break;
 					}				
 				},
 				error : function(result) {
-					alert("정보가 없습니다.");
+					alert("Error - Emp_service_7042");//비밀번호를 변경할 때 문제가 생길 시 출력되는 에러,Emp_service.js,Emp_Password(),해결방법 = 재 로그인을 해본다, 페이지를 닫았다가 다시 열어본다, 인터넷 브라우저의 사용기록을 지워본다, 서버를 재가동 해본다, 이래도 안되ㅕㄴ 문의전화
 				}
 			});//ajax
 		}//if

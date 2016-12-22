@@ -79,7 +79,7 @@ function Emp_list() {
 			$("#pagingE").html(EL);
 		},
 		error : function(result) {
-			alert("정보가 없습니다");
+			alert("Error - Emp_page_7040");
 		}
 	});
 }

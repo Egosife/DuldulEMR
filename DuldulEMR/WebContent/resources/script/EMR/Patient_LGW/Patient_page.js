@@ -93,7 +93,7 @@ function patient_list() {
 			$("#pagingP").html(PL);
 		},
 		error : function(result) {
-			alert("정보가 없습니다");
+			alert("Error - Patient_page_7040");
 		}
 	});
 }

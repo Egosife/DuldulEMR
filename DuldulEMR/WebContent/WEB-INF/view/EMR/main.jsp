@@ -18,6 +18,9 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 
+<!-- Daum address api -->
+<script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+
 <!-- Script -->
 <script type="text/javascript" src="resources/script/main/main.js"></script>
 <script type="text/javascript" src="resources/script/calendar/calendar.js"></script>

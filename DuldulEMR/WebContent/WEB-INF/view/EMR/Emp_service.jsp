@@ -30,6 +30,7 @@
 	<input type="hidden" name="Hospital_Code" value="${sHospital_Code}">
 </form>
 <input type="hidden" id="sEmp_Num" value="${sEmp_Num}" /> <!-- 비밀번호 변경 직원 아이디 값 -->
+<input type="hidden" id="Hospi_Code" value="${sHospital_Code}" />
 <div class='Es_div'>
 	<div class='Service_main'>
 		<div class='Es_top'>

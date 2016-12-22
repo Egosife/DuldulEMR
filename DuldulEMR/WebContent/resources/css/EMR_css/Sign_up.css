@@ -142,7 +142,13 @@
  	height: 50%;
  	font-size: 20pt;
  	background-color: #FFFFFF;
- } 
+ }
+ 
+ .add_Btn { /* 주소검색 버튼 */
+ 	width: 100px;
+ 	height: 100%;
+ 	font-size: 15pt;
+ }
  
  .Sign_mibottom { /* 환자등록 중간 바탕 - 반으로 쪼갬(아래)*/
  	display: inline-block;

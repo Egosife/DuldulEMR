@@ -64,7 +64,7 @@ function patient_Details_list(papajohns){
 			$("#D").html(DL);
 		},
 		error : function(result){
-			alert("정보가 없습니다");
+			alert("Error - Patient_details_7040");
 		}
 	});
 };
@@ -95,7 +95,7 @@ function patient_Details_list2(){
 			$("#DE").html(DEL);
 		},
 		error : function(result){
-			alert("정보가 없습니다");
+			alert("Error - Patient_details_7041");
 		}
 	});
 };
