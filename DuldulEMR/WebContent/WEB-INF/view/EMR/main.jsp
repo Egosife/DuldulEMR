@@ -118,7 +118,7 @@ $(document).ready(function() {
 				</div>
 			<div class="main_menu_btn" id="menu4_btn">의 무 기 록</div>
 				<div class="menu_btnlist" id="menu4">
-					<div class="btnlist_btns" id="menu_4_0" name="menu_btn" tab="Daily*업무일지*j">업무일지</div>
+					<div class="btnlist_btns" id="menu_4_0" name="menu_btn" tab="Daily*업무일지*Daily">업무일지</div>
 <!-- 					<div class="btnlist_btns" id="menu_4_1" name="menu_btn" tab="none*환자의무기록*k">환자의무기록</div> -->
 				</div>
 		</div>

@@ -37,18 +37,18 @@ $(document).ready(function(){
 				success : function(result){
 					if(result.res>0){ //result.res가 0보다 크면
 						alert("수정이 되었습니다."); //경고창 띄우기
-						ReOpen_Tab(rest_app_open); //업무일지 탭과 페이지를 연다
 						Close_Tab(rest_tail_close); //글 읽기 탭과 페이지를 닫는다
+						ReOpen_Tab(rest_app_open); //업무일지 탭과 페이지를 연다
 					}else{
-						alert("저장 中 문제가 발생했습니다.");
+						alert("Error - rest_detail_0000");
 					}
 				},
 				error : function(result){
-					alert("에러!!");
+					alert("Error - rest_detail_1994");
 				}
 			}); //ajax 끝
 		}else{
-			alert("貯藏 失敗!"); //저장 실패
+			alert("Error - rest_detail_0425"); //저장 실패
 		}
 	} //uploadResultCallBack 끝
 	
@@ -68,14 +68,14 @@ $(document).ready(function(){
 				success : function(result){
 					if(result.ress>0){
 						alert("삭제 되었습니다.") //경고창 띄우기
-						ReOpen_Tab(rest_app_open); //업무일지 탭과 페이지를 연다
 						Close_Tab(rest_tail_close); //글 읽기 탭과 페이지를 닫는다
+						ReOpen_Tab(rest_app_open); //업무일지 탭과 페이지를 연다
 					}else{
-						alert("삭제 中에 문제가 발생하였습니다.")
+						alert("Error - rest_detail_0001")
 					}
 				},
 				error : function(result){
-					alert("error!");
+					alert("Error - rest_detail_1988");
 				}
 			}); //ajax 끝
 		} //if 끝

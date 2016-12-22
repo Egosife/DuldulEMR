@@ -21,7 +21,10 @@ $(document).ready(function(){
 		Open_Tab(this); //탭을 오픈한다
 	}); //tb end
 	$("#sunsilBtn").on("click",function(){ //취소 버튼을 누르면
+		var tab = {tab:"rest_apply*휴진현황*rest_apply"};
+		
 		Close_Tab(this); //탭을 닫는다
+		ReOpen_Tab(tab);
 	}); //cancelBtn 끝
 });//ready end
 
@@ -63,15 +66,15 @@ function uploadResultCallBack(data,result){
 					ReOpen_Tab(rest_apply_open); //업무일지 탭과 페이지를 연다
 					Close_Tab(rest_close); //글 읽기 탭과 페이지를 닫는다
 				}else{
-					alert("저장 중 문제가 발생했습니다.");
+					alert("Error - rest_0000");
 				}
 			},
 			error : function(result){
-				alert("에러!!");
+				alert("Error - rest_1994");
 			}
 		}); //ajax 끝
 	}else{
-		alert("貯藏 失敗!"); //저장 실패
+		alert("Error - rest_0425"); //저장 실패
 	}
 } //uploadResultCallBack 끝
 $("#datepicker1s").datepicker({

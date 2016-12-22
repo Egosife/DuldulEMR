@@ -10,7 +10,10 @@ $(document).ready(function(){
 	});
 	
 	$("#cancelBtn").on("click",function(){ //취소 버튼을 누르면
+		var tab = {tab:"Daily*업무일지*Daily"};
+		
 		Close_Tab(this); //탭을 닫는다
+		ReOpen_Tab(tab);
 	}); //cancelBtn 끝
 	
 	$("#saveBtn").on("click",function(){ //저장 버튼을 누르면
@@ -27,7 +30,7 @@ $(document).ready(function(){
 	}); //saveBtn 끝
 }); //ready 끝
 function uploadResultCallBack(data,result){ 
-	var daily_open = {tab:"Daily*업무일지*j"}; //업무일지 탭과 페이지를 연다
+	var daily_open = {tab:"Daily*업무일지*Daily"}; //업무일지 탭과 페이지를 연다
 	var dailywrite_close = {tab:"Daily_write"}; //글 읽기 탭과 페이지를 닫는다
 	if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦
 		
@@ -40,17 +43,17 @@ function uploadResultCallBack(data,result){
 			data : params,
 			success : function(result){
 				if(result.res=="true"){
-					ReOpen_Tab(daily_open); //업무일지 탭과 페이지를 연다
 					Close_Tab(dailywrite_close); //글 읽기 탭과 페이지를 닫는다
+					ReOpen_Tab(daily_open); //업무일지 탭과 페이지를 연다
 				}else{
-					alert("저장 중 문제가 발생했습니다.");
+					alert("Error - Daily_write_0000");
 				}
 			},
 			error : function(result){
-				alert("에러!!");
+				alert("Error - Daily_write_1994");
 			}
 		}); //ajax 끝
 	}else{
-		alert("貯藏 失敗!"); //저장 실패
+		alert("Error - Daily_write_0425"); //저장 실패
 	}
 } //uploadResultCallBack 끝

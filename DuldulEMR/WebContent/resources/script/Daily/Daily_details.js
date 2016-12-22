@@ -9,7 +9,10 @@ $(document).ready(function(){
 	});
 	
 	$("#listBtn").on("click",function(){ //취소 버튼을 누르면
+		var tab = {tab:"Daily*업무일지*Daily"};
+		
 		Close_Tab(this); //탭을 닫는다
+		ReOpen_Tab(tab);
 	}); //listBtn 끝
 	
 	$("#updateBtn").on("click",function(){ //수정 버튼을 누르면
@@ -20,7 +23,7 @@ $(document).ready(function(){
 	});//updateBtn	
 	
 	function uploadResultCallBack(data,result){ //data엔 json이 들어가있음
-		var dailyopen = {tab:"Daily*업무일지*j"}; //업무일지 탭과 페이지를 연다
+		var dailyopen = {tab:"Daily*업무일지*Daily"}; //업무일지 탭과 페이지를 연다
 		var dailydetails_close = {tab:"Daily_details"}; //글 읽기 탭과 페이지를 닫는다
 		if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦
 
@@ -34,23 +37,23 @@ $(document).ready(function(){
 				success : function(result){
 					if(result.res>0){ //result.res가 0보다 크면
 						alert("수정이 되었습니다."); //경고창 띄우기
-						ReOpen_Tab(dailyopen); //업무일지 탭과 페이지를 연다
 						Close_Tab(dailydetails_close); //글 읽기 탭과 페이지를 닫는다
+						ReOpen_Tab(dailyopen); //업무일지 탭과 페이지를 연다
 					}else{
-						alert("저장 中 문제가 발생했습니다.");
+						alert("Error - Daily_details_0000");
 					}
 				},
 				error : function(result){
-					alert("에러!!");
+					alert("Error - Daily_details_1994");
 				}
 			}); //ajax 끝
 		}else{
-			alert("貯藏 失敗!"); //저장 실패
+			alert("Error - Daily_details_0425");
 		}
 	} //uploadResultCallBack 끝
 	
 	$("#details_delete").on("click",function(){
-		var dailyopen = {tab:"Daily*업무일지*j"}; //업무일지 탭과 페이지를 연다
+		var dailyopen = {tab:"Daily*업무일지*Daily"}; //업무일지 탭과 페이지를 연다
 		var dailydetails_close = {tab:"Daily_details"}; //글 읽기 탭과 페이지를 닫는다
 		
 		if(confirm("정말 삭제하시겠습니까?")){
@@ -64,14 +67,14 @@ $(document).ready(function(){
 				success : function(result){
 					if(result.ress>0){
 						alert("삭제 되었습니다."); //경고창 띄우기
-						ReOpen_Tab(dailyopen); //업무일지 탭과 페이지를 연다
 						Close_Tab(dailydetails_close); //글 읽기 탭과 페이지를 닫는다
+						ReOpen_Tab(dailyopen); //업무일지 탭과 페이지를 연다
 					}else{
-						alert("삭제 中에 문제가 발생하였습니다.")
+						alert("Error - Daily_details_0001")
 					}
 				},
 				error : function(result){
-					alert("error!");
+					alert("Error - Daily_details_1988");
 				}
 			}); //ajax 끝
 		} //if 끝
