@@ -121,5 +121,11 @@ public class Patient_Service implements Patient_iService { //2016-11-30 이관�
 		// TODO Auto-generated method stub
 		return Patient_Dao.update_Password(Mambos);
 	} //비밀번호 변경 서비스클래스
+	
+	@Override
+	public ArrayList<HashMap<String, String>> Hos_chart_Data(HashMap<String, String> chacha) throws Throwable {
+		// TODO Auto-generated method stub
+		return Patient_Dao.Hos_chart_Data(chacha);
+	} //병원현황 차트 서비스클래스
 
 }

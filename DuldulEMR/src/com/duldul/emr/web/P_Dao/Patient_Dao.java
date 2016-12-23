@@ -65,7 +65,7 @@ public class Patient_Dao implements Patient_iDao { //2016-11-30 이관우 디에
 	@Override
 	public HashMap<String, String> insert_SEQ() throws Throwable {
 		return (HashMap<String, String>) sqlMapC_t.queryForObject("Patient_Data.insert_SEQ_NEXTVAL");
-	} //SEQ.NEXTVAL
+	} //SEQ.NEXTVAL 디에이오 클래스
 	
 	@Override
 	public String pat_insert(HashMap<String, String> paprika) throws Throwable {
@@ -93,7 +93,7 @@ public class Patient_Dao implements Patient_iDao { //2016-11-30 이관우 디에
 		sqlMapC_t.endTransaction(); //트랜잭션을 끝내겠다.
 		
 		return res;
-	} //환자정보
+	} //환자정보 디에이오 클래스
 
 	@Override
 	public String patmore_insert(HashMap<String, String> paprika) throws Throwable {
@@ -121,7 +121,7 @@ public class Patient_Dao implements Patient_iDao { //2016-11-30 이관우 디에
 		sqlMapC_t.endTransaction(); //트랜잭션을 끝내겠다.
 		
 		return res;
-	} //환자추가정보
+	} //환자추가정보 디에이오 클래스
 	
 	@Override
 	public int Set_Count(HashMap<String, String> parigee) throws Throwable {
@@ -175,4 +175,11 @@ public class Patient_Dao implements Patient_iDao { //2016-11-30 이관우 디에
 		// TODO Auto-generated method stub
 		return (int) sqlMapC_t.update("Patient_Data.update_Password", Mambos); //sql id 지정
 	} //비밀번호 변경 인터페이스 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> Hos_chart_Data(HashMap<String, String> chacha) throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Chart_Data", chacha);
+	} //병원현황 차트 인터페이스 디에이오 클래스
 }

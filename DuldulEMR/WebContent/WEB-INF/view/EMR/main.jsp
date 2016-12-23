@@ -21,6 +21,10 @@
 <!-- Daum address api -->
 <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
 
+<!-- highcharts Script -->
+<script src="resources/script/highcharts/highcharts.js"></script>
+<script src="resources/script/highcharts/modules/exporting.js"></script>
+
 <!-- Script -->
 <script type="text/javascript" src="resources/script/main/main.js"></script>
 <script type="text/javascript" src="resources/script/calendar/calendar.js"></script>
@@ -106,6 +110,7 @@ $(document).ready(function() {
 				<div class="menu_btnlist" id="menu1">
 					<div class="btnlist_btns" id="menu_1_0" name="menu_btn" tab="Patient_page*환자조회*Patient_page">환자조회</div>
 					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" tab="Emp_page*직원조회*Emp_page">직원조회</div>
+					<div class="btnlist_btns" id="menu_1_2" name="menu_btn" tab="Hospital_chart*병원현황*Hospital_chart">병원현황</div>
 				</div>
 			<div class="main_menu_btn" id="menu2_btn">일 정 관 리</div>
 				<div class="menu_btnlist" id="menu2">

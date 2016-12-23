@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.duldul.emr.common.bean.PagingBean;
 import com.duldul.emr.common.service.IPagingService;
+import com.duldul.emr.web.Hospital_Chart_Bean.Hospital_Bean;
 import com.duldul.emr.web.P_Service.Patient_iService;
 
 @Controller
@@ -342,6 +343,39 @@ public class Patient_Controller { //2016-11-30 이관우 컨트롤러 작성
 		modelAndView.setViewName("EMR/Hospital_chart");
 		
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/Hospital_chart_Data") //병원현황 차트
+	public @ResponseBody ResponseEntity<String> Hospital_chart_Data(HttpServletRequest request,
+			@RequestParam HashMap<String, String> chacha,
+			HttpSession session, ModelAndView modelAndView) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		chacha.put("Hospital_Code", session.getAttribute("sHospital_Code").toString());
+		ArrayList<HashMap<String, String>> list = Patient_iService.Hos_chart_Data(chacha);
+		
+		ArrayList<Hospital_Bean> data = new ArrayList<Hospital_Bean>();
+		
+		for(int i = 0; i < 2; i++) {
+			Hospital_Bean hb = new Hospital_Bean(12);
+			
+			hb.setName(list.get(i * 12).get("NAME"));
+			
+			for(int k = 0; k < 12; k++) {
+				hb.getData()[k] = Integer.parseInt(String.valueOf(list.get((i * 12) + k).get("DATA")));				
+			}
+			
+			data.add(hb);
+		}
+		
+		modelMap.put("data", data);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8");
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
 	}
 
 }

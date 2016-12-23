@@ -332,4 +332,29 @@
 		WHERE EMP_NUM = #Emp_Num#
 		AND HOSPITAL_CODE = #Hospital_Code#
 	</update> <!-- 비밀번호 변경 쿼리 -->
+	
+	<select id="Chart_Data" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		  SELECT M.MON AS MM, NVL(COUNT(T.TREAT_NUM), 0) AS DATA, '0' AS GBN, '예약자' AS NAME
+		  FROM (SELECT LPAD(LEVEL, 2, '0') MON 
+		           FROM DUAL CONNECT BY LEVEL &lt;= 12) M LEFT OUTER JOIN TIME T
+                                                                    ON M.MON = TO_CHAR(T.APPOINTMENT_DATE, 'MM')
+                                                                   AND T.APPOINTMENT_DATE IS NOT NULL
+                                                                   AND TO_CHAR(T.APPOINTMENT_DATE, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY')
+                                                       LEFT OUTER JOIN TREATINFO TI
+                                                                    ON T.TREAT_NUM = TI.TREAT_NUM
+                                                                   AND TI.HOSPITAL_CODE = #Hospital_Code#
+		  GROUP BY M.MON
+		  UNION ALL
+		  SELECT M.MON AS MM, NVL(COUNT(T.TREAT_NUM), 0) AS DATA, '1' AS GBN, '방문자' AS NAME
+		  FROM  (SELECT LPAD(LEVEL, 2, '0') MON 
+		           FROM DUAL CONNECT BY LEVEL &lt;= 12) M LEFT OUTER JOIN TIME T
+                                                                    ON M.MON = TO_CHAR(T.TAKE_DATE, 'MM')
+                                                                   AND T.TAKE_DATE IS NOT NULL
+                                                                   AND TO_CHAR(T.TAKE_DATE, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY')
+                                                       LEFT OUTER JOIN TREATINFO TI
+                                                                    ON T.TREAT_NUM = TI.TREAT_NUM
+                                                                   AND TI.HOSPITAL_CODE = #Hospital_Code#
+		  GROUP BY M.MON
+		  ORDER BY GBN, MM
+	</select> <!-- 환자방문 쿼리 -->
 </sqlMap>
