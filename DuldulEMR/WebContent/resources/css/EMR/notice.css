@@ -39,6 +39,10 @@
  	text-align: center;
  	background-color: #FFFFFF;
  }
+.notice_table_tr:hover{ /* 테이블 크기 및 색깔 지정 */
+ 	cursor:pointer;
+ 	background-color: #f0f0f0;
+ }
 
  .notice_bar { /* 공지사항 메인 탑 - 글쓰기 바 */
  	width: 100%;

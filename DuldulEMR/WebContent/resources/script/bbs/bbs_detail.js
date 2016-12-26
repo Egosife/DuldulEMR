@@ -2,26 +2,34 @@
 
 $(document).ready(function(){
 
-		//버튼에 보이는 이름 완료라는 글자면 글이 업로드된다
-		$("#changeBtn").on("click", function(){
-			if($(this).val() == "완료"){
-				var updateForm = $("#updateForm");
-				updateForm.ajaxForm(uploadResultCallBack);
-				updateForm.submit();
-			//버튼에 보이는 이름 완료라는 글자가 되면 	TitleText(제목부분),textarea_test(글 쓰는 부분) 다 읽기만 하고 수정이 될수 없게 한다
-			}else{
-				$("#changeBtn").attr("value","완료");
-				$("#TitleText").removeAttr("readonly");
-				$("#textarea_test").removeAttr("readonly");
-			}
-			
-		});
+    //버튼에 보이는 이름 완료라는 글자면 글이 업로드된다
+    $("#changeBtn").on("click", function(){
+    	 if(($("#updateForm input[name='write']").val() == $("#updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
+			 if($(this).val() == "완료"){
+				 var updateForm = $("#updateForm");
+				 updateForm.ajaxForm(uploadResultCallBack);
+				 updateForm.submit();
+				 
+			 }else{
+				 $("#changeBtn").attr("value","완료");
+				 $("#TitleText").removeAttr("readonly");
+				 $("#textarea_test").removeAttr("readonly");
+			 }
+		
+		 }//if1
+		 else{
+		        alert("작성자만 글을 수정할 수 있습니다.");
+	     }//else1 
+		
+		
+		
+	});
 		//삭제 버튼 클릭이 행동
 		$("#deleteBtn").on("click", function(){
-
+	        if(($("#deleteForm input[name='write']").val() == $("#deleteForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
 			if(confirm("지울꺼니?")){
 				var params = $("#deleteForm").serialize();
-				console.log(params);
+
 				$.ajax({
 					type : "post",
 					url : "deleteTest",
@@ -40,13 +48,14 @@ $(document).ready(function(){
 			         },
 			         error : function(result) {
 			             alert("Error - Detail_delete_1002");
-			         }
-				});
-			
-			}
-			
-		});
-	});
+		             }
+		          });//ajax끝
+		       }     
+		     }else{
+			        alert("작성자만 글을 삭제할 수 있습니다.");
+			     } 
+			      });//deleteBtn끝
+			}); //ready끝
 
 function uploadResultCallBack(data, result){ 
 

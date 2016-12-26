@@ -58,9 +58,9 @@
    <div class="first_top">
    		<div class="first_top_information"><b>공지사항</b>  
    		<input type="button" value="더보기" class="more_Btn" 
-				   id="top_moreBtn" tab="notice*공지사항*notice" /></div>
+				   id="top_moreBtn" tab="notice*공지사항*notice" style="cursor:pointer"/></div>
 				
-   		<table border="1" align="center" class="first_top_table" >
+   		<table border="1" align="center" class="first_top_table"  >
    		
    					<colgroup>
 						<col style="width: 10%;">
@@ -89,7 +89,7 @@
    <div class="first_middle">
    		<div class="first_middle_information"><b>사내게시판</b>
    		<input type="button" value="더보기" class="more_Btn" 
-				   id="middle_moreBtn" tab="bbs*사내게시판*bbs" /></div>
+				   id="middle_moreBtn" tab="bbs*사내게시판*bbs" style="cursor:pointer"/></div>
 				   
    		
    		   		  
@@ -121,7 +121,7 @@
    <div class="first_bottom">
    		<div class="first_bottom_information"><b>휴진현황</b>
    		<input type="button" value="더보기" class="more_Btn" 
-				   id="bottom_moreBtn" tab="rest_apply*휴진현황*rest_apply" /></div>
+				   id="bottom_moreBtn" tab="rest_apply*휴진현황*rest_apply" style="cursor:pointer"/></div>
 				    
 
    		<table border="1" align="center" class="first_bottom_table" >
@@ -130,8 +130,8 @@
 						<col style="width: 15%;">
 						<col style="width: 10%;">
 						<col style="width: 15%;">
-						<col style="width: 15%;">
-						<col style="width: 35%;">
+						<col style="width: 25%;">
+						<col style="width: 25%;">
 					</colgroup>
 					<tr>
 						<td>직원 번호</td>

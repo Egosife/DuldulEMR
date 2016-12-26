@@ -16,10 +16,13 @@
 
 </head>
 <body>
+<input type="hidden" name="sLvCode" value="${sLv_Code}"/>
 <form action="#" id="deleteForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
+		<input type="hidden" name="empNo" value="${sEmp_Num}"/>
+	<input type="hidden" name="write" value="${sEmp_Name}"/>
 	
 
 </form>
@@ -62,8 +65,8 @@
   <hr/>
    <div class="bbs_detail_bottom_bb"> 
   		 <div class="bbs_detail_1">
-  			<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button"/> <!--  --> 
-			<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail" class="bbs_detail_button"/> 
+  			<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> <!--  --> 
+			<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
 

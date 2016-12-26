@@ -47,21 +47,21 @@
 		</table>
 	</div>
 		<div class="bbs_bar">
-			<input type="button" value="글 쓰기" class="insert_Btn" 
+			<input type="button" value="글 쓰기" class="insert_Btn"  style="cursor:pointer"
 				   id="bbs_insertBtn" tab="bbs_write2*글쓰기*bbs_write2" />
 		</div>
    </div>
 	<div class="bbs_bottom">
   		 <div class="bbs_bottom_list">
 			<hr>
-			<div class="bbs_page_num" id="bbs_page_num"></div>
+			<div class="bbs_page_num" id="bbs_page_num" style="cursor:pointer"></div>
 		</div>
 		<div class="bbs_bottom_search">
 			 <select name="keyField" id="bbs_keyField">
     	            <option value="title">제목</option>
     	     </select>
 				<input type="text" id="bbs_searchText" value="${param.searchText}"/>
-				<input type="button" value="검색" id="bbs_searchBtn"/>
+				<input type="button" value="검색" id="bbs_searchBtn" style="cursor:pointer"/>
 		</div>
 	</div>
 </div>

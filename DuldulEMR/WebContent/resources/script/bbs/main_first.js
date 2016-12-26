@@ -41,7 +41,7 @@ function top_notice(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail'>";
+					html += "<tr class='first_top_table_tr' name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail'>";
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
 					html += "<td>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";
@@ -73,7 +73,7 @@ function top_notice(){
 				var html ="";
 				
 				for(var k = 0; k < result.list.length; k++){
-					html += "<tr name='" + result.list[k].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[k].SERIAL_NUM+"*글보기*bbs_detail2'>";
+					html += "<tr class='first_middle_table_tr' name='" + result.list[k].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[k].SERIAL_NUM+"*글보기*bbs_detail2'>";
 					html += "<td>" + result.list[k].POST_NUM + "</td>";
 					html += "<td>" + result.list[k].TITLE + "</td>";
 					html += "<td>" + result.list[k].WRITER + "</td>";
@@ -101,7 +101,7 @@ function top_notice(){
 			success : function(result){
 				var html="";
 				for(var i=0; i<result.list.length; i++){
-					html += "<tr name='"+result.list[i].EMP_NUM+"'>";
+					html += "<tr  name='"+result.list[i].EMP_NUM+"'>";
 					html += "<td>"+result.list[i].ENU+"</td>"; //
 					html += "<td>"+result.list[i].ENA+"</td>"; //일차
 					html += "<td>"+result.list[i].POTION+"</td>"; //날짜

@@ -38,7 +38,7 @@ function refreshList_bbs(){
 				var html ="";
 				
 				for(var i = 0; i < result.list.length; i++){
-					html += "<tr name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail2'>";
+					html += "<tr class='bbs_table_tr' name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail2'>";
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
 					html += "<td>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";

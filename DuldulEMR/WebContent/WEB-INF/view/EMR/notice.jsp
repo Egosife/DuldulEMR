@@ -51,7 +51,7 @@
 				<c:when test="${sLv_Code == 0 || sLv_Code == 1}">
 				
 					<input type="button" value="글 쓰기" class="insert_Btn" 
-						   id="notice_insertBtn" tab="bbs_write*글쓰기*bbs_write" />
+						   id="notice_insertBtn" tab="bbs_write*글쓰기*bbs_write" style="cursor:pointer" />
 						   
 				</c:when>
 			</c:choose>
@@ -60,14 +60,14 @@
 	<div class="notice_bottom">
   		 <div class="notice_bottom_list">
 			<hr>
-			<div class="notice_page_num" id="notice_page_num"></div>
+			<div class="notice_page_num" id="notice_page_num" style="cursor:pointer"></div>
 		</div>
 		<div class="notice_bottom_search">
 			 <select name="keyField" id="keyField">
     	            <option value="title">제목</option>
     	     </select>
 				<input type="text" id="notice_searchText" value="${param.searchText}"/>
-				<input type="button" value="검색" id="notice_searchBtn"/>
+				<input type="button" value="검색" id="notice_searchBtn" style="cursor:pointer"/>
 		</div>
 	</div>
 </div>

@@ -51,8 +51,8 @@
   <hr/>
    <div class="bbs_write_bottom_bb"> 
   		 <div class="bbs_write_1">
-  			 <input type="button" value="저장" id="saveBtn" tab="bbs_write" class="bbs_write_button"/>
-  	 		<input type="button" value="취소" id="cancleBtn" tab="bbs_write" class="bbs_write_button"/>	
+  			 <input type="button" value="저장" id="saveBtn" tab="bbs_write" class="bbs_write_button" style="cursor:pointer"/>
+  	 		<input type="button" value="취소" id="cancleBtn" tab="bbs_write" class="bbs_write_button" style="cursor:pointer"/>	
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
 
