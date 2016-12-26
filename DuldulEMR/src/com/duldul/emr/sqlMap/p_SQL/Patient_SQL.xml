@@ -6,7 +6,8 @@
 
 <!-- 2016-12-01 환자조회 데이터, 카운터 쿼리 추가
 			 02  직원조회 데이터, 카운터 쿼리 추가 
-			 05  환자,직원조회 데이터 개발완료-->
+			 05  환자,직원조회 데이터 개발완료 
+			 26 나머지 쿼리 개발완료 -->
 			 
 	<select id="pat_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
 		SELECT A.NO, A.PATIENT_NUM, A.PATIENT_NAME, A.BIRTH, A.PHONE1, A.ADDRESS, A.BLOOD
@@ -334,27 +335,52 @@
 	</update> <!-- 비밀번호 변경 쿼리 -->
 	
 	<select id="Chart_Data" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-		  SELECT M.MON AS MM, NVL(COUNT(T.TREAT_NUM), 0) AS DATA, '0' AS GBN, '예약자' AS NAME
-		  FROM (SELECT LPAD(LEVEL, 2, '0') MON 
-		           FROM DUAL CONNECT BY LEVEL &lt;= 12) M LEFT OUTER JOIN TIME T
-                                                                    ON M.MON = TO_CHAR(T.APPOINTMENT_DATE, 'MM')
-                                                                   AND T.APPOINTMENT_DATE IS NOT NULL
-                                                                   AND TO_CHAR(T.APPOINTMENT_DATE, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY')
-                                                       LEFT OUTER JOIN TREATINFO TI
-                                                                    ON T.TREAT_NUM = TI.TREAT_NUM
-                                                                   AND TI.HOSPITAL_CODE = #Hospital_Code#
-		  GROUP BY M.MON
-		  UNION ALL
-		  SELECT M.MON AS MM, NVL(COUNT(T.TREAT_NUM), 0) AS DATA, '1' AS GBN, '방문자' AS NAME
-		  FROM  (SELECT LPAD(LEVEL, 2, '0') MON 
-		           FROM DUAL CONNECT BY LEVEL &lt;= 12) M LEFT OUTER JOIN TIME T
-                                                                    ON M.MON = TO_CHAR(T.TAKE_DATE, 'MM')
-                                                                   AND T.TAKE_DATE IS NOT NULL
-                                                                   AND TO_CHAR(T.TAKE_DATE, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY')
-                                                       LEFT OUTER JOIN TREATINFO TI
-                                                                    ON T.TREAT_NUM = TI.TREAT_NUM
-                                                                   AND TI.HOSPITAL_CODE = #Hospital_Code#
-		  GROUP BY M.MON
-		  ORDER BY GBN, MM
+		SELECT M.MON AS MM, NVL(COUNT(T.TREAT_NUM), 0) AS DATA, '0' AS GBN, '예약자' AS NAME
+		FROM TIME T INNER JOIN TREATINFO TI
+		ON T.TREAT_NUM = TI.TREAT_NUM
+    	AND TI.HOSPITAL_CODE = #Hospital_Code#
+    	RIGHT OUTER JOIN (SELECT LPAD(LEVEL, 2, '0') MON 
+		FROM DUAL CONNECT BY LEVEL &lt;= 12) M
+		ON M.MON = TO_CHAR(T.APPOINTMENT_DATE, 'MM')
+		AND T.APPOINTMENT_DATE IS NOT NULL
+		AND TO_CHAR(T.APPOINTMENT_DATE, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY')
+		GROUP BY M.MON
+		UNION ALL
+		SELECT M.MON AS MM, NVL(COUNT(T.TREAT_NUM), 0) AS DATA, '1' AS GBN, '방문자' AS NAME
+		FROM  TIME T INNER JOIN TREATINFO TI
+		ON T.TREAT_NUM = TI.TREAT_NUM
+		AND TI.HOSPITAL_CODE = #Hospital_Code#
+    	RIGHT OUTER JOIN (SELECT LPAD(LEVEL, 2, '0') MON 
+		FROM DUAL CONNECT BY LEVEL &lt;= 12) M
+    	ON M.MON = TO_CHAR(T.TAKE_DATE, 'MM')
+		AND T.TAKE_DATE IS NOT NULL
+		AND TO_CHAR(T.TAKE_DATE, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY')
+		GROUP BY M.MON
+		ORDER BY GBN, MM
 	</select> <!-- 환자방문 쿼리 -->
+	
+	<select id="Chart_Data2" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT NVL(COUNT(T.TREAT_NUM), 0) AS DATA, C.SMALL AS GBN, C.CODE_NAME AS NAME
+		FROM CODEDATA C LEFT OUTER JOIN TREATINFO T
+		ON T.SORT_TYPE = C.SMALL
+		AND T.HOSPITAL_CODE = #Hospital_Code#
+		WHERE C.BIG = 13
+		GROUP BY C.CODE_NAME, C.SMALL
+		ORDER BY GBN
+	</select> <!-- 환자구분 쿼리 -->
+	
+	<select id="Chart_Data3" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT NVL(COUNT(TP.TREAT_NUM), 0) AS DATA, CD1.CODE_NAME AS CATEGORY, CD2.CODE_NAME AS NAME
+		FROM CODEDATA CD1 INNER JOIN CODEDATA CD2
+		ON CD1.BIG = 9
+		AND CD2.BIG = 2
+		LEFT OUTER JOIN (SELECT T.TREAT_NUM, T.OFFICE, P.SEX_CODE
+		FROM TREATINFO T INNER JOIN PATIENT P
+		ON T.PATIENT_NUM = P.PATIENT_NUM
+		AND T.HOSPITAL_CODE = #Hospital_Code#) TP
+		ON TP.OFFICE = CD1.SMALL
+		AND TP.SEX_CODE = CD2.SMALL
+		GROUP BY CD1.CODE_NAME, CD2.CODE_NAME
+		ORDER BY CD2.CODE_NAME, CD1.CODE_NAME
+	</select> <!-- 진료과별 남녀비율 쿼리 -->
 </sqlMap>

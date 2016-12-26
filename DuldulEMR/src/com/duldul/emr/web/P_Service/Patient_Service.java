@@ -126,6 +126,18 @@ public class Patient_Service implements Patient_iService { //2016-11-30 이관�
 	public ArrayList<HashMap<String, String>> Hos_chart_Data(HashMap<String, String> chacha) throws Throwable {
 		// TODO Auto-generated method stub
 		return Patient_Dao.Hos_chart_Data(chacha);
-	} //병원현황 차트 서비스클래스
+	} //환자방문 차트 서비스클래스
+	
+	@Override
+	public ArrayList<HashMap<String, String>> Hos_chart_Data2(HashMap<String, String> chichi) throws Throwable {
+		// TODO Auto-generated method stub
+		return Patient_Dao.Hos_chart_Data2(chichi);
+	} //환자구분 차트 서비스클래스
+	
+	@Override
+	public ArrayList<HashMap<String, String>> Hos_chart_Data3(HashMap<String, String> cheche) throws Throwable {
+		// TODO Auto-generated method stub
+		return Patient_Dao.Hos_chart_Data3(cheche);
+	} //진료과별 남녀비율 차트 서비스클래스
 
 }

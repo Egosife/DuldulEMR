@@ -60,5 +60,11 @@ public interface Patient_iDao { //2016-11-30 이관우 인터페이스 디에이
 	//비밀번호 변경 인터페이스 디에이오
 
 	public ArrayList<HashMap<String, String>> Hos_chart_Data(HashMap<String, String> chacha) throws Throwable;
-	//병원현황 차트 인터페이스 디에이오
+	//환자방문 차트 인터페이스 디에이오
+
+	public ArrayList<HashMap<String, String>> Hos_chart_Data2(HashMap<String, String> chichi) throws Throwable;
+	//환자구분 차트 인터페이스 디에이오
+
+	public ArrayList<HashMap<String, String>> Hos_chart_Data3(HashMap<String, String> cheche) throws Throwable;
+	//진료과별 남녀비율 차트 인터페이스 디에이오
 }

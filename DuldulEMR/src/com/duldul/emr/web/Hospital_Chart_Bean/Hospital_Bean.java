@@ -1,5 +1,8 @@
 package com.duldul.emr.web.Hospital_Chart_Bean;
 
+/* 2016-12-22 - 이관우 개발시작
+ 26 - 개발완료 */
+
 public class Hospital_Bean {
 	public Hospital_Bean(int size) {
 		data = new int[size];

@@ -181,5 +181,19 @@ public class Patient_Dao implements Patient_iDao { //2016-11-30 이관우 디에
 	public ArrayList<HashMap<String, String>> Hos_chart_Data(HashMap<String, String> chacha) throws Throwable {
 		// TODO Auto-generated method stub
 		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Chart_Data", chacha);
-	} //병원현황 차트 인터페이스 디에이오 클래스
+	} //환자방문 차트 인터페이스 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> Hos_chart_Data2(HashMap<String, String> chichi) throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Chart_Data2", chichi);
+	} //환자구분 차트 인터페이스 디에이오 클래스
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<HashMap<String, String>> Hos_chart_Data3(HashMap<String, String> cheche) throws Throwable {
+		// TODO Auto-generated method stub
+		return (ArrayList<HashMap<String, String>>) sqlMapC_t.queryForList("Patient_Data.Chart_Data3", cheche);
+	} //진료과별 남녀비율 차트 인터페이스 디에이오 클래스
 }
