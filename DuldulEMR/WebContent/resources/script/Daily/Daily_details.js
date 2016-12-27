@@ -16,10 +16,16 @@ $(document).ready(function(){
 	}); //listBtn 끝
 	
 	$("#updateBtn").on("click",function(){ //수정 버튼을 누르면
-		var details_up = $("#details_up"); 
-		
-		details_up.ajaxForm(uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
-		details_up.submit();
+		if($(this).val() == "등록"){
+			var details_up = $("#details_up"); 
+			
+			details_up.ajaxForm(uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
+			details_up.submit();
+		}else{
+			$("#updateBtn").attr("value","등록");
+			$("#details_calendar").removeAttr("readonly");
+			$("#details_text").removeAttr("readonly");
+		}
 	});//updateBtn	
 	
 	function uploadResultCallBack(data,result){ //data엔 json이 들어가있음
@@ -37,6 +43,9 @@ $(document).ready(function(){
 				success : function(result){
 					if(result.res>0){ //result.res가 0보다 크면
 						alert("수정이 되었습니다."); //경고창 띄우기
+						$("#updateBtn").attr("value","등록");
+						$("#details_calendar").removeAttr("readonly");
+						$("#details_text").removeAttr("readonly");
 						Close_Tab(dailydetails_close); //글 읽기 탭과 페이지를 닫는다
 						ReOpen_Tab(dailyopen); //업무일지 탭과 페이지를 연다
 					}else{

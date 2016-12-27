@@ -12,6 +12,9 @@
 
 </head>
 <body>
+	<input type="hidden" id="SDATE" name="SDATE" value="${conn.SDATE}" />
+	<input type="hidden" id="EDATE" name="EDATE" value="${conn.EDATE}" />
+	<input type="hidden" id="TDATE" name="TDATE"/>
 <!-- 직원 데이터 가져오기 -->
 <form action="" id="restEmp_Form" method="post">
 <input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
@@ -41,14 +44,14 @@
 			<div class="rest_mid_top">
 				<div class="rest_calender">휴진 날짜</div>
 				<div class="rest_cal_btn"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
-	        		<input type="text" name="sdate" placeholder="날짜를 선택하세요" class="rest_cal_le" id="datepicker1s" readonly> ~ 
-	        		<input type="text" name="edate" placeholder="날짜를 선택하세요" class="rest_cal_text" id="datepicker2s" readonly>
+	        		<input type="text" name="sdate" placeholder="날짜를 선택하세요" class="rest_cal_le" id="r_datepicker1s" readonly="readonly"> ~ 
+	        		<input type="text" name="edate" placeholder="날짜를 선택하세요" class="rest_cal_text" id="r_datepicker2s" readonly="readonly">
         		</div>
     	 	</div>
     	  <!-- 레이아웃  중단 - 업무 내용 -->
       <div class="rest_mid_text"> <!-- 레이아웃  중단 - 업무 내용 입력 -->
       <div class="rest_mid_work">휴진 내용</div>
-         <textarea name="reason" id="ybbybb" class="rest_text_size"></textarea>
+         <textarea name="reason" id="rest_text" class="rest_text_size"></textarea>
       </div>
    </div><hr>
     <div class="rest_bottom_bb"> <!-- 레이아웃 하단  -->

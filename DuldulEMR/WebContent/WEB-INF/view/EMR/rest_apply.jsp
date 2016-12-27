@@ -18,7 +18,7 @@
 		<input type="hidden" name="page" value="${param.page}"/>
 	</c:otherwise>
 </c:choose>
-<input type="hidden" name="rest_sea" id="rest_sea"/>
+<input type="hidden" id="rest_sea" name="rest_sea"/>
 <input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
 <input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 --> 
 </form>
@@ -58,7 +58,7 @@
 		<div class="rest_apply_rest"><b>휴진 현황</b></div>
 		<div class="rest_apply_text">
 				<div class="rest_apply_ilsi">
-					일 시 <input type="text" readonly class="rest_apply_box" name="records" id="datepickersss" placeholder="날짜 선택" >
+					일 시 <input type="text" class="rest_apply_box" name="records" id="datepickersss" placeholder="날짜 선택" readonly="readonly">
 				</div>
 				<div class="rest_apply_iBtn">
 					<input type="button" value="검색" id="rest_cal" class="rest_apply_btn_btn_civa">
@@ -67,13 +67,13 @@
 		</div>
 		<div class="rest_apply_btm_table">
 			<div class="rest_apply_btm_t">
-				<table border="1" class="rest_apply_set_table">
+				<table border="1" class="rest_apply_table_table">
 					<colgroup>
 						<col style="width: 10%;">
-						<col style="width: 15%;">
 						<col style="width: 10%;">
-						<col style="width: 15%;">
-						<col style="width: 15%;">
+						<col style="width: 10%;">
+						<col style="width: 10%;">
+						<col style="width: 25%;">
 						<col style="width: 35%;">
 					</colgroup>
 					<tr>

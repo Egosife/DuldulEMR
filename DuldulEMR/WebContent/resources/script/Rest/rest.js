@@ -2,13 +2,15 @@
 휴진 신청 화면 완료 **/
 $(document).ready(function(){
 	emp_List(); 
+	rest_Date();
 	
 	$("#jajangBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
-		if($("#datepicker1s").val() == ""){ //날짜 선택 칸이 빈 칸이면
+		if($("#r_datepicker1s").val() == ""){ //날짜 선택 칸이 빈 칸이면
 			alert("날짜를 선택하세요."); //경고창을 띄운다
-		}else if($("#datepicker2s").val() == ""){ //내용 입력 칸이 빈 칸이면
+			
+		}else if($("#r_datepicker2s").val() == ""){ //내용 입력 칸이 빈 칸이면
 				alert("날짜를 선택하세요."); //경고창을 띄운다
-			}else if($("#ybbybb").val()==""){
+			}else if($("#rest_text").val()==""){
 				alert("내용을 입력하세요.");
 			}else{
  		 var rest_wri = $("#rest_wri");
@@ -17,9 +19,7 @@ $(document).ready(function(){
  		rest_wri.submit(); 
 			}
 	}); //insertBtn end
-	$("#tb").on("click","tr",function(){ //글을 클릭하면
-		Open_Tab(this); //탭을 오픈한다
-	}); //tb end
+	
 	$("#sunsilBtn").on("click",function(){ //취소 버튼을 누르면
 		var tab = {tab:"rest_apply*휴진현황*rest_apply"};
 		
@@ -63,8 +63,8 @@ function uploadResultCallBack(data,result){
 			data : params,
 			success : function(result){
 				if(result.res=="true"){
-					ReOpen_Tab(rest_apply_open); //업무일지 탭과 페이지를 연다
 					Close_Tab(rest_close); //글 읽기 탭과 페이지를 닫는다
+					ReOpen_Tab(rest_apply_open); //업무일지 탭과 페이지를 연다
 				}else{
 					alert("Error - rest_0000");
 				}
@@ -77,15 +77,43 @@ function uploadResultCallBack(data,result){
 		alert("Error - rest_0425"); //저장 실패
 	}
 } //uploadResultCallBack 끝
-$("#datepicker1s").datepicker({
+$("#r_datepicker1s").datepicker({
 	dateFormat : 'yy-mm-dd',
 	duration: 200,
 	onSelect:function(dateText, inst){
+		var rest_first_Date = parseInt($("#r_datepicker2s").val().replace("-", '').replace("-", ''));
+		var rest_second_Date = parseInt(dateText.replace(/-/g,''));
+		var rest_tDate = parseInt($("#TDATE").val());
+		
+        if (rest_second_Date > rest_first_Date || rest_second_Date < rest_tDate) {
+        	alert("날짜를 올바르게 선택하세요.");
+        	//달력에 종료 날짜 넣어주기
+    		$("#r_datepicker1s").val($("#SDATE").val());
+		} else {
+			$("#SDATE").val($("#r_datepicker1s").val());
+		}
 	}
 });
-$("#datepicker2s").datepicker({
+$("#r_datepicker2s").datepicker({
 	dateFormat : 'yy-mm-dd',
 	duration: 200,
 	onSelect:function(dateText, inst){
+		var rest_first_Date = parseInt($("#r_datepicker1s").val().replace("-", '').replace("-", ''));
+		var rest_second_Date = parseInt(dateText.replace(/-/g,''));
+		var rest_tDate = parseInt($("#TDATE").val());
+		
+        if (rest_first_Date > rest_second_Date || rest_second_Date < rest_tDate) {
+        	alert("날짜를 올바르게 선택하세요.");
+        	//달력에 종료 날짜 넣어주기
+    		$("#r_datepicker2s").val($("#EDATE").val());
+		} else {
+			$("#EDATE").val($("#r_datepicker2s").val());
+		}
 	}
 });
+function rest_Date(){
+	var r_date = new Date();
+	
+	var r_interDate = r_date.getFullYear()+""+(r_date.getMonth()+1)+""+r_date.getDate();
+	$("#TDATE").val(r_interDate);
+}

@@ -51,7 +51,7 @@ function dailyList(){
 		success : function(result){
 			var html="";
 			for(var i=0; i<result.list.length; i++){
-				html += "<tr name='"+result.list[i].DAILY_NUM+"' value='"+result.list[i].DAILY_NUM+"' tab='Daily_details?TURN="+result.list[i].DAILY_NUM+"*글 읽기*Daily_details'>";
+				html += "<tr class='Dai_db_table_tr' name='"+result.list[i].DAILY_NUM+"' value='"+result.list[i].DAILY_NUM+"' tab='Daily_details?TURN="+result.list[i].DAILY_NUM+"*글 읽기*Daily_details'>";
 				html += "<td>"+result.list[i].ROWNO+"</td>"; //일차
 				html += "<td>"+result.list[i].RECODE_DATE+"</td>"; //날짜
 				html += "<td>"+result.list[i].CONTENT+"</td>"; //내용
@@ -61,27 +61,27 @@ function dailyList(){
 			
 			//페이징 처리 단계
 			html="";
-			html += "<span name='1'> 처음  </span>";
+			html += "<span name='1'>  <<  </span>";
 			
 			if($("input[name='page']").val()==1){
-				html += "<span name='1'> 이전 </span>"; 
+				html += "<span name='1'> < </span>"; 
 			}else{
-				html += "<span name='"+($("input[name='page']").val()-1)+"'> 이전  </span>";
+				html += "<span name='" + ($("input[name='page']").val()-1) + "'>  <  </span>";
 			}
 			
-			for(var i=result.pb.startPcount; i<=result.pb.endPcount; i++){
-				if(i==$("input[name='page']").val()){
-					html += "<span name='"+ i +"'><b>"+ i +"</b></span>";
+			for(var i = result.pb.startPcount; i <= result.pb.endPcount; i++){
+				if(i == $("input[name='page']").val()){
+					html += "<span name='" + i + "'>  <b> " + i + " </b>  </span>";
 				}else{
-					html += "<span name='"+ i +"'>"+ i +"</span>";
+					html += "<span name='" + i + "'> " + i + " </span>";
 				}
 			}
-			if($("input[name='page']").val()==result.pb.maxPcount){
-				html += "<span name='"+result.pb.maxPcount+"'> 다음 </span>";
+			if($("input[name='page']").val() == result.pb.maxPcount){
+				html += "<span name='" + result.pb.maxPcount + "'>  >  </span>";
 			}else{
-				html += "<span name='"+($("input[name='page']").val() * 1 + 1)+"'> 다음 </span>";
+				html += "<span name='" + ($("input[name='page']").val() * 1 + 1) + "'>  >  </span>";
 			}
-			html +="<span name='"+result.pb.maxPcount+"'> 마지막 </span>";
+			html += "<span name='" + result.pb.maxPcount + "'>  >>  </span>";
 			$("#pagingArea").html(html);
 		},
 		error : function(result){

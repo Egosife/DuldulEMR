@@ -32,6 +32,8 @@
 	SELECT COUNT(*) AS CNT
 	FROM DAILY
 	WHERE 1=1
+	AND EMP_NUM = #EMP_NUM#
+    AND HOSPITAL_CODE = #HOSPITAL_CODE#
 	</select>
 	
 	<select id="getDailyCon" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">

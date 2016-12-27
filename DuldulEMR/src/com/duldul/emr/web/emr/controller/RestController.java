@@ -72,7 +72,6 @@ public class RestController {
 										ModelAndView modelAndView) throws Throwable{
 		
 		HashMap<String, String> conn = IRestService.getRestCon(params);
-		
 		modelAndView.addObject("conn",conn);
 		modelAndView.setViewName("EMR/rest_detail");
 		
@@ -95,7 +94,6 @@ public class RestController {
 
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap), responseHeaders, HttpStatus.CREATED);
 	}
-	
 	//delete (글 삭제)
 	@RequestMapping(value = "/detail_sakje")
 	public @ResponseBody ResponseEntity<String> detail_sakje(HttpServletRequest request,
@@ -128,7 +126,7 @@ public class RestController {
 		
 		
 		ArrayList<HashMap<String, String>> list = IRestService.getRest(params);
-		System.out.println(list);
+		
 		modelMap.put("list", list);
 		modelMap.put("pb", pb);
 		

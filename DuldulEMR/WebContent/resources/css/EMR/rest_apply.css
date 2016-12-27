@@ -29,12 +29,37 @@
 	margin: 0 auto;
 	overflow: auto;
 }
-/* 테이블 */
+/* 상단 테이블 */
 .rest_apply_set_table{
 	width: 100%;
 	font-size: 16pt;
 	text-align: center;
 	background-color: white;
+	table-layout: fixed;
+}
+/* 하단 테이블 */
+.rest_apply_table_table{
+	width: 100%;
+	font-size: 16pt;
+	text-align: center;
+	background-color: white;
+	table-layout: fixed;
+}
+/* 마우스 올릴 때 색 변경 및 포인터 생성  */
+.rest_apply_set_table_tr:HOVER{
+	cursor: pointer;
+	background-color: #F0F0F0;
+}
+/* 테이블 */
+.rest_apply_set_table td{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.rest_apply_table_table td{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 /* 버튼 레이아웃 */
 .rest_apply_btn_lay{
@@ -68,7 +93,7 @@
 	display: inline-block;
 	width: 30%;
 	height: 100%;
-	font-size: 13pt;
+	font-size: 15pt;
 }
 /* 하단 레이아웃 */
 .rest_apply_bottom{
@@ -115,6 +140,7 @@
 	display: inline-block;
 	width: 9%;
 	height: 100%;
+	font-size: 15pt;
 }
 /* 테이블 레이아웃 */
 .rest_apply_btm_table{
@@ -141,5 +167,5 @@
 	display: inline-block;
 	width: 30%;
 	height: 100%;
-	font-size: 13pt;
+	font-size: 15pt;
 }

@@ -20,14 +20,14 @@
       <div class="Daily_daily"><b>업무 일지</b></div> <!-- 레이아웃 상단 - 업무 일지 -->
       <div class="Daily_calender">업무 날짜</div> <!-- 레이아웃 상단 - 업무 날짜  -->
      	 <div class="Daily_cal_btn"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
-        	<input type="text" placeholder="날짜를 선택하세요" name="records" class="Daily_cal_text" id="details_calendar" readonly value="${cond.RDATE}">
+        	<input type="text" placeholder="날짜를 선택하세요" name="records" class="Daily_cal_text" id="details_calendar" readonly="readonly" value="${cond.RDATE}">
     	  </div>
    </div><hr> <!-- 구분선 -->
    <div class="Daily_middle_mm"> <!-- 레이아웃 중단 -->
 	<div class="Daily_mid_work">업무 내용</div> <!-- 레이아웃  중단 - 업무 내용 -->
       <div class="Daily_mid_text"> <!-- 레이아웃  중단 - 업무 내용 입력 -->
          <%-- <input type="text" placeholder="내용을 입력하세요" name="contents" class="text_size"value="${cond.CONTENT}"/> --%>
-         <textarea name="contents" class="Daily_text_size">${cond.CONTENT}</textarea>
+         <textarea name="contents" class="Daily_text_size" id="details_text" readonly="readonly">${cond.CONTENT}</textarea>
       </div>
    </div><hr/>
    <div class="Daily_bottom_bb"> <!-- 레이아웃 하단  -->
