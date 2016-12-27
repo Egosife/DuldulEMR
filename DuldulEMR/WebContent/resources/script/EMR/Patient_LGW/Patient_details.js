@@ -15,6 +15,14 @@ $(document).ready(function(){
 		//console.log($("#sss").attr('value'));
 		patient_Details_list2();
 	});
+	
+	$("#b_back_Btn").on("click", function(){ //이전 버튼
+		//location.href = "Patient_page";
+		var tab = {tab:"Patient_page*환자조회*Patient_page"};
+		
+		Close_Tab(this);
+		ReOpen_Tab(tab);
+	});
 });
 
 function patient_Details_list(papajohns){
@@ -51,7 +59,7 @@ function patient_Details_list(papajohns){
 			var DL = "";
 			
 			for(var i = 0; i < result.list.length; i++) {
-				DL += "<tr name='data' value='" + result.list[i].TREAT_NUM + "'>";
+				DL += "<tr class='Det_table_tr' name='data' value='" + result.list[i].TREAT_NUM + "'>";
 				DL += "<td>" + result.list[i].NO + "</td>"; /* 번호 */
 				DL += "<td>" + result.list[i].SYM + "</td>"; /* 증상 */
 				DL += "<td>" + result.list[i].SPECIAL_NOTE + "</td>"; /* 특이사항 */

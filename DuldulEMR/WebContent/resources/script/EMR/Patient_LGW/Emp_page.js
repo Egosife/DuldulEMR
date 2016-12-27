@@ -42,7 +42,7 @@ function Emp_list() {
 			var EL = ""; /* 메타 : Emp_list 영문명 */
 			
 			for(var i = 0; i < result.list.length; i++) {
-				EL += "<tr>";
+				EL += "<tr class='Emp_table_tr'>";
 				EL += "<td>" + result.list[i].NO + "</td>"; /* 번호 */
 				EL += "<td>" + result.list[i].EMP_NUM + "</td>"; /* 직원번호 */
 				EL += "<td>" + result.list[i].EMP_NAME + "</td>"; /* 성명 */
@@ -59,21 +59,21 @@ function Emp_list() {
 			if($("input[name='Emp_page']").val() == 1) {
 				EL += "<span name='1'> < </span>";
 			} else {
-				EL += "<span name='" + ($("input[name='Emp_page']").val() -1) + "'> < </span>";
+				EL += "<span class='Emp_table_pageing' name='" + ($("input[name='Emp_page']").val() -1) + "'> < </span>";
 			}
 			
 			for(var i = result.pb.startPcount; i <= result.pb.endPcount; i++) {
 				if(i == $("input[name='Emp_page']").val()) {
 					EL += "<span name='" + i + "'><b>" + i + "</b></span>";
 				} else {
-					EL += "<span name='" + i + "'>" + i + "</span>";
+					EL += "<span class='Emp_table_pageing' name='" + i + "'>" + i + "</span>";
 				}
 			}
 			
 			if($("input[name='Emp_page']").val() == result.pb.maxPcount) {
 				EL += "<span name='" + result.pb.maxPcount + "'> > </span>";
 			} else {
-				EL += "<span name='" + ($("input[name='Emp_page']").val() * 1 + 1) + "'> > </span>";
+				EL += "<span class='Emp_table_pageing' name='" + ($("input[name='Emp_page']").val() * 1 + 1) + "'> > </span>";
 			}
 			
 			$("#pagingE").html(EL);

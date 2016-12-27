@@ -56,7 +56,7 @@ function patient_list() {
 			var PL = ""; /* 메타 : page_list 영문명 */
 			
 			for(var i = 0; i < result.list.length; i++) {
-				PL += "<tr name='" + result.list[i].PATIENT_NUM + "'tab='Details?pizza=" + result.list[i].PATIENT_NUM + "*환자 상세조회*Details'>";
+				PL += "<tr class='p_table_tr' name='" + result.list[i].PATIENT_NUM + "'tab='Details?pizza=" + result.list[i].PATIENT_NUM + "*환자 상세조회*Details'>";
 				PL += "<td>" + result.list[i].NO + "</td>"; /* 번호 */
 				PL += "<td>" + result.list[i].PATIENT_NUM + "</td>"; /* 환자 번호 */
 				PL += "<td>" + result.list[i].PATIENT_NAME + "</td>"; /* 성명 */
@@ -73,21 +73,21 @@ function patient_list() {
 			if($("input[name='Pat_page']").val() == 1) {
 				PL += "<span name='1'> < </span>";
 			} else {
-				PL += "<span name='" + ($("input[name='Pat_page']").val() -1) + "'> < </span>";
+				PL += "<span class='p_table_pageing' name='" + ($("input[name='Pat_page']").val() -1) + "'> < </span>";
 			}
 			
 			for(var i = result.pb.startPcount; i <= result.pb.endPcount; i++) {
 				if(i == $("input[name='Pat_page']").val()) {
 					PL += "<span name='" + i + "'><b>" + i + "</b></span>";
 				} else {
-					PL += "<span name='" + i + "'> " + i + " </span>";
+					PL += "<span class='p_table_pageing' name='" + i + "'> " + i + " </span>";
 				}
 			}
 			
 			if($("input[name='Pat_page']").val() == result.pb.maxPcount) {
 				PL += "<span name='" + result.pb.maxPcount + "'> > </span>";
 			} else {
-				PL += "<span name='" + ($("input[name='Pat_page']").val() * 1 + 1) + "'> > </span>";
+				PL += "<span class='p_table_pageing' name='" + ($("input[name='Pat_page']").val() * 1 + 1) + "'> > </span>";
 			}
 			
 			$("#pagingP").html(PL);

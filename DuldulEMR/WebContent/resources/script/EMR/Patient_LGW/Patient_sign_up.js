@@ -56,7 +56,10 @@ $(document).ready(function(){
 	
 	$("#bback_Btn").on("click", function(){ //이전 버튼
 		//location.href = "Patient_page";
+		var tab = {tab:"Patient_page*환자조회*Patient_page"};
+		
 		Close_Tab(this);
+		ReOpen_Tab(tab);
 	});
 	
 	$("#address_Btn").on("click", function(){

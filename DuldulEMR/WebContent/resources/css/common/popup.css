@@ -80,6 +80,7 @@ body {
 	background-color: #000000;
 	opacity:0.3;
 	z-index: 100;
+	cursor: pointer;
 }
 
 .Es_popup_div {
@@ -137,9 +138,11 @@ body {
 .Es_btn_close {
 	width: 200px;
 	height: 25px;
+	cursor: pointer;
 }
 
 .Es_btn_ok {
 	width: 200px;
 	height: 25px;
+	cursor: pointer;
 }

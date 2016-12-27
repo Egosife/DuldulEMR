@@ -32,6 +32,11 @@
  	font-size: 16pt;
  }
  
+  .Det_table_tr:hover{ /* 테이블 색깔 지정 */
+ 	cursor: pointer;
+ 	background-color: #F0F0F0;
+ }
+ 
  .D_td { /* 연락처1, 연락처2, 혈액형 글자크기, 텍스트 박스와 간격 */
  	width: 22%;
  	text-align: center;
@@ -132,7 +137,7 @@
  	background-color: #D5D5D5;
  }
  
- .D_jin { /* 진료버튼 */
+ .D_jin { /* 이전버튼 */
  	display: inline-block;
  	width: 60px;
  	height: 40px;
@@ -140,6 +145,7 @@
  	vertical-align: top;
  	margin-top: 4px;
  	margin-right: 10px;
+ 	cursor: pointer;
  }
  
  .Det_middle { /* 진단기록 바탕 */

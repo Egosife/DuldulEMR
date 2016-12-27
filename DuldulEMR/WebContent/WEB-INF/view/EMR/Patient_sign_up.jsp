@@ -81,8 +81,8 @@
 												성별
 											</td>
 											<td>
-												<input type="radio" name="pat_sex" value="1" /> 남
-												<input type="radio" name="pat_sex" value="0" /> 여
+												<input type="radio" name="pat_sex" value="1" style="cursor: pointer;" /> 남
+												<input type="radio" name="pat_sex" value="0" style="cursor: pointer;" /> 여
 											</td>
 										</tr>
 										<tr style="height: 34%;">
@@ -118,7 +118,7 @@
 											Blood type
 										</td>
 										<td colspan="2">
-											<select class="textbox_s" name="B_type">
+											<select class="textbox_s" name="B_type" style="cursor: pointer;">
 												<option value="0">A-</option>
 												<option value="1">A+</option>
 												<option value="2">B-</option>
@@ -171,9 +171,9 @@
 											결혼여부
 										</td>
 										<td>
-											<input type="radio" name="marri" value="0" /> 미혼
-											<input type="radio" name="marri" value="1" /> 기혼
-											<input type="radio" name="marri" value="2" /> 재혼
+											<input type="radio" name="marri" value="0" style="cursor: pointer;" /> 미혼
+											<input type="radio" name="marri" value="1" style="cursor: pointer;" /> 기혼
+											<input type="radio" name="marri" value="2" style="cursor: pointer;" /> 재혼
 										</td>
 									</tr>
 								</table>
@@ -185,7 +185,7 @@
 											주량
 										</td>
 										<td>
-											<select class="textbox_s" name="chm" id="soju" style="font-size: 20pt;">
+											<select class="textbox_s" name="chm" id="soju" style="font-size: 20pt; cursor: pointer;">
 												<option value="0">없음</option>
 												<option value="1">1병 이내</option>
 												<option value="2">1병~2병</option>
@@ -223,7 +223,7 @@
 											흡연여부
 										</td>
 										<td>
-											<select class="textbox_s" name="hip">
+											<select class="textbox_s" name="hip" style="cursor: pointer;">
 												<option value="0">없음</option>
 												<option value="1">1갑 이하</option>
 												<option value="2">1갑 이상</option>

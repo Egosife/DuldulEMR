@@ -89,7 +89,7 @@ function Set_list() {
 			var SL = ""; /* 메타 : Set_list 영문명 */
 			
 			for(var i = 0; i < result.list.length; i++) {
-				SL += "<tr tab='treatment?PATINUM=" + result.list[i].PATIENT_NUM + "&TREATNUM=" + result.list[i].TREAT_NUM + "*진료실시입력*treatment'>";
+				SL += "<tr class='Set_table_tr' tab='treatment?PATINUM=" + result.list[i].PATIENT_NUM + "&TREATNUM=" + result.list[i].TREAT_NUM + "*진료실시입력*treatment'>";
 				SL += "<td>" + result.list[i].NO + "</td>"; /* 번호 */
 				SL += "<td>" + result.list[i].PATIENT_NUM + "</td>"; /* 환자번호 */
 				SL += "<td>" + result.list[i].APPOINTMENT_TIME + "</td>"; /* 예약시간 수정 */
@@ -110,21 +110,21 @@ function Set_list() {
 			if($("input[name='Set_page']").val() == 1) {
 				SL += "<span name='1'> < </span>";
 			} else {
-				SL += "<span name='" + ($("input[name='Set_page']").val() -1) + "'> < </span>";
+				SL += "<span class='Set_table_pageing' name='" + ($("input[name='Set_page']").val() -1) + "'> < </span>";
 			}
 			
 			for(var i = result.pb.startPcount; i <= result.pb.endPcount; i++) {
 				if(i == $("input[name='Set_page']").val()) {
 					SL += "<span name='" + i + "'><b>" + i + "</b></span>";
 				} else {
-					SL += "<span name='" + i + "'>" + i + "</span>";
+					SL += "<span class='Set_table_pageing' name='" + i + "'>" + i + "</span>";
 				}
 			}
 			
 			if($("input[name='Set_page']").val() == result.pb.maxPcount) {
 				SL += "<span name='" + result.pb.maxPcount + "'> > </span>";
 			} else {
-				SL += "<span name='" + ($("input[name='Set_page']").val() * 1 + 1) + "'> > </span>";
+				SL += "<span class='Set_table_pageing' name='" + ($("input[name='Set_page']").val() * 1 + 1) + "'> > </span>";
 			}
 			
 			$("#pagingS").html(SL);

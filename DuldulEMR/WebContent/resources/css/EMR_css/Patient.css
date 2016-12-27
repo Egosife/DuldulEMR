@@ -53,6 +53,16 @@
  	background-color: #FFFFFF;
  }
  
+ .p_table_tr:hover{ /* 테이블 색깔 지정 */
+ 	cursor: pointer;
+ 	background-color: #F0F0F0;
+ }
+ 
+ .p_table_pageing:hover{ /* 리스트 버튼 크기 및 색깔 지정 */
+ 	cursor: pointer;
+ 	color: red;
+ }
+ 
  .top_bar { /* 메인 탑 - 환자등록 바 */
  	width: 100%;
  	height: 10%;
@@ -68,6 +78,7 @@
  	vertical-align: top;
  	margin-top: 5.5px;
  	margin-right: 10px;
+ 	cursor: pointer;
  }
  
  .pl_Btn { /* 목록보기 2016 - 12 - 01 추가*/
@@ -77,7 +88,8 @@
  	font-size: 20pt;
  	vertical-align: top;
  	margin-top: 5.5px;
- 	margin-right: 10px; 
+ 	margin-right: 10px;
+ 	cursor: pointer; 
  }
  
  /* .top_btn { 메인 탑 - 환자등록 버튼 지움
@@ -101,7 +113,7 @@
  	width: 100%;
  	height: 50%;
  	text-align: center;
-  	background-color: #FFFFFF;	
+  	background-color: #FFFFFF;
  }
  
  .P_paging { /* 환자표 리스트 버튼  12 - 01 추가*/
@@ -122,6 +134,7 @@
  	height: 56px;
  	font-size: 20pt;
  	vertical-align: top;
+ 	cursor: pointer;
  }
  
  .p_search_text { /* 텍스트 박스 */
@@ -137,6 +150,7 @@
  	height: 56px;
  	font-size: 20pt;
  	vertical-align: top;
+ 	cursor: pointer;
  }
   
  .p_sel, .p_search_text, .p_search_Btn { /* 셀렉트 박스, 텍스트 박스, 검색 버튼 간격 */

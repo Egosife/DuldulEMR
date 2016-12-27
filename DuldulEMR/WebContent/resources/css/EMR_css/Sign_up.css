@@ -148,6 +148,7 @@
  	width: 100px;
  	height: 100%;
  	font-size: 15pt;
+ 	cursor: pointer;
  }
  
  .Sign_mibottom { /* 환자등록 중간 바탕 - 반으로 쪼갬(아래)*/
@@ -206,6 +207,7 @@
  	vertical-align: top;
  	margin-top : 8px;
  	margin-right: 20px;
+ 	cursor: pointer;
  }
  
  .S_bback_Btn { /* 이전버튼 */
@@ -216,4 +218,5 @@
  	vertical-align: top;
  	margin-top: 8px;
  	margin-right: 20px;
+ 	cursor: pointer;
  }

@@ -138,7 +138,7 @@
 				</div>
 			</div>
 			<div class='Det_top_b'>
-				<input class='D_jin' type="button" id="jin" value="수정" />
+				<input class='D_jin' type="button" id="b_back_Btn" value="이전" />
 			</div>
 		</div>
 		<div class='Det_middle'>
