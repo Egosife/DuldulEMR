@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Manager">
+	<select id="ManEmpList"	parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT * FROM(
+    	SELECT ROWNUM AS NUM,EMP,POSITION,OFFICE,LV,NAME,PHONE,EMAIL FROM(
+		SELECT E.EMP_NUM AS EMP, C1.CODE_NAME AS POSITION,C2.CODE_NAME AS OFFICE,C3.CODE_NAME AS LV, EMP_NAME AS NAME,PHONE,EMAIL
+		FROM EMP E LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG='8')C1
+		ON E.POSITION_CODE = C1.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG='9')C2
+		ON E.OFFICE_CODE = C2.SMALL
+		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG='10')C3
+		ON E.LV_CODE = C3.SMALL)
+		WHERE 1=1
+		ORDER BY EMP ASC)
+		WHERE NUM BETWEEN 1 AND 7
+			</select>
+	<select id="getManCount" parameterClass="java.util.HashMap" resultClass="Integer">
+		SELECT COUNT(*) AS CNT
+		FROM EMP
+		WHERE 1=1
+	</select>
+</sqlMap>

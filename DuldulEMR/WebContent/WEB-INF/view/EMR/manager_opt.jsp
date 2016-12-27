@@ -110,6 +110,8 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
+	Man_emplist();
+	
 	$("#rok_popup").on("click",function(){
 		var html = "";
 		
@@ -144,7 +146,7 @@ $(document).ready(function(){
 								html+="<td> *연락처 </td>";
 								html+="<td><input type='text' id='cjzl' maxlength='11'></td>";
 								html+="<td> 생년월일 </td>";
-								html+="<td><input type='text'maxlength='6' id='man_date'></td>";
+								html+="<td><input type='text'maxlength='8' id='man_date'></td>";
 							html+="</tr>";
 							html+="<tr>";
 								html+="<td> 성 별</td>";
@@ -200,18 +202,18 @@ function man_jujak(){
 		}
 	});
 }
-/* function Man_emplist(){
-	var params = $("#RestApplyForm").serialize();
-	
+function Man_emplist(){
+	var params = $("#ManagerForm").serialize();
+	console.log(params);
 	$.ajax({
 		type : "post",
-		url : "Man_emplist",
+		url : "Man_Emp_List",
 		dataType : "json",
 		data : params,
-		success : function(result){
+		success : function(result){ /* ROWNUM AS NUM,EMP,POSITION,OFFICE,LV,NAME,PHONE,EMAIL */
 			var html="";
 			for(var i=0; i<result.list.length; i++){
-				html += "<tr name='"+result.list[i].EMP+"'>";
+				html += "<tr name='"+result.list[i].NUM+"'>";
 				html += "<td>"+result.list[i].EMP+"</td>"; //직원 번호
 				html += "<td>"+result.list[i].POSITION+"</td>"; //성명
 				html += "<td>"+result.list[i].OFFICE+"</td>"; //직책
@@ -221,15 +223,20 @@ function man_jujak(){
 				html += "<td>"+result.list[i].EMAIL+"</td>"; //휴진 사유
 				html += "</tr>";
 			}
-			$("#tt").html(html); //내용 데이터 가져오기
+			$("#man_tt").html(html); //내용 데이터 가져오기
 			
 			html="";
 			}
 		}); //ajax 끝
-	} */
+	}
 </script>
 </head>
 <body>
+<form action="" id="ManagerForm" method="post">
+<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
+<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 --> 
+<input type="hidden" name="LV_CODE" value="${sLv_Code}"/> <!-- 병원 코드 가져오기 --> 
+</form>
 <div class="man_main">
 	<div class="man_top">
 		<div class="man_top_jinryo"><b>병원 옵션</b></div>
@@ -293,39 +300,7 @@ function man_jujak(){
 					<th>사용 여부</th>
 					<th>선택</th>
 				</tr>
-				<tr>
-					<td>9999990001</td>
-					<td>직책0</td>
-					<td>진료과0</td>
-					<td>매니저</td>
-					<td>테스트매니저</td>
-					<td>01000000000</td>
-					<td>TEST@TEST.COM</td>
-					<td><input type="checkbox"></td>
-					<td><input type="button" value="초기화"></td>
-				</tr>
-				<tr>
-					<td>9999990002</td>
-					<td>직책1</td>
-					<td>진료과1</td>
-					<td>의사</td>
-					<td>테스트의사</td>
-					<td>01000000000</td>
-					<td>TEST@TEST.COM</td>
-					<td><input type="checkbox"></td>
-					<td><input type="button" value="초기화"></td>
-				</tr>
-   				<tr>
-					<td>9999990003</td>
-					<td>직책2</td>
-					<td>진료과2</td>
-					<td>간호사</td>
-					<td>테스트간호사</td>
-					<td>01000000000</td>
-					<td>TEST@TEST.COM</td>
-					<td><input type="checkbox"></td>
-					<td><input type="button" value="초기화"></td>
-				</tr>  
+				<tbody id="man_tt"></tbody>
 			</table>
 		</div>
 		<div class="man_bottom_btn_lay">
