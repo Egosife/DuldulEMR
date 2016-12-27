@@ -27,5 +27,7 @@
 	<sqlMap resource="/com/duldul/emr/sqlMap/emr/restSQL.xml" />
 	<!-- Manager_SQL (김남기) -->
 	<sqlMap resource="/com/duldul/emr/sqlMap/emr/ManagerSQL.xml" />
+	<!-- Option_SQL 이동건 -->
+	<sqlMap resource="/com/duldul/emr/sqlMap/emr/Option.xml" />
 </sqlMapConfig>
  

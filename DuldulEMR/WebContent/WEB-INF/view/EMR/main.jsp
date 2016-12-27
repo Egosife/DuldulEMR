@@ -100,30 +100,30 @@ $(document).ready(function() {
 	<div class="main_content">
 		<div class="main_content_menu" id="main_content_menu">
 			작업 선택
-			<div class="main_menu_btn" id="menu0_btn">게 시 판</div>
+			<div class="main_menu_btn" id="menu0_btn">　게 시 판</div>
 				<div class="menu_btnlist" id="menu0">
-					<div class="btnlist_btns" id="menu_0_0" name="menu_btn" tab="notice*공지사항*notice">공지사항</div>
-					<div class="btnlist_btns" id="menu_0_1" name="menu_btn" tab="bbs*사내게시판*bbs">사내게시판</div>
+					<div class="btnlist_btns" id="menu_0_0" name="menu_btn" tab="notice*공지사항*notice">　　공지사항</div>
+					<div class="btnlist_btns" id="menu_0_1" name="menu_btn" tab="bbs*사내게시판*bbs">　　사내게시판</div>
 <!-- 					<div class="btnlist_btns" id="menu_0_2" name="menu_btn" tab="none*통합게시판*none">통합게시판</div> -->
 				</div>
-			<div class="main_menu_btn" id="menu1_btn">정 보 조 회</div>
+			<div class="main_menu_btn" id="menu1_btn">　정 보 조 회</div>
 				<div class="menu_btnlist" id="menu1">
-					<div class="btnlist_btns" id="menu_1_0" name="menu_btn" tab="Patient_page*환자조회*Patient_page">환자조회</div>
-					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" tab="Emp_page*직원조회*Emp_page">직원조회</div>
-					<div class="btnlist_btns" id="menu_1_2" name="menu_btn" tab="Hospital_chart*병원현황*Hospital_chart">병원현황</div>
+					<div class="btnlist_btns" id="menu_1_0" name="menu_btn" tab="Patient_page*환자조회*Patient_page">　　환자조회</div>
+					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" tab="Emp_page*직원조회*Emp_page">　　직원조회</div>
+					<div class="btnlist_btns" id="menu_1_2" name="menu_btn" tab="Hospital_chart*병원현황*Hospital_chart">　　병원현황</div>
 				</div>
-			<div class="main_menu_btn" id="menu2_btn">일 정 관 리</div>
+			<div class="main_menu_btn" id="menu2_btn">　일 정 관 리</div>
 				<div class="menu_btnlist" id="menu2">
-					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" tab="set*환자일정*set">환자일정</div>
-					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" tab="rest_apply*휴진현황*rest_apply">휴진현황</div>
+					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" tab="set*환자일정*set">　　환자일정</div>
+					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" tab="rest_apply*휴진현황*rest_apply">　　휴진현황</div>
 				</div>
-			<div class="main_menu_btn" id="menu3_btn">업 무 메 뉴</div>
+			<div class="main_menu_btn" id="menu3_btn">　업 무 메 뉴</div>
 				<div class="menu_btnlist" id="menu3">
-					<div class="btnlist_btns" id="menu_3_1" name="menu_btn" tab="reception*환자접수*reception">환자접수</div>
+					<div class="btnlist_btns" id="menu_3_1" name="menu_btn" tab="reception*환자접수*reception">　　환자접수</div>
 				</div>
-			<div class="main_menu_btn" id="menu4_btn">의 무 기 록</div>
+			<div class="main_menu_btn" id="menu4_btn">　의 무 기 록</div>
 				<div class="menu_btnlist" id="menu4">
-					<div class="btnlist_btns" id="menu_4_0" name="menu_btn" tab="Daily*업무일지*Daily">업무일지</div>
+					<div class="btnlist_btns" id="menu_4_0" name="menu_btn" tab="Daily*업무일지*Daily">　　업무일지</div>
 <!-- 					<div class="btnlist_btns" id="menu_4_1" name="menu_btn" tab="none*환자의무기록*k">환자의무기록</div> -->
 				</div>
 		</div>

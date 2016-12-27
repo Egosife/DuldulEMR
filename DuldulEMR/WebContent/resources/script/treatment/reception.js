@@ -42,7 +42,7 @@ $(document).ready(function(){
 				
 			},
 			error : function(result){
-				alert("ERROR - Patient_select");
+				alert("Error - Patient_select_1923");
 			}
 		})// ajax end
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
 				}
 			},
 			error : function(result){
-				alert("ERROR - Patient_Search");
+				alert("Error - Patient_Search_1911");
 			}
 		})// ajax end
 	})//pop_serachBtn end
@@ -212,7 +212,7 @@ $(document).ready(function(){
 				ReOpen_Tab(objt);
 			},
 			error : function(result){
-				alert("ERROR - Treatment");
+				alert("Error - Treatment_1818");
 			}
 		})// ajax end
 		

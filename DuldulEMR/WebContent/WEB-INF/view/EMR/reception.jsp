@@ -59,7 +59,7 @@ $(document).ready(function() {
  				html="";
  			},
  			error : function(result){
- 				alert("ERROR - getdoctor");
+ 				alert("Error - getdoctor_1012");
  			}
  		})// ajax end 
  	
@@ -97,7 +97,7 @@ function getTodayTreat(){
 			$("#rep_petitabletb").html(html);
 		},
 		error : function(result){
-			alert("ERROR - getTodayTreat");
+			alert("Error - getTodayTreat_1923");
 		}
 		
 	})//ajax end
@@ -147,7 +147,7 @@ function SetTreatType(){
 			html="";
 		},
 		error : function(result){
-			alert("ERROR - getTreatType");
+			alert("Error - getTreatType_1942");
 		}
 	})// ajax end
 	
@@ -172,7 +172,7 @@ function Settreatsort_type(){
 			html="";
 		},
 		error : function(result){
-			alert("ERROR - gettreatsort_type");
+			alert("Error - gettreatsort_type_1310");
 		}
 	})// ajax end
 	

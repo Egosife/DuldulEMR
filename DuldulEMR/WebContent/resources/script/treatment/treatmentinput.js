@@ -27,10 +27,10 @@ $(document).ready(function(){
 							if(result.resl == "true"){
 								alert("완료");
 							}else{
-								alert("ERROR - insertcares");
+								alert("Error - insertcares_7913");
 							}
 						},error: function(result){
-							alert("ERROR - insertcares");
+							alert("Error - insertcares_7793");
 						}
 					});
 					
@@ -39,7 +39,7 @@ $(document).ready(function(){
 					alert("실패");
 				}
 			},error : function(result){
-				alert("ERROR - inserttreathis");
+				alert("Error - inserttreathis_7785");
 			}
 		});
 	});
@@ -76,7 +76,7 @@ $(document).ready(function(){
 				$("#pillhistb").html(html);
 			},
 			error : function(result){
-				alert("ERROR - pill_his");
+				alert("Error - pill_his_1011");
 			}
 		});
 
@@ -97,7 +97,7 @@ $(document).ready(function(){
 				$("#careshistb").html(html);
 			},
 			error : function(result){
-				alert("ERROR - care_his");
+				alert("Error - care_his_5738");
 			}
 		});
 		
@@ -176,7 +176,7 @@ function treat_his(){
 			$("#treathistb").html(html);
 		},
 		error : function(result){
-			alert("ERROR - treat_his");
+			alert("Error - treat_his_1020");
 		}
 	});	
 }

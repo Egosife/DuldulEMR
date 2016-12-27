@@ -128,7 +128,6 @@ public class TreatmentController {
 				responseHeaders, HttpStatus.CREATED);
 	}
 
-	//접수 타입 받아오기
 	@RequestMapping(value="/getTodayTreat")
 	public @ResponseBody ResponseEntity<String> getTodayTreat(HttpServletRequest request,
 			@RequestParam HashMap<String, String> params,

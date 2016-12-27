@@ -12,13 +12,21 @@ $(document).ready(function(){
 		var idarr = this.id.split('_');
 
 		if($("#"+idarr[0]).css('display') == 'none'){
+			$(".main_menu_btn_acti").attr('class','main_menu_btn');
+			$(this).attr('class','main_menu_btn_acti');
 			$(".menu_btnlist").hide("fast");
 			$("#"+idarr[0]).show("fast");
 		}else{
 			$(".menu_btnlist").hide("fast");
+			$(".main_menu_btn_acti").attr('class','main_menu_btn');
 		}
 	})//main_menu_btn click end
-		
+	
+	$("body").on("click",".main_menu_btn_acti",function(){
+		$(".menu_btnlist").hide("fast");
+		$(".main_menu_btn_acti").attr('class','main_menu_btn');
+	});
+	
 	//logout
 	$("#logoff").on("click",function(){
 		clearInterval(interval_time);//시간 인터발 종료
@@ -114,7 +122,7 @@ function Bbstype_Setsession(num){
 		success : function(result){
 		},
 		error : function(result){
-			alert("ERROR - Bbs");
+			alert("Error - Bbs_1111");
 		}
 	})// ajax end
 }

@@ -78,6 +78,27 @@
 }
 
 </style>
+<script type="text/javascript">
+$(document).ready(function(){
+	adminopt_Show_hospital_info();
+	
+	
+});
+
+function adminopt_Show_hospital_info(){
+	
+	$.ajax({
+		url : "adminopt_Show_hospital_info",
+		success : function(result){
+			console.log("불러왔당");
+		},error : function(result){
+			alert("Error - adminopt_Show_hospital_info_9382");
+			//관리자 옵션에서 병원 정보를 못 불러올 때 출력되는 에러다.
+		}
+	});//ajax end
+}
+
+</script>
 <title>Admin Option</title>
 </head>
 <body>
