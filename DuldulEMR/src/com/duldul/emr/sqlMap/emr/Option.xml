@@ -3,5 +3,86 @@
     "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="Option">
+		<select id="getHosinfo"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+			SELECT  HOSPITAL_CODE, HOSPITAL_NAME, HOSPITAL_PHONE, HOSPITAL_ADDRESS, TO_CHAR(INPUT_DATE,'YYYY/MM/DD') AS INPUT_DATE
+			FROM HOSPITAL
+			WHERE 1 = 1
+			<isNotEmpty property="admin_search_hos">
+				AND (HOSPITAL_CODE LIKE '%' || #admin_search_hos# || '%'
+				OR HOSPITAL_NAME LIKE '%' || #admin_search_hos# || '%'
+				OR HOSPITAL_PHONE LIKE '%' || #admin_search_hos# || '%'
+				OR HOSPITAL_ADDRESS LIKE '%' || #admin_search_hos# || '%')
+			</isNotEmpty>
+		</select>
 
+		<select id="getempinfo"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+			SELECT L.CODE_NAME AS LV, E.EMP_NUM, E.EMP_NAME, E.PHONE, E.EMAIL, P.CODE_NAME AS POSITION, O.CODE_NAME AS OFFICE, S.CODE_NAME AS SEX, A.CODE_NAME AS ACTI
+			FROM EMP E LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 10) L
+			                       ON E.LV_CODE = L.SMALL
+			           	LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 8) P
+			           	           ON E.POSITION_CODE = P.SMALL
+			           	LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 9) O
+			            	       ON E.OFFICE_CODE = O.SMALL
+			           	LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 2) S
+			                   	   ON E.SEX_CODE = S.SMALL
+			            LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG = 14) A
+                      			   ON E.ACTIVATED = A.SMALL
+			WHERE E.HOSPITAL_CODE = #admin_opt_hosclick#
+		</select>
+		
+		<select id="getuphosinfo"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+			SELECT HOSPITAL_CODE, HOSPITAL_NAME, HOSPITAL_ADDRESS, SUBSTR(HOSPITAL_PHONE,1,3) AS P1,SUBSTR(HOSPITAL_PHONE,4,4) AS P2,SUBSTR(HOSPITAL_PHONE,8,4) AS P3
+			FROM HOSPITAL
+			WHERE HOSPITAL_CODE = #onclickinfo#
+		</select>
+		
+		<update id="getupdhos"
+				parameterClass="java.util.HashMap">
+			UPDATE HOSPITAL SET HOSPITAL_NAME = #admin_opt_hosname#
+								,HOSPITAL_ADDRESS = #admin_opt_hosaddr#
+								,HOSPITAL_PHONE = #admin_upd_phone#
+			WHERE HOSPITAL_CODE = #admin_opt_hoscod#
+		</update>
+		
+		<select id="getHospitalSEQ"
+			parameterClass="java.util.HashMap"
+			resultClass="java.util.HashMap">
+			SELECT HOSPITAL_HOSCODE.NEXTVAL AS HOSCODE
+			FROM DUAL
+		</select>
+		
+		<insert id="admincrehosin"
+				parameterClass="java.util.HashMap">
+			INSERT INTO HOSPITAL
+			(HOSPITAL_CODE,HOSPITAL_NAME,HOSPITAL_PHONE,HOSPITAL_ADDRESS,INPUT_DATE)
+			VALUES(#HOSCODE#,#cre_hodname#,#cre_phone#,#cre_hodaddr#,SYSDATE)
+		</insert>
+		
+		<select id="getposition_select"
+			resultClass="java.util.HashMap">
+			SELECT SMALL, CODE_NAME
+			FROM CODEDATA
+			WHERE BIG = 8
+		</select>
+		
+		<select id="getoffice_select"
+			resultClass="java.util.HashMap">
+			SELECT SMALL, CODE_NAME
+			FROM CODEDATA
+			WHERE BIG = 9
+		</select>
+		
+		<select id="getlevel_select"
+			resultClass="java.util.HashMap">
+			SELECT SMALL, CODE_NAME
+			FROM CODEDATA
+			WHERE BIG = 10
+		</select>
+		
 </sqlMap>

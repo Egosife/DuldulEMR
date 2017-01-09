@@ -5,144 +5,44 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="resources/script/jquery/jquery-1.11.0.js"></script> <!-- J쿼리 -->
-<style type="text/css">
-.admin_opt_main{
-	width: 100%;
-	height: 890px;
-	background-color: silver;
-}
-.admin_opt_maintitle{
-	width: 100%;
-	height: calc(50px - 12px);
-	font-size: 16pt;
-	font-weight: bold;
-	padding-top: 12px;
-}
-.admin_opt_title{
-	width: 100%;
-	height: 30px;
-	font-size: 14pt;
-	font-weight: bold;
-	background-color: gray;
-}
-.admin_opt_top{
-	width: 100%;
-	height: 60%;
-}
-.admin_opt_mid{
-	width: 100%;
-	height: 20%;
-}
-.admin_opt_midcontent{
-	width: 100%;
-	height: calc(100% - 55px);
-	font-size: 12pt;
-}
-.admin_opt_bot{
-	width: 100%;
-	height: 20%;
-}
-.admin_opt_botcontent{
-	width: 100%;
-	height: calc(100% - 55px);
-	font-size: 12pt;
-}
-.admin_opt_tablediv{
-	width: 50%;
-	height: calc(100% - 80px);
-	display: inline-block;
-	font-size: 12pt;
-	overflow-y: scroll;
-}
-.admin_opt_table{
-	width: 100%;
-	border-collapse: collapse;
-	background-color: white;
-}
-.admin_opt_tabletr{
-	border-bottom: 1px solid black;
-	background-color: white;
-}
-.admin_opt_buttons{
-	width: calc(100% - 20px);
-	height: 25px;
-	font-size: 12pt;
-	text-align: right;
-	padding-right: 20px;
-}
-
-.admin_form{
-	width: 100%;
-	height: 100%;
-}
-
-</style>
-<script type="text/javascript">
-$(document).ready(function(){
-	adminopt_Show_hospital_info();
-	
-	
-});
-
-function adminopt_Show_hospital_info(){
-	
-	$.ajax({
-		url : "adminopt_Show_hospital_info",
-		success : function(result){
-			console.log("불러왔당");
-		},error : function(result){
-			alert("Error - adminopt_Show_hospital_info_9382");
-			//관리자 옵션에서 병원 정보를 못 불러올 때 출력되는 에러다.
-		}
-	});//ajax end
-}
-
-</script>
+<link rel="stylesheet" type="text/css" href="resources/css/opt/admin_opt.css"><!-- 레이아웃 -->
+<script type="text/javascript" src="resources/script/opt/admin_opt.js"></script> <!-- 자바 스크립트 -->
 <title>Admin Option</title>
 </head>
+
 <body>
+<input type="hidden" name="admin_opt_hosclick" id="admin_opt_hosclick">
+<input type="hidden" name="admin_search_hos" id="admin_search_hos_hidden">
 <div class="admin_opt_main">
 <!-- 상단 -->
 	<div class="admin_opt_top">
 		<div class="admin_opt_maintitle">관리자 옵션</div>
 		<div class="admin_opt_title">병원과 계정정보</div>
 		<div class="admin_opt_tablediv">
+			<div style="text-align: right;">
+			<span id="admin_hos_searchinfo">병원정보를 입력하여 검색 할 수 있습니다.</span>
+				<span>
+				<input type="text" id="admin_search_hos" ><input type="button" id="admin_search_hosbtn" value="검색">
+				</span>
+			</div>
 			<table class="admin_opt_table">
 				<thead>
-					<tr class="admin_opt_tabletr">
+					<tr>
 						<th>병원코드</th>
 						<th>병원이름</th>
+						<th>연락처</th>
+						<th>주소</th>
+						<th>등록일</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr class="admin_opt_tabletr">
-						<td>999999</td>
-						<td>테스트병원1</td>
-					</tr>
-					<tr class="admin_opt_tabletr">
-						<td>999998</td>
-						<td>테스트병원2</td>
-					</tr>
-					<tr class="admin_opt_tabletr">
-						<td>999997</td>
-						<td>테스트병원3</td>
-					</tr>
-					<tr class="admin_opt_tabletr">
-						<td>999996</td>
-						<td>테스트병원4</td>
-					</tr>
-					<tr class="admin_opt_tabletr">
-						<td>999995</td>
-						<td>테스트병원5</td>
-					</tr>
-				</tbody>
+				<tbody id="admin_opt_hospital_tb"></tbody>
 			</table>
 		</div>
 		<div class="admin_opt_tablediv">
 			<table class="admin_opt_table">
+				<div>좌측 병원명을 클릭하면 정보를 출력합니다.</div>
 				<thead>
-					<tr class="admin_opt_tabletr">
+					<tr>
 						<th>계정등급</th>
 						<th>직원번호</th>
 						<th>이름</th>
@@ -154,57 +54,41 @@ function adminopt_Show_hospital_info(){
 						<th>활성화여부</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr class="admin_opt_tabletr">
-						<td>매니저</td>
-						<td>9999980001</td>
-						<td>테스트매니저2</td>
-						<td>01000000000</td>
-						<td>TEST@TEST.COM</td>
-						<td>직책0</td>
-						<td>진료과0</td>
-						<td>남자</td>
-						<td>활성화</td>
-					</tr>
-					<tr class="admin_opt_tabletr">
-						<td>의사</td>
-						<td>9999980002</td>
-						<td>테스트의사2</td>
-						<td>01000000000</td>
-						<td>TEST@TEST.COM</td>
-						<td>직책0</td>
-						<td>진료과0</td>
-						<td>남자</td>
-						<td>활성화</td>
-					</tr>
-					<tr class="admin_opt_tabletr">
-						<td>간호사</td>
-						<td>9999980003</td>
-						<td>테스트간호사2</td>
-						<td>01000000000</td>
-						<td>TEST@TEST.COM</td>
-						<td>직책0</td>
-						<td>진료과0</td>
-						<td>남자</td>
-						<td>활성화</td>
-					</tr>
-				</tbody>
+				<tbody id="admin_opt_emp_tb"></tbody>
 			</table>
 		</div>
 	</div>
 <!-- 중단 -->
 	<div class="admin_opt_mid">
-		<div class="admin_opt_title">병원등록</div>
-		<div class="admin_opt_midcontent">
-			<form class="admin_form" action="#" method="post" id="adminopt_hos_register">
-			병원이름<input type="text">
-			주소<input type="text">
-			연락처<input type="text" size="3" maxlength="3">-<input type="text" size="3" maxlength="4">-<input type="text" size="3" maxlength="4">
+		<div class="admin_opt_title">병원편집</div>
+		<div class="admin_opt_midcontentupd">
+			<form class="admin_form" action="#" method="post" id="adminopt_hos_update">
+				<div class="admin_hos_updatediv">
+					위 병원정보를 클릭하면 수정 할 수 있습니다.
+					<hr>
+					병원코드<input type="text" id="admin_opt_hoscod_updname" name="admin_opt_hoscod" readonly="readonly">
+					병원이름<input type="text" id="admin_opt_hos_updname" name="admin_opt_hosname">
+					<!-- <input type="button" value="병원검색" id="admin_opt_updasarch"> -->
+					주소<input type="text" id="admin_opt_upd_addr" readonly="readonly" name="admin_opt_hosaddr"><input type="button" value="주소검색" id="amdin_update_addr_search">
+					연락처<input type="text" size="3" maxlength="3" id="upd_phone1">-<input type="text" size="3" maxlength="4" id="upd_phone2">-<input type="text" size="3" maxlength="4" id="upd_phone3">
+					<input type="hidden" id="admin_upd_phone" name="admin_upd_phone">
+					<input type="button" value="수정" id="admin_opt_updhos">
+				</div>
+				<div style="color: red; display: none;" id="alerthoscode">병원 코드는 수정이 불가 합니다.</div>
 			</form>
 		</div>
-		<div class="admin_opt_buttons">
-			<input type="button" value="다시쓰기">
-			<input type="button" value="등록">
+		<div class="admin_opt_title">병원등록</div>
+		<div class="admin_opt_midcontentregi">
+			<form class="admin_form" action="#" method="post" id="adminopt_hos_register">
+			모든 항목은 필수 입력입니다.
+			<hr>
+			병원이름<input type="text" name="cre_hodname" id="cre_hodname">
+			<!-- <input type="button" value="중복검사" id="admin_opt_insertchck"> -->
+			주소<input type="text" id="admin_insert_addr_text" readonly="readonly" name="cre_hodaddr"><input type="button" value="주소검색" id="amdin_insert_addr_search">
+			연락처<input type="text" size="3" maxlength="3" id="cre_phone1">-<input type="text" size="3" maxlength="4" id="cre_phone2">-<input type="text" size="3" maxlength="4" id="cre_phone3">
+			<input type="hidden" id="admin_cre_phone" name="cre_phone">
+			<input type="button" value="등록" id="admin_opt_creathos">
+			</form>
 		</div>
 	</div>
 <!-- 하단 -->
@@ -212,11 +96,12 @@ function adminopt_Show_hospital_info(){
 		<div class="admin_opt_title">계정 등록</div>
 		<div class="admin_opt_botcontent">
 			<form class="admin_form" action="#" method="post" id="adminopt_acc_register">
-				<table>
+			<input type="hidden" name="admin_searchresult_hos" id="admin_searchresult_hos">
+				<table class="admin_opt_creatacc_table">
 					<tr>
 						<td>*병원 선택</td>
-						<td><input type="text" disabled="disabled"></td>
-						<td><input type="button" value="검색"></td>
+						<td><input type="text" disabled="disabled" id="regiacchostext"></td>
+						<td><input type="button" value="검색" id="admin_acc_serachhos"></td>
 						<td colspan="3" style="color: red;">' * ' 모양이 있는 부분은 필수 입력 부분입니다.</td>
 					</tr>
 					<tr>
@@ -269,7 +154,9 @@ function adminopt_Show_hospital_info(){
 						</td>
 						<td>
 							<select>
-								<option value="0">남성</option>
+								<option value="-1" selected="selected">선택</option>
+								<option value="0">여성</option>
+								<option value="1">남성</option>
 							</select>
 						</td>
 						<td></td>
@@ -277,32 +164,26 @@ function adminopt_Show_hospital_info(){
 							*직책
 						</td>
 						<td>
-							<select>
-								<option value="0">직책0</option>
-							</select>
+							<select id="adm_pos_sel"></select>
 						</td>
 						<td>
 							*진료과
 						</td>
 						<td>
-							<select>
-								<option value="0">진료과0</option>
-							</select>
+							<select id="adm_off_sel"></select>
 						</td>
 						<td>
 							*등급
 						</td>
 						<td>
-							<select>
-								<option value="0">매니저</option>
-							</select>
+							<select id="adm_lev_sel"></select>
 						</td>
 					</tr>
 				</table>
 			</form>
 		</div>
 		<div class="admin_opt_buttons">
-			<input type="button" value="다시쓰기">
+			<input type="button" value="다시쓰기" id="RegiAccCrear">
 			<input type="button" value="등록" disabled="disabled">
 		</div>
 	</div>
