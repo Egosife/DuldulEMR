@@ -50,6 +50,7 @@ div {
 		display: inline-block;
 		cursor: pointer;
 		background-color: gray;
+		/* background-image: url('../resources/upload/sample.gif'); */
 	}
 	.main_topbar_account_logout {
 		width: 88px;

@@ -176,5 +176,39 @@ public class Option {
 		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
 				responseHeaders, HttpStatus.CREATED);
 	}
+
+	@RequestMapping(value="/admin_acc_register")
+	public @ResponseBody ResponseEntity<String> admin_acc_register(HttpServletRequest request,
+																	@RequestParam HashMap<String, String> params,
+																	ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		String res = iOptionService.admin_acc_register(params);
+		modelMap.put("res", res);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value="/admin_regi_id_chk")
+	public @ResponseBody ResponseEntity<String> admin_regi_id_chk(HttpServletRequest request,
+			@RequestParam HashMap<String, String> params,
+			ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String,Object>();
+		
+		int res = iOptionService.admin_regi_id_chk(params);
+		modelMap.put("res", res);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/json; charset=UTF-8"); 
+		
+		return new ResponseEntity<String>(mapper.writeValueAsString(modelMap),
+				responseHeaders, HttpStatus.CREATED);
+	}
 	
 }

@@ -58,4 +58,14 @@ public class OptionService implements IOptionService {
 	public ArrayList<HashMap<String, String>> getlevel_select() throws Throwable {
 		return iOptionDao.getlevel_select();
 	}
+
+	@Override
+	public String admin_acc_register(HashMap<String, String> params) throws Throwable {
+		return iOptionDao.admin_acc_register(params);
+	}
+
+	@Override
+	public int admin_regi_id_chk(HashMap<String, String> params) throws Throwable {
+		return iOptionDao.admin_regi_id_chk(params);
+	}
 }

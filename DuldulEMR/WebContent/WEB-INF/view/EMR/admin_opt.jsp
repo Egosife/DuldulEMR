@@ -22,7 +22,7 @@
 			<div style="text-align: right;">
 			<span id="admin_hos_searchinfo">병원정보를 입력하여 검색 할 수 있습니다.</span>
 				<span>
-				<input type="text" id="admin_search_hos" ><input type="button" id="admin_search_hosbtn" value="검색">
+				<input type="text" id="admin_search_hos" ><!-- <input type="button" id="admin_search_hosbtn" value="검색"> -->
 				</span>
 			</div>
 			<table class="admin_opt_table">
@@ -97,6 +97,7 @@
 		<div class="admin_opt_botcontent">
 			<form class="admin_form" action="#" method="post" id="adminopt_acc_register">
 			<input type="hidden" name="admin_searchresult_hos" id="admin_searchresult_hos">
+			<input type="hidden" name="admin_accphonenum" id="admin_accphonenum">
 				<table class="admin_opt_creatacc_table">
 					<tr>
 						<td>*병원 선택</td>
@@ -109,22 +110,28 @@
 							*계정번호
 						</td>
 						<td>
-							<input type="text">
+							<input type="text" class="id_chk_class" name="admin_regi_id" id="admin_regi_id">
 						</td>
 						<td>
-							<input type="button" value="중복검사">
+							<!-- <input type="button" value="중복검사" id="admin_regi_id_chk"> -->
 						</td>
 						<td>
 							*비밀번호
 						</td>
 						<td>
-							<input type="password">
+							<input type="password" name="admin_regi_pass" id="admin_regi_pass1">
 						</td>
 						<td>
 							*비밀번호확인
 						</td>
 						<td>
-							<input type="password">
+							<input type="password" id="admin_regi_pass2">
+						</td>
+						<td>
+							생년월일
+						</td>
+						<td>
+							<input type="text" name="admin_regi_btday" readonly="readonly" id="admin_regi_btday">
 						</td>
 					</tr>
 					<tr>
@@ -132,20 +139,26 @@
 							*이름
 						</td>
 						<td>
-							<input type="text">
+							<input type="text" name="admin_regi_name">
 						</td>
 						<td></td>
 						<td>
 							*연락처
 						</td>
 						<td>
-							<input type="text" size="3" maxlength="3">-<input type="text" size="3" maxlength="4">-<input type="text" size="3" maxlength="4">
+							<input type="text" size="3" maxlength="3" id="reg_phone1">-<input type="text" size="3" maxlength="4" id="reg_phone2">-<input type="text" size="3" maxlength="4" id="reg_phone3">
 						</td>
 						<td>
 							이메일
 						</td>
 						<td>
-							<input type="text">
+							<input type="text" name="admin_regi_email" id="admin_regi_email">
+						</td>
+						<td>
+							주소
+						</td>
+						<td>
+							<input type="text" name="admin_regi_addr" id="admin_regi_addr" readonly="readonly"><input type="button" id="admin_regi_addrbtn" value="검색">
 						</td>
 					</tr>
 					<tr>
@@ -153,7 +166,7 @@
 							성별
 						</td>
 						<td>
-							<select>
+							<select name="admin_regi_sex">
 								<option value="-1" selected="selected">선택</option>
 								<option value="0">여성</option>
 								<option value="1">남성</option>
@@ -164,19 +177,19 @@
 							*직책
 						</td>
 						<td>
-							<select id="adm_pos_sel"></select>
+							<select name="adm_pos_sel" id="adm_pos_sel"></select>
 						</td>
 						<td>
 							*진료과
 						</td>
 						<td>
-							<select id="adm_off_sel"></select>
+							<select name="adm_off_sel" id="adm_off_sel"></select>
 						</td>
 						<td>
 							*등급
 						</td>
 						<td>
-							<select id="adm_lev_sel"></select>
+							<select name="adm_lev_sel" id="adm_lev_sel"></select>
 						</td>
 					</tr>
 				</table>
@@ -184,7 +197,7 @@
 		</div>
 		<div class="admin_opt_buttons">
 			<input type="button" value="다시쓰기" id="RegiAccCrear">
-			<input type="button" value="등록" disabled="disabled">
+			<input type="button" value="등록" disabled="disabled" id="admin_create_acc_commit">
 		</div>
 	</div>
 </div>

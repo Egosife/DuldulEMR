@@ -58,11 +58,16 @@ $(document).ready(function() {
 		
 		switch (acctype) {
 		case 0:
+			
+			var tab2 = {tab : "Service_page*회원옵션*Service_page"};
 			var tab = {tab : "adminopt*관리자옵션*adminopt"};
+			ReOpen_Tab(tab2);
 			ReOpen_Tab(tab);
 			break;
 		case 1:
+			var tab2 = {tab : "Service_page*회원옵션*Service_page"};
 			var tab = {tab : "manager_opt*매니저옵션*manager_opt"};
+			ReOpen_Tab(tab2);
 			ReOpen_Tab(tab);
 			break;
 		case 2:

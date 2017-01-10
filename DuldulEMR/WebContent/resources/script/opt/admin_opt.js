@@ -3,6 +3,136 @@ $(document).ready(function(){
 	Adminopt_Position_Select();
 	Adminopt_Office_Select();
 	Adminopt_level_Select();
+	Admin_Opt_Date_Select();
+	
+	//중복검사
+	$("#admin_regi_id").on("keyup",function(){
+		//console.log($("#admin_regi_id").attr("class"));
+		if($("#regiacchostext").val() == ""){
+			alert("계정번호는 먼저 병원을 선택하고 입력해 주세요.");
+			$("#admin_regi_id").val("");
+		}else{
+			if($("#admin_regi_id").val().indexOf('0') == "0"){
+				alert("계정번호의 맨 앞자리는 '0'으로 할 수 없습니다.");
+				$("#admin_regi_id").attr("class","id_chk_class");
+				$("#admin_regi_id").val("");
+			}else{
+				if($("#admin_regi_id").val() == "" || isNaN($("#admin_regi_id").val()) || $("#admin_regi_id").val().length < 4){
+					//	alert("계정번호 형식이 올바르지 않습니다.");
+					$("#admin_regi_id").attr("class","id_chk_class_no");
+				}else{
+					var params = $("#adminopt_acc_register").serialize();
+					
+					$.ajax({
+						type : "post",
+						url : "admin_regi_id_chk",
+						dataType : "json",
+						data : params,
+						success : function(result){
+							if(result.res == 0){
+								$("#admin_regi_id").attr("class","id_chk_class_ok");
+							}else{
+								$("#admin_regi_id").attr("class","id_chk_class_no");
+							}
+						},
+						error : function(result){
+							alert("Error - admin_regi_id_chk_5639");
+						}
+					});//.ajax
+				}
+			}
+		}
+	});
+	
+	//계정등록 체크1
+	$(".admin_opt_creatacc_table").on("keydown","input",function(){
+		CheckCreateAcc();
+	});
+	//계정등록 체크2
+	$(".admin_opt_creatacc_table select").on("change",function(){
+		CheckCreateAcc();
+	});
+	//계정등록 버튼
+	$("#admin_create_acc_commit").on("click",function(){
+		var acc_ok = true;
+		
+		//필터
+
+		if($("#admin_regi_id").attr("class") == "id_chk_class_no" 
+			|| $("#admin_regi_id").attr("class") == "id_chk_class"){
+			alert ("해당 계정번호는 사용할 수 없습니다.");
+			acc_ok = false;
+		}
+		
+		if($("#admin_regi_id").val().length < 4){
+			alert ("계정번호는 최소 4글자 이상이여야 합니다.");
+			acc_ok = false;
+		}
+		//isNaN = 숫자는 false 글자는 true를 리턴함
+		if(isNaN($("#admin_regi_id").val())){
+			alert("계정번호에는 문자를 입력할 수 없습니다.");
+			acc_ok = false;
+		}
+		
+		if($("#admin_regi_pass1").val() != $("#admin_regi_pass2").val()){
+			alert("비밀번호와 비밀번호확인을 확인해 주세요.");
+			acc_ok = false;
+		}
+		
+		if($("#reg_phone1").val().length == 3 
+		   && $("#reg_phone2").val().length == 4
+		   && $("#reg_phone3").val().length == 4){
+				if(isNaN($("#reg_phone1").val()) 
+						|| isNaN($("#reg_phone2").val())
+						|| isNaN($("#reg_phone3").val())){
+					alert("연락처에는 숫자만 입력해 주세요.");
+					acc_ok = false;
+				}else{
+					$("#admin_accphonenum").val($("#reg_phone1").val()+""+$("#reg_phone2").val()+""+$("#reg_phone3").val());
+				}
+		}else{
+			alert("연락처를 입력해 주세요.");
+			acc_ok = false;
+		}
+		
+		if($("#admin_regi_email").val().indexOf('@') == -1 
+				|| $("#admin_regi_email").val().indexOf('.') == -1){
+			alert("이메일 형식이 올바르지 않습니다.");
+			acc_ok = false;
+		}
+			
+		
+		//계정등록!
+		if(acc_ok){
+			var params = $("#adminopt_acc_register").serialize();
+			
+			$.ajax({
+				type: "post",
+				url: "admin_acc_register",
+				dataType:"json",
+				data: params,
+				success : function(result){
+					if(result.res == "true"){
+						alert("등록되었습니다");
+						
+						var tab = {tab : "adminopt*관리자옵션*adminopt"};
+						var tab2 = {tab : "adminopt"};
+						Close_Tab(tab2);
+						ReOpen_Tab(tab);
+					}else{
+						alert("등록에 실패했습니다");
+					}
+				},
+				error : function(result){
+					alert("Error - admin_acc_register_9956");
+				}
+				
+				
+				
+			});//ajax end
+		}
+	});
+	
 	//병원 생성
 	$("#admin_opt_creathos").on("click",function(){
 		$("#admin_cre_phone").val($("#cre_phone1").val()+$("#cre_phone2").val()+$("#cre_phone3").val());
@@ -41,7 +171,7 @@ $(document).ready(function(){
 		}
 		
 	});
-////////////////////////////////테스트
+
 	//다시쓰기
 	$("#RegiAccCrear").on("click",function(){
 		RegiAccCrear();
@@ -110,6 +240,7 @@ $(document).ready(function(){
 				$("#regiacchostext").val(result.obj.HOSPITAL_NAME+"("+result.obj.HOSPITAL_CODE+")");
 				$("#admin_searchresult_hos").val(result.obj.HOSPITAL_CODE);
 				closePopup();
+				CheckCreateAcc();
 			},error: function(result){
 				alert("Error - adminoptregi_error_6574")
 			}
@@ -126,7 +257,7 @@ $(document).ready(function(){
 	//});
 	
 	//병원 검색 - 상단
-	$("#admin_search_hosbtn").on("click",function(){
+	$("#admin_search_hos").on("keyup",function(){
 		$("#admin_search_hos_hidden").val($("#admin_search_hos").val());
 		adminopt_Show_hospital_info(true,"admin_opt_hospital_tb","admin_opt_tabletr");
 	});
@@ -137,6 +268,9 @@ $(document).ready(function(){
 	})
 	$("#amdin_insert_addr_search").on("click",function(){
 		daum_search_addr("admin_insert_addr_text");
+	});
+	$("#admin_regi_addrbtn").on("click",function(){
+		daum_search_addr("admin_regi_addr");
 	});
 	
 	//병원 정보 클릭
@@ -361,20 +495,10 @@ function RegiAccCrear(){
 	$(".admin_opt_creatacc_table input[type='password']").each(function(){
 		$(this).val("");
 	});
+	$(".admin_opt_creatacc_table select").each(function(){
+		$(this).val("-1").prop("selected", true);
+	});
 }
-/*
-
-	$("body").on("click","[name='hos-selectBtn']",function(){
-		$("#select_hoscode").val("테스트병원1 (999999)");
-		CheckCreateAcc();
-		closePopup();
-	});
-	
-	$(".admin_opt_creatacc_table").on("keydown","input",function(){
-		CheckCreateAcc();
-	});
-
-
 
 function CheckCreateAcc() {
 	var check = true;
@@ -391,6 +515,12 @@ function CheckCreateAcc() {
 			check = false;
 		}
 	});
+
+	$(".admin_opt_creatacc_table select").each(function(){
+		if($(this).val() == "-1") {
+			check = false;
+		}
+	});
 	
 	if(check){
 		$("#admin_create_acc_commit").prop("disabled","");
@@ -399,4 +529,12 @@ function CheckCreateAcc() {
 	}
 	
 }
-*/
+
+function Admin_Opt_Date_Select(){
+	$("#admin_regi_btday").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+		}
+	});
+}

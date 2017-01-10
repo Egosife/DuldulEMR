@@ -23,4 +23,8 @@ public interface IOptionDao {
 	ArrayList<HashMap<String, String>> getoffice_select()throws Throwable;
 
 	ArrayList<HashMap<String, String>> getlevel_select()throws Throwable;
+
+	String admin_acc_register(HashMap<String, String> params)throws Throwable;
+
+	int admin_regi_id_chk(HashMap<String, String> params)throws Throwable;
 }

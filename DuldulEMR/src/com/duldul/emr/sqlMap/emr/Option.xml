@@ -64,6 +64,12 @@
 			VALUES(#HOSCODE#,#cre_hodname#,#cre_phone#,#cre_hodaddr#,SYSDATE)
 		</insert>
 		
+		<insert id="admin_acc_register"
+				parameterClass="java.util.HashMap">
+				INSERT INTO EMP(EMP_NUM, HOSPITAL_CODE, PW, EMP_NAME, PHONE, EMAIL, SEX_CODE, POSITION_CODE, OFFICE_CODE, LV_CODE, ADDRESS, BIRTH)
+				VALUES(#admin_regi_id#, #admin_searchresult_hos#, #admin_regi_pass#, #admin_regi_name#, #admin_accphonenum#, #admin_regi_email#, #admin_regi_sex#, #adm_pos_sel#, #adm_off_sel#, #adm_lev_sel#, #admin_regi_addr#, #admin_regi_btday#)
+		</insert>
+		
 		<select id="getposition_select"
 			resultClass="java.util.HashMap">
 			SELECT SMALL, CODE_NAME
@@ -83,6 +89,14 @@
 			SELECT SMALL, CODE_NAME
 			FROM CODEDATA
 			WHERE BIG = 10
+		</select>
+
+		<select id="admin_regi_id_chk"
+			resultClass="Integer">
+			SELECT COUNT(EMP_NUM)
+			FROM EMP
+			WHERE EMP_NUM = #admin_regi_id#
+			AND HOSPITAL_CODE = #admin_searchresult_hos#
 		</select>
 		
 </sqlMap>
