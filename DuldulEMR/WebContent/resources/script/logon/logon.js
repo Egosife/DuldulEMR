@@ -59,27 +59,31 @@ function logon(){
 			dataType : "json",
 			data : params,
 			success : function(result){
-				if(result.res == "success"){
-					//쿠키 생성
-					if(result.hos_code != "none"){
-						setCookie("hos_ck",result.hos_code,7);
-						setCookie("re_hos_ck",result.re_hos_chk,7);
-					}else{
-						setCookie("hos_ck",result.hos_code,-1);
-						setCookie("re_hos_ck",result.re_hos_chk,-1);
+				if(result.res == "deactivated"){
+					alert("사용이 정지된 계정입니다. 관리자에게 문의하세요.");
+				}else{
+					if(result.res == "success"){
+						//쿠키 생성
+						if(result.hos_code != "none"){
+							setCookie("hos_ck",result.hos_code,7);
+							setCookie("re_hos_ck",result.re_hos_chk,7);
+						}else{
+							setCookie("hos_ck",result.hos_code,-1);
+							setCookie("re_hos_ck",result.re_hos_chk,-1);
+						}
+						if(result.id_code != "none"){
+							setCookie("id_ck",result.id_code,7);
+							setCookie("re_id_ck",result.re_hos_chk,7);
+						}else{
+							setCookie("id_ck",result.id_code,-1);
+							setCookie("re_id_ck",result.re_hos_chk,-1);
+						}
+						//페이지 이동
+						location.href = "emrmain";
+					} else {
+						alert("병원코드나 아이디 또는 비밀번호를 확인해주세요.");
+						$("#hos_Code").focus();
 					}
-					if(result.id_code != "none"){
-						setCookie("id_ck",result.id_code,7);
-						setCookie("re_id_ck",result.re_hos_chk,7);
-					}else{
-						setCookie("id_ck",result.id_code,-1);
-						setCookie("re_id_ck",result.re_hos_chk,-1);
-					}
-					//페이지 이동
-					location.href = "emrmain";
-				} else {
-					alert("병원코드나 아이디 또는 비밀번호를 확인해주세요.");
-					$("#hos_Code").focus();
 				}
 			},
 			error : function(result){

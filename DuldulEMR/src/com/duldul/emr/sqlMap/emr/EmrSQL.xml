@@ -6,12 +6,11 @@
 	<select id="getAcc"
 			parameterClass="java.util.HashMap"
 			resultClass="java.util.HashMap">
-		SELECT E.HOSPITAL_CODE, H.HOSPITAL_NAME, E.EMP_NUM, E.PW, E.EMP_NAME, E.LV_CODE
+		SELECT E.HOSPITAL_CODE, H.HOSPITAL_NAME, E.EMP_NUM, E.PW, E.EMP_NAME, E.LV_CODE, E.ACTIVATED
 		FROM EMP E LEFT OUTER JOIN HOSPITAL H
             	   ON E.HOSPITAL_CODE = H.HOSPITAL_CODE
 		WHERE E.HOSPITAL_CODE  = #hos_Code#
 		AND E.EMP_NUM = #emp_id#
 		AND E.PW = #passwd#
-		AND E.ACTIVATED = 1
 	</select>
 </sqlMap>

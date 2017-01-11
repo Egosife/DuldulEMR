@@ -57,23 +57,23 @@ function Emp_list() {
 			EL = "";
 			
 			if($("input[name='Emp_page']").val() == 1) {
-				EL += "<span name='1'> < </span>";
+				EL += "<span class='page_btn_box' name='1'><</span>";
 			} else {
-				EL += "<span class='Emp_table_pageing' name='" + ($("input[name='Emp_page']").val() -1) + "'> < </span>";
+				EL += "<span class='page_btn_box' name='" + ($("input[name='Emp_page']").val() -1) + "'><</span>";
 			}
 			
 			for(var i = result.pb.startPcount; i <= result.pb.endPcount; i++) {
 				if(i == $("input[name='Emp_page']").val()) {
-					EL += "<span name='" + i + "'><b>" + i + "</b></span>";
+					EL += "<span class='page_btn_box_now' name='" + i + "'><b>" + i + "</b></span>";
 				} else {
-					EL += "<span class='Emp_table_pageing' name='" + i + "'>" + i + "</span>";
+					EL += "<span class='page_btn_box' name='" + i + "'>" + i + "</span>";
 				}
 			}
 			
 			if($("input[name='Emp_page']").val() == result.pb.maxPcount) {
-				EL += "<span name='" + result.pb.maxPcount + "'> > </span>";
+				EL += "<span class='page_btn_box' name='" + result.pb.maxPcount + "'>></span>";
 			} else {
-				EL += "<span class='Emp_table_pageing' name='" + ($("input[name='Emp_page']").val() * 1 + 1) + "'> > </span>";
+				EL += "<span class='page_btn_box' name='" + ($("input[name='Emp_page']").val() * 1 + 1) + "'>></span>";
 			}
 			
 			$("#pagingE").html(EL);

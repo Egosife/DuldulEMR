@@ -49,19 +49,23 @@ public class LogonController {
 		Map<String, Object> modelMap = new HashMap<String,Object>();
 		//회원정보 받아옴
 		HashMap<String, String> acc = iLogonService.getAcc(params);
+		
 		//회원정보가 들어왔다면
-		if(acc != null && !acc.isEmpty()){
-			session.setAttribute("sHospital_Code", acc.get("HOSPITAL_CODE"));
-			session.setAttribute("sHospital_Name", acc.get("HOSPITAL_NAME"));
-			session.setAttribute("sEmp_Num", acc.get("EMP_NUM"));
-			session.setAttribute("sEmp_Name", acc.get("EMP_NAME"));
-			session.setAttribute("sLv_Code", acc.get("LV_CODE"));
-			//세션에 데이터를 집어넣음.
-
-			modelMap.put("res", "success");
-		}else{
-			modelMap.put("res", "fail");
-		}
+			if(acc != null && !acc.isEmpty()){
+				if(String.valueOf(acc.get("ACTIVATED")).equals("1")){
+					session.setAttribute("sHospital_Code", acc.get("HOSPITAL_CODE"));
+					session.setAttribute("sHospital_Name", acc.get("HOSPITAL_NAME"));
+					session.setAttribute("sEmp_Num", acc.get("EMP_NUM"));
+					session.setAttribute("sEmp_Name", acc.get("EMP_NAME"));
+					session.setAttribute("sLv_Code", acc.get("LV_CODE"));
+					//세션에 데이터를 집어넣음.
+					modelMap.put("res", "success");
+				}else{
+					modelMap.put("res", "deactivated");
+				}
+			}else{
+				modelMap.put("res", "fail");
+			}
 		
 		//병원 코드 저장 체크 확인
 		if(!params.get("re_hos").isEmpty()){

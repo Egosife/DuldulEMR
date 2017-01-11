@@ -51,27 +51,27 @@ function my_rest_List(){
 			
 			//페이징 처리 단계
 			html="";
-			html += "<span name='1'> <<  </span>";
+			html += "<span class='page_btn_box' name='1'><<</span>";
 			
 			if($("input[name='page']").val()==1){
-				html += "<span name='1'> < </span>"; 
+				html += "<span class='page_btn_box' name='1'><</span>"; 
 			}else{
-				html += "<span name='"+($("input[name='page']").val()-1)+"'> <  </span>";
+				html += "<span class='page_btn_box' name='"+($("input[name='page']").val()-1)+"'><</span>";
 			}
 			
 			for(var i=result.pb.startPcount; i<=result.pb.endPcount; i++){
 				if(i==$("input[name='page']").val()){
-					html += "<span name='"+ i +"'> <b> "+ i +" </b> </span>";
+					html += "<span class='page_btn_box_now' name='"+ i +"'><b>"+ i +"</b></span>";
 				}else{
-					html += "<span name='"+ i +"'> "+ i +" </span>";
+					html += "<span class='page_btn_box' name='"+ i +"'>"+ i +"</span>";
 				}
 			}
 			if($("input[name='page']").val()==result.pb.maxPcount){
-				html += "<span name='"+result.pb.maxPcount+"'> > </span>";
+				html += "<span class='page_btn_box' name='"+result.pb.maxPcount+"'>></span>";
 			}else{
-				html += "<span name='"+($("input[name='page']").val() * 1 + 1)+"'> > </span>";
+				html += "<span class='page_btn_box' name='"+($("input[name='page']").val() * 1 + 1)+"'>></span>";
 			}
-			html +="<span name='"+result.pb.maxPcount+"'> >> </span>";
+			html +="<span class='page_btn_box' name='"+result.pb.maxPcount+"'>>></span>";
 			$("#pagingArea_top").html(html);
 		},
 		error : function(result){
@@ -104,27 +104,27 @@ function Emp_rest(){
 			
 			//페이징 처리 단계
 			html="";
-			html += "<span name='1'> <<  </span>";
+			html += "<span class='page_btn_box' name='1'><<</span>";
 			
 			if($("input[name='page']").val()==1){
-				html += "<span name='1'> < </span>"; 
+				html += "<span class='page_btn_box' name='1'><</span>"; 
 			}else{
-				html += "<span name='"+($("input[name='page']").val()-1)+"'> <  </span>";
+				html += "<span class='page_btn_box' name='"+($("input[name='page']").val()-1)+"'><</span>";
 			}
 			
 			for(var i=result.pb.startPcount; i<=result.pb.endPcount; i++){
 				if(i==$("input[name='page']").val()){
-					html += "<span name='"+ i +"'> <b> "+ i +" </b> </span>";
+					html += "<span class='page_btn_box_now' name='"+ i +"'><b>"+ i +"</b></span>";
 				}else{
-					html += "<span name='"+ i +"'> "+ i +" </span>";
+					html += "<span class='page_btn_box' name='"+ i +"'>"+ i +"</span>";
 				}
 			}
 			if($("input[name='page']").val()==result.pb.maxPcount){
-				html += "<span name='"+result.pb.maxPcount+"'> > </span>";
+				html += "<span class='page_btn_box' name='"+result.pb.maxPcount+"'>></span>";
 			}else{
-				html += "<span name='"+($("input[name='page']").val() * 1 + 1)+"'> > </span>";
+				html += "<span class='page_btn_box' name='"+($("input[name='page']").val() * 1 + 1)+"'>></span>";
 			}
-			html +="<span name='"+result.pb.maxPcount+"'> >> </span>";
+			html +="<span class='page_btn_box' name='"+result.pb.maxPcount+"'>>></span>";
 			$("#paging_Area").html(html);
 		},
 		error : function(result){

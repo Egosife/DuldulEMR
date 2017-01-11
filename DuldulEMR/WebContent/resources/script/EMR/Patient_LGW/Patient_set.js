@@ -108,23 +108,23 @@ function Set_list() {
 			SL = "";
 			
 			if($("input[name='Set_page']").val() == 1) {
-				SL += "<span name='1'> < </span>";
+				SL += "<span class='page_btn_box' name='1'><</span>";
 			} else {
-				SL += "<span class='Set_table_pageing' name='" + ($("input[name='Set_page']").val() -1) + "'> < </span>";
+				SL += "<span class='page_btn_box' name='" + ($("input[name='Set_page']").val() -1) + "'><</span>";
 			}
 			
 			for(var i = result.pb.startPcount; i <= result.pb.endPcount; i++) {
 				if(i == $("input[name='Set_page']").val()) {
-					SL += "<span name='" + i + "'><b>" + i + "</b></span>";
+					SL += "<span class='page_btn_box_now' name='" + i + "'><b>" + i + "</b></span>";
 				} else {
-					SL += "<span class='Set_table_pageing' name='" + i + "'>" + i + "</span>";
+					SL += "<span class='page_btn_box' name='" + i + "'>" + i + "</span>";
 				}
 			}
 			
 			if($("input[name='Set_page']").val() == result.pb.maxPcount) {
-				SL += "<span name='" + result.pb.maxPcount + "'> > </span>";
+				SL += "<span class='page_btn_box' name='" + result.pb.maxPcount + "'>></span>";
 			} else {
-				SL += "<span class='Set_table_pageing' name='" + ($("input[name='Set_page']").val() * 1 + 1) + "'> > </span>";
+				SL += "<span class='page_btn_box' name='" + ($("input[name='Set_page']").val() * 1 + 1) + "'>></span>";
 			}
 			
 			$("#pagingS").html(SL);
