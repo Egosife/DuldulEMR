@@ -45,23 +45,31 @@ div {
 	display: inline-block;
 }
 	.main_topbar_account_opt {
-		width: 44px;
+		width: 30px;
 		height: calc(100% - 10px);
 		display: inline-block;
 		cursor: pointer;
+		background-image: url('../../images/EMR/options.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: center center;
+	}
+	.main_topbar_account_opt:hover {
 		background-color: gray;
-		/* background-image: url('../resources/upload/sample.gif'); */
 	}
 	.main_topbar_account_logout {
-		width: 88px;
+		width: 80px;
 		height: calc(100% - 10px);
 		display: inline-block;
-		font-size: 12pt;
-		text-align: center;
-		font-weight:bold;
 		cursor: pointer;
-		background-color: gray;
 		margin-right: 20px;
+		background-image: url('../../images/EMR/logout.png');
+		background-repeat: no-repeat;
+		background-size: 80px;
+		background-position: center center;
+	}
+	.main_topbar_account_logout:hover {
+		background-color: gray;
 	}
 
 .main_midbar {

@@ -93,7 +93,7 @@ $(document).ready(function() {
 		<div class="main_topbar_account">
 			${sEmp_Name} (${sEmp_Num})
 			<div class="main_topbar_account_opt" id="optbtn"></div>
-			<div class="main_topbar_account_logout" id="logoff">LOGOUT</div>
+			<div class="main_topbar_account_logout" id="logoff"></div>
 		</div>
 	</div>
 <!-- 시간과 탭영역 -->
