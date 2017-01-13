@@ -39,7 +39,7 @@
 
 .bbs_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 100%;
-	height: 100%;
+
  	border-collapse: collapse;
    
     line-height: 1.3;

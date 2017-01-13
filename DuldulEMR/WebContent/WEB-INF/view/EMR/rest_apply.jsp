@@ -28,19 +28,21 @@
 		<div class="rest_apply_request"><b>나의 신청 현황 및 기록</b></div>
 		<div class="rest_apply_top_table">
 			<div class="rest_apply_lay_table">
-				<table border="1" class="rest_apply_set_table">
+				<table class="rest_apply_set_table">
 					<colgroup>
 						<col style="width: 15%;">
 						<col style="width: 25%;">
-						<col style="width: 50%;">
-						<col style="width: 10%;">
+						<col style="width: 45%;">
+						<col style="width: 15%;">
 					</colgroup>
-					<tr>
-						<td>휴진 신청일</td>
-						<td>휴진 기간</td>
-						<td>휴진 신청 사유</td>
-						<td>승인 여부</td>
+					<thead >
+					<tr >
+	  					<th >휴진 신청일</th>
+        			    <th >휴진 기간</th>
+         			    <th >휴진 신청 사유</th>
+						<th >승인 여부</th>
 					</tr>
+				</thead>
 					<tbody id="tv"></tbody>
 				</table>
 			</div><hr/>
@@ -67,23 +69,27 @@
 		</div>
 		<div class="rest_apply_btm_table">
 			<div class="rest_apply_btm_t">
-				<table border="1" class="rest_apply_table_table">
+				<table class="rest_apply_table_table">
 					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 10%;">
-						<col style="width: 10%;">
-						<col style="width: 10%;">
+						<col style="width: 12%;">
+						<col style="width: 13%;">
+						<col style="width: 12%;">
+						<col style="width: 13%;">
 						<col style="width: 25%;">
 						<col style="width: 35%;">
 					</colgroup>
+					<thead >
 					<tr>
-						<td>직원 번호</td>
-						<td>성 명</td>
-						<td>직 책</td>
-						<td>진료과</td>
-						<td>휴진 날짜</td>
-						<td>휴진 사유</td>
+						<th>직원 번호</th>
+        			    <th>성 명</th>
+         			    <th>직 책</th>
+						<th>진료과</th>
+						<th>휴진 날짜</th>
+						<th>휴진 사유</th>
 					</tr>
+					</thead>
+				
+				
 					<tbody id="tt"></tbody>
 				</table>
 			</div>

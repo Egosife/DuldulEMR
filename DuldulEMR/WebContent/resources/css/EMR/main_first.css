@@ -82,16 +82,39 @@
 	font-size: 34pt;
 	background-color: #F6F6F6;
 }
-
-/* 테이블 셋팅 */
-.first_middle_table{
+.first_middle_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 85%;
-	text-align: center;
+	
+ 	border-collapse: collapse;
+   text-align: center;
 	font-size: 18pt;
 	margin: 0 auto;
-	background-color: white;
+    line-height: 1.2;
+       background: #ffffff;
 }
-
+.first_middle_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.first_middle_table th {
+   width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: grey;
+    text-align: center;
+}
+.first_middle_table td {
+    width: 350px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  text-align: center;
+}  
 .first_middle_table_tr:hover{
  	cursor:pointer;
  	background-color: #f0f0f0;
@@ -115,16 +138,44 @@
 }
 
 /* 테이블 셋팅 */
-.first_bottom_table{
+
+.first_bottom_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 85%;
-	text-align: center;
+	
+ 	border-collapse: collapse;
+   text-align: center;
 	font-size: 18pt;
 	margin: 0 auto;
-	background-color: white;
-	table-layout: fixed;
+    line-height: 1.2;
+       background: #ffffff;
+       table-layout: fixed;
 }
-.first_bottom_table td{
-	overflow: hidden;
+.first_bottom_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.first_bottom_table th {
+   width: 150px;
+    padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: grey;
+    text-align: center;
+    
+}
+.first_bottom_table td {
+ 
+    width: 150px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  	text-align: center;
+  	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-}
+  
+}  

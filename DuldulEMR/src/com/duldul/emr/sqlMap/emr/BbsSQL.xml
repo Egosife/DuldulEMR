@@ -142,7 +142,7 @@
 	    )SI
 	    ON R.EMP_NUM = SI.EMP_NUM                   
     	ORDER BY TERM DESC))
-    	WHERE NUM BETWEEN 1 AND 2
+    	WHERE NUM BETWEEN 1 AND 4
 	</select>
 	
 	

@@ -29,13 +29,21 @@
 <div class="rest_main"> <!-- 메인 레이아웃 -->
 	<div class="rest_top"> <!-- 레이아웃 상단 -->
 		<div class="rest_b_information"><b>기본 정보</b></div> <!-- 레이아웃 - 기본 정보 -->
-		<table border="1" class="rest_d_table"> <!-- 기본 정보 테이블 -->
-			<tr>
-				<td>성 명</td>
-				<td>직 책</td>
-				<td>사원 번호</td>
-				<td>근무과</td>
+		<table  class="rest_d_table"> <!-- 기본 정보 테이블 -->
+				<colgroup>
+						<col style="width: 15%;">
+						<col style="width: 25%;">
+						<col style="width: 45%;">
+						<col style="width: 15%;">
+					</colgroup>
+			<thead >
+					<tr>
+				<th>성 명</th>
+				<th>직 책</th>
+				<th>사원 번호</th>
+				<th>근무과</th>
 			</tr>
+					</thead>
 			<tbody id="tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
 		</table>
 	</div>

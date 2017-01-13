@@ -30,32 +30,90 @@
 	overflow: auto;
 }
 /* 상단 테이블 */
-.rest_apply_set_table{
-	width: 100%;
+
+.rest_apply_set_table{ /* 테이블 크기 및 색깔 지정 */
+	width:100%;
+	
+ 	border-collapse: collapse;
+   text-align: center;
 	font-size: 16pt;
-	text-align: center;
-	background-color: white;
-	table-layout: fixed;
+	margin: 0 auto;
+    line-height: 1.2;
+       background: #ffffff;
+       table-layout: fixed;
 }
-/* 하단 테이블 */
-.rest_apply_table_table{
+.rest_apply_set_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.rest_apply_set_table th {
+    width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: #4CAF50;
+    text-align: center;
+}
+.rest_apply_set_table td {
+    width: 150px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  	text-align: center;
+  	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}  
+
+
+.rest_apply_table_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 100%;
+	
+ 	border-collapse: collapse;
+   text-align: center;
 	font-size: 16pt;
-	text-align: center;
-	background-color: white;
-	table-layout: fixed;
+	margin: 0 auto;
+    line-height: 1.2;
+       background: #ffffff;
+       table-layout: fixed;
 }
+.rest_apply_table_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.rest_apply_table_table th {
+    width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: #4CAF50;
+    text-align: center;
+}
+.rest_apply_table_table td {
+    width: 150px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  	text-align: center;
+  	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}  
 /* 마우스 올릴 때 색 변경 및 포인터 생성  */
 .rest_apply_set_table_tr:HOVER{
 	cursor: pointer;
 	background-color: #F0F0F0;
 }
 /* 테이블 */
-.rest_apply_set_table td{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
+
 .rest_apply_table_table td{
     overflow: hidden;
     white-space: nowrap;

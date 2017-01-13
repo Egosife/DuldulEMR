@@ -18,20 +18,74 @@
 	background-color: #F6F6F6;
 }
 /* 테이블 셋팅 */
-.rest_d_table{
+.rest_d_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 85%;
-	text-align: center;
+	
+ 	border-collapse: collapse;
+   text-align: center;
 	font-size: 18pt;
 	margin: 0 auto;
-	background-color: white;
+    line-height: 1.2;
+       background: #ffffff;
 }
-.rest_db_table{
-	width: 100%;
-	text-align: center;
-	font-size: 14pt;
+.rest_d_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.rest_d_table th {
+   width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: #4CAF50;
+    text-align: center;
+}
+.rest_d_table td {
+    width: 350px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  text-align: center;
+}  
+
+.rest_db_table{ /* 테이블 크기 및 색깔 지정 */
+	width: 85%;
+	
+ 	border-collapse: collapse;
+   text-align: center;
+	font-size: 18pt;
 	margin: 0 auto;
-	background-color: white;
+    line-height: 1.2;
+       background: #ffffff;
 }
+.rest_db_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.rest_db_table th {
+   width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: #4CAF50;
+    text-align: center;
+}
+.rest_db_table td {
+    width: 350px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  text-align: center;
+}  
+
 /* 레이아웃 중단 */
 .rest_middle{
 	width: 100%;

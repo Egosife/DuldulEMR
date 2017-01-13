@@ -62,7 +62,7 @@
 				
    		<table class="first_top_table"  >
    		<colgroup>
-   			<col style="width:10%; ">
+   			<col style="width:10%;">
    			<col style="width:30%;">
    			<col style="width:20%; ">
    			<col style="width:20%; ">
@@ -91,23 +91,23 @@
 				   
    		
    		   		  
-   		<table border="1" align="center" class="first_middle_table" >
+   		<table  class="first_middle_table" >
 					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 35%;">
-						<col style="width: 20%;">
-						<col style="width: 25%;">
-						<col style="width: 10%;">
-						
-					</colgroup>
-				
+   			<col style="width:10%; ">
+   			<col style="width:30%;">
+   			<col style="width:20%; ">
+   			<col style="width:20%; ">
+   			<col style="width:20%; ">
+   			</colgroup>
+   				<thead >
 					<tr >
-	  					<td>번호</td>
-        			    <td>제목</td>
-         			    <td>작성자</td>
-						<td>작성일</td>
-						<td>조회수</td>
+	  					<th scope="cols">번호</th>
+        			    <th scope="cols">제목</th>
+         			    <th scope="cols">작성자</th>
+						<th scope="cols">작성일</th>
+						<th scope="cols">조회수</th>
 					</tr>
+				</thead>
 			<tbody id="middle_bbs"></tbody>
 				</table>
  </div>
@@ -122,23 +122,26 @@
 				   id="bottom_moreBtn" tab="rest_apply*휴진현황*rest_apply" style="cursor:pointer"/></div>
 				    
 
-   		<table border="1" align="center" class="first_bottom_table" >
+   		<table  class="first_bottom_table" >
+  
 					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 15%;">
-						<col style="width: 10%;">
-						<col style="width: 15%;">
-						<col style="width: 25%;">
-						<col style="width: 25%;">
+						<col width="10%">
+						<col width="15%">
+						<col width="10%">
+						<col width="15%">
+						<col width="25%">
+						<col width="25%">
 					</colgroup>
+					<thead >
 					<tr>
-						<td>직원 번호</td>
-						<td>성 명</td>
-						<td>직 책</td>
-						<td>진료과</td>
-						<td>휴진 날짜</td>
-						<td>휴진 사유</td>
+						<th>직원 번호</th>
+        			    <th>성 명</th>
+         			    <th>직 책</th>
+						<th>진료과</th>
+						<th>휴진 날짜</th>
+						<th>휴진 사유</th>
 					</tr>
+					</thead>
 			<tbody id="bottom_rest_apply"></tbody>
 				</table>
 

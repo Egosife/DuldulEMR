@@ -75,7 +75,7 @@ function top_notice(){
 				for(var k = 0; k < result.list.length; k++){
 					html += "<tr class='first_middle_table_tr' name='" + result.list[k].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[k].SERIAL_NUM+"*글보기*bbs_detail2'>";
 					html += "<td>" + result.list[k].POST_NUM + "</td>";
-					html += "<td>" + result.list[k].TITLE + "</td>";
+					html += "<td style='text-align: left;'>" + result.list[k].TITLE + "</td>";
 					html += "<td>" + result.list[k].WRITER + "</td>";
 					html += "<td>" + result.list[k].REPORTING + "</td>";
 					html += "<td>" + result.list[k].VIEWS + "</td>";
