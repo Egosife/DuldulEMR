@@ -40,7 +40,7 @@ function refreshList_bbs(){
 				for(var i = 0; i < result.list.length; i++){
 					html += "<tr class='bbs_table_tr' name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail2?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail2'>";
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
-					html += "<td>" + result.list[i].TITLE + "</td>";
+					html += "<td style='text-align: left;'>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";
 					html += "<td>" + result.list[i].REPORTING + "</td>";
 					html += "<td>" + result.list[i].VIEWS + "</td>";

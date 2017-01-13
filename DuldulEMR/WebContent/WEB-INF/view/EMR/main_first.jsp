@@ -60,25 +60,23 @@
    		<input type="button" value="더보기" class="more_Btn" 
 				   id="top_moreBtn" tab="notice*공지사항*notice" style="cursor:pointer"/></div>
 				
-   		<table border="1" align="center" class="first_top_table"  >
-   		
-   					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 35%;">
-						<col style="width: 20%;">
-						<col style="width: 25%;">
-						<col style="width: 10%;">
-						
-					</colgroup>
-				
-					<tr>
-	  					<td>번호</td>
-        			    <td>제목</td>
-         			    <td>작성자</td>
-						<td>작성일</td>
-						<td>조회수</td>
+   		<table class="first_top_table"  >
+   		<colgroup>
+   			<col style="width:10%; ">
+   			<col style="width:30%;">
+   			<col style="width:20%; ">
+   			<col style="width:20%; ">
+   			<col style="width:20%; ">
+   			</colgroup>
+   				<thead >
+					<tr >
+	  					<th scope="cols">번호</th>
+        			    <th scope="cols">제목</th>
+         			    <th scope="cols">작성자</th>
+						<th scope="cols">작성일</th>
+						<th scope="cols">조회수</th>
 					</tr>
-				
+				</thead>
 			<tbody id="top_notice"></tbody>
 				</table>
 				

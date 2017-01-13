@@ -33,14 +33,21 @@
    			<div class="bbs_name">사내게시판</div>
    		</div>
    		<div class="bbs_top_table">
-   			<table border="1" align="center" class="bbs_table" >
+   			<table  class="bbs_table" >
+   			<colgroup>
+   			<col style="width:10%; ">
+   			<col style="width:30%;">
+   			<col style="width:20%; ">
+   			<col style="width:20%; ">
+   			<col style="width:20%; ">
+   			</colgroup>
    				<thead >
 					<tr >
-	  					<th>번호</th>
-        			    <th>제목</th>
-         			    <th>작성자</th>
-						<th>작성일</th>
-						<th>조회수</th>
+	  					<th scope="cols">번호</th>
+        			    <th scope="cols">제목</th>
+         			    <th scope="cols">작성자</th>
+						<th scope="cols">작성일</th>
+						<th scope="cols">조회수</th>
 					</tr>
 				</thead>
 			<tbody id="bbs_bbs"></tbody>

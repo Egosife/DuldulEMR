@@ -12,7 +12,7 @@
  	display: inline-block;
  	width: 100%;
  	height: 75%;
- 	background-color: #5D5D5D;
+ 	background-color: #ffffff;
  }
  
  .notice_header{ /* 공지사항이라는 글자가 적혀있는 부분 */
@@ -24,21 +24,47 @@
  
 .notice_name { /* 공지사항 간격 */
  	margin-left: 45px;
+ 	background-color: #ffffff;
  }
  
  .notice_top_table { /* 공지사항 테이블*/
  	width: 100%;
  	height: calc(80% - 40px);
  	font-size: 20pt;
- 	padding-top: 40px;
+
  	background-color: #DDDDDD;
  }
- 
-.notice_table{ /* 테이블 크기 및 색깔 지정 */
- 	width: 95%;
- 	text-align: center;
- 	background-color: #FFFFFF;
- }
+ .notice_table{ /* 테이블 크기 및 색깔 지정 */
+	width: 100%;
+	height: 100%;
+ 	border-collapse: collapse;
+   
+    line-height: 1.3;
+       background: #ffffff;
+}
+.notice_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.notice_table th {
+   width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: grey;
+    text-align: center;
+}
+  .notice_table td {
+    width: 350px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  text-align: center;
+}  
 .notice_table_tr:hover{ /* 테이블 크기 및 색깔 지정 */
  	cursor:pointer;
  	background-color: #f0f0f0;

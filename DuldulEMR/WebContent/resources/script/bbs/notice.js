@@ -42,7 +42,7 @@ function refreshList_notice(){
 				for(var i = 0; i < result.list.length; i++){
 					html += "<tr class='notice_table_tr' name='" + result.list[i].SERIAL_NUM + "' tab='bbs_detail?POST_NUM="+result.list[i].SERIAL_NUM+"*글보기*bbs_detail'>";//새로운 탭을 여는거
 					html += "<td>" + result.list[i].POST_NUM + "</td>";
-					html += "<td>" + result.list[i].TITLE + "</td>";
+					html += "<td style='text-align: left;'>" + result.list[i].TITLE + "</td>";
 					html += "<td>" + result.list[i].WRITER + "</td>";
 					html += "<td>" + result.list[i].REPORTING + "</td>";
 					html += "<td>" + result.list[i].VIEWS + "</td>";
