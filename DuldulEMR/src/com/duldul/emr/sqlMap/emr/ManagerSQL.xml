@@ -5,21 +5,90 @@
 <sqlMap namespace="Manager">
 	<select id="ManEmpList"	parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
 		SELECT * FROM(
-    	SELECT ROWNUM AS NUM,EMP,POSITION,OFFICE,LV,NAME,PHONE,EMAIL FROM(
-		SELECT E.EMP_NUM AS EMP, C1.CODE_NAME AS POSITION,C2.CODE_NAME AS OFFICE,C3.CODE_NAME AS LV, EMP_NAME AS NAME,PHONE,EMAIL
+    	SELECT ROWNUM AS NUM,EMP,POSITION,OFFICE,LV,NAME,PHONE,EMAIL,ACTIVATED,HOSPITAL_CODE FROM(
+		SELECT E.EMP_NUM AS EMP, C1.CODE_NAME AS POSITION,C2.CODE_NAME AS OFFICE,C3.CODE_NAME AS LV, EMP_NAME AS NAME,E.PHONE,E.EMAIL,ACTIVATED, E.HOSPITAL_CODE
 		FROM EMP E LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG='8')C1
 		ON E.POSITION_CODE = C1.SMALL
 		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG='9')C2
 		ON E.OFFICE_CODE = C2.SMALL
 		LEFT OUTER JOIN (SELECT * FROM CODEDATA WHERE BIG='10')C3
-		ON E.LV_CODE = C3.SMALL)
+		ON E.LV_CODE = C3.SMALL
 		WHERE 1=1
-		ORDER BY EMP ASC)
-		WHERE NUM BETWEEN 1 AND 7
-			</select>
+   		AND HOSPITAL_CODE = #HOSPITAL_CODE#
+    	ORDER BY EMP ASC))
+		WHERE NUM BETWEEN #start# AND #end#
+	</select>
+	<select id="Manjinryolist"	parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT TO_CHAR(OPEN,'HH24:MI') AS OPEN,
+		       TO_CHAR(CLOSE,'HH24:MI') AS CLOSE,
+		       TO_CHAR(WEEK_CLOSE,'HH24:MI') AS WEEK,
+		       SAT_OPEN AS SAT,
+		       SUN_OPEN AS SUN,
+		       TO_CHAR(LUNCH_OPEN,'HH24:MI')||' ~ '||TO_CHAR(LUNCH_CLOSE,'HH24:MI') AS LUNCH,
+		       TO_CHAR(RES_TIME,'MI')||'분' AS RESTIME 
+		FROM HOSPITAL_OPT
+		WHERE HOSPITAL_CODE = #HOSPITAL_CODE#
+	</select>
+	<select id="Manjinryolist2"	parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT TO_CHAR(OPEN,'HH24')AS OPEN,
+           TO_CHAR(OPEN,'MI')AS OPEN2,
+		   TO_CHAR(CLOSE,'HH24')AS CLOSE,
+           TO_CHAR(CLOSE,'MI')AS CLOSE2,
+		   TO_CHAR(WEEK_CLOSE,'HH24')AS WEEK,
+           TO_CHAR(WEEK_CLOSE,'MI')AS WEEK2,
+		   					SAT_OPEN AS SAT,
+		       				SUN_OPEN AS SUN,
+		   TO_CHAR(LUNCH_OPEN,'HH24')AS LUNCH1,
+           TO_CHAR(LUNCH_OPEN,'MI')AS LUNCH2,
+           TO_CHAR(LUNCH_CLOSE,'HH24')AS LUNCH3,
+           TO_CHAR(LUNCH_CLOSE,'MI')AS LUNCH4,
+		       TO_CHAR(RES_TIME,'MI')AS RESTIME 
+		FROM HOSPITAL_OPT
+		WHERE HOSPITAL_CODE = #HOSPITAL_CODE#
+	</select>
 	<select id="getManCount" parameterClass="java.util.HashMap" resultClass="Integer">
 		SELECT COUNT(*) AS CNT
 		FROM EMP
 		WHERE 1=1
+		AND EMP_NUM = #EMP_NUM#
+    	AND HOSPITAL_CODE = #HOSPITAL_CODE#
 	</select>
+	<select id="actcheck" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT ACTIVATED
+		FROM EMP
+		WHERE 1=1
+		AND HOSPITAL_CODE = #HOSPITAL_CODE#
+		AND EMP_NUM = #num#
+	</select>
+	<update id="Man_sayoung" parameterClass="java.util.HashMap">
+		UPDATE EMP SET ACTIVATED = #man_use#
+		WHERE HOSPITAL_CODE = #HOSPITAL_CODE#
+		AND EMP_NUM = #num#
+	</update>
+	<update id="Man_Reset" parameterClass="java.util.HashMap">
+		UPDATE EMP SET PW = '0000'
+		WHERE HOSPITAL_CODE = #HOSPITAL_CODE#
+		AND EMP_NUM = #MAN_RESET#
+	</update>
+	<update id="Manopt_sujeong" parameterClass="java.util.HashMap">
+		UPDATE HOSPITAL_OPT SET OPEN = TO_DATE(#open1#||#open2#,'HH24MI'),
+						CLOSE = TO_DATE(#close1#||#close2#,'HH24MI'),
+						WEEK_CLOSE = TO_DATE(#week1#||#week2#,'HH24MI'),
+						SAT_OPEN = #sat#,
+						SUN_OPEN = #sun#,
+						LUNCH_OPEN = TO_DATE(#lunch1#||#lunch2#,'HH24MI'),
+						LUNCH_CLOSE = TO_DATE(#lunch3#||#lunch4#,'HH24MI'),
+						RES_TIME = TO_DATE(#restime1#,'MI')
+		WHERE HOSPITAL_CODE = #HOSPITAL_CODE# 
+	</update>
+	<select id="Manager_popup_check" resultClass="Integer">
+			SELECT COUNT(EMP_NUM)
+			FROM EMP
+			WHERE EMP_NUM = #man_popup_jun#
+			AND HOSPITAL_CODE = #HOSPITAL_CODE#
+	</select>
+	<insert id="man_insert" parameterClass="java.util.HashMap">
+		INSERT INTO DULDUL.EMP(EMP_NUM,HOSPITAL_CODE,POSITION_CODE,OFFICE_CODE,LV_CODE,PW,EMP_NAME,PHONE,EMAIL)
+		VALUES(#man_popup_jun#,#HOSPITAL_CODE#,#man_book#,#man_jinryo#,#man_level#,#man_popup_pw#,#man_name#,#man_cellphone_num#,#man_email#)
+	</insert>
 </sqlMap>

@@ -20,6 +20,8 @@
 		SELECT COUNT(*) AS CNT
 		FROM REST
 		WHERE 1=1
+		AND EMP_NUM = #EMP_NUM#
+    	AND HOSPITAL_CODE = #HOSPITAL_CODE#
 	</select>
 	<select id="getRestList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
 	    SELECT * FROM(
