@@ -287,7 +287,7 @@ $(document).ready(function(){
 			success: function(result){
 				var html = "";
 				for(var i = 0 ; i < result.list.length; i++){
-					html += "<tr class='admin_opt_tabletr' name='"+result.list[i].EMP_NUM+"'>";
+					html += "<tr class='admin_opt_tabletr2' name='"+result.list[i].EMP_NUM+"'>";
 						html += "<td>"+result.list[i].LV+"</td>";
 						html += "<td>"+result.list[i].EMP_NUM+"</td>";
 						html += "<td>"+result.list[i].EMP_NAME+"</td>";
@@ -309,6 +309,8 @@ $(document).ready(function(){
 	//계정등록 병원등록
 	$("#admin_acc_serachhos").on("click",function(){
 		Admin_Create_Popup("accregi_hosbtn");
+		$("#admin_regi_id").val("");
+		$("#admin_regi_id").attr("class","id_chk_class");
 	});
 	
 	//병원 편집 병원 선택

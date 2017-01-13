@@ -58,21 +58,20 @@ $(document).ready(function() {
 		
 		switch (acctype) {
 		case 0:
-			
-			var tab2 = {tab : "Service_page*회원옵션*Service_page"};
-			var tab = {tab : "adminopt*관리자옵션*adminopt"};
+			var tab2 = {tab : "Service_page*계정옵션*Service_page"};
+			var tab = {tab : "adminopt*관리자메뉴*adminopt"};
 			ReOpen_Tab(tab2);
 			ReOpen_Tab(tab);
 			break;
 		case 1:
-			var tab2 = {tab : "Service_page*회원옵션*Service_page"};
-			var tab = {tab : "manager_opt*매니저옵션*manager_opt"};
+			var tab2 = {tab : "Service_page*계정옵션*Service_page"};
+			var tab = {tab : "manager_opt*병원옵션*manager_opt"};
 			ReOpen_Tab(tab2);
 			ReOpen_Tab(tab);
 			break;
 		case 2:
 		case 3:
-			var tab = {tab : "Service_page*회원옵션*Service_page"};
+			var tab = {tab : "Service_page*계정옵션*Service_page"};
 			ReOpen_Tab(tab);
 			break;
 		}
@@ -104,33 +103,64 @@ $(document).ready(function() {
 <!-- 메뉴와 컨텐츠 영역 -->
 	<div class="main_content">
 		<div class="main_content_menu" id="main_content_menu">
-			작업 선택
-			<div class="main_menu_btn" id="menu0_btn">　게 시 판</div>
+			메 뉴
+			<div style="background-color: red;">
+			<div class="main_menu_btn" id="menu0_btn">
+			<img alt="img1" width="80px" height="80px" style="margin-left: 10px;" src="resources/images/icons/board_b.png">
+			<br/>게 시 판
+			</div>
 				<div class="menu_btnlist" id="menu0">
-					<div class="btnlist_btns" id="menu_0_0" name="menu_btn" tab="notice*공지사항*notice">　　공지사항</div>
-					<div class="btnlist_btns" id="menu_0_1" name="menu_btn" tab="bbs*사내게시판*bbs">　　사내게시판</div>
+					<div class="btnlist_btns" id="menu_0_0" name="menu_btn" tab="notice*공지사항*notice">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/notice.png">
+					공지사항</div>
+					<div class="btnlist_btns" id="menu_0_1" name="menu_btn" tab="bbs*사내게시판*bbs">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/bbs.png">
+					사내게시판</div>
 <!-- 					<div class="btnlist_btns" id="menu_0_2" name="menu_btn" tab="none*통합게시판*none">통합게시판</div> -->
 				</div>
-			<div class="main_menu_btn" id="menu1_btn">　정 보 조 회</div>
+			<div class="main_menu_btn" id="menu1_btn">
+			<img alt="img1" width="80px" height="80px" style="margin-left: 10px;" src="resources/images/icons/info_b.png">
+			<br/>정 보 조 회</div>
 				<div class="menu_btnlist" id="menu1">
-					<div class="btnlist_btns" id="menu_1_0" name="menu_btn" tab="Patient_page*환자조회*Patient_page">　　환자조회</div>
-					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" tab="Emp_page*직원조회*Emp_page">　　직원조회</div>
-					<div class="btnlist_btns" id="menu_1_2" name="menu_btn" tab="Hospital_chart*병원현황*Hospital_chart">　　병원현황</div>
+					<div class="btnlist_btns" id="menu_1_0" name="menu_btn" tab="Patient_page*환자조회*Patient_page">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/apa.png">
+					환자조회</div>
+					<div class="btnlist_btns" id="menu_1_1" name="menu_btn" tab="Emp_page*직원조회*Emp_page">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/emp.png">
+					직원조회</div>
+					<div class="btnlist_btns" id="menu_1_2" name="menu_btn" tab="Hospital_chart*병원현황*Hospital_chart">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/chat.png">
+					병원현황</div>
 				</div>
-			<div class="main_menu_btn" id="menu2_btn">　일 정 관 리</div>
+			<div class="main_menu_btn" id="menu2_btn">
+			<img alt="img1" width="80px" height="80px" style="margin-left: 10px;" src="resources/images/icons/cal_b.png">
+			<br/>일 정 관 리</div>
 				<div class="menu_btnlist" id="menu2">
-					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" tab="set*환자일정*set">　　환자일정</div>
-					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" tab="rest_apply*휴진현황*rest_apply">　　휴진현황</div>
+					<div class="btnlist_btns" id="menu_2_0" name="menu_btn" tab="set*환자일정*set">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/apacal.png">
+					환자일정</div>
+					<div class="btnlist_btns" id="menu_2_1" name="menu_btn" tab="rest_apply*휴진현황*rest_apply">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/rast.png">
+					휴진현황</div>
 				</div>
-			<div class="main_menu_btn" id="menu3_btn">　업 무 메 뉴</div>
+			<div class="main_menu_btn" id="menu3_btn">
+			<img alt="img1" width="80px" height="80px" style="margin-left: 10px;" src="resources/images/icons/work_b.png">
+			<br/>업 무 메 뉴</div>
 				<div class="menu_btnlist" id="menu3">
-					<div class="btnlist_btns" id="menu_3_1" name="menu_btn" tab="reception*환자접수*reception">　　환자접수</div>
+					<div class="btnlist_btns" id="menu_3_1" name="menu_btn" tab="reception*환자접수*reception">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/check.png">
+					환자접수</div>
 				</div>
-			<div class="main_menu_btn" id="menu4_btn">　의 무 기 록</div>
+			<div class="main_menu_btn" id="menu4_btn">
+			<img alt="img1" width="80px" height="80px" style="margin-left: 10px;" src="resources/images/icons/record_b.png">
+			<br/>의 무 기 록</div>
 				<div class="menu_btnlist" id="menu4">
-					<div class="btnlist_btns" id="menu_4_0" name="menu_btn" tab="Daily*업무일지*Daily">　　업무일지</div>
+					<div class="btnlist_btns" id="menu_4_0" name="menu_btn" tab="Daily*업무일지*Daily">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/daily.png">
+					업무일지</div>
 <!-- 					<div class="btnlist_btns" id="menu_4_1" name="menu_btn" tab="none*환자의무기록*k">환자의무기록</div> -->
 				</div>
+			</div>
 		</div>
 		<div class="main_content_page" id="main_content_page">
 		</div>
