@@ -3,7 +3,10 @@
  */
 
 $(document).ready(function(){
-
+	$(".message a").click(function(){
+		   $("form").animate({height: "toggle", opacity: "toggle"}, "slow");
+		});
+	
 	//쿠키에 담긴 값 적용
 	$("#hos_Code").attr('value',getCookie("hos_ck"));
 	$("#emp_id").attr('value',getCookie("id_ck"));
@@ -14,12 +17,14 @@ $(document).ready(function(){
 	$("body").on("keydown",function(e){
 		if(e.which == 13){
 			logon();
+			return false;
 		}
 	});
 	
 	//로그인 클릭시...
 	$("#loginbtn").on("click",function(){
 		logon();
+		return false;
 	})//loginbtn click
 })//ready end
 
@@ -59,6 +64,7 @@ function logon(){
 			dataType : "json",
 			data : params,
 			success : function(result){
+				console.log(result.res);
 				if(result.res == "deactivated"){
 					alert("사용이 정지된 계정입니다. 관리자에게 문의하세요.");
 				}else{
@@ -86,8 +92,9 @@ function logon(){
 					}
 				}
 			},
-			error : function(result){
-				alert("ERROR - Login");
+
+			error: function(result) {
+				alert("EMR - Login Error");
 			}
 		})// ajax end
 	}
