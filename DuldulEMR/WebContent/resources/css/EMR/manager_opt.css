@@ -126,17 +126,20 @@
 }
 .man_toppop{
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 1px);
+	border-bottom: 1px solid #ccc;
 }
 .man_box{
-	width: 90%;
+	width: 80%;
 }
 .man_popup_table{
 	font-size: 12pt;
 	text-align: left;
 }
 .man_popup_table td{
+	padding-left: 20px;
 	padding-top: 30px;
+	width: 10%;
 }
 .man_popup_Btn{
 	width: 70px;

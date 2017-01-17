@@ -283,8 +283,8 @@ $(document).ready(function(){
 							html+="</tr>";
 							html+="<tr>";
 								html+="<td> 주 소</td>";
-								html+="<td><input type='text' id='Manager_address_text' class='man_box' readonly='readonly'><input type='button' id='Manager_address_btn' value='검색'></td>";
-								html+="<td><input type='button' value='등록' id='jujakBtn' class='man_popup_Btn'></td>";
+								html+="<td colspan='2'><input type='text' id='Manager_address_text' class='man_box' readonly='readonly'><input type='button' id='Manager_address_btn' value='검색' style='height: 21px; vertical-align: top;'></td>";
+								html+="<td><input type='button' value='등록' id='jujakBtn' class='man_popup_Btn' style='margin-left: 103px;'></td>";
 							html+="</tr>";
 					html+="</table>";
 				html+="</form>";
