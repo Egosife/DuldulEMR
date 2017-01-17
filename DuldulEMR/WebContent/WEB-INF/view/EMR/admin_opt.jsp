@@ -26,6 +26,13 @@
 				</span>
 			</div>
 			<table class="admin_opt_table">
+			<colgroup>
+				<col style="width: 10%">
+				<col style="width: 20%">
+				<col style="width: 15%">
+				<col style="width: 40%">
+				<col style="width: 15%">
+			</colgroup>
 				<thead>
 					<tr>
 						<th>병원코드</th>
@@ -41,6 +48,17 @@
 		<div class="admin_opt_tablediv">
 			<table class="admin_opt_table">
 				<div>좌측 병원명을 클릭하면 정보를 출력합니다.</div>
+			<colgroup>
+				<col style="width: 12%">
+				<col style="width: 10%">
+				<col style="width: 15%">
+				<col style="width: 15%">
+				<col style="width: 10%">
+				<col style="width: 10%">
+				<col style="width: 10%">
+				<col style="width: 8%">
+				<col style="width: 10%">
+			</colgroup>
 				<thead>
 					<tr>
 						<th>계정등급</th>
@@ -51,7 +69,7 @@
 						<th>직책</th>
 						<th>진료과</th>
 						<th>성별</th>
-						<th>활성화여부</th>
+						<th>활성화</th>
 					</tr>
 				</thead>
 				<tbody id="admin_opt_emp_tb"></tbody>

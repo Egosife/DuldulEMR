@@ -26,7 +26,7 @@
 			</c:choose>
 			</div>
 			<div class="div_treat_patient_info_stat">
-				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 10pt; width: 100%;">
 					<thead>
 						<tr>
 							<th>환자번호</th>
@@ -65,7 +65,7 @@
 		<div class="div_treat_patient_treathis">
 			<div class="div_treat_title">진료 내역</div>
 			<div class="div_treat_patient_treathisd">
-				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 12pt; width: 100%;">
 					<thead>
 						<tr>
 							<th>증상</th>
@@ -82,7 +82,7 @@
 		<div class="div_treat_patient_pillhis">
 			<div class="div_treat_title">처방 정보</div>
 			<div class="div_treat_patient_treathisp">
-				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 12pt; width: 100%;">
 					<thead>
 						<tr>
 							<th>치료 종류</th>
@@ -94,7 +94,7 @@
 				</table>
 			</div>
 			<div class="div_treat_patient_treathispp">
-				<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+				<table class="table_css" style="font-size: 12pt; width: 100%;">
 					<thead>
 						<tr>
 							<th>처방약</th>
@@ -151,7 +151,7 @@
 	<input type="hidden" name="treatnum" value="${param.TREATNUM}">
 		<div class="div_treat_care_treat">
 			<div class="div_treat_title">치료 안내</div>
-			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;">
 				<tr>
 					<th>치료 종류</th>
 					<td><input type="text" id="care_type" style="width: 100; height: 100%"></td>
@@ -169,7 +169,7 @@
 		</div>
 		<div class="div_treat_care_treatinfo">
 			<div class="div_treat_title">치료 정보</div>
-			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;">
 				<thead>
 					<tr>
 						<th>치료 종류</th>
@@ -183,7 +183,7 @@
 		</div>
 		<div class="div_treat_care_pillname">
 			<div class="div_treat_title">처방전</div>
-			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;">
 				<tr>
 					<th>처방약</th>
 					<td><input type="text" id="pill_name" style="width: 100; height: 100%"></td>
@@ -205,7 +205,7 @@
 		</div>
 		<div class="div_treat_care_pillinfo">
 			<div class="div_treat_title">처방 정보</div>
-			<table class="table_css" style="font-size: 12pt; width: 100%;" border="2">
+			<table class="table_css" style="font-size: 12pt; width: 100%;">
 				<thead>
 					<tr>
 						<th>처방약</th>

@@ -83,9 +83,9 @@
 .rep_title {
 	width: 100%;
 	height: 5%;
-	background-color: silver;
 	font-size: 16pt;
 	font-weight: bold;
+	border-top: 1px solid #444444;
 }
 
 .reception {
@@ -96,7 +96,6 @@
 .rep_petiinfo {
 	width: 100%;
 	height: 30%;
-	background-color: silver;
 }
 
 .rep_petititleblock {
@@ -113,14 +112,18 @@
 }
 .rep_petiinfo_def {
 	width: 60%;
-	height: 100%;
+	height: calc(100% - 2px);
 	display: inline-block;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
 }
 
 .rep_petiinfo_more {
 	width: 40%;
-	height: 100%;
+	height: calc(100% - 2px);
 	display: inline-block;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
 }
 
 .rep_repdata{
@@ -130,52 +133,55 @@
 }
 
 .rep_sort {
-	width: calc(20% - 30px);
-	height: calc(100% - 30px);
-	background-color: silver;
+	width: calc(20% - 32px);
+	height: calc(100% - 32px);
+	background-color: #f2f2f2;
 	display: inline-block;
 	font-size: 10pt;
 	text-align: center;
 	margin: 10px;
 	padding: 5px;
+	border: 1px solid #CCC;
 }
 
 .rep_date {
-	width: calc(25% - 30px);
-	height: calc(100% - 30px);
-	background-color: silver;
+	width: calc(25% - 32px);
+	height: calc(100% - 32px);
+	background-color: #f2f2f2;
 	display: inline-block;
 	font-size: 10pt;
 	text-align: center;
 	margin: 10px;
 	padding: 5px;
+	border: 1px solid #CCC;
 }
 
 .rep_repinfo{
-	width: calc(20% - 30px);
-	height: calc(100% - 30px);
-	background-color: silver;
+	width: calc(20% - 32px);
+	height: calc(100% - 32px);
+	background-color: #f2f2f2;
 	display: inline-block;
 	font-size: 10pt;
 	text-align: center;
 	margin: 10px;
 	padding: 5px;
+	border: 1px solid #CCC;
 }
 
 .rep_more{
-	width: calc(20% - 30px);
-	height: calc(100% - 30px);
-	background-color: silver;
+	width: calc(20% - 32px);
+	height: calc(100% - 32px);
+	background-color: #f2f2f2;
 	display: inline-block;
 	text-align: center;
 	margin: 10px;
 	padding: 5px;
+	border: 1px solid #CCC;
 }
 
 .rep_block {
 	width: 5%;
 	height: 100%;
-	background-color: silver;
 	display: inline-block;
 }
 
