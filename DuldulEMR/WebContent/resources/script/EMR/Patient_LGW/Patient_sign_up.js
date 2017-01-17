@@ -62,7 +62,7 @@ $(document).ready(function(){
 		ReOpen_Tab(tab);
 	});
 	
-	$("#address_Btn").on("click", function(){
+	$("#address_Btn").on("click", function(){ //주소검색
 		new daum.Postcode({
 	        oncomplete: function(data) {
 	        	var fullAddr = data.address; // 최종 주소 변수

@@ -65,7 +65,7 @@ function patient_Details_list(papajohns){
 				DL += "<td>" + result.list[i].SPECIAL_NOTE + "</td>"; /* 특이사항 */
 				DL += "<td>" + result.list[i].DIAGNOSIS + "</td>"; /* 진단명 */
 				DL += "<td>" + result.list[i].EMP_NUM2 + "</td>"; /* 담당의 */
-				DL += "<td>" + result.list[i].OPINION + "</td>"; /* 의사소견 */
+				DL += "<td style='text-align: left;'>" + result.list[i].OPINION + "</td>"; /* 의사소견 */
 				DL += "<td>" + result.list[i].POSTING_DATE + "</td>"; /* 작성일 */
 				DL += "</tr>";
 			}

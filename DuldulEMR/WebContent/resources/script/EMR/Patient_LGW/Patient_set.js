@@ -100,12 +100,14 @@ function Set_list() {
 				SL += "<td>" + result.list[i].SORT_TYPE + "</td>"; /* 구분 */
 				SL += "<td>" + result.list[i].TAKE_DATE + "</td>"; /* 접수날짜 */
 				SL += "<td>" + result.list[i].CONDITION + "</td>"; /* 진료상태 */
-				SL += "<td>" + result.list[i].ETC + "</td>"; /* 비고 */
+				SL += "<td style='text-align: left;'>" + result.list[i].ETC + "</td>"; /* 비고 */
 				SL += "</tr>";
 			}
 			$("#S").html(SL);
 			
 			SL = "";
+			
+			SL += "<span class='page_btn_box' name='1'><<</span>";
 			
 			if($("input[name='Set_page']").val() == 1) {
 				SL += "<span class='page_btn_box' name='1'><</span>";
@@ -126,6 +128,8 @@ function Set_list() {
 			} else {
 				SL += "<span class='page_btn_box' name='" + ($("input[name='Set_page']").val() * 1 + 1) + "'>></span>";
 			}
+			
+			SL +="<span class='page_btn_box' name='"+result.pb.maxPcount+"'>>></span>";
 			
 			$("#pagingS").html(SL);
 		},

@@ -56,6 +56,8 @@ function Emp_list() {
 			
 			EL = "";
 			
+			EL += "<span class='page_btn_box' name='1'><<</span>";
+			
 			if($("input[name='Emp_page']").val() == 1) {
 				EL += "<span class='page_btn_box' name='1'><</span>";
 			} else {
@@ -75,6 +77,8 @@ function Emp_list() {
 			} else {
 				EL += "<span class='page_btn_box' name='" + ($("input[name='Emp_page']").val() * 1 + 1) + "'>></span>";
 			}
+			
+			EL +="<span class='page_btn_box' name='"+result.pb.maxPcount+"'>>></span>";
 			
 			$("#pagingE").html(EL);
 		},

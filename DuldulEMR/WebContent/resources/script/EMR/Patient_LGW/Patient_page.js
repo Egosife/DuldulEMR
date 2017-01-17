@@ -70,6 +70,8 @@ function patient_list() {
 			
 			PL = "";
 			
+			PL += "<span class='page_btn_box' name='1'><<</span>";
+			
 			if($("input[name='Pat_page']").val() == 1) {
 				PL += "<span class='page_btn_box' name='1'><</span>";
 			} else {
@@ -80,15 +82,17 @@ function patient_list() {
 				if(i == $("input[name='Pat_page']").val()) {
 					PL += "<span class='page_btn_box_now' name='" + i + "'><b>" + i + "</b></span>";
 				} else {
-					PL += "<span class='page_btn_box' class='p_table_pageing' name='" + i + "'>" + i + "</span>";
+					PL += "<span class='page_btn_box' name='" + i + "'>" + i + "</span>";
 				}
 			}
 			
 			if($("input[name='Pat_page']").val() == result.pb.maxPcount) {
 				PL += "<span class='page_btn_box' name='" + result.pb.maxPcount + "'>></span>";
 			} else {
-				PL += "<span class='page_btn_box' class='p_table_pageing' name='" + ($("input[name='Pat_page']").val() * 1 + 1) + "'>></span>";
+				PL += "<span class='page_btn_box' name='" + ($("input[name='Pat_page']").val() * 1 + 1) + "'>></span>";
 			}
+			
+			PL +="<span class='page_btn_box' name='"+result.pb.maxPcount+"'>>></span>";
 			
 			$("#pagingP").html(PL);
 		},

@@ -58,7 +58,7 @@ function Es_makePopup2(title, contents) {
 		html += "<div class=\"Es_popup_contents\">";
 			html += "<div class=\"Es_popup_text\">" + contents + "</div>";
 			html += "<div class=\"Es_popup_btn\">";
-				html += "<input type=\"button\" class=\"Es_btn_ok\" value=\"확인\"/>";
+				html += "<input type=\"button\" class=\"Es_btn_ok\" value=\"확인\" style=\"border-right: 1px solid #ccc;\"/>";
 				html += "<input type=\"button\" class=\"Es_btn_close\" value=\"닫기\"/>";
 			html += "</div>";
 		html += "</div>";

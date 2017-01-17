@@ -37,7 +37,7 @@
 				<div class='E_name'>직원조회</div>
 			</div>
 			<div class='Emp_top_table'>
-				<table class='EMP_table' border="1" align="center">
+				<table class='EMP_table' align="center">
 					<colgroup>
 						<col style="width: 3%;">
 						<col style="width: 5%;">

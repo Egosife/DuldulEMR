@@ -52,15 +52,15 @@
 				</div>
 			</form>
 			<div class='Set_top_table'>
-				<table class='Set_table' border="1" align="center">
+				<table class='Set_table' align="center">
 					<colgroup>
-						<col style="width: 3%;">
 						<col style="width: 7%;">
 						<col style="width: 7%;">
 						<col style="width: 7%;">
-						<col style="width: 5%;">
-						<col style="width: 5%;">
 						<col style="width: 7%;">
+						<col style="width: 7%;">
+						<col style="width: 7%;">
+						<col style="width: 10%;">
 						<col style="width: 5%;">
 						<col style="width: 10%;">
 						<col style="width: 7%;">

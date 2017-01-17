@@ -37,7 +37,7 @@
 				<div class='p_name'>환자조회</div>
 			</div>
 			<div class='top_table'>
-				<table class='p_table' border="1" align="center">
+				<table class='p_table' align="center">
 					<colgroup>
 						<col style="width: 2%;">
 						<col style="width: 5%;">

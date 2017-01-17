@@ -146,7 +146,7 @@
 				<div class='D_name1'>진단기록</div>
 			</div>
 			<div class='Det_mid_bot'>
-				<table class='Det_table' border="1" align="center">
+				<table class='Det_table' align="center">
 					<colgroup>
 						<col style="width: 2%;">
 						<col style="width: 5%;">
@@ -176,7 +176,7 @@
 				<div class='D_name2'>처방기록</div>
 			</div>
 			<div class='Det_bot_bot'>
-				<table class='Det_table' border="1" align="center">
+				<table class='Det_table' align="center">
 					<colgroup>
 						<col style="width: 2%;">
 						<col style="width: 5%;">

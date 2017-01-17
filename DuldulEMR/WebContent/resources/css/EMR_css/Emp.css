@@ -31,7 +31,7 @@
  	width: 100%;
  	height: 10%;
  	font-size: 40pt;
- 	background-color: #F6F6F6;
+ 	background-color: #FFFFFF;
  }
  
  .E_name { /* 직원조회 간격 */
@@ -40,26 +40,33 @@
  
  .Emp_top_table { /* 메인 탑 - 직원 표 12 - 02 수정 */
  	width: 100%;
- 	height: calc(80% - 40px);
+ 	height: calc(80% - 25px);
  	font-size: 20pt;
- 	padding-top: 40px;
- 	background-color: #DDDDDD;
- }
- 
- .EMP_table{ /* 직원조회 표 사이즈 12 - 02 수정 */
- 	width: 95%;
- 	text-align: center;
+ 	padding-top: 25px;
  	background-color: #FFFFFF;
  }
  
- .Emp_table_tr:hover{ /* 테이블 색깔 지정 */
+ .EMP_table { /* 직원조회 표 사이즈 12 - 02 수정 */
+ 	width: 100%;
+ 	text-align: center;
+ 	border-collapse: collapse;
+ 	background-color: #FFFFFF;
+ }
+ 
+ .Emp_table_tr:hover { /* 테이블 색깔 지정 */
  	cursor: pointer;
  	background-color: #F0F0F0;
  }
  
- .Emp_table_pageing:hover{ /* 리스트 버튼 크기 및 색깔 지정 */
- 	cursor: pointer;
- 	color: red;
+ .Emp_top_table th {
+ 	padding: 10px;
+ 	color: #FFFFFF;
+ 	background: #43A047;
+ }
+ 
+ .Emp_top_table td {
+ 	padding: 4.5px;
+ 	border-bottom: 1px solid #ccc;
  }
  
  .Emp_top_bar { /* 메인 탑 - 직원등록 바 */
@@ -113,7 +120,7 @@
  	width: 100%;
  	height: 50%;
  	text-align: center;
- 	background-color: #DDDDDD;
+ 	background-color: #FFFFFF;
  }
  
  .E_select_box { /* 셀렉트 박스  */
