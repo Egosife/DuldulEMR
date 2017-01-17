@@ -247,30 +247,30 @@ $(document).ready(function(){
 				html+="<input type='hidden' id='man_cellphone_num' name='man_cellphone_num'>"
 					html+="<table class='man_popup_table' width='100%'>";
 							html+="<tr>";
-								html+="<td> *직원 번호 </td>";
+								html+="<td style='font-weight: bold;'> *직원 번호 </td>";
 								html+="<td><input type='text' class='man_idcheck' name='man_popup_jun' id='man_popup_jun'></td>";
 								html+="<td colspan='2' style='color: red;'>* 는 필수 입력 항목입니다.</td>"
 							html+="</tr>";
 							html+="<tr>";
-								html+="<td> *직 책 </td>";
+								html+="<td style='font-weight: bold;'> *직 책 </td>";
 								html+="<td><select id='man_popup_jik' name='man_book'><option value='-1' selected='selected'>선택</option><option value='0'>직책 0</option><option value='1'>직책 1</option><option value='2'>직책 2</option></select></td>";
-								html+="<td> *등 급 </td>";
+								html+="<td style='font-weight: bold;'> *등 급 </td>";
 								html+="<td><select id='man_popup_lv' name='man_level'><option value='-1' selected='selected'>선택</option><option value='1'>매니저</option><option value='2'>의사</option><option value='3'>간호사</option></select></td>";
 							html+="</tr>";
 							html+="<tr>";
-								html+="<td> *성 명 </td>";
+								html+="<td style='font-weight: bold;'> *성 명 </td>";
 								html+="<td><input type='text' id='man_popup_name' name='man_name' maxlength='10'></td>";
-								html+="<td> *진료과 </td>";
+								html+="<td style='font-weight: bold;'> *진료과 </td>";
 								html+="<td><select id='man_popup_jinryo' name='man_jinryo'><option value='-1' selected='selected'>선택</option><option value='0'>진료과 0</option><option value='1'>진료과 1</option><option value='2'>진료과 2</option></select></td>";
 							html+="</tr>";
 							html+="<tr>";
-								html+="<td> *비밀번호</td>";
+								html+="<td style='font-weight: bold;'> *비밀번호</td>";
 								html+="<td><input type='password' name='man_popup_pw' id='man_popup_pw1'></td>";
-								html+="<td> *비밀번호 확인</td>";
+								html+="<td style='font-weight: bold;'> *비밀번호 확인</td>";
 								html+="<td><input type='password' id='man_popup_pw2'></td>";
 							html+="</tr>";
 							html+="<tr>";
-								html+="<td> *연락처 </td>";
+								html+="<td style='font-weight: bold;'> *연락처 </td>";
 								html+="<td><input type='text' id='man_phone1' name='man_cellphone_num' maxlength='3' class='man_rakchu'>-<input type='text' id='man_phone2' name='man_cellphone_num' maxlength='4' class='man_rakchu'>-<input type='text' id='man_phone3' name='man_cellphone_num' maxlength='4' class='man_rakchu'></td>";
 								html+="<td> 생년월일 </td>";
 								html+="<td><input type='text'maxlength='8' readonly='readonly' id='man_date'></td>";

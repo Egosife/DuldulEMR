@@ -30,7 +30,7 @@
 		<div class="man_top_hos">
 		<form action='' id='Man_opt_Form' method='post' style="width: 100%; height: 100%;">
 			<input type="hidden" name="HOSPITAL_CODE" value="${sHospital_Code}"/> <!-- 병원 코드 가져오기 --> 
-			<table border="1" class="man_table">
+			<table class="man_table">
 				<colgroup>
 					<col style="width: 16%;">
 					<col style="width: 15%;">
@@ -62,7 +62,7 @@
 	<div class="man_bottom_lay">
 		<div class="man_bottom_doc_nur"><b>의사 및 간호사 계정 관리</b></div>
 		<div class="man_bottom_all_emp">
-			<table border="1" class="man_table">
+			<table class="man_table">
 				<colgroup>
 					<col style="width: 8%;">
 					<col style="width: 8%;">
