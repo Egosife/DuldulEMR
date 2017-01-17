@@ -29,9 +29,9 @@
  
  .bbs_top_table { /* 공지사항 테이블*/
  	width: 100%;
- 	height: calc(80% - 40px);
+	height: calc(80% - 25px);
  	font-size: 20pt;
-
+  	padding-top: 25px;
  	background-color: #ffffff;
  }
  

@@ -15,7 +15,7 @@
 </head>
 <body>
 <input type="hidden" name="sLvCode" value="${sLv_Code}"/>
-<form action="#" id="deleteForm"  method="post">
+<form action="#" id="bbs_detail_deleteForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
@@ -25,7 +25,7 @@
 
 </form>
 
-			<form action="#" id="updateForm" method="post">
+			<form action="#" id="bbs_detail_updateForm" method="post">
 	  <input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 	  <input type="hidden" name="write" value="${sEmp_Name}"/>
 	  <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
@@ -66,8 +66,8 @@
   		 	<c:choose>
 				<c:when test="${sLv_Code == 0 || sLv_Code == 1}">
 				
-					<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
-					<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
+					<input type="button" value="수정" id="bbs_detail_changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
+					<input type="button" value="삭제" id="bbs_detail_deleteBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
 						   
 				</c:when>
 			</c:choose>

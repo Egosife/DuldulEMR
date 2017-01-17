@@ -2,19 +2,19 @@
 $(document).ready(function(){
 
 		
-		$("#changeBtn").on("click", function(){
+		$("#bbs_detail_changeBtn").on("click", function(){
 			
 			
 
-			 if(($("#updateForm input[name='write']").val() == $("#updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0 || $("input[name='sLvCode']").val() == 1){ 
+			 if(($("#bbs_detail_updateForm input[name='write']").val() == $("#bbs_detail_updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0 || $("input[name='sLvCode']").val() == 1){ 
 				 if($(this).val() == "완료"){
-					 var updateForm = $("#updateForm");
-					 updateForm.ajaxForm(uploadResultCallBack);
-					 updateForm.submit();
+					 var bbs_detail_updateForm = $("#bbs_detail_updateForm");
+					 bbs_detail_updateForm.ajaxForm(uploadResultCallBack);
+					 bbs_detail_updateForm.submit();
 					 
 				 }else{
-					 $("#changeBtn").attr("value","완료");
-					 $("#TitleText").removeAttr("readonly");
+					 $("#bbs_detail_changeBtn").attr("value","완료");
+					 $("#bbs_write_TitleText").removeAttr("readonly");
 					 $("#textarea_test").removeAttr("readonly");
 				 }
 			
@@ -27,10 +27,10 @@ $(document).ready(function(){
 			
 		});
 		
-		$("#deleteBtn").on("click", function(){
-		 if(($("#deleteForm input[name='write']").val() == $("#deleteForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
+		$("#bbs_detail_deleteBtn").on("click", function(){
+		 if(($("#bbs_detail_deleteForm input[name='write']").val() == $("#bbs_detail_deleteForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
 			if(confirm("지울꺼니?")){
-				var params = $("#deleteForm").serialize();
+				var params = $("#bbs_detail_deleteForm").serialize();
 				console.log(params);
 				$.ajax({
 					type : "post",
@@ -63,7 +63,7 @@ function uploadResultCallBack(data, result){
 
 	if(result == "success"){
 		
-		var params = $("#updateForm").serialize();
+		var params = $("#bbs_detail_updateForm").serialize();
 		
 		$.ajax({
 			type : "post",
@@ -74,8 +74,8 @@ function uploadResultCallBack(data, result){
 				if(result.res > 0){
 					alert("수정했습니다.")
 					
-					$("#changeBtn").attr("value","수정");
-					$("#TitleText").attr("readonly", "readonly");
+					$("#bbs_detail_changeBtn").attr("value","수정");
+					$("#bbs_write_TitleText").attr("readonly", "readonly");
 					$("#textarea_test").attr("readonly", "readonly");
 					
 					

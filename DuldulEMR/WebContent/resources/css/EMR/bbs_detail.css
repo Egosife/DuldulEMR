@@ -48,7 +48,7 @@
 	font-size: 18pt;
 	text-align: center;
 	vertical-align: bottom;
-	background-color: #4CAF50;
+	background-color: #ffffff;
 }
 .bbs_detail_writer{
 	display: inline-block;
@@ -115,7 +115,7 @@
 	height: 7%;
 	text-align: center;
 	font-size: 18pt;
-	background-color: #4CAF50;
+	background-color: #ffffff;
 }
 /* 레이아웃 중단 - 내용 입력 */
 .bbs_detail_content_text{

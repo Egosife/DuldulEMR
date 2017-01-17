@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("#cancleBtn").on("click", function(){
+	$("#bbs_write_cancleBtn").on("click", function(){
 
 
 		var newTab = {tab:"notice*공지사항*notice"};
@@ -9,13 +9,13 @@ $(document).ready(function(){
 		ReOpen_Tab(newTab);
 	});
 	
-	$("#saveBtn").on("click", function(){
+	$("#bbs_write_saveBtn").on("click", function(){
 
 		
-		var insertForm = $("#insertForm");
+		var insertForm = $("#bbs_write_insertForm");
 
-		insertForm.ajaxForm(uploadResultCallBack);//ajaxForm:이폼 실행하면 아작스폼으로 하겠다 하는게 ajaxForm
-		insertForm.submit();			
+		bbs_write_insertForm.ajaxForm(uploadResultCallBack);//ajaxForm:이폼 실행하면 아작스폼으로 하겠다 하는게 ajaxForm
+		bbs_write_insertForm.submit();			
 	
 	});
 });
@@ -26,7 +26,7 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 	var newTab = {tab:"notice*공지사항*notice"};
 	if(result == "success"){ //결과가 성공이네.......그럼 json을 자바스크립트 bean으로 만든다
 
-		var params = $("#insertForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
+		var params = $("#bbs_write_insertForm").serialize();//serialize는 전송하기쉽게 데이터를 정리해놓은것 
 		
 		$.ajax({
 			type : "post",
