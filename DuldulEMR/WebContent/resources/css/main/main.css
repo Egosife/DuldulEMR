@@ -219,9 +219,8 @@ input[type='button']{
 .main_tab_now {
 	width: calc(8% - 3px);
 	height: calc(100% - 6px);
-	border-bottom: 6px solid white;
-	background-color: red;
-	border-radius: 6px;
+	border-bottom: 6px solid #DA70D6;
+	background-color: #4CAF50;
 	margin: 3px 0;
 	margin-left: 5px;
 	display: inline-block;
@@ -231,7 +230,6 @@ input[type='button']{
 .main_tab {
 	width: calc(8% - 3px);
 	height: calc(100% - 6px);
-	/* border-bottom: 6px solid red; */
 	background-color: #4CAF50;
 	margin: 3px 0;
 	margin-left: 5px;
@@ -259,10 +257,15 @@ input[type='button']{
 
 .main_tab_close{
 	width: 15px;
-	height: 100%;
-	background-color: #DA70D6;
+	height: calc(100% - 10px);
 	cursor: pointer;
+	font-size: 14pt;
+	text-align: center;
 	float: right;
+	padding-top: 10px;
+}
+.main_tab_close:hover{
+	background-color: rgba(68, 68, 68, 0.5);
 }
 
 .pages{
