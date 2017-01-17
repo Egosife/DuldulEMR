@@ -23,6 +23,12 @@ input[type='button']{
 	color: white;
 	cursor: pointer;
 }
+input[type='button']:hover{
+	background-color: #43A047;
+}
+input[type='button']:active{
+	background-color: silver;
+}
 
 .main_layout {
 	width: 100%;
@@ -147,6 +153,12 @@ input[type='button']{
 	background-repeat: no-repeat;
 	background-position: 50% 15%; */
 }
+.main_menu_btn_acti:hover {
+	background-color: #4CAF50;
+}
+.main_menu_btn_acti:active {
+	background-color: silver;
+}
 .main_menu_btn {
 	width: 100%;
 	height: 120px;
@@ -215,6 +227,15 @@ input[type='button']{
 .btnlist_btns:hover {
 	background-color: #F0F0F0;
 }
+.btnlist_btnsNT:hover {
+	background-color: #F0F0F0;
+}
+.btnlist_btns:active {
+	background-color: silver;
+}
+.btnlist_btnsNT:active {
+	background-color: silver;
+}
 
 .main_tab_now {
 	width: calc(8% - 3px);
@@ -263,9 +284,11 @@ input[type='button']{
 	text-align: center;
 	float: right;
 	padding-top: 10px;
+	opacity: 0.5;
 }
 .main_tab_close:hover{
 	background-color: rgba(68, 68, 68, 0.5);
+	opacity: 1;
 }
 
 .pages{
