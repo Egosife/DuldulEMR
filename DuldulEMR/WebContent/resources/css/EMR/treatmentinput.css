@@ -2,7 +2,32 @@
 .table_css {
 	width: 100%;
 	background-color: white;
+ 	border-collapse: collapse;
+    line-height: 1.3;
 }
+.table_css thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.table_css th {
+   width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: grey;
+    text-align: center;
+}
+  .table_css td {
+    width: 350px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  text-align: center;
+}  
 
 .div_treat_main {
 	width: 100%;

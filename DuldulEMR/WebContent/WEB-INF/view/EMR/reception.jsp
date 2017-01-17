@@ -230,7 +230,7 @@ function SetTimeSelecter(){
 			<input type="checkbox" id="watingpatibox" value="1">대기 환자만 조회
 		</div>
 		<div class="rep_petitable">
-			<table class="rep_pati_table" border="1">
+			<table class="rep_pati_table">
 				<thead>
 					<tr>
 						<th>번호</th>

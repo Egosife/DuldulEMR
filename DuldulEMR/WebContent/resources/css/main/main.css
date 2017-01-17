@@ -14,6 +14,16 @@ div {
 	overflow: hidden;
 }
 
+input[type='button']{
+	border:0;
+	background-color: #4CAF50;
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	color: white;
+	cursor: pointer;
+}
+
 .main_layout {
 	width: 100%;
 	min-width: 1800px;
@@ -24,7 +34,7 @@ div {
 	width: 100%;
 	height: 3%;
 	background-color: silver;
-	text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 .main_topbar_title {
 	width: calc(50% - 20px);
@@ -75,63 +85,63 @@ div {
 
 .main_midbar {
 	width: 100%;
-	height: 5%;
-	margin-top: 5px;
-	text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	height: calc(5% - 1px);
+	border-bottom: 1px solid #444444;
+	text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 .main_midbar_time {
-	width: 9%;
+	width: calc(9% - 1px);
 	height: 100%;
-	font-size: 12pt;
+	font-size: 13pt;
+	color: white;
 	font-weight:bold;
 	text-align: center;
-	background-color: silver;
+	background-color: #4CAF50;
 	display: inline-block;
+	border-right: 1px solid #444444;
 }
 .main_midbar_tabs {
-	width: calc(91% - 5px);
+	width: 91%;
 	height: 100%;
-	background-color: silver;
+	background-color: #f2f2f2;
 	display: inline-block;
-	margin-left: 5px;
 }
 
 .main_content {
 	width: 100%;
-	height: 90%;
-	margin-top: 5px;
+	height: 95%;
 }
 .main_content_menu {
-	width: 9%;
-	/* height: 100%; */
-	display: inline-block;
-	font-size: 15pt;
-	text-align: center;
-	font-weight:bold;
-	background-color: silver;
-	text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
-}
-.main_content_page {
-	width: calc(91% - 5px);
+	width: calc(9% - 1px);
 	height: 100%;
 	display: inline-block;
-	background-color: gray;
-	margin-left: 5px;
+	font-size: 15pt;
+	color: white;
+	text-align: center;
+	font-weight:bold;
+	background-color: #4CAF50;
+	text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+	border-right: 1px solid #444444;
+}
+.main_content_page {
+	width: 91%;
+	height: 100%;
+	display: inline-block;
 }
 
 .main_menu_btn_acti {
 	width: 100%;
-	height: 135px;
+	height: 120px;
 	padding-top: 10px;
 	margin: 0 auto;
 	font-size: 15pt;
 	text-align: center;
 	font-weight:bold;
 	cursor: pointer;
-	background-color: silver;
+	background-color: #43A047;
 	color: white;
-	box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
-	text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	box-shadow: inset 0 0 10px 0 rgba(0,0,0,0.5);
+	text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 /* 	background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/a6/Ubuntu_Studio-icon-pd2.png);
 	background-size: 40% 55%;
 	background-repeat: no-repeat;
@@ -139,24 +149,25 @@ div {
 }
 .main_menu_btn {
 	width: 100%;
-	height: calc(15% - 10px);
+	height: 120px;
 	padding-top: 10px;
 	margin: 0 auto;
 	font-size: 15pt;
 	text-align: center;
 	font-weight:bold;
 	cursor: pointer;
-	background-color: gray;
+	background-color: #4CAF50;
 	color: white;
-	box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
-	text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	border-bottom: 1px solid #444444;
+	/* box-shadow: inset 0 0 1px 0 rgba(0,0,0,0.5); */
+	text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 /* 	background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/a6/Ubuntu_Studio-icon-pd2.png);
 	background-size: 40% 55%;
 	background-repeat: no-repeat;
 	background-position: 50% 15%; */
 }
 .main_menu_btn:hover {
-	background-color: #505050;
+	background-color: #43A047;
 }
 .main_menu_btn:active {
 	background-color: gray;
@@ -181,7 +192,25 @@ div {
 	font-weight:bold;
 	cursor: pointer;
 	background-color: white;
-	border-right: 3px solid red;
+	border-right: 3px solid #DA70D6;
+	border-bottom: 1px solid #444444;
+	/* box-shadow: inset 0 0 1px 0 rgba(0,0,0,0.5); */
+	color: black;
+}
+.btnlist_btnsNT {
+	width: calc(100% - 3px);
+	height: 55px;
+	padding-top: 5px;
+	margin: 0 auto;
+	font-size: 15pt;
+	text-align: left;
+	font-weight:bold;
+	cursor: pointer;
+	background-color: white;
+	border-right: 3px solid #DA70D6;
+	border-bottom: 1px solid #444444;
+	/* box-shadow: inset 0 0 1px 0 rgba(0,0,0,0.5); */
+	color: black;
 }
 .btnlist_btns:hover {
 	background-color: #F0F0F0;
@@ -191,42 +220,36 @@ div {
 	width: calc(8% - 3px);
 	height: calc(100% - 6px);
 	border-bottom: 6px solid white;
-	background-color: white;
+	background-color: red;
 	border-radius: 6px;
 	margin: 3px 0;
-	margin-right: 5px;
+	margin-left: 5px;
 	display: inline-block;
 	cursor: pointer;
+	color: white;
 }
 .main_tab {
 	width: calc(8% - 3px);
 	height: calc(100% - 6px);
 	/* border-bottom: 6px solid red; */
-	background-color: white;
-	border-radius: 6px;
+	background-color: #4CAF50;
 	margin: 3px 0;
-	margin-right: 5px;
+	margin-left: 5px;
 	display: inline-block;
 	cursor: pointer;
+	color: white;
 }
 
 .main_tab:hover {
-	width: calc(8% - 3px);
-	height: calc(100% - 6px);
-	border-bottom: 6px solid white;
-	background-color: white;
-	border-radius: 6px;
-	margin: 3px 0;
-	margin-right: 5px;
-	display: inline-block;
-	cursor: pointer;
+	border-bottom: 6px solid #DA70D6;
 }
 
 .tab_layout{
-	width: calc(100% - 15px);
+	width: calc(100% - 25px);
 	height: calc(100% - 12px);
 	display: inline-block;
 	padding-top: 12px;
+	padding-left: 10px;
 }
 .tab_text {
 	font-size: 12pt;
@@ -237,7 +260,7 @@ div {
 .main_tab_close{
 	width: 15px;
 	height: 100%;
-	background-color: red;
+	background-color: #DA70D6;
 	cursor: pointer;
 	float: right;
 }

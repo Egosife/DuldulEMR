@@ -42,6 +42,15 @@ $(document).ready(function(){
 	//탭 내용 보기
 	$("body").on("click",".tab_layout",function(){
 		Bbs_Type(this);
+		/*
+		$(".main_tab_now").attr('class','main_tab');
+		*/
+		var tablayoutid = "tab_"+ $(this).attr('value');
+		console.log("asd");
+		console.log($("#"+tablayoutid));
+		/*
+		$(".main_tab_now").attr('class','main_tab');
+		*/
 		if($("#tab-close_"+$(this).attr('value')).css('display') == 'none'){
 			var tabId = $(this).attr('value');
 			

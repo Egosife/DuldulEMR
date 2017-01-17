@@ -85,16 +85,16 @@ $(document).ready(function() {
 <body>
 <div class='main_layout'>
 <!-- 계정정보 영역 -->
-	<div class="main_topbar">
+<%-- 	<div class="main_topbar">
 		<div class="main_topbar_title">
 			${sHospital_Name} (${sHospital_Code})
 		</div>
 		<div class="main_topbar_account">
 			${sEmp_Name} (${sEmp_Num})
-			<div class="main_topbar_account_opt" id="optbtn"></div>
-			<div class="main_topbar_account_logout" id="logoff"></div>
+			<div class="main_topbar_account_opt" id="optbtn2"></div>
+			<div class="main_topbar_account_logout" id="logoff2"></div>
 		</div>
-	</div>
+	</div> --%>
 <!-- 시간과 탭영역 -->
 	<div class="main_midbar">
 		<div class="main_midbar_time" id="nowtime"></div>
@@ -103,8 +103,20 @@ $(document).ready(function() {
 <!-- 메뉴와 컨텐츠 영역 -->
 	<div class="main_content">
 		<div class="main_content_menu" id="main_content_menu">
-			메 뉴
-			<div style="background-color: red;">
+			${sHospital_Name}
+			<div style="background-color: #DA70D6;">
+			<div class="main_menu_btn" id="menu99_btn">
+			<img alt="img1" width="80px" height="80px" style="margin-left: 10px;" src="resources/images/icons/user_b.png">
+			<br/>${sEmp_Name}
+			</div>
+				<div class="menu_btnlist" id="menu99">
+					<div class="btnlist_btnsNT" id="optbtn">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/settings.png">
+					정보설정</div>
+					<div class="btnlist_btnsNT" id="logoff">
+					<img alt="img1" width="50px" height="50px" style="vertical-align:-15px;" src="resources/images/icons/logout.png">
+					로그아웃</div>
+				</div>
 			<div class="main_menu_btn" id="menu0_btn">
 			<img alt="img1" width="80px" height="80px" style="margin-left: 10px;" src="resources/images/icons/board_b.png">
 			<br/>게 시 판
