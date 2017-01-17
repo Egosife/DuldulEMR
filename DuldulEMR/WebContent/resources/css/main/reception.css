@@ -26,7 +26,7 @@
     font-weight: bold;
     vertical-align: top;
     border-bottom: 1px solid #ffffff;
-    background: grey;
+    background: #4CAF50;
     text-align: center;
 }
   .rep_pati_table td {
@@ -36,20 +36,6 @@
     border-bottom: 1px solid #ccc;
   text-align: center;
 }  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .rep_main {
 	width: 100%;
@@ -63,7 +49,6 @@
 .rep_petititle {
 	width: 50%;
 	height: 10%;
-	background-color: silver;
 	font-size: 14pt;
 	font-weight: bold;
 	display: inline-block;
@@ -71,7 +56,6 @@
 .rep_petiopt {
 	width: calc(50% - 20px);
 	height: 10%;
-	background-color: silver;
 	font-size: 10pt;
 	display: inline-block;
 	text-align: right;

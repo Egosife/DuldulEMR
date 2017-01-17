@@ -69,6 +69,17 @@ $(document).ready(function(){
 			Close_OtherTab(this);
 		}
 	})//탭 닫기 end
+
+	//마우스 휠 클릭으로 탭 닫기
+	$("body").on("mousedown",".tab_layout",function(e){
+		if(e.which == 2){
+			if($("#tab_"+$(this).attr('value')).attr('class') == 'main_tab_now'){
+				Close_HTab($(this).attr('value'));
+			}else{
+				Close_OtherHTab($(this).attr('value'));
+			}
+		}
+	})//탭 닫기 end
 	
 })//ready end
 
@@ -155,6 +166,23 @@ function Close_Tab(obj){
 	View_Tab_Content(id);
 }
 //탭 닫기
+function Close_HTab(value){
+	var tab_id = "tab_"+value;
+	
+	$("#"+tab_id).hide('fast',function(){
+		$("#"+tab_id).remove();
+	});
+	$("#content_"+value).remove();
+	
+	var id = $("#main_content_page").children('div:first').attr("value");
+	var val = $("#tab_bar").children('div:first').attr("value");
+	if(val != null){
+		Bbs_Type_Val(val);
+	}
+	
+	View_Tab_Content(id);
+}
+//탭 닫기
 function Close_OtherTab(obj){
 	var tab_id = "tab_"+$(obj).attr('tab');
 	
@@ -162,6 +190,15 @@ function Close_OtherTab(obj){
 		$("#"+tab_id).remove();
 	});
 	$("#content_"+$(obj).attr('tab')).remove();
+}
+//탭 닫기
+function Close_OtherHTab(value){
+	var tab_id = "tab_"+value;
+	
+	$("#"+tab_id).hide('fast',function(){
+		$("#"+tab_id).remove();
+	});
+	$("#content_"+value).remove();
 }
 //탭 닫기
 function ReClose_Tab(obj,tab){
@@ -196,7 +233,7 @@ function Open_Tab(obj){
 		if(useid != null){
 			Bbs_Type(obj);
 		}
-		if($("#tab-close_"+tab[2]).css('display') == 'none'){
+		if($("#tab_"+tab[2]).attr('class') == 'main_tab'){
 		View_Tab_Content(tab[2]);
 		}
 	}

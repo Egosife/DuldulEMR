@@ -27,7 +27,7 @@ input[type='button']:hover{
 	background-color: #43A047;
 }
 input[type='button']:active{
-	background-color: silver;
+	background-color: #4CAF50;
 }
 
 .main_layout {
