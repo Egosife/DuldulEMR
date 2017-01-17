@@ -1,8 +1,11 @@
 $(document).ready(function(){
 	$("#cancleBtn").on("click", function(){
+		var closeTab ={tab:"bbs_write2"};
+		var newTab = {tab:"bbs*사내게시판*bbs"};
 		//$("#actionForm").attr("action","notice");
 		//$("#actionForm").submit();
-		Close_Tab(this);
+		Close_Tab(closeTab);
+		ReOpen_Tab(newTab);
 	});
 	
 	$("#saveBtn").on("click", function(){
@@ -33,8 +36,8 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 				if(result.res == "true"){
 					alert("저장 .")
 						
-					ReOpen_Tab(newTab);
 					Close_Tab(closeTab);
+					ReOpen_Tab(newTab);
 					
 				}else{
 					alert("Error - Write_2001");

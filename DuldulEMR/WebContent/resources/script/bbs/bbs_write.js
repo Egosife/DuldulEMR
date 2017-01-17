@@ -1,8 +1,12 @@
 $(document).ready(function(){
 	$("#cancleBtn").on("click", function(){
+
+
+		var newTab = {tab:"notice*공지사항*notice"};
 		//$("#actionForm").attr("action","notice");
 		//$("#actionForm").submit();
 		Close_Tab(this);
+		ReOpen_Tab(newTab);
 	});
 	
 	$("#saveBtn").on("click", function(){
@@ -33,8 +37,8 @@ function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임
 				if(result.res == "true"){
 					alert("저장 .")
 						
-					ReOpen_Tab(newTab);
 					Close_Tab(closeTab);
+					ReOpen_Tab(newTab);
 					
 				}else{
 		            alert("Error - Write_1001");
