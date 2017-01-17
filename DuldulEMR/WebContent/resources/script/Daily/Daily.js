@@ -4,16 +4,16 @@ $(document).ready(function(){
 	emp_List(); 
 	dailyList();
 	
-	$("#insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
+	$("#Daily_insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
 		Open_Tab(this); // 탭을 오픈한다
 	}); //insertBtn end
 	
-	$("#pagingArea").on("click","span",function(){ //페이징을 클릭하면
+	$("#Daily_pagingArea").on("click","span",function(){ //페이징을 클릭하면
 		$("input[name='page']").val($(this).attr("name"));
 		dailyList();
 	}); //pagingArea end
 	
-	$("#tb").on("click","tr",function(){ //글을 클릭하면
+	$("#Daily_tb").on("click","tr",function(){ //글을 클릭하면
 		Open_Tab(this); //탭을 오픈한다
 	}); //tb end
 });//ready end
@@ -57,7 +57,7 @@ function dailyList(){
 				html += "<td>"+result.list[i].CONTENT+"</td>"; //내용
 				html += "</tr>";
 			}
-			$("#tb").html(html); //내용 데이터 가져오기
+			$("#Daily_tb").html(html); //내용 데이터 가져오기
 			
 			//페이징 처리 단계
 			html="";
@@ -82,7 +82,7 @@ function dailyList(){
 				html += "<span class='page_btn_box' name='" + ($("input[name='page']").val() * 1 + 1) + "'>></span>";
 			}
 			html += "<span class='page_btn_box' name='" + result.pb.maxPcount + "'>>></span>";
-			$("#pagingArea").html(html);
+			$("#Daily_pagingArea").html(html);
 		},
 		error : function(result){
 			alert("error!!");

@@ -43,28 +43,28 @@
 						<th >승인 여부</th>
 					</tr>
 				</thead>
-					<tbody id="tv"></tbody>
+					<tbody id="rest_app_tv"></tbody>
 				</table>
 			</div><hr/>
 		</div>
 		<div class="rest_apply_btn_lay">
 			<div class="rest_apply_btn_btn">
-				<input type="button" value="신청" class="rest_apply_btn_btn_civa" id="insertBtn" tab='rest*휴진신청*rest'>
+				<input type="button" value="신청" class="rest_apply_btn_btn_civa" id="rest_app_insertBtn" tab='rest*휴진신청*rest'>
 			</div>
 		</div>
 		<div class="rest_apply_top_pag">
-			<div class="rest_apply_paging" id="pagingArea_top"></div>
+			<div class="rest_apply_paging" id="rest_app_pagingArea_top"></div>
 		</div><hr/>
 	</div>
 	<div class="rest_apply_bottom">
 		<div class="rest_apply_rest"><b>휴진 현황</b></div>
 		<div class="rest_apply_text">
 				<div class="rest_apply_ilsi">
-					일 시 <input type="text" class="rest_apply_box" name="records" id="datepickersss" placeholder="날짜 선택" readonly="readonly">
+					일 시 <input type="text" class="rest_apply_box" name="records" id="rest_app_datepickersss" placeholder="날짜 선택" readonly="readonly">
 				</div>
 				<div class="rest_apply_iBtn">
-					<input type="button" value="검색" id="rest_cal" class="rest_apply_btn_btn_civa">
-					<input type="button" value="목록" id="mokrok_Btn" class="rest_apply_btn_btn_civa" tab="rest_apply*휴진현황*rest_apply">
+					<input type="button" value="검색" id="rest_app_cal" class="rest_apply_btn_btn_civa">
+					<input type="button" value="목록" id="rest_app_mokrok_Btn" class="rest_apply_btn_btn_civa" tab="rest_apply*휴진현황*rest_apply">
 				</div>
 		</div>
 		<div class="rest_apply_btm_table">
@@ -90,12 +90,12 @@
 					</thead>
 				
 				
-					<tbody id="tt"></tbody>
+					<tbody id="rest_app_tt"></tbody>
 				</table>
 			</div>
 		</div>
 		<div class="rest_apply_btm_pag">
-			<div class="rest_apply_bt_paging" id="paging_Area"></div>
+			<div class="rest_apply_bt_paging" id="rest_app_paging_Area"></div>
 		</div>
 	</div>
 </div>

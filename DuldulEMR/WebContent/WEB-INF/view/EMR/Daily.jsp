@@ -51,18 +51,18 @@
 				<th>업무 일자</th>
 				<th>업무 내용</th>
 			</tr>
-			<tbody id="tb"></tbody> <!-- 내용 데이터 가져오기 -->
+			<tbody id="Daily_tb"></tbody> <!-- 내용 데이터 가져오기 -->
 		</table>
 		</div>
 	</div><hr>
 	<div class="Dai_bottom_knk"> <!-- 레이아웃 하단 -->
 		<div class="Dai_bottom_top"> <!-- 레이아웃 하단 - 상단 -->
 			<div class="Dai_btn_knk">
-				<input type="button" value="글쓰기" class="Dai_btn_btn" id="insertBtn" tab='Daily_write*일지작성*Daily_write'> <!-- 레이아웃 하단 - 글쓰기 버튼 크기  -->
+				<input type="button" value="글쓰기" class="Dai_btn_btn" id="Daily_insertBtn" tab='Daily_write*일지작성*Daily_write'> <!-- 레이아웃 하단 - 글쓰기 버튼 크기  -->
 			</div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
 		</div>
 		<div class="Dai_bottom_bt"> <!-- 레이아웃 하단 - 하단 -->
-			<div class="Dai_paging" id="pagingArea"></div> <!-- 레이아웃 하단 - 페이징 -->
+			<div class="Dai_paging" id="Daily_pagingArea"></div> <!-- 레이아웃 하단 - 페이징 -->
 		</div>
 	</div>
 </div>

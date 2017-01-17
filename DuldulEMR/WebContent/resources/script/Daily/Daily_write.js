@@ -2,24 +2,24 @@
 		기능	개발 완료 **/
 $(document).ready(function(){
 	
-	$("#datepicker1").datepicker({ //날짜 가져오기
+	$("#DW_datepicker1").datepicker({ //날짜 가져오기
 		dateFormat : 'yy-mm-dd',
 		duration: 200,
 		onSelect:function(dateText, inst){
 		}
 	});
 	
-	$("#cancelBtn").on("click",function(){ //취소 버튼을 누르면
+	$("#DW_cancelBtn").on("click",function(){ //취소 버튼을 누르면
 		var tab = {tab:"Daily*업무일지*Daily"};
 		
 		Close_Tab(this); //탭을 닫는다
 		ReOpen_Tab(tab);
 	}); //cancelBtn 끝
 	
-	$("#saveBtn").on("click",function(){ //저장 버튼을 누르면
+	$("#DW_saveBtn").on("click",function(){ //저장 버튼을 누르면
 		if($("#datepicker1").val() == ""){ //날짜 선택 칸이 빈 칸이면
 			alert("날짜를 선택하세요."); //경고창을 띄운다
-		}else if($("#naeyoung").val() == ""){ //내용 입력 칸이 빈 칸이면
+		}else if($("#DW_naeyoung").val() == ""){ //내용 입력 칸이 빈 칸이면
 				alert("내용을 입력하세요."); //경고창을 띄운다
 			}else{
  		 var daily_wri = $("#daily_wri");

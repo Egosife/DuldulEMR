@@ -20,9 +20,9 @@ $(document).ready(function(){
             if (secondDate > firstDate || secondDate < rest_dtDate) {
             	alert("날짜를 올바르게 선택하세요.");
             	//달력에 종료 날짜 넣어주기
-        		$("#rd_datepicker1").val($("#SDATE").val());
+        		$("#rd_datepicker1").val($("#rd_SDATE").val());
 			} else {
-				$("#SDATE").val($("#rd_datepicker1").val());
+				$("#rd_SDATE").val($("#rd_datepicker1").val());
 			}
 		}
 	});
@@ -37,25 +37,25 @@ $(document).ready(function(){
             if (firstDate > secondDate || secondDate < rest_dtDate) {
             	alert("날짜를 올바르게 선택하세요.");
             	//달력에 종료 날짜 넣어주기
-        		$("#rd_datepicker2").val($("#EDATE").val());
+        		$("#rd_datepicker2").val($("#rd_EDATE").val());
 			} else {
-				$("#EDATE").val($("#rd_datepicker2").val());
+				$("#rd_EDATE").val($("#rd_datepicker2").val());
 			}
 		}
 	});
-	$("#sujeongBtn").on("click",function(){ //수정 버튼을 누르면
+	$("#rd_sujeongBtn").on("click",function(){ //수정 버튼을 누르면
 		if($(this).val() == "등록"){
 			var tail_up = $("#tail_up"); 
 			
 			tail_up.ajaxForm(uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
 			tail_up.submit();
 		}else{
-			$("#sujeongBtn").attr("value","등록");
+			$("#rd_sujeongBtn").attr("value","등록");
 			$("#rd_datepicker1").removeAttr("readonly");
 			$("#rd_datepicker2").removeAttr("readonly");
 			$("#rd_datepicker1").val("");
 			$("#rd_datepicker2").val("");
-			$("#rest_rest").removeAttr("readonly");
+			$("#rd_rest_rest").removeAttr("readonly");
 		}
 	});//sujeongBtn
 	function uploadResultCallBack(data,result){ //data엔 json이 들어가있음
@@ -73,10 +73,10 @@ $(document).ready(function(){
 				success : function(result){
 					if(result.res>0){ //result.res가 0보다 크면
 						alert("수정이 되었습니다."); //경고창 띄우기
-						$("#changeBtn").attr("value","수정");
+						$("#rd_changeBtn").attr("value","수정");
 						$("#rd_datepicker1").attr("readonly", "readonly");
 						$("#rd_datepicker2").attr("readonly", "readonly");
-						$("#rest_rest").attr("readonly", "readonly");
+						$("#rd_rest_rest").attr("readonly", "readonly");
 						Close_Tab(rest_tail_close); //글 읽기 탭과 페이지를 닫는다
 						ReOpen_Tab(rest_app_open); //업무일지 탭과 페이지를 연다
 					}else{
@@ -92,7 +92,7 @@ $(document).ready(function(){
 		}
 	} //uploadResultCallBack 끝
 	
-	$("#sakjeBtn").on("click",function(){
+	$("#rd_sakjeBtn").on("click",function(){
 		var rest_app_open = {tab:"rest_apply*휴진현황*rest_apply"}; //업무일지 탭과 페이지를 연다
 		var rest_tail_close = {tab:"rest_detail"}; //글 읽기 탭과 페이지를 닫는다
 		
@@ -120,7 +120,7 @@ $(document).ready(function(){
 		} //if 끝
 	}); //delete 끝
 	
-	$("#chisoBtn").on("click",function(){ //취소 버튼을 누르면
+	$("#rd_chisoBtn").on("click",function(){ //취소 버튼을 누르면
 		var tab = {tab:"rest_apply*휴진현황*rest_apply"};
 		
 		Close_Tab(this); //탭을 닫는다
@@ -146,7 +146,7 @@ function emp_List(){
 				html += "<td>"+result.list.EMP_NUM+"</td>"; //사원 번호
 				html += "<td>"+result.list.OFFICE+"</td>"; //근무과
 				html += "</tr>";
-				$("#tb_emp").html(html); //직원 데이터 가져오기
+				$("#rd_tb_emp").html(html); //직원 데이터 가져오기
 		}
 	});
 }
@@ -157,12 +157,11 @@ function rest_detail_Date(){
 	$("#DT_DATE").val(rd_interDate);
 }
 function rest_shincheong(){
-	if($("#R_CHECK").val()==1){
-		$("#sujeongBtn").val("재신청");
+	if($("#rd_R_CHECK").val()==1){
+		$("#rd_sujeongBtn").val("재신청");
 	}
-	if($("#R_CHECK").val()==2){
-		$("#sujeongBtn").css("display","none")
-		$("#sakjeBtn").css("display","none");
-		console.log("aaa");
+	if($("#rd_R_CHECK").val()==2){
+		$("#rd_sujeongBtn").css("display","none")
+		$("#rd_sakjeBtn").css("display","none");
 	}
 }

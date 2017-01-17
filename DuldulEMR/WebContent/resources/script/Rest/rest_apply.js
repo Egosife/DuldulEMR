@@ -5,27 +5,27 @@ $(document).ready(function(){
 	Emp_rest();
 	Rest_Select();
 	
-	$("#insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
+	$("#rest_app_insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
 		Open_Tab(this); // 탭을 오픈한다
 	}); //insertBtn end
 	
-	$("#pagingArea_top").on("click","span",function(){ //페이징을 클릭하면
+	$("#rest_app_pagingArea_top").on("click","span",function(){ //페이징을 클릭하면
 		$("input[name='page']").val($(this).attr("name"));
 		my_rest_List();
 	}); //pagingArea end
-	$("#paging_Area").on("click","span",function(){ //페이징을 클릭하면
+	$("#rest_app_paging_Area").on("click","span",function(){ //페이징을 클릭하면
 		$("input[name='page']").val($(this).attr("name"));
 		Emp_rest();
 	}); //pagingArea end
 	
-	$("#tv").on("click","tr",function(){ //글을 클릭하면
+	$("#rest_app_tv").on("click","tr",function(){ //글을 클릭하면
 		Open_Tab(this); //탭을 오픈한다
 	}); //tb end
 	
-	$("#rest_cal").on("click", function(){ //조회를 클릭 했을시
+	$("#rest_app_cal").on("click", function(){ //조회를 클릭 했을시
 		rest_search();
 	});
-	$("#mokrok_Btn").on("click", function(){ //목록보기
+	$("#rest_app_mokrok_Btn").on("click", function(){ //목록보기
 		ReOpen_Tab(this);
 	});
 });//ready end
@@ -47,7 +47,7 @@ function my_rest_List(){
 				html += "<td>"+result.list[i].R_CHECK+"</td>"; //
 				html += "</tr>";
 			}
-			$("#tv").html(html); //내용 데이터 가져오기
+			$("#rest_app_tv").html(html); //내용 데이터 가져오기
 			
 			//페이징 처리 단계
 			html="";
@@ -72,7 +72,7 @@ function my_rest_List(){
 				html += "<span class='page_btn_box' name='"+($("input[name='page']").val() * 1 + 1)+"'>></span>";
 			}
 			html +="<span class='page_btn_box' name='"+result.pb.maxPcount+"'>>></span>";
-			$("#pagingArea_top").html(html);
+			$("#rest_app_pagingArea_top").html(html);
 		},
 		error : function(result){
 			alert("error!!");
@@ -81,7 +81,6 @@ function my_rest_List(){
 }
 function Emp_rest(){
 	var params = $("#RestApplyForm").serialize();
-	console.log(params);
 	
 	$.ajax({
 		type : "post",
@@ -100,7 +99,7 @@ function Emp_rest(){
 				html += "<td>"+result.list[i].R_REASON+"</td>"; //휴진 사유
 				html += "</tr>";
 			}
-			$("#tt").html(html); //내용 데이터 가져오기
+			$("#rest_app_tt").html(html); //내용 데이터 가져오기
 			
 			//페이징 처리 단계
 			html="";
@@ -125,7 +124,7 @@ function Emp_rest(){
 				html += "<span class='page_btn_box' name='"+($("input[name='page']").val() * 1 + 1)+"'>></span>";
 			}
 			html +="<span class='page_btn_box' name='"+result.pb.maxPcount+"'>>></span>";
-			$("#paging_Area").html(html);
+			$("#rest_app_paging_Area").html(html);
 		},
 		error : function(result){
 			alert("error!!");
@@ -133,12 +132,12 @@ function Emp_rest(){
 	}); //ajax 끝
 } 
 function rest_search() { 
-	$("#rest_sea").val($("#datepickersss").val());
+	$("#rest_sea").val($("#rest_app_datepickersss").val());
 	$("input[name='page']").val("1");
 	Emp_rest();
 };
 function Rest_Select(){ //달력
-	$("#datepickersss").datepicker({
+	$("#rest_app_datepickersss").datepicker({
 		dateFormat : 'yy-mm-dd',
 		duration: 200,
 		onSelect:function(dateText, inst){

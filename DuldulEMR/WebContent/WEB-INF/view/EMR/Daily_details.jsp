@@ -17,7 +17,7 @@
 	<input type="hidden" name="TURN" value="${param.TURN}"/>
 <div class="Daily_main_mm"> <!-- 메인 레이아웃 -->
    <div class="Daily_top_tt"> <!-- 레이아웃 상단 -->
-      <div class="Daily_daily"><b>업무 일지</b></div> <!-- 레이아웃 상단 - 업무 일지 -->
+      <div class="Daily_daily"><b>업무 일지</b></div><hr/> <!-- 레이아웃 상단 - 업무 일지 -->
       <div class="Daily_calender">업무 날짜</div> <!-- 레이아웃 상단 - 업무 날짜  -->
      	 <div class="Daily_cal_btn"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
         	<input type="text" placeholder="날짜를 선택하세요" name="records" class="Daily_cal_text" id="details_calendar" readonly="readonly" value="${cond.RDATE}">
@@ -32,8 +32,8 @@
    </div><hr/>
    <div class="Daily_bottom_bb"> <!-- 레이아웃 하단  -->
          <div class="Daily_btn_1">
-         	<input type="button" value="수정" class="Daily_btn_button" id="updateBtn"/>
-         	<input type="button" value="취소" class="Daily_btn_button" id="listBtn" tab='Daily_details'/>
+         	<input type="button" value="수정" class="Daily_btn_button" id="details_updateBtn"/>
+         	<input type="button" value="취소" class="Daily_btn_button" id="details_listBtn" tab='Daily_details'/>
          	<input type="button" value="삭제" class="Daily_btn_button" id="details_delete"/> 
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>

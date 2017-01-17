@@ -12,9 +12,9 @@
 
 </head>
 <body>
-	<input type="hidden" id="SDATE" name="SDATE" value="${conn.SDATE}" />
-	<input type="hidden" id="EDATE" name="EDATE" value="${conn.EDATE}" />
-	<input type="hidden" id="TDATE" name="TDATE"/>
+	<input type="hidden" id="rest_SDATE" name="SDATE" value="${conn.SDATE}" />
+	<input type="hidden" id="rest_EDATE" name="EDATE" value="${conn.EDATE}" />
+	<input type="hidden" id="rest_TDATE" name="TDATE"/>
 <!-- 직원 데이터 가져오기 -->
 <form action="" id="restEmp_Form" method="post">
 <input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
@@ -44,11 +44,11 @@
 				<th>근무과</th>
 			</tr>
 					</thead>
-			<tbody id="tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
+			<tbody id="rest_tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
 		</table>
 	</div>
 	<div class="rest_middle"> <!-- 레이아웃 중단 -->
-		<div class="rest_report"><b>휴진 신청</b></div>
+		<div class="rest_report"><b>휴진 신청</b></div><hr/>
 			<div class="rest_mid_top">
 				<div class="rest_calender">휴진 날짜</div>
 				<div class="rest_cal_btn"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
@@ -64,8 +64,8 @@
    </div><hr>
     <div class="rest_bottom_bb"> <!-- 레이아웃 하단  -->
          <div class="rest_btn_1">
-         	<input type="button" value="등록" class="rest_btn_button" id="jajangBtn"/> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
-         	<input type="button" value="취소" class="rest_btn_button" id="sunsilBtn" tab='rest'/> 
+         	<input type="button" value="등록" class="rest_btn_button" id="rest_jajangBtn"/> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
+         	<input type="button" value="취소" class="rest_btn_button" id="rest_sunsilBtn" tab='rest'/> 
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
    </div> <!-- 구분선 -->

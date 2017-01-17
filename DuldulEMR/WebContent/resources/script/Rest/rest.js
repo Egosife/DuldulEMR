@@ -4,7 +4,7 @@ $(document).ready(function(){
 	emp_List(); 
 	rest_Date();
 	
-	$("#jajangBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
+	$("#rest_jajangBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
 		if($("#r_datepicker1s").val() == ""){ //날짜 선택 칸이 빈 칸이면
 			alert("날짜를 선택하세요."); //경고창을 띄운다
 			
@@ -20,7 +20,7 @@ $(document).ready(function(){
 			}
 	}); //insertBtn end
 	
-	$("#sunsilBtn").on("click",function(){ //취소 버튼을 누르면
+	$("#rest_sunsilBtn").on("click",function(){ //취소 버튼을 누르면
 		var tab = {tab:"rest_apply*휴진현황*rest_apply"};
 		
 		Close_Tab(this); //탭을 닫는다
@@ -45,7 +45,7 @@ function emp_List(){
 				html += "<td>"+result.list.EMP_NUM+"</td>"; //사원 번호
 				html += "<td>"+result.list.OFFICE+"</td>"; //근무과
 				html += "</tr>";
-				$("#tb_emp").html(html); //직원 데이터 가져오기
+				$("#rest_tb_emp").html(html); //직원 데이터 가져오기
 		}
 	});
 }
@@ -83,14 +83,14 @@ $("#r_datepicker1s").datepicker({
 	onSelect:function(dateText, inst){
 		var rest_first_Date = parseInt($("#r_datepicker2s").val().replace("-", '').replace("-", ''));
 		var rest_second_Date = parseInt(dateText.replace(/-/g,''));
-		var rest_tDate = parseInt($("#TDATE").val());
+		var rest_tDate = parseInt($("#rest_TDATE").val());
 		
         if (rest_second_Date > rest_first_Date || rest_second_Date < rest_tDate) {
         	alert("날짜를 올바르게 선택하세요.");
         	//달력에 종료 날짜 넣어주기
-    		$("#r_datepicker1s").val($("#SDATE").val());
+    		$("#r_datepicker1s").val($("#rest_SDATE").val());
 		} else {
-			$("#SDATE").val($("#r_datepicker1s").val());
+			$("#rest_SDATE").val($("#r_datepicker1s").val());
 		}
 	}
 });
@@ -100,14 +100,14 @@ $("#r_datepicker2s").datepicker({
 	onSelect:function(dateText, inst){
 		var rest_first_Date = parseInt($("#r_datepicker1s").val().replace("-", '').replace("-", ''));
 		var rest_second_Date = parseInt(dateText.replace(/-/g,''));
-		var rest_tDate = parseInt($("#TDATE").val());
+		var rest_tDate = parseInt($("#rest_TDATE").val());
 		
         if (rest_first_Date > rest_second_Date || rest_second_Date < rest_tDate) {
         	alert("날짜를 올바르게 선택하세요.");
         	//달력에 종료 날짜 넣어주기
-    		$("#r_datepicker2s").val($("#EDATE").val());
+    		$("#r_datepicker2s").val($("#rest_EDATE").val());
 		} else {
-			$("#EDATE").val($("#r_datepicker2s").val());
+			$("#rest_EDATE").val($("#r_datepicker2s").val());
 		}
 	}
 });
@@ -115,5 +115,5 @@ function rest_Date(){
 	var r_date = new Date();
 	
 	var r_interDate = r_date.getFullYear()+""+(r_date.getMonth()+1)+""+r_date.getDate();
-	$("#TDATE").val(r_interDate);
+	$("#rest_TDATE").val(r_interDate);
 }

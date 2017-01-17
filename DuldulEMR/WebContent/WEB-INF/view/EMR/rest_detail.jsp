@@ -11,10 +11,10 @@
 
 </head>
 <body>
-	<input type="hidden" id="SDATE" name="SDATE" value="${conn.SDATE}" />
-	<input type="hidden" id="EDATE" name="EDATE" value="${conn.EDATE}" />
+	<input type="hidden" id="rd_SDATE" name="SDATE" value="${conn.SDATE}" />
+	<input type="hidden" id="rd_EDATE" name="EDATE" value="${conn.EDATE}" />
 	<input type="hidden" id="DT_DATE" name="DT_DATE"/>
-	<input type="hidden" id="R_CHECK" name="R_CHECK" value="${conn.R_CHECK}"/>
+	<input type="hidden" id="rd_R_CHECK" name="R_CHECK" value="${conn.R_CHECK}"/>
 <!-- 직원 데이터 가져오기 -->
 <form action="" id="restEmp_Form" method="post">
 	<input type="hidden" name="EMP_NUM" value="${sEmp_Num}"/> <!-- 직원 코드 가져오기 -->
@@ -45,11 +45,11 @@
 				<th>근무과</th>
 			</tr>
 					</thead>
-			<tbody id="tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
+			<tbody id="rd_tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
 		</table>
 	</div>
 	<div class="rest_middle"> <!-- 레이아웃 중단 -->
-		<div class="rest_report"><b>휴진 신청</b></div>
+		<div class="rest_report"><b>휴진 신청</b></div><hr/>
 			<div class="rest_mid_top">
 				<div class="rest_calender">휴진 날짜</div>
 					<div class="rest_cal_btn"> 
@@ -60,14 +60,14 @@
     	<!-- 레이아웃  중단 - 업무 내용 -->
       <div class="rest_mid_text">
       <div class="rest_mid_work">휴진 내용</div>
-         <textarea name="reason" id="rest_rest" placeholder="내용을 입력하세요" class="rest_text_size" readonly="readonly">${conn.R_REASON}</textarea>
+         <textarea name="reason" id="rd_rest_rest" placeholder="내용을 입력하세요" class="rest_text_size" readonly="readonly">${conn.R_REASON}</textarea>
       </div>
    </div><hr>
     <div class="rest_bottom_bb"> <!-- 레이아웃 하단  -->
          <div class="rest_btn_1">
-         	<input type="button" value="수정" class="rest_btn_button" id="sujeongBtn"/> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
-         	<input type="button" value="취소" class="rest_btn_button" id="chisoBtn" tab='rest_detail'/>
-         	<input type="button" value="삭제" class="rest_btn_button" id="sakjeBtn"/>
+         	<input type="button" value="수정" class="rest_btn_button" id="rd_sujeongBtn"/> <!-- 레이아웃 하단 - 글쓰기 버튼 크기 -->
+         	<input type="button" value="취소" class="rest_btn_button" id="rd_chisoBtn" tab='rest_detail'/>
+         	<input type="button" value="삭제" class="rest_btn_button" id="rd_sakjeBtn"/>
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
    </div> <!-- 구분선 -->
