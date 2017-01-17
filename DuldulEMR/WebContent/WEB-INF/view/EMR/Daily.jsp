@@ -27,12 +27,12 @@
 <div class="Dai_main_knk"> <!-- 메인 레이아웃 -->
 	<div class="Dai_top_knk"> <!-- 레이아웃 상단 -->
 		<div class="Dai_b_information"><b>기본 정보</b></div> <!-- 레이아웃 - 기본 정보 -->
-		<table border="1" class="Dai_d_table"> <!-- 기본 정보 테이블 -->
+		<table class="Dai_d_table"> <!-- 기본 정보 테이블 -->
 			<tr>
-				<td>성 명</td>
-				<td>직 책</td>
-				<td>사원 번호</td>
-				<td>근무과</td>
+				<th>성 명</th>
+				<th>직 책</th>
+				<th>사원 번호</th>
+				<th>근무과</th>
 			</tr>
 			<tbody id="tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
 		</table>
@@ -40,16 +40,16 @@
 	<div class="Dai_middle_knk"> <!-- 레이아웃 중단 -->
 		<div class="Dai_report"><b>업무 일지</b></div><!-- 레이아웃 중단 - 업무 일지 -->
 		<div class="Dai_layoutt_table">
-		<table border="1" class="Dai_db_table" style="table-layout: fixed;"> <!-- 업무 일지 테이블 -->
+		<table class="Dai_db_table" style="table-layout: fixed;"> <!-- 업무 일지 테이블 -->
 			<colgroup>
 				<col style="width: 5%;">
 				<col style="width: 10%;">
 				<col style="width: 85%;">
 			</colgroup>
 			<tr>
-				<td>일 차</td>
-				<td>업무 일자</td>
-				<td>업무 내용</td>
+				<th>일 차</th>
+				<th>업무 일자</th>
+				<th>업무 내용</th>
 			</tr>
 			<tbody id="tb"></tbody> <!-- 내용 데이터 가져오기 -->
 		</table>

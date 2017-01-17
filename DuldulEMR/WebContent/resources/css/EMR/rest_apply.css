@@ -13,18 +13,18 @@
 .rest_apply_request{
 	width: 100%;
 	height: 15%;
-	background-color: #F6F6F6;
+	background-color: white;
 	font-size: 30pt;
 }
 /*  테이블 레이아웃*/
 .rest_apply_top_table{
 	width: 100%;
 	height: 61%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 테이블 위치 지정 레이아웃 */
 .rest_apply_lay_table{
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	margin: 0 auto;
 	overflow: auto;
@@ -33,28 +33,27 @@
 
 .rest_apply_set_table{ /* 테이블 크기 및 색깔 지정 */
 	width:100%;
-	
  	border-collapse: collapse;
-   text-align: center;
+    text-align: center;
 	font-size: 16pt;
 	margin: 0 auto;
     line-height: 1.2;
-       background: #ffffff;
-       table-layout: fixed;
+    background: white;
+    table-layout: fixed;
 }
 .rest_apply_set_table thead th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
-    color: #ffffff;
-    border-bottom: 3px solid #ffffff;
+    color: white;
+    border-bottom: 3px solid white;
 }
 .rest_apply_set_table th {
     width: 150px;
-      padding: 4.5px;
+    padding: 4.5px;
     font-weight: bold;
     vertical-align: top;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid white;
     background: #4CAF50;
     text-align: center;
 }
@@ -72,28 +71,27 @@
 
 .rest_apply_table_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 100%;
-	
  	border-collapse: collapse;
-   text-align: center;
+    text-align: center;
 	font-size: 16pt;
 	margin: 0 auto;
     line-height: 1.2;
-       background: #ffffff;
-       table-layout: fixed;
+    background: white;
+    table-layout: fixed;
 }
 .rest_apply_table_table thead th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
-    color: #ffffff;
-    border-bottom: 3px solid #ffffff;
+    color: white;
+    border-bottom: 3px solid white;
 }
 .rest_apply_table_table th {
     width: 150px;
-      padding: 4.5px;
+    padding: 4.5px;
     font-weight: bold;
     vertical-align: top;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid white;
     background: #4CAF50;
     text-align: center;
 }
@@ -112,25 +110,18 @@
 	cursor: pointer;
 	background-color: #F0F0F0;
 }
-/* 테이블 */
-
-.rest_apply_table_table td{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
 /* 버튼 레이아웃 */
 .rest_apply_btn_lay{
 	width: 100%;
 	height: 13%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 버튼 위치지정 레이아웃 */
 .rest_apply_btn_btn{
 	width: 13%;
 	height: 85%;
 	font-size: 10pt;
-	margin: 0 87%;
+	margin: 0 94%;
 }
 /* 버튼 크기 */
 .rest_apply_btn_btn_civa{
@@ -144,7 +135,7 @@
 	width: 100%;
 	height: 10%;
 	text-align: center;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 페이지 위치 지정 레이아웃 */
 .rest_apply_paging{
@@ -162,7 +153,7 @@
 .rest_apply_rest{
 	width: 100%;
 	height: 15%;
-	background-color: #F6F6F6;
+	background-color: white;
 	font-size: 30pt;
 }
 /* 일시,진료과,직책 레이아웃 */
@@ -170,7 +161,7 @@
 	width: 100%;
 	height: 15%;
 	text-align: center;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 일시 텍스트 크기 지정 */
 .rest_apply_box{
@@ -188,6 +179,7 @@
 }
 /* 일시,진료과,직책 위치지정 */
 .rest_apply_ilsi{
+	font-weight: bold;
 	display: inline-block;
 	width: 33%;
 	height: 100%;
@@ -204,11 +196,11 @@
 .rest_apply_btm_table{
 	width: 100%;
 	height: 59%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 테이블 위치 지정 레이아웃 */
 .rest_apply_btm_t{
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	margin: 0 auto;
 	overflow: auto;
@@ -218,7 +210,7 @@
 	width: 100%;
 	height: 10%;
 	text-align: center;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 페이지 위치 지정 레이아웃 */
 .rest_apply_bt_paging{

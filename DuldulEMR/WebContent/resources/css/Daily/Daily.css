@@ -10,38 +10,80 @@
 .Dai_top_knk{
 	width: 100%;
 	height: 25%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 상단 - 기본 정보 */
 .Dai_b_information{
 	width: 100%;
-	height: 25%;
+	height: 26%;
 	font-size: 34pt;
-	background-color: #F6F6F6;
+	background-color: white;
 }
 /* 테이블 셋팅 */
 .Dai_d_table{
-	width: 85%;
+	width: 100%;
+	border-collapse: collapse;
 	text-align: center;
 	font-size: 18pt;
 	margin: 0 auto;
+	line-height: 1.2;
 	background-color: white;
+}
+/* 상단 테이블 - th */
+.Dai_d_table th{
+	background-color: #4CAF50;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: white;
+    border-bottom: 3px solid white;
+}
+/* 상단 테이블  - td */
+.Dai_d_table td{
+	width: 150px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  	text-align: center;
+}
+/* 레이아웃 중단 - 테이블 */
+.Dai_layoutt_table{
+	width: 100%;
+	height: 89%;
+	margin: 0 auto;
+	overflow-y: auto; 
 }
 /* 하단 테이블 */
 .Dai_db_table{
 	width: 100%;
+	border-collapse: collapse;
 	text-align: center;
-	font-size: 14pt;
+	font-size: 17pt;
 	margin: 0 auto;
 	background-color: white;
-	margin-top: 65px;
-	table-layout: fixed;
+	line-height: 1.2;
 }
+/* 하단 테이블 - th */
+.Dai_db_table th{
+	background-color: #4CAF50;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: white;
+    border-bottom: 3px solid white;
+}
+/* 하단 테이블  - 포인터*/
 .Dai_db_table_tr:HOVER{
 	cursor: pointer;
 	background-color: #F0F0F0;
 }
+/* 하단 테이블  - ...을 처리하기 위해서*/
 .Dai_db_table td{
+	width: 150px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  	text-align: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -50,20 +92,14 @@
 .Dai_middle_knk{
 	width: 100%;
 	height: 54%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 중단 - 업무 일지 */
 .Dai_report{
 	width: 100%;
-	height: 11%;
+	height: 13%;
 	font-size: 34pt;
-	background-color: #F6F6F6;
-}
-.Dai_layoutt_table{
-	width: 77%;
-	height: 89%;
-	margin: 0 auto;
-	overflow-y: auto; 
+	background-color: white;
 }
 /* 레이아웃 하단 */
 .Dai_bottom_knk{
@@ -75,7 +111,7 @@
 .Dai_bottom_top{
 	width: 100%;
 	height: 50%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 하단 - 글쓰기 버튼 */
 .Dai_btn_knk{
@@ -96,7 +132,7 @@
 .Dai_bottom_bt{
 	width: 100%;
 	height: 50%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 하단 - 페이징 */
 .Dai_paging{
@@ -105,7 +141,7 @@
 	text-align: center;
 	margin: 0 auto;
 	font-size: 15pt;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 .Dai_paging:HOVER{
 	cursor: pointer;

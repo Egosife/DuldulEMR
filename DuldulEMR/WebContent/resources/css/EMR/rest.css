@@ -8,39 +8,37 @@
 .rest_top{
 	width: 100%;
 	height: 25%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 상단 - 기본 정보 */
 .rest_b_information{
 	width: 100%;
-
 	font-size: 34pt;
-	background-color: #F6F6F6;
+	background-color: white;
 }
 /* 테이블 셋팅 */
 .rest_d_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 85%;
-	
  	border-collapse: collapse;
-   text-align: center;
+    text-align: center;
 	font-size: 18pt;
 	margin: 0 auto;
     line-height: 1.2;
-       background: #ffffff;
+    background: white;
 }
 .rest_d_table thead th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
-    color: #ffffff;
-    border-bottom: 3px solid #ffffff;
+    color: white;
+    border-bottom: 3px solid white;
 }
 .rest_d_table th {
-   width: 150px;
-      padding: 4.5px;
+    width: 150px;
+    padding: 4.5px;
     font-weight: bold;
     vertical-align: top;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid white;
     background: #4CAF50;
     text-align: center;
 }
@@ -49,32 +47,31 @@
     padding: 4.5px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
-  text-align: center;
+    text-align: center;
 }  
 
 .rest_db_table{ /* 테이블 크기 및 색깔 지정 */
 	width: 85%;
-	
  	border-collapse: collapse;
-   text-align: center;
+    text-align: center;
 	font-size: 18pt;
 	margin: 0 auto;
     line-height: 1.2;
-       background: #ffffff;
+    background: white;
 }
 .rest_db_table thead th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
-    color: #ffffff;
-    border-bottom: 3px solid #ffffff;
+    color: white;
+    border-bottom: 3px solid white;
 }
 .rest_db_table th {
    width: 150px;
       padding: 4.5px;
     font-weight: bold;
     vertical-align: top;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid white;
     background: #4CAF50;
     text-align: center;
 }
@@ -90,7 +87,7 @@
 .rest_middle{
 	width: 100%;
 	height: 60%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 중단의 상단 */
 .rest_mid_top{
@@ -101,17 +98,18 @@
 .rest_report{
 	width: 100%;
 	font-size: 34pt;
-	background-color: #F6F6F6;
+	background-color: white;
 }
 /* 휴진날짜, 날짜 텍스트 */
 .rest_calender{
 	display: inline-block;
+	font-weight: bold;
 	width: 7%;
 	height: 25%;
 	font-size: 18pt;
 	vertical-align: bottom;
 	margin: 0 5%;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 상단 - 날짜 선택 */
 .rest_cal_btn{
@@ -142,7 +140,7 @@
 .rest_middle2{
 	width: 100%;
 	height: 60%;
-	background-color: #F6F6F6;
+	background-color: white;
 }
 
 /* 레이아웃 중단 - 휴진 내용 */
@@ -151,9 +149,10 @@
 	width: 15%;
 	height: 30%;
 	font-size: 18pt;
+	font-weight: bold;
 	text-align: center;
 	margin-left: 10px;
-	background-color: #DDDDDD;
+	background-color: white;
 }
 /* 레이아웃 중단 - 내용 입력 */
 .rest_mid_text{
