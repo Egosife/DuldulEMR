@@ -130,26 +130,39 @@ $(document).ready(function(){
 
 	$("#btn_treatpill").on("click",function(){
 		
-		if($("#pill_name").val() != "" && $("#pill_vol").val() != "" && $("#pill_day").val() != "" && $("#pill_maxday").val() != ""){
-			var pilldata = $("#pill_name").val() + "@" + $("#pill_vol").val() + "@" + $("#pill_day").val()+ "@" + $("#pill_maxday").val();
-			var html = "";
-			html += "<tr>";
-			html += "<td>"+$("#pill_name").val()+"</td>";
-			html += "<td>"+$("#pill_vol").val()+"</td>";
-			html += "<td>"+$("#pill_day").val()+"</td>";
-			html += "<td>"+$("#pill_maxday").val()+"</td>";
-			html += "</tr>";
-			$("#pill_tb").append(html);
-			html = "";
-			html += "<input type='hidden' name='treatpill' value='"+pilldata+"'>";
-			$("#form_treat_care").append(html);
-			
-			$("#pill_name").val("");
-			$("#pill_vol").val("");
-			$("#pill_day").val("");
-			$("#pill_maxday").val("");
-		}else{
-			alert("값을 제대로 입력해 주세요.");
+		var fi = true;
+		
+		if(isNaN($("#pill_day").val()) && fi){
+			alert("1일 투여 횟수는 숫자로 입력되어야 합니다.");
+			fi = false;
+		}
+		if(isNaN($("#pill_maxday").val()) && fi){
+			alert("총 투여 일 수는 숫자로 입력되어야 합니다.");
+			fi = false;
+		}
+		
+		if(fi){
+			if($("#pill_name").val() != "" && $("#pill_vol").val() != "" && $("#pill_day").val() != "" && $("#pill_maxday").val() != ""){
+				var pilldata = $("#pill_name").val() + "@" + $("#pill_vol").val() + "@" + $("#pill_day").val()+ "@" + $("#pill_maxday").val();
+				var html = "";
+				html += "<tr>";
+				html += "<td>"+$("#pill_name").val()+"</td>";
+				html += "<td>"+$("#pill_vol").val()+"</td>";
+				html += "<td>"+$("#pill_day").val()+"</td>";
+				html += "<td>"+$("#pill_maxday").val()+"</td>";
+				html += "</tr>";
+				$("#pill_tb").append(html);
+				html = "";
+				html += "<input type='hidden' name='treatpill' value='"+pilldata+"'>";
+				$("#form_treat_care").append(html);
+				
+				$("#pill_name").val("");
+				$("#pill_vol").val("");
+				$("#pill_day").val("");
+				$("#pill_maxday").val("");
+			}else{
+				alert("값을 제대로 입력해 주세요.");
+			}
 		}
 		
 	});

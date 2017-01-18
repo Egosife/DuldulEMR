@@ -27,6 +27,12 @@
 			</div>
 			<div class="div_treat_patient_info_stat">
 				<table class="table_css" style="font-size: 10pt; width: 100%;">
+					<colgroup>
+						<col style='width: 30%'>
+						<col style='width: 20%'>
+						<col style='width: 30%'>
+						<col style='width: 20%'>
+					</colgroup>
 					<thead>
 						<tr>
 							<th>환자번호</th>
@@ -66,6 +72,13 @@
 			<div class="div_treat_title">진료 내역</div>
 			<div class="div_treat_patient_treathisd">
 				<table class="table_css" style="font-size: 12pt; width: 100%;">
+					<colgroup>
+						<col style='width: 20%'>
+						<col style='width: 20%'>
+						<col style='width: 20%'>
+						<col style='width: 20%'>
+						<col style='width: 20%'>
+					</colgroup>
 					<thead>
 						<tr>
 							<th>증상</th>
@@ -83,6 +96,11 @@
 			<div class="div_treat_title">처방 정보</div>
 			<div class="div_treat_patient_treathisp">
 				<table class="table_css" style="font-size: 12pt; width: 100%;">
+					<colgroup>
+						<col style='width: 35%'>
+						<col style='width: 35%'>
+						<col style='width: 30%'>
+					</colgroup>
 					<thead>
 						<tr>
 							<th>치료 종류</th>
@@ -95,6 +113,12 @@
 			</div>
 			<div class="div_treat_patient_treathispp">
 				<table class="table_css" style="font-size: 12pt; width: 100%;">
+					<colgroup>
+						<col style='width: 25%'>
+						<col style='width: 25%'>
+						<col style='width: 25%'>
+						<col style='width: 25%'>
+					</colgroup>
 					<thead>
 						<tr>
 							<th>처방약</th>
@@ -210,8 +234,8 @@
 					<tr>
 						<th>처방약</th>
 						<th>처방량</th>
-						<th>1일 투여 횟수</th>
-						<th>총 투여 일 수</th>
+						<th>1일 투량</th>
+						<th>일수</th>
 					</tr>
 				</thead>
 				<tbody id="pill_tb"></tbody>
