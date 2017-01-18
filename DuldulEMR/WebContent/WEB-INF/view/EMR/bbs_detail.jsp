@@ -66,7 +66,7 @@
   		 	<c:choose>
 				<c:when test="${sLv_Code == 0 || sLv_Code == 1}">
 				
-					<input type="button" value="수정" id="bbs_detail_changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
+					<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
 					<input type="button" value="삭제" id="bbs_detail_deleteBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
 						   
 				</c:when>

@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
     //버튼에 보이는 이름 완료라는 글자면 글이 업로드된다
-    $("#bbs_detail_changeBtn").on("click", function(){
+    $("#changeBtn").on("click", function(){
     	 if(($("#updateForm input[name='write']").val() == $("#updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
 			 if($(this).val() == "완료"){
 				 var updateForm = $("#updateForm");
@@ -11,7 +11,7 @@ $(document).ready(function(){
 				updateForm.submit();
 				 
 			 }else{
-				 $("#bbs_detail_changeBtn").attr("value","완료");
+				 $("#changeBtn").attr("value","완료");
 				 $("#TitleText").removeAttr("readonly");
 				 $("#textarea_test").removeAttr("readonly");
 			 }
@@ -72,7 +72,7 @@ function uploadResultCallBack(data, result){
 				if(result.res > 0){
 					alert("수정했습니다.")
 					
-					$("#bbs_detail_changeBtn").attr("value","수정");
+					$("#changeBtn").attr("value","수정");
 					$("#TitleText").attr("readonly", "readonly");
 					$("#textarea_test").attr("readonly", "readonly");
 					
