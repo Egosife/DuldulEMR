@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     //버튼에 보이는 이름 완료라는 글자면 글이 업로드된다
     $("#bbs_detail_changeBtn").on("click", function(){
-    	 if(($("#bbs_detail_updateForm input[name='write']").val() == $("#bbs_detail_updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
+    	 if(($("#bbs_detail_updateForm input[name='write']").val() == $("#bbs_detail_updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0 || $("input[name='sLvCode']").val() == 1){
 			 if($(this).val() == "완료"){
 				 var updateForm = $("#bbs_detail_updateForm");
 				updateForm.ajaxForm(uploadResultCallBack);

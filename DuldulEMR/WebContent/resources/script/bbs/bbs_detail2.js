@@ -6,7 +6,7 @@ $(document).ready(function(){
 			
 			
 
-			 if(($("#updateForm input[name='write']").val() == $("#updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
+			 if(($("#updateForm input[name='write']").val() == $("#updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0 || $("input[name='sLvCode']").val() == 1){
 				 if($(this).val() == "완료"){
 					 var updateForm = $("#updateForm");
 					 updateForm.ajaxForm(uploadResultCallBack2);
