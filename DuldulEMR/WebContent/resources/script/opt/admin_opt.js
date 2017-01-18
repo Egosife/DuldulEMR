@@ -5,6 +5,13 @@ $(document).ready(function(){
 	Adminopt_level_Select();
 	Admin_Opt_Date_Select();
 	
+	//form 키 다운 이벤트 무효화
+	$("body").on("keydown","#pop_actionz",function(e){
+		if(e.which == 13){
+			return false;
+		}
+	});
+	
 	//중복검사
 	$("#admin_regi_id").on("keyup",function(){
 		//console.log($("#admin_regi_id").attr("class"));
@@ -336,7 +343,7 @@ function Admin_Create_Popup(id){
 	var html = "";
 	html+= "<div class='pop_div_main'>";
 	html+= "<div class='pop_div_top'>";
-	html+= "<form action='#' id='pop_action' method='post'>";
+	html+= "<form action='#' id='pop_actionz' method='post'>";
 	html+="<table><tr>";
 	html+= "<td><input type='text' name='pop_serachText' style='width: 100%; height: 100%;' id='searchText'></td>";
 	html+= "<td><input type='button' id='"+id+"' value='검색'><td>";

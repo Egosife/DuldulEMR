@@ -134,6 +134,14 @@ $(document).ready(function(){
 		html="";
 	});
 	
+	//form 키 다운 이벤트 무효화
+	$("body").on("keydown","#pop_action",function(e){
+		if(e.which == 13){
+			return false;
+		}
+	});
+	
+	
 	$("#rep_date_content1_btn").on("click",function(){
 		treat_data[1] = $("#treat_form").serialize();
 		//console.log(treat_data);
