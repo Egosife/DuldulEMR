@@ -28,7 +28,34 @@ body {
 
 .popup_table{
 	width: 100%;
+	background-color: white;
+ 	border-collapse: collapse;
+    line-height: 1.3;
 }
+
+.popup_table thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.popup_table th {
+   width: 150px;
+      padding: 4.5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ffffff;
+    background: #4CAF50;
+    text-align: center;
+}
+.popup_table td {
+    width: 350px;
+    padding: 4.5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  text-align: center;
+}  
 
 .popup_title {
 	line-height:40px;

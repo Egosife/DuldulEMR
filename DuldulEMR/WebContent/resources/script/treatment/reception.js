@@ -100,7 +100,17 @@ $(document).ready(function(){
 			html+="<hr></div>";
 			
 			html+="<div class='pop_div_bot'>";
-					html+= "<table class='popup_table' border='1' align='center' width='100%' >";
+					html+= "<table class='popup_table' align='center' width='100%' >";
+					html+= "<colgroup>";
+						html+= "<col style='width: 5%'>";
+						html+= "<col style='width: 13%'>";
+						html+= "<col style='width: 15%'>";
+						html+= "<col style='width: 15%'>";
+						html+= "<col style='width: 15%'>";
+						html+= "<col style='width: 25%'>";
+						html+= "<col style='width: 7%'>";
+						html+= "<col style='width: 5%'>";
+					html+= "</colgroup>";
 						html+= "<thead>";
 							html+= "<tr>";
 								html+= "<th>번호</th>";

@@ -469,7 +469,6 @@ function SetTimeSelecter(){
 						</table>
 					</div>
 					<div class="rep_boxbtn">
-						<input type="button" value="금일" class="rep_date_content2" disabled="disabled">
 						<input type="button" value="선택완료" class="rep_date_content2" id="rep_date_content2_btn" disabled="disabled">
 					</div>
 				</div>

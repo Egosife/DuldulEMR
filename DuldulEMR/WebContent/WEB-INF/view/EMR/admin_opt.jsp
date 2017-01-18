@@ -215,7 +215,7 @@
 		</div>
 		<div class="admin_opt_buttons">
 			<input type="button" value="다시쓰기" id="RegiAccCrear">
-			<input type="button" value="등록" disabled="disabled" id="admin_create_acc_commit">
+			<input type="button" value="등록" id="admin_create_acc_commit">
 		</div>
 	</div>
 </div>

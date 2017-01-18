@@ -44,64 +44,57 @@ $(document).ready(function(){
 		}
 	});
 	
-	//계정등록 체크1
-	$(".admin_opt_creatacc_table").on("keydown","input",function(){
-		CheckCreateAcc();
-	});
-	//계정등록 체크2
-	$(".admin_opt_creatacc_table select").on("change",function(){
-		CheckCreateAcc();
-	});
 	//계정등록 버튼
 	$("#admin_create_acc_commit").on("click",function(){
 		var acc_ok = true;
 		
 		//필터
 
-		if($("#admin_regi_id").attr("class") == "id_chk_class_no" 
-			|| $("#admin_regi_id").attr("class") == "id_chk_class"){
+		if(($("#admin_regi_id").attr("class") == "id_chk_class_no" 
+			|| $("#admin_regi_id").attr("class") == "id_chk_class") && acc_ok){
 			alert ("해당 계정번호는 사용할 수 없습니다.");
 			acc_ok = false;
 		}
 		
-		if($("#admin_regi_id").val().length < 4){
+		if($("#admin_regi_id").val().length < 4 && acc_ok){
 			alert ("계정번호는 최소 4글자 이상이여야 합니다.");
 			acc_ok = false;
 		}
 		//isNaN = 숫자는 false 글자는 true를 리턴함
-		if(isNaN($("#admin_regi_id").val())){
+		if(isNaN($("#admin_regi_id").val()) && acc_ok){
 			alert("계정번호에는 문자를 입력할 수 없습니다.");
 			acc_ok = false;
 		}
 		
-		if($("#admin_regi_pass1").val() != $("#admin_regi_pass2").val()){
+		if($("#admin_regi_pass1").val() != $("#admin_regi_pass2").val() && acc_ok){
 			alert("비밀번호와 비밀번호확인을 확인해 주세요.");
 			acc_ok = false;
 		}
 		
-		if($("#reg_phone1").val().length == 3 
-		   && $("#reg_phone2").val().length == 4
-		   && $("#reg_phone3").val().length == 4){
-				if(isNaN($("#reg_phone1").val()) 
-						|| isNaN($("#reg_phone2").val())
-						|| isNaN($("#reg_phone3").val())){
-					alert("연락처에는 숫자만 입력해 주세요.");
-					acc_ok = false;
-				}else{
-					$("#admin_accphonenum").val($("#reg_phone1").val()+""+$("#reg_phone2").val()+""+$("#reg_phone3").val());
-				}
-		}else{
-			alert("연락처를 입력해 주세요.");
-			acc_ok = false;
+		if(acc_ok){
+			if($("#reg_phone1").val().length == 3 
+			   && $("#reg_phone2").val().length == 4
+			   && $("#reg_phone3").val().length == 4){
+					if(isNaN($("#reg_phone1").val()) 
+							|| isNaN($("#reg_phone2").val())
+							|| isNaN($("#reg_phone3").val())){
+						alert("연락처에는 숫자만 입력해 주세요.");
+						acc_ok = false;
+					}else{
+						$("#admin_accphonenum").val($("#reg_phone1").val()+""+$("#reg_phone2").val()+""+$("#reg_phone3").val());
+					}
+			}else{
+				alert("연락처를 입력해 주세요.");
+				acc_ok = false;
+			}
 		}
 		
-		if($("#admin_regi_email").val().indexOf('@') == -1 
-				|| $("#admin_regi_email").val().indexOf('.') == -1){
+		if(($("#admin_regi_email").val().indexOf('@') == -1 
+				|| $("#admin_regi_email").val().indexOf('.') == -1) && acc_ok){
 			alert("이메일 형식이 올바르지 않습니다.");
 			acc_ok = false;
 		}
 			
-		
 		//계정등록!
 		if(acc_ok){
 			var params = $("#adminopt_acc_register").serialize();
@@ -240,7 +233,6 @@ $(document).ready(function(){
 				$("#regiacchostext").val(result.obj.HOSPITAL_NAME+"("+result.obj.HOSPITAL_CODE+")");
 				$("#admin_searchresult_hos").val(result.obj.HOSPITAL_CODE);
 				closePopup();
-				CheckCreateAcc();
 			},error: function(result){
 				alert("Error - adminoptregi_error_6574")
 			}
@@ -353,7 +345,14 @@ function Admin_Create_Popup(id){
 	html+= "</form>";
 	html+="<hr></div>";
 	html+="<div class='pop_div_bot'>";
-	html+= "<table class='popup_table' border='1' align='center' width='100%' >";
+	html+= "<table class='popup_table' align='center' width='100%' >";
+	html+= "<colgroup>";
+	html+= "<col style='width: 10%'>";
+	html+= "<col style='width: 15%'>";
+	html+= "<col style='width: 15%'>";
+	html+= "<col style='width: 50%'>";
+	html+= "<col style='width: 10%'>";
+	html+= "</colgroup>";
 	html+= "<thead>";
 	html+= "<tr>";
 	html+= "<th>병원코드</th>";
@@ -500,36 +499,6 @@ function RegiAccCrear(){
 	$(".admin_opt_creatacc_table select").each(function(){
 		$(this).val("-1").prop("selected", true);
 	});
-}
-
-function CheckCreateAcc() {
-	var check = true;
-	
-	//(".admin_opt_creatacc_table input[type='text']")
-	//한놈만 찾는다 => each로 한놈씩 살핌
-	$(".admin_opt_creatacc_table input[type='text']").each(function() {
-		if($(this).val() == "") {
-			check = false;
-		}
-	});
-	$(".admin_opt_creatacc_table input[type='password']").each(function() {
-		if($(this).val() == "") {
-			check = false;
-		}
-	});
-
-	$(".admin_opt_creatacc_table select").each(function(){
-		if($(this).val() == "-1") {
-			check = false;
-		}
-	});
-	
-	if(check){
-		$("#admin_create_acc_commit").prop("disabled","");
-	}else{
-		$("#admin_create_acc_commit").prop("disabled","disabled");
-	}
-	
 }
 
 function Admin_Opt_Date_Select(){
