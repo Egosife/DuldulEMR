@@ -93,7 +93,7 @@ $(document).ready(function(){
 				html+= "<form action='#' id='pop_action' method='post'>";
 					html+="<table><tr>";
 						html+= "<td><input type='text' name='pop_serachText' style='width: 100%; height: 100%;'></td>";
-						html+= "<td><input type='button' id='pop_serachBtn' value='검색'><td>";
+						html+= "<td><input type='button' id='pop_serachBtn' value='검색' style='height: 21px; vertical-align: top;'><td>";
 						html+= "<td id='serachresult'>환자번호 또는 환자명을 입력해주세요.</td>";
 					html+="</tr></table>";
 				html+= "</form>";

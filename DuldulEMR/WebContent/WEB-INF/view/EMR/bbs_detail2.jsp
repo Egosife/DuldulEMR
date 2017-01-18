@@ -44,7 +44,7 @@
  			<div class="bbs_detail_total" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
         		<%--  <input type="text" class = "bbs_detail_writer_text" id="WritterText" readonly value="${con.WRITER}"  />
 	 <input type="text" class = "bbs_detail_date_text" id="DateText" readonly value="${con.REPORTING}"/> --%>
-		 <input type="text" class = "bbs_detail_title_text" id="TitleText" 
+		 <input type="text" class = "title_text" id="TitleText" 
 		 		name="postTitle" readonly value="${con.TITLE}"/>  
 
     		 </div>

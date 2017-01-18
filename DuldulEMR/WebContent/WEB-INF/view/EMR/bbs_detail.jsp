@@ -42,7 +42,7 @@
  			<div class="bbs_detail_total" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
         		<%--  <input type="text" class = "bbs_detail_writer_text" id="WritterText" readonly value="${con.WRITER}"  />
 	 <input type="text" class = "bbs_detail_date_text" id="DateText" readonly value="${con.REPORTING}"/> --%>
-		 <input type="text" class = "bbs_detail_title_text" id="TitleText" 
+		 <input type="text" class = "title_text" id="TitleText" 
 		 		name="postTitle" readonly value="${con.TITLE}"/>  
 
     		 </div>
@@ -66,8 +66,8 @@
   		 	<c:choose>
 				<c:when test="${sLv_Code == 0 || sLv_Code == 1}">
 				
-					<input type="button" value="수정" id="bbs_detail_changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
-					<input type="button" value="삭제" id="bbs_detail_deleteBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
+					<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
+					<input type="button" value="삭제" id="deleteBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
 						   
 				</c:when>
 			</c:choose>

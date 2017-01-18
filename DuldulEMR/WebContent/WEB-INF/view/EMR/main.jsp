@@ -85,7 +85,8 @@ $(document).ready(function() {
 <body>
 <div class='main_layout'>
 <!-- 계정정보 영역 -->
-<%-- 	<div class="main_topbar">
+<%-- 
+	<div class="main_topbar">
 		<div class="main_topbar_title">
 			${sHospital_Name} (${sHospital_Code})
 		</div>
@@ -94,7 +95,8 @@ $(document).ready(function() {
 			<div class="main_topbar_account_opt" id="optbtn2"></div>
 			<div class="main_topbar_account_logout" id="logoff2"></div>
 		</div>
-	</div> --%>
+	</div>
+--%>
 <!-- 시간과 탭영역 -->
 	<div class="main_midbar">
 		<div class="main_midbar_time" id="nowtime"></div>

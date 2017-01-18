@@ -96,7 +96,7 @@ input[type='button']:active{
 	text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 .main_midbar_time {
-	width: calc(9% - 1px);
+	width: calc(9% - 2px);
 	height: 100%;
 	font-size: 13pt;
 	color: white;
@@ -118,7 +118,7 @@ input[type='button']:active{
 	height: 95%;
 }
 .main_content_menu {
-	width: calc(9% - 1px);
+	width: calc(9% - 2px);
 	height: 100%;
 	display: inline-block;
 	font-size: 15pt;
