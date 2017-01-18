@@ -25,7 +25,11 @@ $(document).ready(function(){
 						data: paramsArray,
 						success: function(result){
 							if(result.resl == "true"){
+								var tab1 = {tab : "set*환자일정*set"};
+								var tab = {tab : "treatment?PATINUM="+result.patinum+"&TREATNUM="+result.treatnum+"*진료실시입력*treatment"};
 								alert("완료");
+								ReOpen_Tab(tab1);
+								ReOpen_Tab(tab);
 							}else{
 								alert("Error - insertcares_7913");
 							}

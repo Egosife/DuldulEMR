@@ -301,10 +301,23 @@ public class TreatmentController {
 			ObjectMapper mapper = new ObjectMapper();
 			Map<String, Object> modelMap = new HashMap<String,Object>();
 			
-			String res = iTreatmentService.inserttreatcare(patinum, treatnum, treatcare);
-			String res2 = iTreatmentService.inserttreatpill(patinum, treatnum, treatpill);
+			String res, res2;
+			
+			if(treatcare != null){
+				res = iTreatmentService.inserttreatcare(patinum, treatnum, treatcare);
+			}else{
+				res = "true";
+			}
+			
+			if(treatpill != null){
+				res2 = iTreatmentService.inserttreatpill(patinum, treatnum, treatpill);
+			}else{
+				res2 = "true";
+			}
 			
 			if(res == "true" && res2 == "true"){
+				modelMap.put("patinum", patinum);
+				modelMap.put("treatnum", treatnum);
 				modelMap.put("resl", "true");
 			}else{
 				modelMap.put("resl", "false");
