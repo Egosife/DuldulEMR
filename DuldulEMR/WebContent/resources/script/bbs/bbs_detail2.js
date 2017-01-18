@@ -2,18 +2,18 @@
 $(document).ready(function(){
 
 		
-		$("#changeBtn").on("click", function(){
+		$("#bbs_detail2_changeBtn").on("click", function(){
 			
 			
 
 			 if(($("#updateForm input[name='write']").val() == $("#updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
 				 if($(this).val() == "완료"){
 					 var updateForm = $("#updateForm");
-					 updateForm.ajaxForm(uploadResultCallBack);
+					 updateForm.ajaxForm(uploadResultCallBack2);
 					 updateForm.submit();
 					 
 				 }else{
-					 $("#changeBtn").attr("value","완료");
+					 $("#bbs_detail2_changeBtn").attr("value","완료");
 					 $("#TitleText").removeAttr("readonly");
 					 $("#textarea_test").removeAttr("readonly");
 				 }
@@ -59,7 +59,7 @@ $(document).ready(function(){
 		      });//deleteBtn끝
 		}); //ready끝
 
-function uploadResultCallBack(data, result){ 
+function uploadResultCallBack2(data, result){ 
 
 	if(result == "success"){
 		
@@ -74,7 +74,7 @@ function uploadResultCallBack(data, result){
 				if(result.res > 0){
 					alert("수정했습니다.")
 					
-					$("#changeBtn").attr("value","수정");
+					$("#bbs_detail2_changeBtn").attr("value","수정");
 					$("#TitleText").attr("readonly", "readonly");
 					$("#textarea_test").attr("readonly", "readonly");
 					

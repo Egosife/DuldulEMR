@@ -25,7 +25,7 @@
 
 </form>
 
-			<form action="#" id="updateForm" method="post">
+			<form action="#" id="bbs_detail_updateForm" method="post">
 	  <input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>
 	  <input type="hidden" name="write" value="${sEmp_Name}"/>
 	  <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
@@ -42,7 +42,7 @@
  			<div class="bbs_detail_total" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
         		<%--  <input type="text" class = "bbs_detail_writer_text" id="WritterText" readonly value="${con.WRITER}"  />
 	 <input type="text" class = "bbs_detail_date_text" id="DateText" readonly value="${con.REPORTING}"/> --%>
-		 <input type="text" class = "title_text" id="TitleText" 
+		 <input type="text" class = "title_text" id="bbs_detail_TitleText" 
 		 		name="postTitle" readonly value="${con.TITLE}"/>  
 
     		 </div>
@@ -56,7 +56,7 @@
     <div class="bbs_detail_content">글 내용</div>
     
      <div class="bbs_detail_content_text">
-       		<textarea id="textarea_test" class="bbs_detail_size" rows="10" cols="100" 
+       		<textarea id="bbs_detail_textarea_test" class="bbs_detail_size" rows="10" cols="100" 
        			 	  name="content" readonly >${con.CONTENT}</textarea>
     </div>
   </div>
@@ -66,7 +66,7 @@
   		 	<c:choose>
 				<c:when test="${sLv_Code == 0 || sLv_Code == 1}">
 				
-					<input type="button" value="수정" id="changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
+					<input type="button" value="수정" id="bbs_detail_changeBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
 					<input type="button" value="삭제" id="bbs_detail_deleteBtn" tab="bbs_detail" class="bbs_detail_button" style="cursor:pointer"/> 
 						   
 				</c:when>
