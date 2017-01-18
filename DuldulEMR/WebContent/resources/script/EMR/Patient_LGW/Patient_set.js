@@ -9,7 +9,7 @@ $(document).ready(function(){
 	Selectsort_type(); //진료과 셀렉트 값
 	Calendar_Select(); //달력
 	
-	$("body").on("keydown",function(e){ //엔터키로 검색을 눌렀을 때
+	$("#S_search_Text1").on("keydown",function(e){ //엔터키로 검색을 눌렀을 때
 		if(e.which == 13){
 			Ssearch();
 		}
@@ -39,7 +39,13 @@ $(document).ready(function(){
 		ReOpen_Tab(this);
 	});
 	
- 	$("#Tselect_box2").on("change",function(){ //진료의사 셀렉트 값
+	$("#act_S").on("keydown", function(e){ //form태그 submit 키다운 방지(엔터 눌렀을 시 초기화면으로 돌아갔음)
+		if(e.which == 13){
+			return false;
+		}
+	});
+	
+ 	$("#Tselect_box2").on("change", function(){ //진료의사 셀렉트 값
  		//console.log($("#treatsort_type option:selected").val());
  		$("#Select_doc").attr('value',$("#Tselect_box2 option:selected").val())
  		
