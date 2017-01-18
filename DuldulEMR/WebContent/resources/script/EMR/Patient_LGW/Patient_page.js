@@ -9,7 +9,7 @@
 $(document).ready(function(){
 	patient_list(); //function patient_list()를 불러옴
 	
-	$("body").on("keydown", function(n){ //엔터키로 검색을 눌렀을 때
+	$("#search_Text1").on("keydown", function(n){ //엔터키로 검색을 눌렀을 때
 		if(n.which == 13){
 			p_search();
 		}

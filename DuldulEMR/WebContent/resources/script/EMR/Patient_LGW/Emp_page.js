@@ -8,7 +8,7 @@
 $(document).ready(function(){
 	Emp_list(); //function Emp_list()를 불러옴
 	console.log("aasdad");
-	$("body").on("keydown",function(e){ //엔터키로 검색을 눌렀을 때
+	$("#Esearch_Text1").on("keydown",function(e){ //엔터키로 검색을 눌렀을 때
 		if(e.which == 13){
 			Esearch();
 		}

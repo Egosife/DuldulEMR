@@ -9,7 +9,7 @@ $(document).ready(function(){
 	Selectsort_type(); //진료과 셀렉트 값
 	Calendar_Select(); //달력
 	
-	$("body").on("keydown",function(e){ //엔터키로 검색을 눌렀을 때
+	$("#S_search_Text1").on("keydown",function(e){ //엔터키로 검색을 눌렀을 때
 		if(e.which == 13){
 			Ssearch();
 		}
