@@ -37,6 +37,7 @@
 	margin: 0 auto;
     line-height: 1.2;
        background: #ffffff;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,1);
 }
 .first_top_table thead th {
     padding: 10px;
@@ -91,6 +92,7 @@
 	margin: 0 auto;
     line-height: 1.2;
        background: #ffffff;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,1);
 }
 .first_middle_table thead th {
     padding: 10px;
@@ -149,6 +151,7 @@
     line-height: 1.2;
        background: #ffffff;
        table-layout: fixed;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,1);
 }
 .first_bottom_table thead th {
     padding: 10px;
