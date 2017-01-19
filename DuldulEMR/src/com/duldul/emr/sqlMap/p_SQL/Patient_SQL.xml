@@ -7,7 +7,7 @@
 <!-- 2016-12-01 환자조회 데이터, 카운터 쿼리 추가
 			 02  직원조회 데이터, 카운터 쿼리 추가 
 			 05  환자,직원조회 데이터 개발완료 
-			 26 나머지 쿼리 개발완료 -->
+			 26  나머지 쿼리 개발완료 -->
 			 
 	<select id="pat_DataList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
 		SELECT A.NO, A.PATIENT_NUM, A.PATIENT_NAME, A.BIRTH, A.PHONE1, A.ADDRESS, A.BLOOD
