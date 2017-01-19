@@ -179,7 +179,6 @@ $(document).ready(function(){
 	
 	//병원 정보 수정 버튼 클릭
 	$("#admin_opt_updhos").on("click",function(){
-		
 		if($("#admin_opt_hoscod_updname").val() == ""){
 			alert("편집할 병원을 선택해 주세요.");
 		}else{
@@ -196,9 +195,7 @@ $(document).ready(function(){
 					success: function(result){
 						if(result.rs == 1){
 							alert("정상적으로 수정 되었습니다.");
-							var tab = {tab :"adminopt*관리자옵션*adminopt"};
-							var tab2 = {tab : "adminopt"};
-							Close_Tab(tab2);
+							var tab = {tab : "adminopt*관리자메뉴*adminopt"};
 							ReOpen_Tab(tab);
 						}else{
 							alert("수정 중 문제가 일어났습니다.");
