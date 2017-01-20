@@ -28,4 +28,6 @@ public interface IOptionService {
 
 	int admin_regi_id_chk(HashMap<String, String> params)throws Throwable;
 
+	String admincrehosinopt(HashMap<String, String> params)throws Throwable;
+
 }

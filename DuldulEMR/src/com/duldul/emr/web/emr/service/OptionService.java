@@ -68,4 +68,9 @@ public class OptionService implements IOptionService {
 	public int admin_regi_id_chk(HashMap<String, String> params) throws Throwable {
 		return iOptionDao.admin_regi_id_chk(params);
 	}
+
+	@Override
+	public String admincrehosinopt(HashMap<String, String> params) throws Throwable {
+		return iOptionDao.admincrehosinopt(params);
+	}
 }

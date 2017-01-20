@@ -115,7 +115,7 @@ $(document).ready(function(){
 					if(result.res == "true"){
 						alert("등록되었습니다");
 						
-						var tab = {tab : "adminopt*관리자옵션*adminopt"};
+						var tab = {tab : "adminopt*관리자메뉴*adminopt"};
 						var tab2 = {tab : "adminopt"};
 						Close_Tab(tab2);
 						ReOpen_Tab(tab);
@@ -154,9 +154,7 @@ $(document).ready(function(){
 						data: params,
 						success: function(result){
 							alert("등록되었습니다.");
-							var tab = {tab :"adminopt*관리자옵션*adminopt"};
-							var tab2 = {tab : "adminopt"};
-							Close_Tab(tab2);
+							var tab = {tab :"adminopt*관리자메뉴*adminopt"};
 							ReOpen_Tab(tab);
 						},error: function(result){
 							alert("Error - admin_opt_crehosin_9911");

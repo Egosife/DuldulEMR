@@ -63,6 +63,12 @@
 			(HOSPITAL_CODE,HOSPITAL_NAME,HOSPITAL_PHONE,HOSPITAL_ADDRESS,INPUT_DATE)
 			VALUES(#HOSCODE#,#cre_hodname#,#cre_phone#,#cre_hodaddr#,SYSDATE)
 		</insert>
+		<insert id="admincrehosinopt"
+				parameterClass="java.util.HashMap">
+			INSERT INTO HOSPITAL_OPT
+			(HOSPITAL_CODE,OPEN, CLOSE, WEEK_CLOSE, LUNCH_OPEN, LUNCH_CLOSE, RES_TIME)
+			VALUES(#HOSCODE#,TO_DATE('09:30','HH24:MI'),TO_DATE('19:30','HH24:MI'),TO_DATE('12:30','HH24:MI'),TO_DATE('13:30','HH24:MI'),TO_DATE('14:30','HH24:MI'),TO_DATE('05','MI'))
+		</insert>
 		
 		<insert id="admin_acc_register"
 				parameterClass="java.util.HashMap">

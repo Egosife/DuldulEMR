@@ -5,7 +5,61 @@
 var treat_data = ["","","","",""];
 
 $(document).ready(function(){
+	SetTreatType();
+	Settreatsort_type();
+	getTodayTreat();
 	
+	$("#watingpatibox").on("change",function(){
+		//console.log($(this).is(':checked'));
+		if($(this).is(':checked')){
+			$("#watingcheckbox_check").val("0");
+			//console.log($("#watingcheckbox_check").val());
+		}else{
+			$("#watingcheckbox_check").val(null);
+			//console.log($("#watingcheckbox_check").val());
+		}
+		
+		getTodayTreat();
+		
+	});
+	
+ 	$("#treatsort_type").on("change",function(){
+ 		//console.log($("#treatsort_type option:selected").val());
+ 		$("#treatsort_doc").attr('value',$("#treatsort_type option:selected").val())
+ 		
+ 		var params = $("#treat_form_s").serialize();
+ 		
+ 		$.ajax({
+ 			type : "post",
+ 			url : "getdoctor",
+			dataType : "json",
+			data : params,
+ 			success : function(result){
+ 				var html = "";
+ 				for(var i = 0 ; i < result.getdoctor.length ; i++){
+ 					html += "<option value='";
+ 					html += result.getdoctor[i].EMP_NUM;
+ 					if(i == 0){
+ 						html += "'selected>";
+ 						html += result.getdoctor[i].EMP_NAME;
+ 						html += "</option>";
+ 					}else{
+ 						html += "'>";
+ 						html += result.getdoctor[i].EMP_NAME;
+ 						html += "</option>";
+ 					}
+ 				}
+ 				$("#doctor_name").html(html);
+ 				html="";
+ 			},
+ 			error : function(result){
+ 				alert("Error - getdoctor_1012");
+ 			}
+ 		})// ajax end 
+ 	
+ 		
+	})//treatsort_type end
+
 	
 	$("body").on("click","[name='pati-selectBtn']",function(){
 		var pati_num = $(this).attr("id").split('_');
@@ -237,3 +291,152 @@ $(document).ready(function(){
 	})
 	
 })//ready end
+
+function getTodayTreat(){
+	var params = $("#treat_form_s").serialize();
+	
+	$.ajax({
+		type : "post",
+		url : "getTodayTreat",
+		dataType : "json",
+		data : params,
+		success : function(result){
+			var html = ""
+			
+			for(var i = 0 ; i < result.list.length ; i++){
+			html +="<tr name='"+result.list[i].TREAT_NUM+"'>";
+			html +="<td>"+result.list[i].NO+"</td>";
+			html +="<td>"+result.list[i].PATIENT_NUM+"</td>";
+			html +="<td>"+result.list[i].APPOINTMENT_TIME+"</td>";
+			html +="<td>"+result.list[i].TAKE_TIME+"</td>";
+			html +="<td>"+result.list[i].PATIENT_NAME+"</td>";
+			html +="<td>"+result.list[i].OFFICE+"</td>";
+			html +="<td>"+result.list[i].EMP_NAME+"</td>";
+			html +="<td>"+result.list[i].SORT_TYPE+"</td>";
+			html +="<td>"+result.list[i].TAKE_DATE+"</td>";
+			html +="<td>"+result.list[i].CONDITION+"</td>";
+			html +="<td>"+result.list[i].ETC+"</td>";
+			html +="</tr>";
+			}
+			$("#rep_petitabletb").html(html);
+		},
+		error : function(result){
+			alert("Error - getTodayTreat_1923");
+		}
+		
+	})//ajax end
+}
+
+
+
+function Date_Select_Start(){
+	$("#rep_date_start").datepicker({
+		dateFormat : 'yy-mm-dd',
+		duration: 200,
+		onSelect:function(dateText, inst){
+			var startDate = parseInt($("#date_end").val().replace("-", '').replace("-", ''));
+			var endDate = parseInt(dateText.replace(/-/g,''));
+			
+            if (endDate > startDate) {
+            	alert("조회 기간은 과거로 설정하세요.");
+            	//달력에 종료 날짜 넣어주기
+        		$("#rep_date_start").val($("#stdt").val());
+			} else {
+				$("#stdt").val($("#rep_date_start").val());
+			}
+		}
+	});
+}
+//구분 셀렉트 값 가져오기
+function SetTreatType(){
+	$.ajax({
+		type : "post",
+		url : "getTreatType",
+		success : function(result){
+			var html = "";
+			for(var i = 0 ; i < result.type.length ; i++){
+				html += "<option name='TreatType' value='";
+				html += result.type[i].SMALL;
+				if(i == 0){
+					html += "'selected>";
+					html += result.type[i].CODE_NAME;
+					html += "</option>";
+				}else{
+					html += "'>";
+					html += result.type[i].CODE_NAME;
+					html += "</option>";
+				}
+			}
+			$("#treat_type").html(html);
+			html="";
+		},
+		error : function(result){
+			alert("Error - getTreatType_1942");
+		}
+	})// ajax end
+	
+}
+
+//진료과 셀렉트 값 가져오기
+function Settreatsort_type(){
+	$.ajax({
+		type : "post",
+		url : "gettreatsort_type",
+		success : function(result){
+			var html = "";
+			html += "<option value='-1'selected>선택</option>"
+			for(var i = 0 ; i < result.treatsort.length ; i++){
+				html += "<option value='";
+				html += result.treatsort[i].SMALL;
+					html += "' >";
+					html += result.treatsort[i].CODE_NAME;
+					html += "</option>";
+			}
+			$("#treatsort_type").html(html);
+			html="";
+		},
+		error : function(result){
+			alert("Error - gettreatsort_type_1310");
+		}
+	})// ajax end
+	
+}
+
+function SetTimeSelecter(){
+	var html="";
+	
+	//시간 선택 만들기
+	for(var i = 0 ; i < 24 ; i++){
+		html += "<option value='";
+		html += i;
+		if(i == 0){
+			html += "'selected>";
+			html += i;
+			html += "</option>";
+		}else{
+			html += "'>";
+			html += i;
+			html += "</option>";
+		}
+	}
+	$("#select_hour").html(html);
+	
+	html="";
+	
+	for(var i = 0 ; i < 60 ; i+=5){
+		html += "<option value='";
+		html += i;
+		if(i == 0){
+			html += "'selected>";
+			html += i;
+			html += "</option>";
+		}else{
+			html += "'>";
+			html += i;
+			html += "</option>";
+		}
+	}
+	$("#select_min").html(html);
+	
+	html="";
+}

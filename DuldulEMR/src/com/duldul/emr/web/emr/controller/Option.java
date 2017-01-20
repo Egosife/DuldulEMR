@@ -112,8 +112,10 @@ public class Option {
 		if(!hosSEQ.isEmpty()){
 			params.putAll(hosSEQ);
 			String rs = iOptionService.admincrehosin(params);
-			modelMap.put("rs", rs);
-			System.out.println(params);
+			String rs2 = iOptionService.admincrehosinopt(params);
+			if(rs == "true" && rs2 =="true"){
+				modelMap.put("rs", "true");
+			}
 		}else{
 			modelMap.put("rs", "fail");
 		}

@@ -27,4 +27,6 @@ public interface IOptionDao {
 	String admin_acc_register(HashMap<String, String> params)throws Throwable;
 
 	int admin_regi_id_chk(HashMap<String, String> params)throws Throwable;
+
+	String admincrehosinopt(HashMap<String, String> params)throws Throwable;
 }

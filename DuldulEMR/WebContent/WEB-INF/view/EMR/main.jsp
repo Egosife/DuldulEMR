@@ -29,60 +29,11 @@
 <script type="text/javascript" src="resources/script/main/main.js"></script>
 <script type="text/javascript" src="resources/script/calendar/calendar.js"></script>
 <script type="text/javascript" src="resources/script/common/popup.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	showCalendar(d.getFullYear(),(d.getMonth() + 1));
-	
-	var startEMR = {tab : "main_first*초기화면*main_first"}
-	Open_Tab(startEMR);
-});
-</script>
-
-<!-- calendar select script -->
-<script type="text/javascript">
-$(document).ready(function() {
-	$.datepicker.setDefaults({
-		monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		showMonthAfterYear:true,
-		showOn: 'button',
-		closeText: '닫기',
-		buttonImage: 'resources/images/calender.png',
-		buttonImageOnly: true,
-		dateFormat: 'yy/mm/dd'    
-	}); 
-	
-	$("#optbtn").on("click",function(){
-		var acctype = ${sLv_Code}
-		
-		switch (acctype) {
-		case 0:
-			var tab2 = {tab : "Service_page*계정옵션*Service_page"};
-			var tab = {tab : "adminopt*관리자메뉴*adminopt"};
-			ReOpen_Tab(tab2);
-			ReOpen_Tab(tab);
-			break;
-		case 1:
-			var tab2 = {tab : "Service_page*계정옵션*Service_page"};
-			var tab = {tab : "manager_opt*병원옵션*manager_opt"};
-			ReOpen_Tab(tab2);
-			ReOpen_Tab(tab);
-			break;
-		case 2:
-		case 3:
-			var tab = {tab : "Service_page*계정옵션*Service_page"};
-			ReOpen_Tab(tab);
-			break;
-		}
-		
-	});
-	
-});
-</script>
 <title>DuldulEMR</title>
 </head>
+
 <body>
+<input type="hidden" id="sLv_Codedata" value="${sLv_Code}"> 
 <div class='main_layout'>
 <!-- 계정정보 영역 -->
 <%-- 

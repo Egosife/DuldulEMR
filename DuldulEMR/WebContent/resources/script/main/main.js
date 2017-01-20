@@ -5,7 +5,45 @@
  */
 
 $(document).ready(function(){
+	var startEMR = {tab : "main_first*초기화면*main_first"}
 	NowTime();//시간 인터발 시작
+	Open_Tab(startEMR);
+	showCalendar(d.getFullYear(),(d.getMonth() + 1));
+	
+	$.datepicker.setDefaults({
+		monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		showMonthAfterYear:true,
+		showOn: 'button',
+		closeText: '닫기',
+		buttonImage: 'resources/images/calender.png',
+		buttonImageOnly: true,
+		dateFormat: 'yy/mm/dd'    
+	}); 
+	
+	$("#optbtn").on("click",function(){
+		var acctype = $("#sLv_Codedata").val();
+		switch (acctype) {
+		case "0":
+			var tab2 = {tab : "Service_page*계정옵션*Service_page"};
+			var tab = {tab : "adminopt*관리자메뉴*adminopt"};
+			ReOpen_Tab(tab2);
+			ReOpen_Tab(tab);
+			break;
+		case "1":
+			var tab2 = {tab : "Service_page*계정옵션*Service_page"};
+			var tab = {tab : "manager_opt*병원옵션*manager_opt"};
+			ReOpen_Tab(tab2);
+			ReOpen_Tab(tab);
+			break;
+		case "2":
+		case "3":
+			var tab = {tab : "Service_page*계정옵션*Service_page"};
+			ReOpen_Tab(tab);
+			break;
+		}
+		
+	});
 	
 	//메뉴 보이기, 숨기기
 	$("body").on("click",".main_menu_btn",function(){
