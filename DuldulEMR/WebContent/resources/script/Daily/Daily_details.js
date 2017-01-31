@@ -19,7 +19,7 @@ $(document).ready(function(){
 		if($(this).val() == "등록"){
 			var details_up = $("#details_up"); 
 			
-			details_up.ajaxForm(uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
+			details_up.ajaxForm(Daily_uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
 			details_up.submit();
 		}else{
 			$("#details_updateBtn").attr("value","등록");
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		}
 	});//updateBtn	
 	
-	function uploadResultCallBack(data,result){ //data엔 json이 들어가있음
+	function Daily_uploadResultCallBack(data,result){ //data엔 json이 들어가있음
 		var dailyopen = {tab:"Daily*업무일지*Daily"}; //업무일지 탭과 페이지를 연다
 		var dailydetails_close = {tab:"Daily_details"}; //글 읽기 탭과 페이지를 닫는다
 		if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦

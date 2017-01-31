@@ -5,60 +5,65 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	emp_List();
+	RESTD_emp_List();
 	rest_detail_Date();
 	rest_shincheong();
 	
-	$("#rd_datepicker1").datepicker({ //날짜 가져오기
+	$("#restd_datepicker1").datepicker({ //날짜 가져오기
 		dateFormat : 'yy-mm-dd',
 		duration: 200,
 		onSelect:function(dateText, inst){
-			var firstDate = parseInt($("#rd_datepicker2").val().replace("-", '').replace("-", ''));
+			var firstDate = parseInt($("#restd_datepicker2").val().replace("-", '').replace("-", ''));
 			var secondDate = parseInt(dateText.replace(/-/g,''));
 			var rest_dtDate = parseInt($("#DT_DATE").val());
 			
             if (secondDate > firstDate || secondDate < rest_dtDate) {
             	alert("날짜를 올바르게 선택하세요.");
             	//달력에 종료 날짜 넣어주기
-        		$("#rd_datepicker1").val($("#rd_SDATE").val());
+        		$("#restd_datepicker1").val($("#rd_SDATE").val());
 			} else {
-				$("#rd_SDATE").val($("#rd_datepicker1").val());
+				$("#rd_SDATE").val($("#restd_datepicker1").val());
 			}
 		}
 	});
-	$("#rd_datepicker2").datepicker({ //날짜 가져오기
+	$("#restd_datepicker2").datepicker({ //날짜 가져오기
 		dateFormat : 'yy-mm-dd',
 		duration: 200,
 		onSelect:function(dateText, inst){
-			var firstDate = parseInt($("#rd_datepicker1").val().replace("-", '').replace("-", ''));
+			var firstDate = parseInt($("#restd_datepicker1").val().replace("-", '').replace("-", ''));
 			var secondDate = parseInt(dateText.replace(/-/g,''));
 			var rest_dtDate = parseInt($("#DT_DATE").val());
 			
             if (firstDate > secondDate || secondDate < rest_dtDate) {
             	alert("날짜를 올바르게 선택하세요.");
             	//달력에 종료 날짜 넣어주기
-        		$("#rd_datepicker2").val($("#rd_EDATE").val());
+        		$("#restd_datepicker2").val($("#rd_EDATE").val());
 			} else {
-				$("#rd_EDATE").val($("#rd_datepicker2").val());
+				$("#rd_EDATE").val($("#restd_datepicker2").val());
 			}
 		}
 	});
 	$("#rd_sujeongBtn").on("click",function(){ //수정 버튼을 누르면
+		var tail_up = $("#tail_up");
+		
 		if($(this).val() == "등록"){
-			var tail_up = $("#tail_up"); 
 			
-			tail_up.ajaxForm(uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
-			tail_up.submit();
+			if($("#restd_datepicker1").val() != "" && $("#restd_datepicker2").val() != ""){
+				tail_up.ajaxForm(RESTD_uploadResultCallBack); //uploadResultCallBack = ajax를 실행하고 uploadResultCallBack를 호출한다.
+				tail_up.submit();
+			}else{
+				alert("날짜를 선택하세요.");
+			}
 		}else{
 			$("#rd_sujeongBtn").attr("value","등록");
-			$("#rd_datepicker1").removeAttr("readonly");
-			$("#rd_datepicker2").removeAttr("readonly");
-			$("#rd_datepicker1").val("");
-			$("#rd_datepicker2").val("");
+			$("#restd_datepicker1").removeAttr("readonly");
+			$("#restd_datepicker2").removeAttr("readonly");
+			$("#restd_datepicker1").val("");
+			$("#restd_datepicker2").val("");
 			$("#rd_rest_rest").removeAttr("readonly");
 		}
 	});//sujeongBtn
-	function uploadResultCallBack(data,result){ //data엔 json이 들어가있음
+	function RESTD_uploadResultCallBack(data,result){ //data엔 json이 들어가있음
 		var rest_app_open = {tab:"rest_apply*휴진현황*rest_apply"}; //업무일지 탭과 페이지를 연다
 		var rest_tail_close = {tab:"rest_detail"}; //글 읽기 탭과 페이지를 닫는다
 		if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦
@@ -74,8 +79,8 @@ $(document).ready(function(){
 					if(result.res>0){ //result.res가 0보다 크면
 						alert("수정이 되었습니다."); //경고창 띄우기
 						$("#rd_changeBtn").attr("value","수정");
-						$("#rd_datepicker1").attr("readonly", "readonly");
-						$("#rd_datepicker2").attr("readonly", "readonly");
+						$("#restd_datepicker1").attr("readonly", "readonly");
+						$("#restd_datepicker2").attr("readonly", "readonly");
 						$("#rd_rest_rest").attr("readonly", "readonly");
 						Close_Tab(rest_tail_close); //글 읽기 탭과 페이지를 닫는다
 						ReOpen_Tab(rest_app_open); //업무일지 탭과 페이지를 연다
@@ -129,7 +134,7 @@ $(document).ready(function(){
 });//ready end
 
 /* 직원 데이터 가져오기 */
-function emp_List(){
+function RESTD_emp_List(){
 	var params = $("#restEmp_Form").serialize();
 	
 	$.ajax({
@@ -152,8 +157,15 @@ function emp_List(){
 }
 function rest_detail_Date(){
 	var rd_date = new Date();
+	var month = "";
 	
-	var rd_interDate = rd_date.getFullYear()+""+(rd_date.getMonth()+1)+""+rd_date.getDate();
+	if(rd_date.getMonth()+1 < 10){
+		month = "0" + (rd_date.getMonth()+1);
+	}else{
+		month = rd_date.getMonth()+1;
+	}
+		
+	var rd_interDate = rd_date.getFullYear()+""+month+""+rd_date.getDate();
 	$("#DT_DATE").val(rd_interDate);
 }
 function rest_shincheong(){

@@ -1,7 +1,7 @@
 /** 2016-12-14 김남기 
 휴진 신청 화면 완료 **/
 $(document).ready(function(){
-	emp_List(); 
+	REST_emp_List(); 
 	rest_Date();
 	
 	$("#rest_jajangBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
@@ -15,7 +15,7 @@ $(document).ready(function(){
 			}else{
  		 var rest_wri = $("#rest_wri");
  		
- 		rest_wri.ajaxForm(uploadResultCallBack);
+ 		rest_wri.ajaxForm(REST_uploadResultCallBack);
  		rest_wri.submit(); 
 			}
 	}); //insertBtn end
@@ -28,7 +28,7 @@ $(document).ready(function(){
 	}); //cancelBtn 끝
 });//ready end
 
-function emp_List(){
+function REST_emp_List(){
 	var params = $("#restEmp_Form").serialize();
 	
 	$.ajax({
@@ -49,7 +49,7 @@ function emp_List(){
 		}
 	});
 }
-function uploadResultCallBack(data,result){ 
+function REST_uploadResultCallBack(data,result){ 
 	var rest_apply_open = {tab:"rest_apply*휴진현황*rest_apply"}; //업무일지 탭과 페이지를 연다
 	var rest_close = {tab:"rest"}; //글 읽기 탭과 페이지를 닫는다
 	if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦
@@ -113,7 +113,13 @@ $("#r_datepicker2s").datepicker({
 });
 function rest_Date(){
 	var r_date = new Date();
+	var months = "";
 	
-	var r_interDate = r_date.getFullYear()+""+(r_date.getMonth()+1)+""+r_date.getDate();
+	if(r_date.getMonth()+1 < 10){
+		months = "0" + (r_date.getMonth()+1);
+	}else{
+		months = r_date.getMonth()+1;
+	}
+	var r_interDate = r_date.getFullYear()+""+months+""+r_date.getDate();
 	$("#rest_TDATE").val(r_interDate);
 }

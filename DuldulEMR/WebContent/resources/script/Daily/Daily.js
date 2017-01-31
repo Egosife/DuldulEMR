@@ -1,7 +1,7 @@
 /** 2016-12-12 김남기 
 		기능	개발 완료 **/
 $(document).ready(function(){
-	emp_List(); 
+	Daily_emp_List(); 
 	dailyList();
 	
 	$("#Daily_insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
@@ -18,7 +18,7 @@ $(document).ready(function(){
 	}); //tb end
 });//ready end
 
-function emp_List(){
+function Daily_emp_List(){
 	var params = $("#dailyForm").serialize();
 	
 	$.ajax({
@@ -35,7 +35,7 @@ function emp_List(){
 				html += "<td>"+result.list.EMP_NUM+"</td>"; //사원 번호
 				html += "<td>"+result.list.OFFICE+"</td>"; //근무과
 				html += "</tr>";
-				$("#tb_emp").html(html); //직원 데이터 가져오기
+				$("#Daily_tb_emp").html(html); //직원 데이터 가져오기
 		}
 	});
 }

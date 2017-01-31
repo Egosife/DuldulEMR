@@ -34,7 +34,7 @@
 				<th>사원 번호</th>
 				<th>근무과</th>
 			</tr>
-			<tbody id="tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
+			<tbody id="Daily_tb_emp"></tbody> <!-- 직원 데이터 가져오기 -->
 		</table>
 	</div>
 	<div class="Dai_middle_knk"> <!-- 레이아웃 중단 -->

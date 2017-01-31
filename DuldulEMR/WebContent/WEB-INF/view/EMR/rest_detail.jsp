@@ -53,8 +53,8 @@
 			<div class="rest_mid_top">
 				<div class="rest_calender">휴진 날짜</div>
 					<div class="rest_cal_btn"> 
-		        		<input type="text" name="rd_datepicker1" placeholder="날짜를 선택하세요" class="rest_cal_text" id="rd_datepicker1" readonly="readonly" value="${conn.SDATE}"> ~ 
-		        		<input type="text" name="rd_datepicker2" placeholder="날짜를 선택하세요" class="rest_cal_text" id="rd_datepicker2" readonly="readonly" value="${conn.EDATE}">
+		        		<input type="text" name="rd_datepicker1" placeholder="날짜를 선택하세요" class="rest_cal_text" id="restd_datepicker1" readonly="readonly" value="${conn.SDATE}"> ~ 
+		        		<input type="text" name="rd_datepicker2" placeholder="날짜를 선택하세요" class="rest_cal_text" id="restd_datepicker2" readonly="readonly" value="${conn.EDATE}">
 		    	 	</div>
     	 	</div>
     	<!-- 레이아웃  중단 - 업무 내용 -->

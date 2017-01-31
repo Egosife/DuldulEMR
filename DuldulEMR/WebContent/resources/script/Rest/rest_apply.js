@@ -1,8 +1,8 @@
 /** 2016-12-14 김남기 
 휴진 현황 메인 완료 **/
 $(document).ready(function(){
-	my_rest_List();
-	Emp_rest();
+	RESTA_my_rest_List();
+	RESTA_Emp_rest();
 	Rest_Select();
 	
 	$("#rest_app_insertBtn").on("click",function(){ /* 글쓰기 버튼을 누르면 */
@@ -29,7 +29,7 @@ $(document).ready(function(){
 		ReOpen_Tab(this);
 	});
 });//ready end
-function my_rest_List(){
+function RESTA_my_rest_List(){
 	var params = $("#RestApplyForm").serialize();
 	
 	$.ajax({
@@ -79,7 +79,7 @@ function my_rest_List(){
 		}
 	}); //ajax 끝
 }
-function Emp_rest(){
+function RESTA_Emp_rest(){
 	var params = $("#RestApplyForm").serialize();
 	
 	$.ajax({

@@ -24,12 +24,12 @@ $(document).ready(function(){
 			}else{
  		 var daily_wri = $("#daily_wri");
  		
- 		daily_wri.ajaxForm(uploadResultCallBack);
+ 		daily_wri.ajaxForm(DW_uploadResultCallBack);
  		daily_wri.submit(); 
 			}
 	}); //saveBtn 끝
 }); //ready 끝
-function uploadResultCallBack(data,result){ 
+function DW_uploadResultCallBack(data,result){ 
 	var daily_open = {tab:"Daily*업무일지*Daily"}; //업무일지 탭과 페이지를 연다
 	var dailywrite_close = {tab:"Daily_write"}; //글 읽기 탭과 페이지를 닫는다
 	if(result=="success"){ //결과가 success면 성공 json을 javascript bean으로 만듦
