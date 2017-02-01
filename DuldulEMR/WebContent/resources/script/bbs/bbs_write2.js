@@ -13,13 +13,13 @@ $(document).ready(function(){
 		
 		var insertForm = $("#insertForm");
 
-		insertForm.ajaxForm(uploadResultCallBack);//ajaxForm:이폼 실행하면 아작스폼으로 하겠다 하는게 ajaxForm
+		insertForm.ajaxForm(bbs_write_2_uploadResultCallBack);//ajaxForm:이폼 실행하면 아작스폼으로 하겠다 하는게 ajaxForm
 		insertForm.submit();			
 	
 	});
 });
 
-function uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임(success 인지 fail인지),,,,data는 json받은거임
+function bbs_write_2_uploadResultCallBack(data, result){ //result가 뭐냐면 ajax결과임(success 인지 fail인지),,,,data는 json받은거임
 
 	var closeTab ={tab:"bbs_write2"};
 	var newTab = {tab:"bbs*사내게시판*bbs"};

@@ -22,7 +22,7 @@
 </form> --%>
 	
 
-			<form id="insertForm" method="post">
+			<form id="bbs_write_insertForm" method="post">
 	  <input type="hidden" name="write" value="${sEmp_Name}"/>
 	  <input type="hidden" name="hospitalCode" value="${sHospital_Code}"/>
 	  <input type="hidden" name="gbn" value="${sBbs_Type}"/>
@@ -34,7 +34,7 @@
     
 
  			<div class="bbs_write_total" style="text-align: center"> <!-- 레이아웃 상단 - 업무 날짜 선택 -->
-        		<input type="text" id="TitleText" name="postTitle" placeholder="제목을 입력하세요"/> 
+        		<input type="text" id="bbs_write_TitleText" name="postTitle" placeholder="제목을 입력하세요"/> 
     		 </div>
     	   </div>
    				<hr> <!-- 구분선 -->	 
@@ -51,8 +51,8 @@
   <hr/>
    <div class="bbs_write_bottom_bb"> 
   		 <div class="bbs_write_1">
-  			 <input type="button" value="저장" id="saveBtn" tab="bbs_write" class="bbs_write_button" style="cursor:pointer"/>
-  	 		<input type="button" value="취소" id="cancleBtn" tab="bbs_write" class="bbs_write_button" style="cursor:pointer"/>	
+  			 <input type="button" value="저장" id="bbs_write_saveBtn" tab="bbs_write" class="bbs_write_button" style="cursor:pointer"/>
+  	 		<input type="button" value="취소" id="bbs_write_cancleBtn" tab="bbs_write" class="bbs_write_button" style="cursor:pointer"/>	
          </div> <!-- 레이아웃 하단 - 글쓰기 버튼 -->
    </div>
 

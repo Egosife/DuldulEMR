@@ -15,7 +15,7 @@
 </head>
 <body>
 <input type="hidden" name="sLvCode" value="${sLv_Code}"/>
-<form action="#" id="deleteForm"  method="post">
+<form action="#" id="bbs_detail_deleteForm"  method="post">
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchText" value="${param.searchText}"/>
 	<input type="hidden" name="POST_NUM" value="${param.POST_NUM}"/>

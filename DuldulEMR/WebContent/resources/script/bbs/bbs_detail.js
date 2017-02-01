@@ -2,12 +2,15 @@
 
 $(document).ready(function(){
 
-    //버튼에 보이는 이름 완료라는 글자면 글이 업로드된다
+ 
     $("#bbs_detail_changeBtn").on("click", function(){
-    	 if(($("#bbs_detail_updateForm input[name='write']").val() == $("#bbs_detail_updateForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0 || $("input[name='sLvCode']").val() == 1){
+    	 if(($("#bbs_detail_updateForm input[name='write']").val() == $("#bbs_detail_updateForm input[name='empNo']").val()) 
+    			 || $("input[name='sLvCode']").val() == 0 
+    			 || $("input[name='sLvCode']").val() == 1)
+    	 	{
 			 if($(this).val() == "완료"){
 				 var updateForm = $("#bbs_detail_updateForm");
-				updateForm.ajaxForm(uploadResultCallBack);
+				updateForm.ajaxForm(bbs_detail_uploadResultCallBack);
 				updateForm.submit();
 				 
 			 }else{
@@ -25,9 +28,9 @@ $(document).ready(function(){
 		
 	});
 	$("#bbs_detail_deleteBtn").on("click", function(){
-		 if(($("#deleteForm input[name='write']").val() == $("#deleteForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
+		 if(($("#bbs_detail_deleteForm input[name='write']").val() == $("#bbs_detail_deleteForm input[name='empNo']").val()) || $("input[name='sLvCode']").val() == 0){ 
 			if(confirm("지울꺼니?")){
-				var params = $("#deleteForm").serialize();
+				var params = $("#bbs_detail_deleteForm").serialize();
 				console.log(params);
 				$.ajax({
 					type : "post",
@@ -56,7 +59,7 @@ $(document).ready(function(){
 			      });//deleteBtn끝
 			}); //ready끝
 
-function uploadResultCallBack(data, result){ 
+function bbs_detail_uploadResultCallBack(data, result){ 
 
 	
 	if(result == "success"){
